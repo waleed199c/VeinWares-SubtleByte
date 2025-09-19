@@ -1,0 +1,130 @@
+﻿using ProjectM;
+using ProjectM.Network;
+using ProjectM.Scripting;
+using ProjectM.Shared;
+using Stunlock.Core;
+using Unity.Entities;
+using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Services;
+
+namespace VeinWares.SubtleByte.Utilities
+{
+    internal static class Buffs
+    {
+        static ServerGameManager ServerGameManager => Core.ServerGameManager;
+        static SystemService SystemService => Core.SystemService;
+        static DebugEventsSystem DebugEventsSystem => SystemService.DebugEventsSystem;
+
+        // Example Buff Prefabs – replace with your GUIDs
+        public static readonly PrefabGUID BloodmoonBuff = new PrefabGUID(-560523291);
+        public static readonly PrefabGUID CrownBuff = new PrefabGUID(1516078366);     
+
+        /// <summary>
+        /// Applies a buff to the entity with no lifetime (persistent until removed).
+        /// </summary>
+        public static bool TryApplyBuffWithLifeTimeNone(this Entity entity, PrefabGUID buffPrefabGuid)
+        {
+            if (entity.TryApplyAndGetBuff(buffPrefabGuid, out Entity buffEntity))
+            {
+                if (buffEntity.Has<LifeTime>())
+                {
+                    buffEntity.With((ref LifeTime lifeTime) =>
+                    {
+                        lifeTime.Duration = 0f;
+                        lifeTime.EndAction = LifeTimeEndAction.None;
+                    });
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public static void TryApplyPermanentBuff(this Entity player, PrefabGUID buffPrefab)
+        {
+            if (player.TryApplyAndGetBuff(buffPrefab, out Entity buffEntity))
+            {
+                // Remove things that normally kill the buff
+                //buffEntity.Remove<RemoveBuffOnGameplayEvent>();
+                //buffEntity.Remove<RemoveBuffOnGameplayEventEntry>();
+                //buffEntity.Remove<CreateGameplayEventsOnSpawn>();
+                //buffEntity.Remove<GameplayEventListeners>();
+                //buffEntity.Remove<DestroyOnGameplayEvent>();
+                buffEntity.Add<Buff_Persists_Through_Death>();
+
+                if (buffEntity.Has<LifeTime>())
+                {
+                    buffEntity.With((ref LifeTime lifeTime) =>
+                    {
+                        lifeTime.Duration = 0f;
+                        lifeTime.EndAction = LifeTimeEndAction.None;
+                    });
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// Applies the buff and gets the buff entity back.
+        /// </summary>
+        public static bool TryApplyAndGetBuff(this Entity entity, PrefabGUID buffPrefabGuid, out Entity buffEntity)
+        {
+            buffEntity = Entity.Null;
+
+            if (!entity.HasBuff(buffPrefabGuid))
+            {
+                ApplyBuffDebugEvent applyBuffDebugEvent = new()
+                {
+                    BuffPrefabGUID = buffPrefabGuid,
+                    Who = entity.GetNetworkId(),
+                };
+
+                FromCharacter fromCharacter = new()
+                {
+                    Character = entity,
+                    User = entity.IsPlayer() ? entity.GetUserEntity() : entity
+                };
+
+                DebugEventsSystem.ApplyBuff(fromCharacter, applyBuffDebugEvent);
+
+                return entity.TryGetBuff(buffPrefabGuid, out buffEntity);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Checks if an entity currently has the buff.
+        /// </summary>
+        public static bool HasBuff(this Entity entity, PrefabGUID buffPrefabGuid)
+        {
+            return ServerGameManager.TryGetBuff(entity, buffPrefabGuid.ToIdentifier(), out _);
+        }
+
+        /// <summary>
+        /// Try to get an active buff from an entity.
+        /// </summary>
+        public static bool TryGetBuff(this Entity entity, PrefabGUID buffPrefabGUID, out Entity buffEntity)
+        {
+            return ServerGameManager.TryGetBuff(entity, buffPrefabGUID.ToIdentifier(), out buffEntity);
+        }
+
+        /// <summary>
+        /// Removes a buff if present.
+        /// </summary>
+        public static void TryRemoveBuff(this Entity entity, PrefabGUID buffPrefabGuid)
+        {
+            if (entity.TryGetBuff(buffPrefabGuid, out Entity buffEntity))
+            {
+                buffEntity.DestroyBuff();
+            }
+        }
+
+        public static void RemoveBuff(Entity Character, PrefabGUID buffPrefab)
+        {
+            if (BuffUtility.TryGetBuff(Core.EntityManager, Character, buffPrefab, out var buffEntity))
+            {
+                DestroyUtility.Destroy(Core.EntityManager, buffEntity, DestroyDebugReason.TryRemoveBuff);
+            }
+        }
+    }
+}
