@@ -29,7 +29,6 @@ namespace VeinWares.SubtleByte
 
             Log?.LogInfo("[Core] Initialization started...");
             PrefabCollectionSystem = Server.GetExistingSystemManaged<PrefabCollectionSystem>();
-            AddAncientRelicBuffs();
             ItemStackService.ApplyPatches();
             //RecipeService.ApplyPatches();
 
@@ -40,22 +39,5 @@ namespace VeinWares.SubtleByte
             return World.s_AllWorlds.ToArray().FirstOrDefault(world => world.Name == "Server");
         }
 
-        static void AddAncientRelicBuffs()
-        {
-            PrefabGUID AB_Interact_Throne_Dracula_Travel = new(559608494);
-
-            if (PrefabCollectionSystem._PrefabGuidToEntityMap.TryGetValue(AB_Interact_Throne_Dracula_Travel, out Entity prefab))
-            {
-                var applyBuffBuffer = EntityManager.GetBuffer<ApplyBuffOnGameplayEvent>(prefab);
-
-                ApplyBuffOnGameplayEvent applyBuffOnGameplayEvent = applyBuffBuffer[1];
-                //applyBuffOnGameplayEvent.Buff0 = new(1068709119);    // AB_Interact_UseRelic_Monster_Buff
-                applyBuffOnGameplayEvent.Buff1 = new(-1703886455);   // AB_Interact_UseRelic_Behemoth_Buff
-                applyBuffOnGameplayEvent.Buff2 = new(-1161197991);   // AB_Interact_UseRelic_Paladin_Buff
-                applyBuffOnGameplayEvent.Buff3 = new(-238197495);    // AB_Interact_UseRelic_Manticore_Buff
-
-                applyBuffBuffer[1] = applyBuffOnGameplayEvent;
-            }
-        }
     }
 }

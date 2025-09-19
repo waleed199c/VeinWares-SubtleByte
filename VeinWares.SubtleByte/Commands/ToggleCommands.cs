@@ -28,6 +28,23 @@ namespace VeinWares.SubtleByte.Commands
             HandleCheck(ctx, 10, "Crown", Buffs.CrownBuff);
         }
 
+        [Command("clearrelics", shortHand: "cr")]
+        public static void ClearRelicBuffs(ChatCommandContext ctx)
+        {
+            var player = ctx.Event.SenderCharacterEntity;
+
+            PrefabGUID[] relics = {
+                new PrefabGUID(1068709119),
+                new PrefabGUID(-1703886455),
+                new PrefabGUID(-1161197991),
+                new PrefabGUID(-238197495),
+            };
+
+            foreach (var relic in relics)
+                player.TryRemoveBuff(relic);
+
+            ctx.Reply("[RelicPatch] All relic buffs cleared.");
+        }
         private static void HandleCheck(ChatCommandContext ctx, int requiredExp, string displayName, PrefabGUID buffPrefab)
         {
             try
@@ -92,5 +109,6 @@ namespace VeinWares.SubtleByte.Commands
                 ctx.Reply($"[Toggle] Internal error while toggling {displayName}.");
             }
         }
+
     }
 }

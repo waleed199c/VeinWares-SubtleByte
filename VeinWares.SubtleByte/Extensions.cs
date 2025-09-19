@@ -183,5 +183,59 @@ namespace VeinWares.SubtleByte.Extensions
 
         // Custom delegate to match the 'ref' style for With<T>
         public delegate void ActionRef<T>(ref T data);
+
+        public static bool TryGetSteamId(this Entity entity, out ulong steamId)
+        {
+            steamId = 0UL;
+            if (!entity.Exists()) return false;
+
+            Entity userEntity = entity;
+
+            // If it's not a User, try resolve owning User from Character
+            if (!EntityManager.HasComponent<User>(userEntity))
+                userEntity = entity.GetUserEntity();
+
+            if (userEntity == Entity.Null || !EntityManager.HasComponent<User>(userEntity))
+                return false;
+
+            var user = EntityManager.GetComponentData<User>(userEntity);
+            steamId = user.PlatformId;
+            return true;
+        }
+
+      
+
+        /// <summary>Try get player name (CharacterName from User) from either Character or User entity.</summary>
+        public static bool TryGetPlayerName(this Entity entity, out string name)
+        {
+            name = string.Empty;
+            if (!entity.Exists()) return false;
+
+            Entity userEntity = entity;
+
+            if (!EntityManager.HasComponent<User>(userEntity))
+                userEntity = entity.GetUserEntity();
+
+            if (userEntity == Entity.Null || !EntityManager.HasComponent<User>(userEntity))
+                return false;
+
+            var user = EntityManager.GetComponentData<User>(userEntity);
+            try
+            {
+                name = user.CharacterName.ToString();
+                return true;
+            }
+            catch
+            {
+                // Some builds use FixedString variants; ToString() is still safe, but guard anyway
+                name = string.Empty;
+                return false;
+            }
+        }
+
+        /// <summary>Convenience: get player name or "Unknown".</summary>
+        public static string GetPlayerName(this Entity entity)
+            => entity.TryGetPlayerName(out var n) ? n : "Unknown";
+        
     }
 }
