@@ -35,7 +35,7 @@ namespace VeinWares.SubtleByte.Utilities
                     });
                 }
                 return true;
-            }
+            }   
             return false;
         }
 
@@ -43,12 +43,19 @@ namespace VeinWares.SubtleByte.Utilities
         {
             if (player.TryApplyAndGetBuff(buffPrefab, out Entity buffEntity))
             {
-                // Remove things that normally kill the buff
-                //buffEntity.Remove<RemoveBuffOnGameplayEvent>();
-                //buffEntity.Remove<RemoveBuffOnGameplayEventEntry>();
-                //buffEntity.Remove<CreateGameplayEventsOnSpawn>();
-                //buffEntity.Remove<GameplayEventListeners>();
-                //buffEntity.Remove<DestroyOnGameplayEvent>();
+                if (buffEntity.Has<ApplyBuffOnGameplayEvent>()) buffEntity.Remove<ApplyBuffOnGameplayEvent>();
+                if (buffEntity.Has<RemoveBuffOnGameplayEvent>()) buffEntity.Remove<RemoveBuffOnGameplayEvent>();
+                if (buffEntity.Has<RemoveBuffOnGameplayEventEntry>()) buffEntity.Remove<RemoveBuffOnGameplayEventEntry>();
+                if (buffEntity.Has<CreateGameplayEventsOnSpawn>()) buffEntity.Remove<CreateGameplayEventsOnSpawn>();
+                if (buffEntity.Has<GameplayEventListeners>()) buffEntity.Remove<GameplayEventListeners>();
+                if (buffEntity.Has<DealDamageOnGameplayEvent>()) buffEntity.Remove<DealDamageOnGameplayEvent>();
+                if (buffEntity.Has<HealOnGameplayEvent>()) buffEntity.Remove<HealOnGameplayEvent>();
+                if (buffEntity.Has<DestroyOnGameplayEvent>()) buffEntity.Remove<DestroyOnGameplayEvent>();
+                if (buffEntity.Has<WeakenBuff>()) buffEntity.Remove<WeakenBuff>();
+                if (buffEntity.Has<AmplifyBuff>()) buffEntity.Remove<AmplifyBuff>();
+                if (buffEntity.Has<ReplaceAbilityOnSlotBuff>()) buffEntity.Remove<ReplaceAbilityOnSlotBuff>();
+                if (buffEntity.Has<ModifyMovementSpeedBuff>()) buffEntity.Remove<ModifyMovementSpeedBuff>();
+                if (buffEntity.Has<BloodBuffScript_ChanceToResetCooldown>()) buffEntity.Remove<BloodBuffScript_ChanceToResetCooldown>();
                 buffEntity.Add<Buff_Persists_Through_Death>();
 
                 if (buffEntity.Has<LifeTime>())
@@ -125,6 +132,17 @@ namespace VeinWares.SubtleByte.Utilities
             {
                 DestroyUtility.Destroy(Core.EntityManager, buffEntity, DestroyDebugReason.TryRemoveBuff);
             }
+        }
+
+        public static bool EnsurePersistsThroughDeath(this Entity buffEntity)
+        {
+           if (!buffEntity.Exists()) return false;
+           if (!buffEntity.Has<Buff_Persists_Through_Death>())
+           {
+               buffEntity.Add<Buff_Persists_Through_Death>();
+               return true;
+          }
+            return false;
         }
     }
 }

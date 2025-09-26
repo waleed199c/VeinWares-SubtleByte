@@ -2,9 +2,12 @@
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
+using Il2CppInterop.Runtime.Injection;
 using UnityEngine;
 using VampireCommandFramework;
 using VeinWares.SubtleByte.Config;
+using VeinWares.SubtleByte.Services;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte
 {
@@ -22,9 +25,12 @@ namespace VeinWares.SubtleByte
             if (Application.productName != "VRisingServer")
                 return;
             Core.Log.LogInfo($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
+            ClassInjector.RegisterTypeInIl2Cpp<CoroutineRunner>();
             ItemStackConfig.Load();
+            PrestigeMini.InitializePrestigeConfig();
             _harmony = new Harmony(MyPluginInfo.PLUGIN_GUID);
             _harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
+            PrestigeLiveSync.Initialize();
 
 
             CommandRegistry.RegisterAll();

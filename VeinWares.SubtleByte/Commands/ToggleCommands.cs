@@ -1,8 +1,12 @@
 ﻿using Newtonsoft.Json.Linq;
+using ProjectM;
 using Stunlock.Core;
 using System;
 using System.IO;
 using VampireCommandFramework;
+using VeinWares.SubtleByte.Config;
+using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Commands
@@ -109,6 +113,31 @@ namespace VeinWares.SubtleByte.Commands
                 ctx.Reply($"[Toggle] Internal error while toggling {displayName}.");
             }
         }
+        [Command("prestige_on", adminOnly: true)]
+        public static void PrestigeOn(ChatCommandContext ctx, int level = 2)
+        {
+            var player = ctx.Event.SenderCharacterEntity;
+            if (!player.Exists()) { ctx.Reply("[Prestige] No character."); return; }
+            PrestigeMini.ApplyLevel(player, level);
+            ctx.Reply($"[Prestige] Applied prestige level {level} (cumulative from 2..{level}).");
+        }
+
+        [Command("prestige_off", adminOnly: true)]
+        public static void PrestigeOff(ChatCommandContext ctx)
+        {
+            var player = ctx.Event.SenderCharacterEntity;
+            if (!player.Exists()) { ctx.Reply("[Prestige] No character."); return; }
+            PrestigeMini.Clear(player);
+            ctx.Reply("[Prestige] Removed prestige buff.");
+        }
+
+        [Command("prestige_reload", adminOnly: true)]
+        public static void PrestigeReload(ChatCommandContext ctx)
+        {
+            SubtleBytePrestigeConfig.Reload();
+            ctx.Reply("[Prestige] Reloaded SubtleBytePrestigeConfig.json");
+        }
+
 
     }
 }
