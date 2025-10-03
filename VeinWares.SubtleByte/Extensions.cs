@@ -2,8 +2,10 @@
 using ProjectM;
 using ProjectM.Network;
 using ProjectM.Shared;
+using Stunlock.Core;
 using System;
 using System.Runtime.InteropServices;
+using Unity.Collections;
 using Unity.Entities;
 namespace VeinWares.SubtleByte.Extensions
 {
@@ -201,7 +203,7 @@ namespace VeinWares.SubtleByte.Extensions
             return true;
         }
 
-      
+
 
         /// <summary>Try get player name (CharacterName from User) from either Character or User entity.</summary>
         public static bool TryGetPlayerName(this Entity entity, out string name)
@@ -235,5 +237,72 @@ namespace VeinWares.SubtleByte.Extensions
         public static string GetPlayerName(this Entity entity)
             => entity.TryGetPlayerName(out var n) ? n : "Unknown";
         
+
+            /// <summary>
+    /// Finds the Blood Mixer’s refinement output inventory child.
+    /// </summary>
+    public static bool TryGetRefinementOutputInventory(this EntityManager em, Entity station,
+        in PrefabGUID invA, in PrefabGUID invB, out Entity inventoryEntity)
+    {
+        inventoryEntity = Entity.Null;
+
+        // Build a query for entities that have both Attach and PrefabGUID
+        var desc = new EntityQueryDesc
+        {
+            All = new[]
+            {
+                ComponentType.ReadOnly<Attach>(),
+                ComponentType.ReadOnly<PrefabGUID>()
+            }
+        };
+
+        var q = em.CreateEntityQuery(desc);
+        var ents = q.ToEntityArray(Allocator.Temp);
+        try
+        {
+            for (int i = 0; i < ents.Length; i++)
+            {
+                var e = ents[i];
+                if (!em.HasComponent<Attach>(e)) continue; // safety
+
+                var at = em.GetComponentData<Attach>(e);
+                if (at.Parent != station) continue;
+
+                var g = em.GetComponentData<PrefabGUID>(e).GuidHash;
+                if (g == invA.GuidHash || g == invB.GuidHash)
+                {
+                    inventoryEntity = e;
+                    return true;
+                }
+            }
+        }
+        finally
+        {
+            // Only the NativeArray needs disposing here.
+            ents.Dispose();
+            // If your Entities version exposes q.Dispose(), you can call it; otherwise leave it.
+            // q.Dispose();
+        }
+
+        return false;
+    }
+
+    /// <summary>
+    /// True if the inventory contains at least one stack of the given item type.
+    /// </summary>
+    public static bool HasItem(this EntityManager em, Entity inventory, PrefabGUID itemType)
+    {
+        if (!em.HasComponent<InventoryBuffer>(inventory)) return false;
+
+        var buf = em.GetBuffer<InventoryBuffer>(inventory);
+        for (int i = 0; i < buf.Length; i++)
+        {
+            if (buf[i].ItemType.GuidHash == itemType.GuidHash)
+                return true;
+        }
+        return false;
+    }
+
+
     }
 }

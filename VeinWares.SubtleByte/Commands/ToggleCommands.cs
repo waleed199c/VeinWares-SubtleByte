@@ -137,6 +137,27 @@ namespace VeinWares.SubtleByte.Commands
             ctx.Reply("[Prestige] Reloaded SubtleBytePrestigeConfig.json");
         }
 
+        [Command("toggle hideweapons", shortHand: "hw", description: "Toggle hiding your weapon model (visual only).")]
+        public static void ToggleHideWeapons(ChatCommandContext ctx)
+        {
+            var player = ctx.Event.SenderCharacterEntity;
+            if (!player.Exists()) { ctx.Reply("[Hide] No character."); return; }
 
+            // Buff_ChurchOfLight_SlaveMaster_HideWhip_Buff
+            var hideBuff = new PrefabGUID(-1104282069);
+
+            if (!player.HasBuff(hideBuff))
+            {
+                // uses your extension → applies and persists through death (same style as your other toggles)
+                player.TryApplyPermanentBuff(hideBuff);
+                ctx.Reply("[Hide] Weapons hidden.");
+            }
+            else
+            {
+                player.TryRemoveBuff(hideBuff);
+                ctx.Reply("[Hide] Weapons visible.");
+            }
+
+        }
     }
 }
