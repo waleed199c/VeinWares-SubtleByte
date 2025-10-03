@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json.Linq;
-using ProjectM;
 using Stunlock.Core;
 using System;
 using System.IO;
@@ -85,7 +84,7 @@ namespace VeinWares.SubtleByte.Commands
                 int exp = playerData["Experience"]?.ToObject<int>() ?? 0;
 
                 // Debug logging
-                //Core.Log.LogInfo($"[Toggle] {ctx.Name} ({steamId}) has {exp} prestige EXP (needed {requiredExp}).");
+                //SBlog.Info($"[Toggle] {ctx.Name} ({steamId}) has {exp} prestige EXP (needed {requiredExp}).");
 
                 if (exp >= requiredExp)
                 {
@@ -109,7 +108,7 @@ namespace VeinWares.SubtleByte.Commands
             }
             catch (Exception ex)
             {
-                Core.Log.LogError($"[Toggle] Error while handling {displayName}: {ex}");
+                SBlog.Error($"[Toggle] Error while handling {displayName}: {ex}");
                 ctx.Reply($"[Toggle] Internal error while toggling {displayName}.");
             }
         }

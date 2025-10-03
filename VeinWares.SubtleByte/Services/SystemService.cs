@@ -2,10 +2,6 @@
 using ProjectM;
 using ProjectM.Scripting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Unity.Entities;
 
 namespace VeinWares.SubtleByte.Services

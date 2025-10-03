@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
-using Stunlock.Core;
+﻿using Stunlock.Core;
 using System;
-using System.IO;
-using Unity.Collections;
-using Unity.Entities;
 using VampireCommandFramework;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;

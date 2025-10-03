@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text.Json;
 using System.Threading;
 using BepInEx;
-using ProjectM.Network;
 using Unity.Entities;
 using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Services
 {
@@ -64,7 +64,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[PrestigeSync] FileSystemWatcher init failed: {e.Message}");
+                SBlog.Error($"[PrestigeSync] FileSystemWatcher init failed: {e.Message}");
             }
         }
 
@@ -109,7 +109,7 @@ namespace VeinWares.SubtleByte.Services
                     }
                     catch (Exception ex)
                     {
-                        Core.Log.LogError($"[PrestigeSync] Debounce apply failed: {ex}");
+                        SBlog.Error($"[PrestigeSync] Debounce apply failed: {ex}");
                     }
                 }, null, Timeout.Infinite, Timeout.Infinite);
 
@@ -124,7 +124,7 @@ namespace VeinWares.SubtleByte.Services
             Dictionary<ulong, int> newSnap;
             if (!TryReadExpMap(out newSnap))
             {
-                Core.Log.LogWarning("[PrestigeSync] Could not read prestige file; skipping update.");
+                SBlog.Warn("[PrestigeSync] Could not read prestige file; skipping update.");
                 return;
             }
 
@@ -156,12 +156,12 @@ namespace VeinWares.SubtleByte.Services
                 if (target >= 2)
                 {
                     PrestigeMini.ApplyLevel(ch, target);
-                    Core.Log.LogInfo($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, applied L{target}.");
+                    SBlog.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, applied L{target}.");
                 }
                 else
                 {
                     PrestigeMini.Clear(ch);
-                    Core.Log.LogInfo($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, cleared (below 2).");
+                    SBlog.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, cleared (below 2).");
                 }
             }
         }
@@ -223,7 +223,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[PrestigeSync] Read error: {e.Message}");
+                SBlog.Error($"[PrestigeSync] Read error: {e.Message}");
                 return false;
             }
         }

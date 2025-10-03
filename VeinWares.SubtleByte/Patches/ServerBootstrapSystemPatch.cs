@@ -6,6 +6,7 @@ using Unity.Entities;
 using UnityEngine;
 using VeinWares.SubtleByte.Extensions;   // for .Exists(), .IsPlayer(), .GetUser(), .GetPlayerName()
 using VeinWares.SubtleByte.Services;     // PrestigeMini, PrestigeLiveSync, BloodcraftPrestigeReader
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Patches
 {
@@ -54,18 +55,18 @@ namespace VeinWares.SubtleByte.Patches
                 if (target >= 2)
                 {
                     PrestigeMini.ApplyLevel(character, target);
-                    Core.Log.LogInfo($"[SubtleByte.Prestige] Connected → applied L{target} (cumulative) → {character.GetPlayerName()} ({steamId}).");
+                    SBlog.Info($"[SubtleByte.Prestige] Connected → applied L{target} (cumulative) → {character.GetPlayerName()} ({steamId}).");
                 }
                 else
                 {
                     PrestigeMini.Clear(character);
-                    Core.Log.LogInfo($"[SubtleByte.Prestige] Connected → prestige < 2, cleared → {character.GetPlayerName()} ({steamId}).");
+                    SBlog.Info($"[SubtleByte.Prestige] Connected → prestige < 2, cleared → {character.GetPlayerName()} ({steamId}).");
                 }
             }
             else
             {
                 PrestigeMini.Clear(character);
-                Core.Log.LogInfo($"[SubtleByte.Prestige] Connected → no prestige record, cleared ({steamId}).");
+                SBlog.Info($"[SubtleByte.Prestige] Connected → no prestige record, cleared ({steamId}).");
             }
         }
 

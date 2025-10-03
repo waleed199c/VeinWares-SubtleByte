@@ -1,5 +1,4 @@
-﻿using ProjectM;
-using Stunlock.Core;
+﻿using Stunlock.Core;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -50,7 +49,7 @@ namespace VeinWares.SubtleByte.Services
             catch (Exception e)
             {
                 _done = new HashSet<ulong>();
-                Core.Log.LogError($"[Cleanup] Failed to load state: {e}");
+                SBlog.Error($"[Cleanup] Failed to load state: {e}");
             }
         }
 
@@ -63,7 +62,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[Cleanup] Failed to save state: {e}");
+                SBlog.Error($"[Cleanup] Failed to save state: {e}");
             }
         }
 
@@ -88,7 +87,7 @@ namespace VeinWares.SubtleByte.Services
             Save();
 
             if (removed > 0)
-                Core.Log.LogInfo($"[Cleanup] Removed {removed} legacy buff(s) from {platformId}.");
+                SBlog.Info($"[Cleanup] Removed {removed} legacy buff(s) from {platformId}.");
         }
     }
 }

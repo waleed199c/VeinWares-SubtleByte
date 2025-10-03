@@ -1,5 +1,4 @@
-﻿// File: Services/RelicService.cs
-using ProjectM;
+﻿using ProjectM;
 using Stunlock.Core;
 using Unity.Entities;
 using VeinWares.SubtleByte.Extensions;
@@ -31,11 +30,11 @@ namespace VeinWares.SubtleByte.Services
                     if (character.TryApplyAndGetBuff(guid, out var buff) && buff.Exists())
                     {
                         MakePersistent(buff);
-                        Core.Log.LogInfo($"[RelicPatch] Applied {Label(guid)} → {name} ({sid}) + PersistThroughDeath.");
+                        SBlog.Info($"[RelicPatch] Applied {Label(guid)} → {name} ({sid}) + PersistThroughDeath.");
                     }
                     else
                     {
-                        Core.Log.LogWarning($"[RelicPatch] Failed applying {Label(guid)} → {name} ({sid}).");
+                        SBlog.Warn($"[RelicPatch] Failed applying {Label(guid)} → {name} ({sid}).");
                     }
                 }
                 else
@@ -44,7 +43,7 @@ namespace VeinWares.SubtleByte.Services
                     if (character.TryGetBuff(guid, out var buffEnt) && buffEnt.Exists())
                     {
                         if (MakePersistent(buffEnt))
-                            Core.Log.LogInfo($"[RelicPatch] Ensured PersistThroughDeath on {Label(guid)} → {name} ({sid}).");
+                            SBlog.Info($"[RelicPatch] Ensured PersistThroughDeath on {Label(guid)} → {name} ({sid}).");
                     }
                 }
             }

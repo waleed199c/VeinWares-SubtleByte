@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using BepInEx; // Paths.ConfigPath
+using BepInEx; 
 using System.Text.Json;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Services
 {
@@ -44,7 +45,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[SubtleByte.Prestige] Failed reading Bloodcraft prestige JSON: {e.Message}");
+                SBlog.Error($"[SubtleByte.Prestige] Failed reading Bloodcraft prestige JSON: {e.Message}");
             }
             return false;
         }

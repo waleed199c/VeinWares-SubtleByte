@@ -5,9 +5,7 @@ using ProjectM.Scripting;
 using Stunlock.Core;
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using Unity.Entities;
-using VeinWares.SubtleByte;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;
 using VeinWares.SubtleByte.Utilities;
@@ -31,14 +29,14 @@ namespace VeinWares.SubtleByte.Services
             // Basic validation outside the iterator (safe to throw/log here)
             if (!character.Exists() || !character.IsPlayer())
             {
-                Core.Log.LogWarning("[PrestigeMini] invalid player");
+                SBlog.Warn("[PrestigeMini] invalid player");
                 return;
             }
 
             var user = character.GetUserEntity();
             if (user == Entity.Null || !user.Exists())
             {
-                Core.Log.LogWarning("[PrestigeMini] no user");
+                SBlog.Warn("[PrestigeMini] no user");
                 return;
             }
 
@@ -67,13 +65,13 @@ namespace VeinWares.SubtleByte.Services
             // 3) Spawn a fresh instance (immortal, persists through death)
             if (!TryAddBuff(user, character, buffPrefab, durationSeconds: -1, immortal: true))
             {
-                Core.Log.LogError("[PrestigeMini] apply failed");
+                SBlog.Error("[PrestigeMini] apply failed");
                 yield break;
             }
 
             if (!BuffUtility.TryGetBuff(Core.EntityManager, character, buffPrefab, out var buffEntity) || !buffEntity.Exists())
             {
-                Core.Log.LogWarning("[PrestigeMini] live buff not found after add");
+                SBlog.Warn("[PrestigeMini] live buff not found after add");
                 yield break;
             }
 
@@ -90,7 +88,7 @@ namespace VeinWares.SubtleByte.Services
             var rules = SubtleBytePrestigeConfig.GetMergedRules(level);
             if (rules == null)
             {
-                Core.Log.LogError("[PrestigeMini] GetMergedRules returned null.");
+                SBlog.Error("[PrestigeMini] GetMergedRules returned null.");
                 yield break;
             }
 
@@ -102,7 +100,7 @@ namespace VeinWares.SubtleByte.Services
             {
                 if (!Enum.TryParse<UnitStatType>(line.statType, true, out var statType))
                 {
-                    Core.Log.LogWarning($"[PrestigeMini] Unknown UnitStatType: {line.statType}");
+                    SBlog.Warn($"[PrestigeMini] Unknown UnitStatType: {line.statType}");
                     continue;
                 }
 
@@ -121,7 +119,7 @@ namespace VeinWares.SubtleByte.Services
                 added++;
             }
 
-            Core.Log.LogInfo($"[PrestigeMini] Applied fresh prestige L{level} ({added} lines) → {character.GetPlayerName()} (buff={buffPrefab.GuidHash}).");
+            SBlog.Info($"[PrestigeMini] Applied fresh prestige L{level} ({added} lines) → {character.GetPlayerName()} (buff={buffPrefab.GuidHash}).");
         }
 
         public static void Clear(Entity character)
@@ -130,11 +128,11 @@ namespace VeinWares.SubtleByte.Services
             {
                 if (!character.Exists()) return;
                 Buffs.RemoveBuff(character, HijackedBuff);
-                Core.Log.LogInfo($"[PrestigeMini] Cleared prestige buff from {character.GetPlayerName()}.");
+                SBlog.Info($"[PrestigeMini] Cleared prestige buff from {character.GetPlayerName()}.");
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[PrestigeMini] Clear exception: {e}");
+                SBlog.Error($"[PrestigeMini] Clear exception: {e}");
             }
         }
 

@@ -1,4 +1,5 @@
-﻿//using HarmonyLib;
+//using VeinWares.SubtleByte.Utilities;
+//using HarmonyLib;
 //using ProjectM;
 //using ProjectM.Network;
 //using Stunlock.Core;
@@ -49,12 +50,12 @@
 
 //                if (bloodTypes.Count < 2)
 //                {
-//                    Core.Log.LogWarning("[StartCraftingPatch] Invalid blood types used. Cancelling craft.");
+//                    SBlog.Warn("[StartCraftingPatch] Invalid blood types used. Cancelling craft.");
 //                    entityManager.DestroyEntity(evtEntity);
 //                }
 //                else
 //                {
-//                    Core.Log.LogInfo("[StartCraftingPatch] Valid blood types confirmed. Craft proceeds.");
+//                    SBlog.Info("[StartCraftingPatch] Valid blood types confirmed. Craft proceeds.");
 //                }
 //            }
 

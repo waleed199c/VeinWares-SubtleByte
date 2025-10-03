@@ -1,6 +1,7 @@
 ﻿using HarmonyLib;
 using ProjectM;
 using System;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Patches
 {
@@ -15,7 +16,7 @@ namespace VeinWares.SubtleByte.Patches
 
                 if (Core._hasInitialized)
                 {
-                    //Core.Log.LogInfo("[Core] Initialization complete. Unpatching...");
+                    //SBlog.Info("[Core] Initialization complete. Unpatching...");
                     Plugin.Harmony.Unpatch(
                         typeof(SpawnTeamSystem_OnPersistenceLoad).GetMethod("OnUpdate"),
                         typeof(InitializationPatch).GetMethod("Postfix")
@@ -24,7 +25,7 @@ namespace VeinWares.SubtleByte.Patches
             }
             catch (Exception ex)
             {
-                Core.Log.LogError($"[Core] Initialization failed: {ex.Message}");
+                SBlog.Error($"[Core] Initialization failed: {ex.Message}");
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿//using ProjectM;
+//using VeinWares.SubtleByte.Utilities;
+//using ProjectM;
 //using ProjectM.Shared;
 //using Stunlock.Core;
 //using Unity.Entities;
@@ -33,7 +34,7 @@
 //        {
 //            if (!PrefabCollectionSystem._PrefabGuidToEntityMap.TryGetValue(_immortalBloodRecipe, out var recipeEntity))
 //            {
-//                Core.Log.LogWarning("[RecipeService] Could not find recipe prefab for Immortal Blood override.");
+//                SBlog.Warn("[RecipeService] Could not find recipe prefab for Immortal Blood override.");
 //                return;
 //            }
 
@@ -58,7 +59,7 @@
 
 //            if (!PrefabCollectionSystem._PrefabGuidToEntityMap.TryGetValue(_advancedBloodPress, out var stationEntity))
 //            {
-//                Core.Log.LogWarning("[RecipeService] Could not find Advanced Blood Press station.");
+//                SBlog.Warn("[RecipeService] Could not find Advanced Blood Press station.");
 //                return;
 //            }
 
@@ -79,7 +80,7 @@
 //            GameDataSystem.RegisterItems();
 //            PrefabCollectionSystem.RegisterGameData();
 
-//            Core.Log.LogInfo("[RecipeService] Injected Immortal Blood recipe successfully.");
+//            SBlog.Info("[RecipeService] Injected Immortal Blood recipe successfully.");
 //        }
 //    }
 //}

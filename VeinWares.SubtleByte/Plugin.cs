@@ -24,7 +24,7 @@ namespace VeinWares.SubtleByte
             Instance = this;
             if (Application.productName != "VRisingServer")
                 return;
-            Core.Log.LogInfo($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
+            SBlog.Info($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
             ClassInjector.RegisterTypeInIl2Cpp<CoroutineRunner>();
             ItemStackConfig.Load();
             PrestigeMini.InitializePrestigeConfig();

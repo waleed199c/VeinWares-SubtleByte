@@ -92,14 +92,14 @@ namespace VeinWares.SubtleByte
         {
             yield return null;
             try { action(); }
-            catch (Exception e) { Log.LogError($"[Coroutine] RunNextFrame error: {e}"); }
+            catch (Exception e) { SBlog.Error($"[Coroutine] RunNextFrame error: {e}"); }
         }
 
         private static IEnumerator RunDelayedCo(float seconds, Action action)
         {
             yield return new WaitForSeconds(seconds);
             try { action(); }
-            catch (Exception e) { Log.LogError($"[Coroutine] RunDelayed error: {e}"); }
+            catch (Exception e) { SBlog.Error($"[Coroutine] RunDelayed error: {e}"); }
         }
     }
 

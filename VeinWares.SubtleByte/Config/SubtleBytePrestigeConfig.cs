@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using BepInEx;                // for Paths.ConfigPath
-using ProjectM;
+using BepInEx;                
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using VeinWares.SubtleByte.Utilities;
 namespace VeinWares.SubtleByte.Config
 {
     // One stat line in JSON
@@ -65,17 +65,17 @@ namespace VeinWares.SubtleByte.Config
                 {
                     _cfg = CreateDefault();
                     File.WriteAllText(ConfigPath, JsonSerializer.Serialize(_cfg, JsonOpts));
-                    Core.Log.LogInfo($"[PrestigeConfig] Created default at: {ConfigPath}");
+                    SBlog.Info($"[PrestigeConfig] Created default at: {ConfigPath}");
                     return;
                 }
 
                 var text = File.ReadAllText(ConfigPath);
                 _cfg = JsonSerializer.Deserialize<PrestigeConfigFile>(text, JsonOpts) ?? CreateDefault();
-                Core.Log.LogInfo("[PrestigeConfig] Loaded SubtleBytePrestigeConfig.json");
+                SBlog.Info("[PrestigeConfig] Loaded SubtleBytePrestigeConfig.json");
             }
             catch (Exception e)
             {
-                Core.Log.LogError($"[PrestigeConfig] Failed to load: {e.Message}");
+                SBlog.Error($"[PrestigeConfig] Failed to load: {e.Message}");
                 _cfg = CreateDefault();
             }
         }

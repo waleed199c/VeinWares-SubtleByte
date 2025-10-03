@@ -78,7 +78,7 @@ namespace VeinWares.SubtleByte.Patches
                 _cooldownUntilTick[sid] = _tick + CooldownTicks;
 
                 var name = character.GetPlayerName();
-                Core.Log.LogInfo($"[ThroneDetect] Darkness confirmed for {name} ({sid}) via {(isTravel ? "Travel" : "Sit")}.");
+                SBlog.Info($"[ThroneDetect] Darkness confirmed for {name} ({sid}) via {(isTravel ? "Travel" : "Sit")}.");
 
                 // 🎁 Apply relic bundle now
                 RelicService.GrantAllRelics(character);

@@ -5,8 +5,6 @@ using ProjectM.Shared;
 using System;
 using System.Runtime.InteropServices;
 using Unity.Entities;
-using UnityEngine.UIElements;
-
 namespace VeinWares.SubtleByte.Extensions
 {
     public static class Extensions
@@ -101,7 +99,7 @@ namespace VeinWares.SubtleByte.Extensions
 
             if (!isValid)
             {
-                // Core.Log.LogWarning($"Entity index out of range! ({index}>{capacity})");
+                // SBlog.Warn($"Entity index out of range! ({index}>{capacity})");
             }
 
             return isValid;

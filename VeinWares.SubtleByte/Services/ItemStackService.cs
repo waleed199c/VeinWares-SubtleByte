@@ -3,6 +3,7 @@ using Stunlock.Core;
 using Unity.Entities;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Utilities;
 
 
 namespace VeinWares.SubtleByte.Services
@@ -18,7 +19,7 @@ namespace VeinWares.SubtleByte.Services
 
                 if (!prefabMap.TryGetValue(prefabGuid, out var prefabEntity))
                 {
-                    Core.Log.LogWarning($"[Services] Prefab not found for GUID {entry.PrefabGUID}");
+                    SBlog.Warn($"[Services] Prefab not found for GUID {entry.PrefabGUID}");
                     continue;
                 }
 
