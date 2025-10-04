@@ -30,11 +30,11 @@ namespace VeinWares.SubtleByte.Services
                     if (character.TryApplyAndGetBuff(guid, out var buff) && buff.Exists())
                     {
                         MakePersistent(buff);
-                        SBlog.Info($"[RelicPatch] Applied {Label(guid)} → {name} ({sid}) + PersistThroughDeath.");
+                        ModLogger.Info($"[RelicPatch] Applied {Label(guid)} → {name} ({sid}) + PersistThroughDeath.");
                     }
                     else
                     {
-                        SBlog.Warn($"[RelicPatch] Failed applying {Label(guid)} → {name} ({sid}).");
+                        ModLogger.Warn($"[RelicPatch] Failed applying {Label(guid)} → {name} ({sid}).");
                     }
                 }
                 else
@@ -43,7 +43,7 @@ namespace VeinWares.SubtleByte.Services
                     if (character.TryGetBuff(guid, out var buffEnt) && buffEnt.Exists())
                     {
                         if (MakePersistent(buffEnt))
-                            SBlog.Info($"[RelicPatch] Ensured PersistThroughDeath on {Label(guid)} → {name} ({sid}).");
+                            ModLogger.Info($"[RelicPatch] Ensured PersistThroughDeath on {Label(guid)} → {name} ({sid}).");
                     }
                 }
             }

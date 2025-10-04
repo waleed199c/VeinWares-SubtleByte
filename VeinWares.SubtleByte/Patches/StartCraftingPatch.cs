@@ -50,12 +50,12 @@
 
 //                if (bloodTypes.Count < 2)
 //                {
-//                    SBlog.Warn("[StartCraftingPatch] Invalid blood types used. Cancelling craft.");
+//                    ModLogger.Warn("[StartCraftingPatch] Invalid blood types used. Cancelling craft.");
 //                    entityManager.DestroyEntity(evtEntity);
 //                }
 //                else
 //                {
-//                    SBlog.Info("[StartCraftingPatch] Valid blood types confirmed. Craft proceeds.");
+//                    ModLogger.Info("[StartCraftingPatch] Valid blood types confirmed. Craft proceeds.");
 //                }
 //            }
 

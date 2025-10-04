@@ -22,9 +22,10 @@ namespace VeinWares.SubtleByte
         public override void Load()
         {
             Instance = this;
+            SubtleBytePluginConfig.Initialize();
             if (Application.productName != "VRisingServer")
                 return;
-            SBlog.Info($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
+            ModLogger.Info($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
             ClassInjector.RegisterTypeInIl2Cpp<CoroutineRunner>();
             ItemStackConfig.Load();
             PrestigeMini.InitializePrestigeConfig();

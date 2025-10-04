@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Config
 {
@@ -29,7 +30,7 @@ namespace VeinWares.SubtleByte.Config
                 };
                 var json = JsonSerializer.Serialize(new { Items = Entries }, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(path, json);
-                Core.Log?.LogWarning($"[Config] Default Config 404 created default config");
+                ModLogger.Warn($"[Config] Default Config 404 created default config");
                 return;
             }
 
@@ -38,11 +39,11 @@ namespace VeinWares.SubtleByte.Config
                 var json = File.ReadAllText(path);
                 var parsed = JsonSerializer.Deserialize<ItemStackFile>(json);
                 Entries = parsed?.Items ?? new List<StackConfigEntry>();
-                Core.Log?.LogInfo($"[Config] Loaded {Entries.Count} item stack entries.");
+                ModLogger.Info($"[Config] Loaded {Entries.Count} item stack entries.");
             }
             catch
             {
-                Core.Log?.LogError($"[Config] Failed to load config");
+                ModLogger.Error($"[Config] Failed to load config");
             }
         }
 

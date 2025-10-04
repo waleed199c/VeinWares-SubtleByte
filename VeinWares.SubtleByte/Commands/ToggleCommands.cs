@@ -84,7 +84,7 @@ namespace VeinWares.SubtleByte.Commands
                 int exp = playerData["Experience"]?.ToObject<int>() ?? 0;
 
                 // Debug logging
-                //SBlog.Info($"[Toggle] {ctx.Name} ({steamId}) has {exp} prestige EXP (needed {requiredExp}).");
+                //ModLogger.Info($"[Toggle] {ctx.Name} ({steamId}) has {exp} prestige EXP (needed {requiredExp}).");
 
                 if (exp >= requiredExp)
                 {
@@ -108,7 +108,7 @@ namespace VeinWares.SubtleByte.Commands
             }
             catch (Exception ex)
             {
-                SBlog.Error($"[Toggle] Error while handling {displayName}: {ex}");
+                ModLogger.Error($"[Toggle] Error while handling {displayName}: {ex}");
                 ctx.Reply($"[Toggle] Internal error while toggling {displayName}.");
             }
         }

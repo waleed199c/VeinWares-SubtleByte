@@ -101,7 +101,7 @@ namespace VeinWares.SubtleByte.Extensions
 
             if (!isValid)
             {
-                // SBlog.Warn($"Entity index out of range! ({index}>{capacity})");
+                // ModLogger.Warn($"Entity index out of range! ({index}>{capacity})");
             }
 
             return isValid;

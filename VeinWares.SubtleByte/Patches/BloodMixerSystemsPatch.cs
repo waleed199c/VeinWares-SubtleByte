@@ -7,6 +7,7 @@ using Stunlock.Core;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using VeinWares.SubtleByte.Config;
 
 namespace VeinWares.SubtleByte.Patches
 {
@@ -22,6 +23,8 @@ namespace VeinWares.SubtleByte.Patches
 
         static void Postfix(BloodMixerSystem_Update __instance)
         {
+            if (!SubtleBytePluginConfig.EmptyBottleRefundEnabled)
+                return;
             var em = __instance.EntityManager;
             var mixers = __instance._Query.ToEntityArray(Allocator.Temp);
             try

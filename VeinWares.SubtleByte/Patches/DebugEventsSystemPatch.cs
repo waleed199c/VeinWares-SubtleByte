@@ -4,6 +4,7 @@ using Stunlock.Core;
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Entities;
+using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;
 using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
@@ -30,6 +31,8 @@ namespace VeinWares.SubtleByte.Patches
 
         static void Prefix(ProjectM.Gameplay.Systems.InteractValidateAndStopSystemServer __instance)
         {
+            if (!SubtleBytePluginConfig.RelicDebugEventsEnabled)
+                return;
             _tick++;
             var em = __instance.EntityManager;
 
@@ -78,7 +81,7 @@ namespace VeinWares.SubtleByte.Patches
                 _cooldownUntilTick[sid] = _tick + CooldownTicks;
 
                 var name = character.GetPlayerName();
-                SBlog.Info($"[ThroneDetect] Darkness confirmed for {name} ({sid}) via {(isTravel ? "Travel" : "Sit")}.");
+                ModLogger.Info($"[ThroneDetect] Darkness confirmed for {name} ({sid}) via {(isTravel ? "Travel" : "Sit")}.");
 
                 // 🎁 Apply relic bundle now
                 RelicService.GrantAllRelics(character);
