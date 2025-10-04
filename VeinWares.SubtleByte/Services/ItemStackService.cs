@@ -19,7 +19,7 @@ namespace VeinWares.SubtleByte.Services
 
                 if (!prefabMap.TryGetValue(prefabGuid, out var prefabEntity))
                 {
-                    SBlog.Warn($"[Services] Prefab not found for GUID {entry.PrefabGUID}");
+                    ModLogger.Warn($"[Services] Prefab not found for GUID {entry.PrefabGUID}");
                     continue;
                 }
 
@@ -30,7 +30,7 @@ namespace VeinWares.SubtleByte.Services
                 var gameDataMap = Core.Server.GetExistingSystemManaged<GameDataSystem>().ItemHashLookupMap;
                 gameDataMap[prefabGuid] = itemData;
 
-                Core.Log?.LogInfo($"[Services] Set max stack to {itemData.MaxAmount} for GUID={entry.PrefabGUID}");
+                ModLogger.Info($"[Services] Set max stack to {itemData.MaxAmount} for GUID={entry.PrefabGUID}");
             }
 
         }

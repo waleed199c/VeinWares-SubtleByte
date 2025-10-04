@@ -65,17 +65,17 @@ namespace VeinWares.SubtleByte.Config
                 {
                     _cfg = CreateDefault();
                     File.WriteAllText(ConfigPath, JsonSerializer.Serialize(_cfg, JsonOpts));
-                    SBlog.Info($"[PrestigeConfig] Created default at: {ConfigPath}");
+                    ModLogger.Info($"[PrestigeConfig] Created default at: {ConfigPath}");
                     return;
                 }
 
                 var text = File.ReadAllText(ConfigPath);
                 _cfg = JsonSerializer.Deserialize<PrestigeConfigFile>(text, JsonOpts) ?? CreateDefault();
-                SBlog.Info("[PrestigeConfig] Loaded SubtleBytePrestigeConfig.json");
+                ModLogger.Info("[PrestigeConfig] Loaded SubtleBytePrestigeConfig.json");
             }
             catch (Exception e)
             {
-                SBlog.Error($"[PrestigeConfig] Failed to load: {e.Message}");
+                ModLogger.Error($"[PrestigeConfig] Failed to load: {e.Message}");
                 _cfg = CreateDefault();
             }
         }

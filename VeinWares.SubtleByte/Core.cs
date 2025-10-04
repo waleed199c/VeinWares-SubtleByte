@@ -7,6 +7,7 @@ using System.Collections;
 using System.Linq;
 using Unity.Entities;
 using UnityEngine;
+using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
 using Object = UnityEngine.Object;
@@ -32,12 +33,15 @@ namespace VeinWares.SubtleByte
             if (_hasInitialized) return;
             _hasInitialized = true;
 
-            Log?.LogInfo("[Core] Initialization started...");
+            ModLogger.Info("[Core] Initialization started...");
             PrefabCollectionSystem = Server.GetExistingSystemManaged<PrefabCollectionSystem>();
-            ItemStackService.ApplyPatches();
+            if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+            {
+                ItemStackService.ApplyPatches();
+            }
             //RecipeService.ApplyPatches();
 
-            Log?.LogInfo("[Core] Initialization complete.");
+            ModLogger.Info("[Core] Initialization complete.");
         }
         static World GetServerWorld()
         {
@@ -92,14 +96,14 @@ namespace VeinWares.SubtleByte
         {
             yield return null;
             try { action(); }
-            catch (Exception e) { SBlog.Error($"[Coroutine] RunNextFrame error: {e}"); }
+            catch (Exception e) { ModLogger.Error($"[Coroutine] RunNextFrame error: {e}"); }
         }
 
         private static IEnumerator RunDelayedCo(float seconds, Action action)
         {
             yield return new WaitForSeconds(seconds);
             try { action(); }
-            catch (Exception e) { SBlog.Error($"[Coroutine] RunDelayed error: {e}"); }
+            catch (Exception e) { ModLogger.Error($"[Coroutine] RunDelayed error: {e}"); }
         }
     }
 

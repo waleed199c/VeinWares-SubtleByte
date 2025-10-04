@@ -1,4 +1,5 @@
 using VampireCommandFramework;
+using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Commands
@@ -16,10 +17,14 @@ namespace VeinWares.SubtleByte.Commands
                    || mode.Equals("0");
             if (!on && !off)
             {
-                ctx.Reply($"[Debug] Verbose logs are {(SBlog.DebugEnabled ? "ON" : "OFF")}. Usage: .sb_debug on|off");
+                ctx.Reply($"[Debug] Verbose logs are {(SubtleBytePluginConfig.DebugLogsEnabled ? "ON" : "OFF")}. Usage: .sb_debug on|off");
                 return;
             }
-            SBlog.SetDebug(on);
+            SubtleBytePluginConfig.SetDebugLogs(on);
+            if (on)
+                ModLogger.Info("[Debug] Verbose logs enabled via command.");
+            else
+                ModLogger.Info("[Debug] Verbose logs disabled via command.");
             ctx.Reply($"[Debug] Verbose logs {(on ? "ENABLED" : "DISABLED")}.");
         }
     }

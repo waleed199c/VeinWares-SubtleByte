@@ -49,7 +49,7 @@ namespace VeinWares.SubtleByte.Services
             catch (Exception e)
             {
                 _done = new HashSet<ulong>();
-                SBlog.Error($"[Cleanup] Failed to load state: {e}");
+                ModLogger.Error($"[Cleanup] Failed to load state: {e}");
             }
         }
 
@@ -62,7 +62,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                SBlog.Error($"[Cleanup] Failed to save state: {e}");
+                ModLogger.Error($"[Cleanup] Failed to save state: {e}");
             }
         }
 
@@ -87,7 +87,7 @@ namespace VeinWares.SubtleByte.Services
             Save();
 
             if (removed > 0)
-                SBlog.Info($"[Cleanup] Removed {removed} legacy buff(s) from {platformId}.");
+                ModLogger.Info($"[Cleanup] Removed {removed} legacy buff(s) from {platformId}.");
         }
     }
 }

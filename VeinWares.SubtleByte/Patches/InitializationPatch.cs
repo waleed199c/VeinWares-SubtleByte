@@ -16,7 +16,7 @@ namespace VeinWares.SubtleByte.Patches
 
                 if (Core._hasInitialized)
                 {
-                    //SBlog.Info("[Core] Initialization complete. Unpatching...");
+                    //ModLogger.Info("[Core] Initialization complete. Unpatching...");
                     Plugin.Harmony.Unpatch(
                         typeof(SpawnTeamSystem_OnPersistenceLoad).GetMethod("OnUpdate"),
                         typeof(InitializationPatch).GetMethod("Postfix")
@@ -25,7 +25,7 @@ namespace VeinWares.SubtleByte.Patches
             }
             catch (Exception ex)
             {
-                SBlog.Error($"[Core] Initialization failed: {ex.Message}");
+                ModLogger.Error($"[Core] Initialization failed: {ex.Message}");
             }
         }
     }

@@ -45,7 +45,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                SBlog.Error($"[SubtleByte.Prestige] Failed reading Bloodcraft prestige JSON: {e.Message}");
+                ModLogger.Error($"[SubtleByte.Prestige] Failed reading Bloodcraft prestige JSON: {e.Message}");
             }
             return false;
         }

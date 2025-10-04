@@ -55,18 +55,18 @@ namespace VeinWares.SubtleByte.Patches
                 if (target >= 2)
                 {
                     PrestigeMini.ApplyLevel(character, target);
-                    SBlog.Info($"[SubtleByte.Prestige] Connected → applied L{target} (cumulative) → {character.GetPlayerName()} ({steamId}).");
+                    ModLogger.Info($"[SubtleByte.Prestige] Connected → applied L{target} (cumulative) → {character.GetPlayerName()} ({steamId}).");
                 }
                 else
                 {
                     PrestigeMini.Clear(character);
-                    SBlog.Info($"[SubtleByte.Prestige] Connected → prestige < 2, cleared → {character.GetPlayerName()} ({steamId}).");
+                    ModLogger.Info($"[SubtleByte.Prestige] Connected → prestige < 2, cleared → {character.GetPlayerName()} ({steamId}).");
                 }
             }
             else
             {
                 PrestigeMini.Clear(character);
-                SBlog.Info($"[SubtleByte.Prestige] Connected → no prestige record, cleared ({steamId}).");
+                ModLogger.Info($"[SubtleByte.Prestige] Connected → no prestige record, cleared ({steamId}).");
             }
         }
 

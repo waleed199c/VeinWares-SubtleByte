@@ -64,7 +64,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                SBlog.Error($"[PrestigeSync] FileSystemWatcher init failed: {e.Message}");
+                ModLogger.Error($"[PrestigeSync] FileSystemWatcher init failed: {e.Message}");
             }
         }
 
@@ -109,7 +109,7 @@ namespace VeinWares.SubtleByte.Services
                     }
                     catch (Exception ex)
                     {
-                        SBlog.Error($"[PrestigeSync] Debounce apply failed: {ex}");
+                        ModLogger.Error($"[PrestigeSync] Debounce apply failed: {ex}");
                     }
                 }, null, Timeout.Infinite, Timeout.Infinite);
 
@@ -124,7 +124,7 @@ namespace VeinWares.SubtleByte.Services
             Dictionary<ulong, int> newSnap;
             if (!TryReadExpMap(out newSnap))
             {
-                SBlog.Warn("[PrestigeSync] Could not read prestige file; skipping update.");
+                ModLogger.Warn("[PrestigeSync] Could not read prestige file; skipping update.");
                 return;
             }
 
@@ -156,12 +156,12 @@ namespace VeinWares.SubtleByte.Services
                 if (target >= 2)
                 {
                     PrestigeMini.ApplyLevel(ch, target);
-                    SBlog.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, applied L{target}.");
+                    ModLogger.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, applied L{target}.");
                 }
                 else
                 {
                     PrestigeMini.Clear(ch);
-                    SBlog.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, cleared (below 2).");
+                    ModLogger.Info($"[PrestigeSync] {ch.GetPlayerName()} prestige changed {oldLv}→{newLv}, cleared (below 2).");
                 }
             }
         }
@@ -223,7 +223,7 @@ namespace VeinWares.SubtleByte.Services
             }
             catch (Exception e)
             {
-                SBlog.Error($"[PrestigeSync] Read error: {e.Message}");
+                ModLogger.Error($"[PrestigeSync] Read error: {e.Message}");
                 return false;
             }
         }
