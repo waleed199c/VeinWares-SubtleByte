@@ -23,18 +23,14 @@ namespace VeinWares.SubtleByte.Config
             if (_configFile != null)
                 return;
 
-            var directory = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte");
-            if (!Directory.Exists(directory))
-                Directory.CreateDirectory(directory);
-
-            var path = Path.Combine(directory, "VeinWares.SubtleByte.cfg");
+            var path = Path.Combine(Paths.ConfigPath, "Genji.VeinWares-SubtleByte.cfg");
             _configFile = new ConfigFile(path, true);
 
             _emptyBottleRefundEnabled = _configFile.Bind(
-                "Blood Press",
+                "Blood Homogenizer",
                 "Empty Bottle Refund",
                 true,
-                "Refund one Empty Bottle to the Blood Press output inventory whenever a craft completes.");
+                "Refund one Empty Bottle to the Blood Homogenizer output inventory whenever a craft completes.");
 
             _relicDebugEventsEnabled = _configFile.Bind(
                 "Relic Support",
