@@ -3,7 +3,9 @@
 This template project lives in `templates/SubtleByte.Template` and provides a clean, modular
 starting point for rebuilding the SubtleByte mod with performance in mind. It keeps the
 existing production code untouched so you can experiment on a fresh branch while still
-referencing the old implementation.
+referencing the old implementation. The active rewrite implementation now lives in
+`VeinWares.SubtleByte.Rewrite`, which was bootstrapped directly from this template and can
+serve as a concrete example of how to wire new modules into the host.
 
 ## Key ideas
 

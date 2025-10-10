@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeinWares.SubtleByte", "Vei
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubtleByte.Template", "templates\\SubtleByte.Template\\SubtleByte.Template.csproj", "{C458EC06-2E99-4C18-953C-6A875F6CA5C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeinWares.SubtleByte.Rewrite", "VeinWares.SubtleByte.Rewrite\VeinWares.SubtleByte.Rewrite.csproj", "{400B0B24-06D4-4353-898B-473EB27FB389}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{C458EC06-2E99-4C18-953C-6A875F6CA5C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C458EC06-2E99-4C18-953C-6A875F6CA5C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C458EC06-2E99-4C18-953C-6A875F6CA5C9}.Release|Any CPU.Build.0 = Release|Any CPU
+                {400B0B24-06D4-4353-898B-473EB27FB389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+                {400B0B24-06D4-4353-898B-473EB27FB389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+                {400B0B24-06D4-4353-898B-473EB27FB389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+                {400B0B24-06D4-4353-898B-473EB27FB389}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
