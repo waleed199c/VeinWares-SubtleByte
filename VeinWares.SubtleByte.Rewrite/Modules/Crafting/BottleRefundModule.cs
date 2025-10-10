@@ -19,11 +19,12 @@ public sealed class BottleRefundModule : IModule
     private static BottleRefundModule? _instance;
 
     private readonly Dictionary<Entity, MixerSnapshot> _snapshots = new(64);
-    private readonly Dictionary<Entity, Entity> _inventoryCache = new(64);
+    private readonly Dictionary<Entity, InventoryCacheEntry> _inventoryCache = new(64);
     private readonly HashSet<Entity> _seenMixers = new();
     private readonly List<Entity> _pruneList = new();
 
     private ModuleContext? _context;
+    private uint _updateIndex;
     private bool _disposed;
     private ItemData? _cachedBottleData;
 
@@ -49,6 +50,7 @@ public sealed class BottleRefundModule : IModule
         _seenMixers.Clear();
         _pruneList.Clear();
         _cachedBottleData = null;
+        _updateIndex = 0;
 
         if (_instance == this)
         {
@@ -78,6 +80,8 @@ public sealed class BottleRefundModule : IModule
 
     private void ProcessSystemUpdate(ModuleContext context, BloodMixerSystem_Update system)
     {
+        _updateIndex++;
+
         if (!context.Config.BottleRefundEnabled.Value)
         {
             if (_snapshots.Count > 0)
@@ -145,16 +149,31 @@ public sealed class BottleRefundModule : IModule
 
     private bool TryGetOutputInventory(EntityManager em, Entity mixer, out Entity inventory)
     {
-        if (_inventoryCache.TryGetValue(mixer, out inventory))
+        if (_inventoryCache.TryGetValue(mixer, out var cacheEntry))
         {
-            if (inventory != Entity.Null && em.Exists(inventory) && em.HasBuffer<InventoryBuffer>(inventory))
+            if (cacheEntry.KnownMissing)
             {
-                return true;
-            }
+                if ((uint)(_updateIndex - cacheEntry.LastChecked) < 120u)
+                {
+                    inventory = Entity.Null;
+                    return false;
+                }
 
-            _inventoryCache.Remove(mixer);
-            inventory = Entity.Null;
+                _inventoryCache.Remove(mixer);
+            }
+            else
+            {
+                inventory = cacheEntry.Inventory;
+                if (inventory != Entity.Null && em.Exists(inventory) && em.HasBuffer<InventoryBuffer>(inventory))
+                {
+                    return true;
+                }
+
+                _inventoryCache.Remove(mixer);
+            }
         }
+
+        inventory = Entity.Null;
 
         if (em.HasBuffer<Child>(mixer))
         {
@@ -172,7 +191,7 @@ public sealed class BottleRefundModule : IModule
                     em.GetComponentData<PrefabGUID>(child).GuidHash == ExternalInventoryGuid.GuidHash)
                 {
                     inventory = child;
-                    _inventoryCache[mixer] = inventory;
+                    _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
                     return true;
                 }
 
@@ -185,18 +204,18 @@ public sealed class BottleRefundModule : IModule
             if (fallback != Entity.Null)
             {
                 inventory = fallback;
-                _inventoryCache[mixer] = inventory;
+                _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
                 return true;
             }
         }
 
         if (TryResolveInventoryByQuery(em, mixer, out inventory))
         {
-            _inventoryCache[mixer] = inventory;
+            _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
             return true;
         }
 
-        _inventoryCache[mixer] = Entity.Null;
+        _inventoryCache[mixer] = new InventoryCacheEntry(Entity.Null, knownMissing: true, _updateIndex);
         return false;
     }
 
@@ -319,7 +338,8 @@ public sealed class BottleRefundModule : IModule
             All = new[]
             {
                 ComponentType.ReadOnly<Attach>(),
-                ComponentType.ReadOnly<PrefabGUID>()
+                ComponentType.ReadOnly<PrefabGUID>(),
+                ComponentType.ReadOnly<InventoryBuffer>()
             }
         };
 
@@ -350,4 +370,20 @@ public sealed class BottleRefundModule : IModule
     }
 
     private readonly record struct MixerSnapshot(BloodMixerState State, int PotionCount);
+
+    private readonly struct InventoryCacheEntry
+    {
+        public InventoryCacheEntry(Entity inventory, bool knownMissing, uint lastChecked)
+        {
+            Inventory = inventory;
+            KnownMissing = knownMissing;
+            LastChecked = lastChecked;
+        }
+
+        public Entity Inventory { get; }
+
+        public bool KnownMissing { get; }
+
+        public uint LastChecked { get; }
+    }
 }
