@@ -1,3 +1,4 @@
+using System;
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
@@ -35,7 +36,7 @@ public sealed class Plugin : BasePlugin
 
         var config = new RewriteConfig(Config);
         var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0);
-        _moduleHost = ModuleHost.Create(Log, performanceTracker, new[]
+        _moduleHost = ModuleHost.Create(Log, performanceTracker, new Func<IModule>[]
         {
             () => new HeartbeatModule(),
             () => new BottleRefundModule(),
