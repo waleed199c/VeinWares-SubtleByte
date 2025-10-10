@@ -391,7 +391,7 @@ public sealed class BottleRefundModule : IModule
             _attachmentQueryInitialized = true;
         }
 
-        using var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
+        var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
