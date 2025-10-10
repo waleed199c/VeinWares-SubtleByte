@@ -33,6 +33,7 @@ referencing the old implementation.
    scheduled work via `ModuleContext.Scheduler.Schedule` and patch Harmony hooks via
    `ModuleContext.Harmony` (exposed as the Harmony **2.x** API under the
    `HarmonyLib` namespace – no separate `Lib.Harmony` reference is required).
+   `ModuleContext.Harmony`.
 5. Once satisfied with the new layout, replace the original project references in the
    `.sln` file or keep both projects side-by-side while you migrate functionality.
 
@@ -49,3 +50,4 @@ re-implement gameplay logic without inheriting the historical complexity that le
 server slowdowns. When you are ready to migrate real features, follow the staged
 roadmap in [`docs/rewrite-roadmap.md`](./rewrite-roadmap.md) to keep the rewrite
 focused on measurable performance wins.
+server slowdowns.
