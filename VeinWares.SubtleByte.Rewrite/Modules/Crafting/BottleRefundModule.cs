@@ -15,14 +15,6 @@ public sealed class BottleRefundModule : IModule
     private static readonly PrefabGUID MixedPotionGuid = new(2063723255);
     private static readonly PrefabGUID EmptyBottleGuid = new(-437611596);
     private static readonly PrefabGUID ExternalInventoryGuid = new(1183666186);
-    private static readonly EntityQueryDesc AttachmentQueryDesc = new()
-    {
-        All = new[]
-        {
-            ComponentType.ReadOnly<Attach>(),
-            ComponentType.ReadOnly<PrefabGUID>()
-        }
-    };
 
     private static BottleRefundModule? _instance;
 
@@ -322,7 +314,16 @@ public sealed class BottleRefundModule : IModule
     {
         inventory = Entity.Null;
 
-        using var query = em.CreateEntityQuery(AttachmentQueryDesc);
+        var attachmentQueryDesc = new EntityQueryDesc
+        {
+            All = new[]
+            {
+                ComponentType.ReadOnly<Attach>(),
+                ComponentType.ReadOnly<PrefabGUID>()
+            }
+        };
+
+        using var query = em.CreateEntityQuery(attachmentQueryDesc);
         using var entities = query.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
