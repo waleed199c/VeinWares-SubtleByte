@@ -20,14 +20,12 @@ namespace VeinWares.SubtleByte.Utilities
 
         public static void Warn(string message)
         {
-            if (Enabled)
-                Core.Log?.LogWarning(message);
+            Core.Log?.LogWarning(message);
         }
 
         public static void Error(string message)
         {
-            if (Enabled)
-                Core.Log?.LogError(message);
+            Core.Log?.LogError(message);
         }
     }
 }
