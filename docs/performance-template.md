@@ -18,7 +18,7 @@ referencing the old implementation.
   update calls and emits warnings whenever a module exceeds the configured budget
   (5 ms by default). You can tighten or relax the threshold per module by creating
   dedicated trackers.
-- **Unity host behaviour** – a minimal `ServerBehaviour` component drives the module
+- **Unity host behaviour** – a minimal `ModuleHostBehaviour` component drives the module
   host. It is registered with `ClassInjector` so IL2CPP servers can instantiate it
   without additional boilerplate.
 
@@ -31,7 +31,8 @@ referencing the old implementation.
    `veinwares.subtlebyte.template`).
 4. Add new modules in `templates/SubtleByte.Template/Modules`. Modules can request
    scheduled work via `ModuleContext.Scheduler.Schedule` and patch Harmony hooks via
-   `ModuleContext.Harmony`.
+   `ModuleContext.Harmony` (exposed as the Harmony **2.x** API under the
+   `HarmonyLib` namespace – no separate `Lib.Harmony` reference is required).
 5. Once satisfied with the new layout, replace the original project references in the
    `.sln` file or keep both projects side-by-side while you migrate functionality.
 
@@ -45,4 +46,6 @@ referencing the old implementation.
 
 This structure should keep high-frequency tasks contained and observable while you
 re-implement gameplay logic without inheriting the historical complexity that led to
-server slowdowns.
+server slowdowns. When you are ready to migrate real features, follow the staged
+roadmap in [`docs/rewrite-roadmap.md`](./rewrite-roadmap.md) to keep the rewrite
+focused on measurable performance wins.

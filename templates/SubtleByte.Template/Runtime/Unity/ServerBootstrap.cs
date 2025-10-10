@@ -10,13 +10,15 @@ public sealed class ServerBootstrap : IDisposable
     private readonly ManualLogSource _log;
     private readonly ModuleHost _host;
     private readonly GameObject _root;
-    private readonly ServerBehaviour _behaviour;
+    private readonly ModuleHostBehaviour _behaviour;
+    private readonly Action<float> _tickHandler;
 
-    private ServerBootstrap(ModuleHost host, GameObject root, ServerBehaviour behaviour, ManualLogSource log)
+    private ServerBootstrap(ModuleHost host, GameObject root, ModuleHostBehaviour behaviour, Action<float> tickHandler, ManualLogSource log)
     {
         _host = host;
         _root = root;
         _behaviour = behaviour;
+        _tickHandler = tickHandler;
         _log = log;
     }
 
@@ -24,10 +26,11 @@ public sealed class ServerBootstrap : IDisposable
     {
         var go = new GameObject("SubtleByte.ModuleHost");
         UnityEngine.Object.DontDestroyOnLoad(go);
-        var behaviour = go.AddComponent<ServerBehaviour>();
-        behaviour.Bind(host);
+        var behaviour = go.AddComponent<ModuleHostBehaviour>();
+        Action<float> tickHandler = host.Tick;
+        ModuleHostBehaviour.TickHandler = tickHandler;
         log.LogDebug("ServerBootstrap created persistent host GameObject.");
-        return new ServerBootstrap(host, go, behaviour, log);
+        return new ServerBootstrap(host, go, behaviour, tickHandler, log);
     }
 
     public void Dispose()
@@ -42,6 +45,11 @@ public sealed class ServerBootstrap : IDisposable
             if (_root != null)
             {
                 UnityEngine.Object.Destroy(_root);
+            }
+
+            if (ModuleHostBehaviour.TickHandler == _tickHandler)
+            {
+                ModuleHostBehaviour.TickHandler = null;
             }
         }
         catch (Exception ex)

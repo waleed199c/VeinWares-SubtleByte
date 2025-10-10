@@ -29,7 +29,7 @@ public sealed class Plugin : BasePlugin
             return;
         }
 
-        ClassInjector.RegisterTypeInIl2Cpp<ServerBehaviour>();
+        ClassInjector.RegisterTypeInIl2Cpp<ModuleHostBehaviour>();
 
         var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0);
         _moduleHost = ModuleHost.Create(Log, performanceTracker, new[]

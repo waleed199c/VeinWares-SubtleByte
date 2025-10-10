@@ -1,20 +1,19 @@
+using System;
 using UnityEngine;
-using VeinWares.SubtleByte.Template.Infrastructure;
 
 namespace VeinWares.SubtleByte.Template.Runtime.Unity;
 
 public sealed class ModuleHostBehaviour : MonoBehaviour
 {
-    internal static ModuleHost? Host { get; set; }
+    internal static Action<float>? TickHandler { get; set; }
 
     private void Update()
     {
-        var host = Host;
-        if (host is null)
-        {
-            return;
-        }
+        TickHandler?.Invoke(Time.deltaTime);
+    }
 
-        host.Tick(Time.deltaTime);
+    private void OnDestroy()
+    {
+        TickHandler = null;
     }
 }
