@@ -5,7 +5,7 @@ using VeinWares.SubtleByte.Runtime.Scheduling;
 
 namespace VeinWares.SubtleByte.Infrastructure;
 
-internal sealed class ModuleContext
+public sealed class ModuleContext
 {
     public ModuleContext(
         ManualLogSource log,

@@ -3,9 +3,11 @@ using System.Diagnostics;
 using System.IO;
 using BepInEx.Logging;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Infrastructure.Diagnostics;
 
-internal sealed class PerformanceTracker
+public sealed class PerformanceTracker
 {
     private readonly ManualLogSource _log;
     private readonly double _thresholdMilliseconds;

@@ -3,6 +3,8 @@ using System.Diagnostics;
 using System.IO;
 using BepInEx.Logging;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Rewrite.Infrastructure.Diagnostics;
 
 public sealed class PerformanceTracker

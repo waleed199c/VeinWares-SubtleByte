@@ -8,6 +8,8 @@ using Unity.Entities;
 using Unity.Transforms;
 using VeinWares.SubtleByte.Rewrite.Infrastructure;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Rewrite.Modules.Crafting;
 
 public sealed class BottleRefundModule : IModule
@@ -290,20 +292,27 @@ public sealed class BottleRefundModule : IModule
         }
 
         var map = new NativeParallelHashMap<PrefabGUID, ItemData>(1, Allocator.Temp);
-        map.TryAdd(EmptyBottleGuid, bottleData);
+        try
+        {
+            map.TryAdd(EmptyBottleGuid, bottleData);
 
-        var settings = AddItemSettings.Create(
-            entityManager: em,
-            itemDataMap: map,
-            equipIfPossible: false,
-            previousItemEntity: default,
-            startIndex: default,
-            onlyFillEmptySlots: false,
-            onlyCheckOneSlot: false,
-            dropRemainder: false,
-            inventoryInstanceIndex: default);
+            var settings = AddItemSettings.Create(
+                entityManager: em,
+                itemDataMap: map,
+                equipIfPossible: false,
+                previousItemEntity: default,
+                startIndex: default,
+                onlyFillEmptySlots: false,
+                onlyCheckOneSlot: false,
+                dropRemainder: false,
+                inventoryInstanceIndex: default);
 
-        _ = InventoryUtilitiesServer.TryAddItem(settings, inventory, EmptyBottleGuid, 1);
+            _ = InventoryUtilitiesServer.TryAddItem(settings, inventory, EmptyBottleGuid, 1);
+        }
+        finally
+        {
+            map.Dispose();
+        }
     }
 
     private bool TryGetBottleData(EntityManager em, out ItemData data)
@@ -355,17 +364,31 @@ public sealed class BottleRefundModule : IModule
         };
 
         var query = em.CreateEntityQuery(desc);
-        var entities = query.ToEntityArray(Allocator.Temp);
-        for (int i = 0; i < entities.Length; i++)
+        try
         {
-            var entity = entities[i];
-            if (em.GetComponentData<PrefabGUID>(entity).GuidHash != guid.GuidHash)
+            var entities = query.ToEntityArray(Allocator.Temp);
+            try
             {
-                continue;
-            }
+                for (int i = 0; i < entities.Length; i++)
+                {
+                    var entity = entities[i];
+                    if (em.GetComponentData<PrefabGUID>(entity).GuidHash != guid.GuidHash)
+                    {
+                        continue;
+                    }
 
-            itemData = em.GetComponentData<ItemData>(entity);
-            return true;
+                    itemData = em.GetComponentData<ItemData>(entity);
+                    return true;
+                }
+            }
+            finally
+            {
+                entities.Dispose();
+            }
+        }
+        finally
+        {
+            query.Dispose();
         }
 
         return false;
@@ -392,30 +415,37 @@ public sealed class BottleRefundModule : IModule
         }
 
         var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
-        for (int i = 0; i < entities.Length; i++)
+        try
         {
-            var entity = entities[i];
-            if (!em.Exists(entity))
+            for (int i = 0; i < entities.Length; i++)
             {
-                continue;
-            }
+                var entity = entities[i];
+                if (!em.Exists(entity))
+                {
+                    continue;
+                }
 
-            if (em.GetComponentData<Attach>(entity).Parent != mixer || !em.HasBuffer<InventoryBuffer>(entity))
-            {
-                continue;
-            }
+                if (em.GetComponentData<Attach>(entity).Parent != mixer || !em.HasBuffer<InventoryBuffer>(entity))
+                {
+                    continue;
+                }
 
-            if (em.HasComponent<PrefabGUID>(entity) &&
-                em.GetComponentData<PrefabGUID>(entity).GuidHash == ExternalInventoryGuid.GuidHash)
-            {
-                inventory = entity;
-                return true;
-            }
+                if (em.HasComponent<PrefabGUID>(entity) &&
+                    em.GetComponentData<PrefabGUID>(entity).GuidHash == ExternalInventoryGuid.GuidHash)
+                {
+                    inventory = entity;
+                    return true;
+                }
 
-            if (inventory == Entity.Null)
-            {
-                inventory = entity;
+                if (inventory == Entity.Null)
+                {
+                    inventory = entity;
+                }
             }
+        }
+        finally
+        {
+            entities.Dispose();
         }
 
         return inventory != Entity.Null;

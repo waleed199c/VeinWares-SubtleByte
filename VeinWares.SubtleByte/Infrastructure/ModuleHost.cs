@@ -7,7 +7,7 @@ using VeinWares.SubtleByte.Runtime.Scheduling;
 
 namespace VeinWares.SubtleByte.Infrastructure;
 
-internal sealed class ModuleHost : IDisposable
+public sealed class ModuleHost : IDisposable
 {
     private readonly ManualLogSource _log;
     private readonly PerformanceTracker _performanceTracker;
