@@ -14,6 +14,7 @@ namespace VeinWares.SubtleByte.Config
         private static ConfigEntry<bool> _debugLogsEnabled;
 
         public static bool EmptyBottleRefundEnabled => _emptyBottleRefundEnabled?.Value ?? true;
+        internal static ConfigEntry<bool> EmptyBottleRefundEnabledEntry => _emptyBottleRefundEnabled;
         public static bool RelicDebugEventsEnabled => _relicDebugEventsEnabled?.Value ?? true;
         public static bool ItemStackServiceEnabled => _itemStackServiceEnabled?.Value ?? true;
         public static bool DebugLogsEnabled => _debugLogsEnabled?.Value ?? false;
