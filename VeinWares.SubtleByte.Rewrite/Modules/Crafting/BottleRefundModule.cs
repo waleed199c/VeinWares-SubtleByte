@@ -18,6 +18,16 @@ public sealed class BottleRefundModule : IModule
 
     private static BottleRefundModule? _instance;
 
+    private static readonly EntityQueryDesc AttachmentQueryDesc = new()
+    {
+        All = new[]
+        {
+            ComponentType.ReadOnly<Attach>(),
+            ComponentType.ReadOnly<PrefabGUID>(),
+            ComponentType.ReadOnly<InventoryBuffer>()
+        }
+    };
+
     private readonly Dictionary<Entity, MixerSnapshot> _snapshots = new(64);
     private readonly Dictionary<Entity, InventoryCacheEntry> _inventoryCache = new(64);
     private readonly HashSet<Entity> _seenMixers = new();
@@ -27,6 +37,8 @@ public sealed class BottleRefundModule : IModule
     private uint _updateIndex;
     private bool _disposed;
     private ItemData? _cachedBottleData;
+    private EntityQuery _attachmentQuery;
+    private bool _attachmentQueryInitialized;
 
     public void Initialize(ModuleContext context)
     {
@@ -51,6 +63,12 @@ public sealed class BottleRefundModule : IModule
         _pruneList.Clear();
         _cachedBottleData = null;
         _updateIndex = 0;
+
+        if (_attachmentQueryInitialized)
+        {
+            _attachmentQuery.Dispose();
+            _attachmentQueryInitialized = false;
+        }
 
         if (_instance == this)
         {
@@ -209,6 +227,40 @@ public sealed class BottleRefundModule : IModule
             }
         }
 
+        if (em.HasBuffer<LinkedEntityGroup>(mixer))
+        {
+            var linked = em.GetBuffer<LinkedEntityGroup>(mixer);
+            Entity fallback = Entity.Null;
+            for (int i = 0; i < linked.Length; i++)
+            {
+                var linkedEntity = linked[i].Value;
+                if (!em.Exists(linkedEntity) || !em.HasBuffer<InventoryBuffer>(linkedEntity))
+                {
+                    continue;
+                }
+
+                if (em.HasComponent<PrefabGUID>(linkedEntity) &&
+                    em.GetComponentData<PrefabGUID>(linkedEntity).GuidHash == ExternalInventoryGuid.GuidHash)
+                {
+                    inventory = linkedEntity;
+                    _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
+                    return true;
+                }
+
+                if (fallback == Entity.Null)
+                {
+                    fallback = linkedEntity;
+                }
+            }
+
+            if (fallback != Entity.Null)
+            {
+                inventory = fallback;
+                _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
+                return true;
+            }
+        }
+
         if (TryResolveInventoryByQuery(em, mixer, out inventory))
         {
             _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
@@ -329,25 +381,25 @@ public sealed class BottleRefundModule : IModule
         return false;
     }
 
-    private static bool TryResolveInventoryByQuery(EntityManager em, Entity mixer, out Entity inventory)
+    private bool TryResolveInventoryByQuery(EntityManager em, Entity mixer, out Entity inventory)
     {
         inventory = Entity.Null;
 
-        var attachmentQueryDesc = new EntityQueryDesc
+        if (!_attachmentQueryInitialized)
         {
-            All = new[]
-            {
-                ComponentType.ReadOnly<Attach>(),
-                ComponentType.ReadOnly<PrefabGUID>(),
-                ComponentType.ReadOnly<InventoryBuffer>()
-            }
-        };
+            _attachmentQuery = em.CreateEntityQuery(AttachmentQueryDesc);
+            _attachmentQueryInitialized = true;
+        }
 
-        using var query = em.CreateEntityQuery(attachmentQueryDesc);
-        using var entities = query.ToEntityArray(Allocator.Temp);
+        using var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
+            if (!em.Exists(entity))
+            {
+                continue;
+            }
+
             if (em.GetComponentData<Attach>(entity).Parent != mixer || !em.HasBuffer<InventoryBuffer>(entity))
             {
                 continue;
