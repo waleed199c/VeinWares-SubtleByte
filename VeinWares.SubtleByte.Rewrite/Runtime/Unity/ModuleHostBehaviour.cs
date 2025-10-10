@@ -1,6 +1,8 @@
 using System;
 using UnityEngine;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Rewrite.Runtime.Unity;
 
 public sealed class ModuleHostBehaviour : MonoBehaviour

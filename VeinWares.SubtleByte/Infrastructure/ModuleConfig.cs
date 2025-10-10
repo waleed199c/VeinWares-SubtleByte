@@ -3,7 +3,7 @@ using BepInEx.Configuration;
 
 namespace VeinWares.SubtleByte.Infrastructure;
 
-internal sealed class ModuleConfig
+public sealed class ModuleConfig
 {
     public ModuleConfig(ConfigEntry<bool> bottleRefundEnabled)
     {
