@@ -9,16 +9,20 @@ namespace VeinWares.SubtleByte.Rewrite.Infrastructure.Diagnostics;
 
 public sealed class PerformanceTracker
 {
+    private const long DefaultMaxLogBytes = 5L * 1024 * 1024; // 5 MiB
+
     private readonly ManualLogSource _log;
     private readonly double _thresholdMilliseconds;
     private readonly string? _logFilePath;
     private readonly Stopwatch _stopwatch = new();
     private readonly object _fileLock = new();
+    private readonly long _maxLogBytes;
 
-    public PerformanceTracker(ManualLogSource log, double thresholdMilliseconds, string? logFilePath = null)
+    public PerformanceTracker(ManualLogSource log, double thresholdMilliseconds, string? logFilePath = null, long? maxLogBytes = null)
     {
         _log = log;
         _thresholdMilliseconds = Math.Max(0.1, thresholdMilliseconds);
+        _maxLogBytes = Math.Max(1024, maxLogBytes ?? DefaultMaxLogBytes);
         if (!string.IsNullOrWhiteSpace(logFilePath))
         {
             _logFilePath = logFilePath;
@@ -76,10 +80,42 @@ public sealed class PerformanceTracker
             lock (_fileLock)
             {
                 File.AppendAllText(_logFilePath!, $"{DateTime.UtcNow:O} {message}{Environment.NewLine}");
+                EnforceFileSizeLimit();
             }
             return;
         }
 
         _log.LogWarning(message);
+    }
+
+    private void EnforceFileSizeLimit()
+    {
+        if (string.IsNullOrEmpty(_logFilePath))
+        {
+            return;
+        }
+
+        try
+        {
+            var info = new FileInfo(_logFilePath);
+            if (!info.Exists || info.Length <= _maxLogBytes)
+            {
+                return;
+            }
+
+            var backupPath = _logFilePath + ".bak";
+            if (File.Exists(backupPath))
+            {
+                File.Delete(backupPath);
+            }
+
+            File.Move(_logFilePath!, backupPath);
+            File.WriteAllText(_logFilePath!, string.Empty);
+            _log.LogInfo($"[Perf] Performance log rotated to '{backupPath}'.");
+        }
+        catch (Exception ex)
+        {
+            _log.LogWarning($"[Perf] Failed to rotate performance log '{_logFilePath}': {ex.Message}.");
+        }
     }
 }
