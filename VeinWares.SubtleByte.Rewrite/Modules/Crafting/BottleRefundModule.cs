@@ -18,16 +18,6 @@ public sealed class BottleRefundModule : IModule
 
     private static BottleRefundModule? _instance;
 
-    private static readonly EntityQueryDesc AttachmentQueryDesc = new()
-    {
-        All = new[]
-        {
-            ComponentType.ReadOnly<Attach>(),
-            ComponentType.ReadOnly<PrefabGUID>(),
-            ComponentType.ReadOnly<InventoryBuffer>()
-        }
-    };
-
     private readonly Dictionary<Entity, MixerSnapshot> _snapshots = new(64);
     private readonly Dictionary<Entity, InventoryCacheEntry> _inventoryCache = new(64);
     private readonly HashSet<Entity> _seenMixers = new();
@@ -299,7 +289,7 @@ public sealed class BottleRefundModule : IModule
             return;
         }
 
-        var map = new NativeParallelHashMap<PrefabGUID, ItemData>(1, Allocator.Temp);
+        using var map = new NativeParallelHashMap<PrefabGUID, ItemData>(1, Allocator.Temp);
         map.TryAdd(EmptyBottleGuid, bottleData);
 
         var settings = AddItemSettings.Create(
@@ -364,8 +354,8 @@ public sealed class BottleRefundModule : IModule
             }
         };
 
-        var query = em.CreateEntityQuery(desc);
-        var entities = query.ToEntityArray(Allocator.Temp);
+        using var query = em.CreateEntityQuery(desc);
+        using var entities = query.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
@@ -387,11 +377,21 @@ public sealed class BottleRefundModule : IModule
 
         if (!_attachmentQueryInitialized)
         {
-            _attachmentQuery = em.CreateEntityQuery(AttachmentQueryDesc);
+            var attachmentQueryDesc = new EntityQueryDesc
+            {
+                All = new[]
+                {
+                    ComponentType.ReadOnly<Attach>(),
+                    ComponentType.ReadOnly<PrefabGUID>(),
+                    ComponentType.ReadOnly<InventoryBuffer>()
+                }
+            };
+
+            _attachmentQuery = em.CreateEntityQuery(attachmentQueryDesc);
             _attachmentQueryInitialized = true;
         }
 
-        var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
+        using var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
