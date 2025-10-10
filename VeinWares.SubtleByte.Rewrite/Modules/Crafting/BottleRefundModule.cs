@@ -323,8 +323,8 @@ public sealed class BottleRefundModule : IModule
             }
         };
 
-        using var query = em.CreateEntityQuery(attachmentQueryDesc);
-        using var entities = query.ToEntityArray(Allocator.Temp);
+        var query = em.CreateEntityQuery(attachmentQueryDesc);
+        var entities = query.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
