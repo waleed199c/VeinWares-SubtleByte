@@ -236,7 +236,7 @@ public sealed class BottleRefundModule : IModule
             return;
         }
 
-        using var map = new NativeParallelHashMap<PrefabGUID, ItemData>(1, Allocator.Temp);
+        var map = new NativeParallelHashMap<PrefabGUID, ItemData>(1, Allocator.Temp);
         map.TryAdd(EmptyBottleGuid, bottleData);
 
         var settings = AddItemSettings.Create(
@@ -301,8 +301,8 @@ public sealed class BottleRefundModule : IModule
             }
         };
 
-        using var query = em.CreateEntityQuery(desc);
-        using var entities = query.ToEntityArray(Allocator.Temp);
+        var query = em.CreateEntityQuery(desc);
+        var entities = query.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
@@ -322,8 +322,8 @@ public sealed class BottleRefundModule : IModule
     {
         inventory = Entity.Null;
 
-        using var query = em.CreateEntityQuery(AttachmentQueryDesc);
-        using var entities = query.ToEntityArray(Allocator.Temp);
+        var query = em.CreateEntityQuery(AttachmentQueryDesc);
+        var entities = query.ToEntityArray(Allocator.Temp);
         for (int i = 0; i < entities.Length; i++)
         {
             var entity = entities[i];
