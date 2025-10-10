@@ -25,7 +25,7 @@ public sealed class ServerBootstrap : IDisposable
         var go = new GameObject("SubtleByte.ModuleHost");
         UnityEngine.Object.DontDestroyOnLoad(go);
         var behaviour = go.AddComponent<ServerBehaviour>();
-        ServerBehaviour.Host = host;
+        behaviour.Bind(host);
         log.LogDebug("ServerBootstrap created persistent host GameObject.");
         return new ServerBootstrap(host, go, behaviour, log);
     }
@@ -42,11 +42,6 @@ public sealed class ServerBootstrap : IDisposable
             if (_root != null)
             {
                 UnityEngine.Object.Destroy(_root);
-            }
-
-            if (ReferenceEquals(ServerBehaviour.Host, _host))
-            {
-                ServerBehaviour.Host = null;
             }
         }
         catch (Exception ex)

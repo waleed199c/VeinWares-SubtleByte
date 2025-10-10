@@ -5,16 +5,20 @@ namespace VeinWares.SubtleByte.Template.Runtime.Unity;
 
 public sealed class ServerBehaviour : MonoBehaviour
 {
-    internal static ModuleHost? Host { get; set; }
+    private ModuleHost? _host;
+
+    internal void Bind(ModuleHost host)
+    {
+        _host = host;
+    }
 
     private void Update()
     {
-        var host = Host;
-        if (host is null)
+        if (_host is null)
         {
             return;
         }
 
-        host.Tick(Time.deltaTime);
+        _host.Tick(Time.deltaTime);
     }
 }
