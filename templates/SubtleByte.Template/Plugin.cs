@@ -1,3 +1,4 @@
+using System.IO;
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
@@ -31,7 +32,8 @@ public sealed class Plugin : BasePlugin
 
         ClassInjector.RegisterTypeInIl2Cpp<ModuleHostBehaviour>();
 
-        var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0);
+        var performanceLogPath = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "template-performance.log");
+        var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0, performanceLogPath);
         _moduleHost = ModuleHost.Create(Log, performanceTracker, new[]
         {
             () => new HeartbeatModule(),

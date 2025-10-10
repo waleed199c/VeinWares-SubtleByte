@@ -18,7 +18,9 @@ serve as a concrete example of how to wire new modules into the host.
   work inside `Update` every frame. This keeps the server’s hot loop clear.
 - **Performance tracker** – the `PerformanceTracker` wraps module initialization and
   update calls and emits warnings whenever a module exceeds the configured budget
-  (5 ms by default). You can tighten or relax the threshold per module by creating
+  (5 ms by default). Warnings are written to `BepInEx/config/VeinWares SubtleByte/`
+  log files (`performance.log`, `template-performance.log`, etc.) so the console
+  stays clean. You can tighten or relax the threshold per module by creating
   dedicated trackers.
 - **Unity host behaviour** – a minimal `ModuleHostBehaviour` component drives the module
   host. It is registered with `ClassInjector` so IL2CPP servers can instantiate it

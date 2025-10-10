@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
@@ -43,7 +44,8 @@ namespace VeinWares.SubtleByte
             _harmony.PatchAll(System.Reflection.Assembly.GetExecutingAssembly());
             PrestigeLiveSync.Initialize();
 
-            var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0);
+            var performanceLogPath = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "performance.log");
+            var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0, performanceLogPath);
             var moduleConfig = new ModuleConfig(SubtleBytePluginConfig.EmptyBottleRefundEnabledEntry);
             _moduleHost = ModuleHost.Create(Log, performanceTracker, new Func<IModule>[]
             {
