@@ -6,6 +6,8 @@ using BepInEx.Logging;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Models.FactionInfamy;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal static class FactionInfamySystem
