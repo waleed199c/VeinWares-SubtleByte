@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Description>XPRising Mod</Description>
+        <Version>0.0.0</Version>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <LangVersion>preview</LangVersion>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <NoWarn>$(NoWarn);NU5104;NU1605</NoWarn>
+        <PackageId>XPRising</PackageId>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <Optimize>true</Optimize>
+      <DebugSymbols>false</DebugSymbols>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.735" IncludeAssets="compile" />
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0"/>
+        <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.9.9219901" />
+        <PackageReference Include="VRising.VampireCommandFramework" Version="0.10.4" />
+        <!-- Setting the version to 6.0.10 to stop compiler complaining about vulnerabilities. Note that V Rising is only providing 6.0.7 at this time and still has those vulnerabilities -->
+        <PackageReference Include="System.Text.Json" Version="6.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\XPShared\XPShared.csproj" />
+    </ItemGroup>
+    <!--	NOT RELEVANT FOR ALL BUILDS -->
+    <Target Name="CopyDLLsClient" AfterTargets="Build">
+        <Message Text="DLL to V Rising Client" Importance="High" />
+        <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="D:\SteamLibrary\steamapps\common\VRising\BepInEx\plugins\" />
+        <Message Text="DLL Client Copied OK" Importance="High" />
+    </Target>
+    <Target Name="CopyDLLsServer" AfterTargets="Build">
+        <Message Text="Copy DLL to V Rising Server" Importance="High"/>
+        <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="D:\SteamLibrary\steamapps\common\VRising\VRising_Server\BepInEx\plugins\"/>
+        <Message Text="Server DLL Copied OK" Importance="High"/>
+    </Target>
+</Project>

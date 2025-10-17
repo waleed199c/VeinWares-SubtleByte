@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>XPRising.ClientUI</AssemblyName>
+        <Version>0.0.0</Version>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.9.9219901" />
+        <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.735" IncludeAssets="compile" />
+        <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\XPShared\XPShared.csproj" />
+    </ItemGroup>
+    <Target Name="CopyDLLsClient" AfterTargets="Build">
+        <Message Text="Copy DLL to V Rising Client" Importance="High" />
+        <Copy SourceFiles="$(TargetDir)$(AssemblyName).dll" DestinationFolder="D:\SteamLibrary\steamapps\common\VRising\BepInEx\plugins\" />
+        <Message Text="Client CLL Copied OK" Importance="High" />
+    </Target>
+</Project>
