@@ -85,8 +85,27 @@ internal static class FactionInfamySystem
         foreach (var pair in PlayerHate)
         {
             var data = pair.Value;
+            var stateChanged = false;
+
+            if (data.InCombat && data.LastCombatStart != DateTime.MinValue)
+            {
+                var sinceCombat = now - data.LastCombatStart;
+                if (sinceCombat >= _combatCooldown)
+                {
+                    data.InCombat = false;
+                    data.LastCombatEnd = now;
+                    stateChanged = true;
+                }
+            }
+
             if (!IsEligibleForCooldown(data, now))
             {
+                if (stateChanged)
+                {
+                    _dirty = true;
+                    FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
+                }
+
                 continue;
             }
 
