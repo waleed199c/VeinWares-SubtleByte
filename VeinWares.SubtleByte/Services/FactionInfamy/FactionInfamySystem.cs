@@ -19,10 +19,20 @@ internal static class FactionInfamySystem
     private static bool _dirty;
     private static TimeSpan _combatCooldown;
     private static TimeSpan _ambushCooldown;
+    private static TimeSpan _ambushLifetime;
+    private static int _ambushChancePercent;
     private static float _minimumAmbushHate;
     private static float _maximumHate;
 
     public static bool Enabled => _initialized;
+
+    internal static int AmbushChancePercent => _ambushChancePercent;
+
+    internal static TimeSpan AmbushLifetime => _ambushLifetime;
+
+    internal static float MinimumAmbushHateThreshold => _minimumAmbushHate;
+
+    internal static TimeSpan AmbushCooldown => _ambushCooldown;
 
     public static int AutosaveBackupCount { get; private set; }
 
@@ -38,6 +48,8 @@ internal static class FactionInfamySystem
         AutosaveBackupCount = config.AutosaveBackupCount;
         _combatCooldown = config.CombatCooldown;
         _ambushCooldown = config.AmbushCooldown;
+        _ambushChancePercent = config.AmbushChancePercent;
+        _ambushLifetime = config.AmbushLifetime;
         _minimumAmbushHate = config.MinimumAmbushHate;
         _maximumHate = config.MaximumHate;
 
@@ -164,6 +176,49 @@ internal static class FactionInfamySystem
         {
             RegisterHateGain(steamId, factionId, baseHate);
         }
+    }
+
+    public static void ReduceHate(ulong steamId, string factionId, float amount)
+    {
+        if (!_initialized || steamId == 0UL || string.IsNullOrWhiteSpace(factionId) || amount <= 0f)
+        {
+            return;
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return;
+        }
+
+        if (!data.TryGetHate(factionId, out var entry))
+        {
+            return;
+        }
+
+        var newHate = Math.Max(0f, entry.Hate - amount);
+        var now = DateTime.UtcNow;
+        entry.Hate = newHate;
+        entry.LastUpdated = now;
+
+        if (newHate <= 0.01f)
+        {
+            if (data.ClearFaction(factionId) && data.FactionHate.Count == 0)
+            {
+                if (PlayerHate.TryRemove(steamId, out _))
+                {
+                    _dirty = true;
+                    FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
+                    return;
+                }
+            }
+        }
+        else
+        {
+            data.SetHate(factionId, entry);
+        }
+
+        _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static void RegisterDeath(ulong steamId)
