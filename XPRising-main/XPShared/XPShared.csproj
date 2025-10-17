@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AssemblyName>XPRising.XPShared</AssemblyName>
+        <Description>Framework for transport between server and client for XPRising ClientUI</Description>
+        <BepInExPluginGuid>XPRising.XPShared</BepInExPluginGuid>
+        <Version>0.0.0</Version>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>XPShared</RootNamespace>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.735" IncludeAssets="compile" />
+      <PackageReference Include="BepInEx.PluginInfoProps" Version="2.1.0" />
+      
+      <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.9.9219901" />
+    </ItemGroup>
+
+    <Target Name="CopyDLLsClient" AfterTargets="Build">
+        <Message Text="Copy DLL to V Rising Client" Importance="High" />
+        <ItemGroup>
+            <LibFiles Include="$(TargetDir)*.dll" />
+        </ItemGroup>
+        <Copy SourceFiles="@(LibFiles)" DestinationFolder="D:\SteamLibrary\steamapps\common\VRising\BepInEx\plugins\" />
+        <Message Text="Client DLL Copied OK" Importance="High" />
+    </Target>
+    <Target Name="CopyDLLsServer" AfterTargets="Build">
+        <Message Text="Copy DLL to V Rising Server" Importance="High"/>
+        <ItemGroup>
+            <LibFiles Include="$(TargetDir)*.dll" />
+        </ItemGroup>
+        <Copy SourceFiles="@(LibFiles)" DestinationFolder="D:\SteamLibrary\steamapps\common\VRising\VRising_Server\BepInEx\plugins\"/>
+        <Message Text="Server DLL Copied OK" Importance="High"/>
+    </Target>
+</Project>

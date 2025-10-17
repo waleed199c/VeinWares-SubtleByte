@@ -1,0 +1,67 @@
+﻿name: Release
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        required: true
+        description: The tag to release.
+        type: string
+
+jobs:
+  release_on_thunderstore:
+    env:
+      RELEASE_TAG: ${{ github.event.inputs.tag_name || github.event.release.tag_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download Release
+        run: gh release download ${{ env.RELEASE_TAG }} -D ./dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update versions in toml files
+        run: |
+          sed -i "s/__VERSION__/${RELEASE_TAG:1}/g" ./XPRising/thunderstore.toml
+          sed -i "s/__VERSION__/${RELEASE_TAG:1}/g" ./XPShared/thunderstore.toml
+          sed -i "s/__VERSION__/${RELEASE_TAG:1}/g" ./ClientUI/thunderstore.toml
+
+      - name: Install Thunderstore CLI (tcli)
+        run: dotnet tool install --global tcli
+
+      - name: Publish XPRising.XPShared to Thunderstore
+        run: tcli publish --config-path ./XPShared/thunderstore.toml --token ${{ secrets.THUNDERSTORE_KEY }} --file ./dist/XPRising-XPShared-${RELEASE_TAG:1}.zip
+        
+      - name: Publish XPRising to Thunderstore
+        run: tcli publish --config-path ./XPRising/thunderstore.toml --token ${{ secrets.THUNDERSTORE_KEY }} --file ./dist/XPRising-XPRising-${RELEASE_TAG:1}.zip
+
+      - name: Publish XPRising.ClientUI to Thunderstore
+        run: tcli publish --config-path ./ClientUI/thunderstore.toml --token ${{ secrets.THUNDERSTORE_KEY }} --file ./dist/XPRising-ClientUI-${RELEASE_TAG:1}.zip
+  
+  update_latest_release:
+    # only run if the thunderstore release was successful
+    needs: release_on_thunderstore
+    # required to allow release to be updated
+    permissions:
+      contents: write
+    env:
+      RELEASE_TAG: ${{ github.event.inputs.tag_name || github.event.release.tag_name }}
+    runs-on: ubuntu-latest
+    
+    steps:
+      # checkout the repo so gh commands work
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set release as latest
+        run: gh release edit ${{ env.RELEASE_TAG }} --draft=false --prerelease=false --latest
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
