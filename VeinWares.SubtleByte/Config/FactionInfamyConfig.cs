@@ -97,12 +97,12 @@ internal static class FactionInfamyConfig
         ClampValues();
 
         return new FactionInfamyConfigSnapshot(
-            MathF.Max(0f, _hateGainMultiplier.Value),
-            MathF.Max(0f, _hateDecayPerMinute.Value) / 60f,
-            TimeSpan.FromSeconds(MathF.Max(0f, _cooldownGraceSeconds.Value)),
-            TimeSpan.FromSeconds(MathF.Max(1f, _combatCooldownSeconds.Value)),
-            TimeSpan.FromMinutes(MathF.Max(1f, _ambushCooldownMinutes.Value)),
-            MathF.Max(0f, _minimumAmbushHate.Value),
+            Math.Max(0f, _hateGainMultiplier.Value),
+            Math.Max(0f, _hateDecayPerMinute.Value) / 60f,
+            TimeSpan.FromSeconds(Math.Max(0f, _cooldownGraceSeconds.Value)),
+            TimeSpan.FromSeconds(Math.Max(1f, _combatCooldownSeconds.Value)),
+            TimeSpan.FromMinutes(Math.Max(1f, _ambushCooldownMinutes.Value)),
+            Math.Max(0f, _minimumAmbushHate.Value),
             Math.Max(1, _maximumHate.Value),
             TimeSpan.FromMinutes(Math.Max(1, _autosaveMinutes.Value)),
             Math.Clamp(_autosaveBackups.Value, 0, 20));

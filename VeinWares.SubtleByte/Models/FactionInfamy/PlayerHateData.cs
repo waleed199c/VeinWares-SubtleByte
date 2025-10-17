@@ -12,9 +12,13 @@ internal sealed class PlayerHateData
 
     public DateTime LastCombatEnd { get; set; }
 
+    public bool InCombat { get; set; }
+
     public IReadOnlyDictionary<string, HateEntry> FactionHate => _factionHate.AsReadOnly();
 
     public HateEntry GetHate(string factionId) => _factionHate[factionId];
+
+    public bool TryGetHate(string factionId, out HateEntry entry) => _factionHate.TryGetValue(factionId, out entry);
 
     public void SetHate(string factionId, HateEntry entry)
     {
@@ -61,8 +65,8 @@ internal sealed class PlayerHateData
                 continue;
             }
 
-            var newHate = MathF.Max(0f, entry.Hate - decayAmount);
-            if (MathF.Abs(newHate - entry.Hate) > 0.001f)
+            var newHate = Math.Max(0f, entry.Hate - decayAmount);
+            if (Math.Abs(newHate - entry.Hate) > 0.001f)
             {
                 changed = true;
             }

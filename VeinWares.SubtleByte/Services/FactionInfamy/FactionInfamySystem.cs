@@ -15,6 +15,10 @@ internal static class FactionInfamySystem
     private static FactionInfamyConfigSnapshot _config;
     private static bool _initialized;
     private static bool _dirty;
+    private static TimeSpan _combatCooldown;
+    private static TimeSpan _ambushCooldown;
+    private static float _minimumAmbushHate;
+    private static float _maximumHate;
 
     public static bool Enabled => _initialized;
 
@@ -30,6 +34,10 @@ internal static class FactionInfamySystem
         _log = log;
         _config = config;
         AutosaveBackupCount = config.AutosaveBackupCount;
+        _combatCooldown = config.CombatCooldown;
+        _ambushCooldown = config.AmbushCooldown;
+        _minimumAmbushHate = config.MinimumAmbushHate;
+        _maximumHate = config.MaximumHate;
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();
@@ -116,7 +124,7 @@ internal static class FactionInfamySystem
         var adjusted = baseHate * _config.HateGainMultiplier;
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         var entry = data.GetHate(factionId);
-        var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
+        var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _maximumHate);
         entry.Hate = newHate;
         entry.LastUpdated = DateTime.UtcNow;
         data.SetHate(factionId, entry);
@@ -153,19 +161,7 @@ internal static class FactionInfamySystem
 
     public static void RegisterCombatStart(ulong steamId)
     {
-        if (!_initialized)
-        {
-            return;
-        }
-
-        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
-        data.LastCombatStart = DateTime.UtcNow;
-        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
-    }
-
-    public static void RegisterCombatEnd(ulong steamId)
-    {
-        if (!_initialized)
+        if (!_initialized || steamId == 0UL)
         {
             return;
         }
@@ -175,30 +171,58 @@ internal static class FactionInfamySystem
             return;
         }
 
+        var now = DateTime.UtcNow;
+
+        if (data.InCombat && data.LastCombatStart != DateTime.MinValue && now - data.LastCombatStart < _combatCooldown)
+        {
+            return;
+        }
+
+        if (!data.InCombat && data.LastCombatEnd != DateTime.MinValue && now - data.LastCombatEnd < _combatCooldown)
+        {
+            return;
+        }
+
+        data.InCombat = true;
+        data.LastCombatStart = now;
+        data.LastCombatEnd = DateTime.MinValue;
+        _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
+    }
+
+    public static void RegisterCombatEnd(ulong steamId)
+    {
+        if (!_initialized || steamId == 0UL)
+        {
+            return;
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return;
+        }
+
+        if (!data.InCombat && data.LastCombatEnd != DateTime.MinValue)
+        {
+            return;
+        }
+
+        data.InCombat = false;
         data.LastCombatEnd = DateTime.UtcNow;
+        _dirty = true;
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static void RegisterAmbush(ulong steamId, string factionId)
     {
-        if (!_initialized || string.IsNullOrWhiteSpace(factionId))
-        {
-            return;
-        }
-
-        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
-        var entry = data.GetHate(factionId);
-        entry.LastAmbush = DateTime.UtcNow;
-        data.SetHate(factionId, entry);
-        _dirty = true;
-        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
+        TryConsumeAmbush(steamId, factionId);
     }
 
     public static bool TryGetPlayerHate(ulong steamId, out FactionInfamyPlayerSnapshot snapshot)
     {
         if (!_initialized)
         {
-            snapshot = new FactionInfamyPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue);
+            snapshot = new FactionInfamyPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue, false);
             return false;
         }
 
@@ -208,7 +232,7 @@ internal static class FactionInfamySystem
             return true;
         }
 
-        snapshot = new FactionInfamyPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue);
+        snapshot = new FactionInfamyPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue, false);
         return false;
     }
 
@@ -251,6 +275,106 @@ internal static class FactionInfamySystem
             .ToArray();
     }
 
+    public static IReadOnlyList<string> GetEligibleAmbushFactions(ulong steamId)
+    {
+        if (!_initialized || steamId == 0UL)
+        {
+            return Array.Empty<string>();
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return Array.Empty<string>();
+        }
+
+        var now = DateTime.UtcNow;
+        var result = new List<string>();
+
+        foreach (var pair in data.FactionHate)
+        {
+            var entry = pair.Value;
+            if (entry.Hate < _minimumAmbushHate)
+            {
+                continue;
+            }
+
+            if (entry.LastAmbush != DateTime.MinValue && now - entry.LastAmbush < _ambushCooldown)
+            {
+                continue;
+            }
+
+            result.Add(pair.Key);
+        }
+
+        return result;
+    }
+
+    public static bool TryGetHighestHateFaction(ulong steamId, out string factionId, out HateEntry entry)
+    {
+        factionId = string.Empty;
+        entry = default;
+
+        if (!_initialized || steamId == 0UL)
+        {
+            return false;
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return false;
+        }
+
+        var found = false;
+        var highest = float.MinValue;
+        foreach (var pair in data.FactionHate)
+        {
+            if (pair.Value.Hate > highest)
+            {
+                highest = pair.Value.Hate;
+                factionId = pair.Key;
+                entry = pair.Value;
+                found = true;
+            }
+        }
+
+        return found;
+    }
+
+    public static bool TryConsumeAmbush(ulong steamId, string factionId)
+    {
+        if (!_initialized || steamId == 0UL || string.IsNullOrWhiteSpace(factionId))
+        {
+            return false;
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return false;
+        }
+
+        if (!data.TryGetHate(factionId, out var entry))
+        {
+            return false;
+        }
+
+        var now = DateTime.UtcNow;
+        if (entry.Hate < _minimumAmbushHate)
+        {
+            return false;
+        }
+
+        if (entry.LastAmbush != DateTime.MinValue && now - entry.LastAmbush < _ambushCooldown)
+        {
+            return false;
+        }
+
+        entry.LastAmbush = now;
+        data.SetHate(factionId, entry);
+        _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
+        return true;
+    }
+
     public static void FlushPersistence()
     {
         if (!_initialized || !_dirty)
@@ -272,6 +396,11 @@ internal static class FactionInfamySystem
 
     private static bool IsEligibleForCooldown(PlayerHateData data, DateTime now)
     {
+        if (data.InCombat)
+        {
+            return false;
+        }
+
         if (data.LastCombatEnd == DateTime.MinValue)
         {
             return true;
@@ -305,7 +434,7 @@ internal static class FactionInfamySystem
 
     private static FactionInfamyPlayerSnapshot CreateSnapshot(ulong steamId, PlayerHateData data)
     {
-        return new FactionInfamyPlayerSnapshot(steamId, data.ExportSnapshot(), data.LastCombatStart, data.LastCombatEnd);
+        return new FactionInfamyPlayerSnapshot(steamId, data.ExportSnapshot(), data.LastCombatStart, data.LastCombatEnd, data.InCombat);
     }
 }
 
@@ -313,4 +442,5 @@ internal readonly record struct FactionInfamyPlayerSnapshot(
     ulong SteamId,
     IReadOnlyDictionary<string, HateEntry> HateByFaction,
     DateTime LastCombatStart,
-    DateTime LastCombatEnd);
+    DateTime LastCombatEnd,
+    bool InCombat);
