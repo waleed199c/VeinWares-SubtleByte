@@ -15,7 +15,7 @@ using VeinWares.SubtleByte.Modules.Crafting;
 using VeinWares.SubtleByte.Runtime.Unity;
 using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
-using VeinWares.SubtleByte.Modules.Wanted;
+using VeinWares.SubtleByte.Modules.FactionInfamy;
 
 namespace VeinWares.SubtleByte
 {
@@ -49,12 +49,12 @@ namespace VeinWares.SubtleByte
             var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0, performanceLogPath);
             var moduleConfig = new ModuleConfig(
                 SubtleBytePluginConfig.EmptyBottleRefundEnabledEntry,
-                SubtleBytePluginConfig.WantedSystemEnabledEntry);
+                SubtleBytePluginConfig.InfamySystemEnabledEntry);
             _moduleHost = ModuleHost.Create(Log, performanceTracker, new Func<IModule>[]
             {
                 () => new HeartbeatModule(),
                 () => new BottleRefundModule(),
-                () => new WantedModule(),
+                () => new FactionInfamyModule(),
             }, moduleConfig);
 
             _moduleHost.Initialize();
