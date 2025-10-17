@@ -36,6 +36,7 @@ internal static class FactionInfamySystem
         foreach (var pair in loaded)
         {
             PlayerHate[pair.Key] = pair.Value;
+            FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, pair.Value));
         }
 
         _dirty = false;
@@ -71,6 +72,8 @@ internal static class FactionInfamySystem
         var now = DateTime.UtcNow;
         var removalThreshold = 0.01f;
 
+        var playersToClear = new List<ulong>();
+
         foreach (var pair in PlayerHate)
         {
             var data = pair.Value;
@@ -82,13 +85,30 @@ internal static class FactionInfamySystem
             if (data.RunCooldown(_config.HateDecayPerSecond, deltaTime, removalThreshold))
             {
                 _dirty = true;
+                if (data.FactionHate.Count == 0)
+                {
+                    playersToClear.Add(pair.Key);
+                }
+                else
+                {
+                    FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
+                }
+            }
+        }
+
+        for (var i = 0; i < playersToClear.Count; i++)
+        {
+            var steamId = playersToClear[i];
+            if (PlayerHate.TryRemove(steamId, out _))
+            {
+                FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
             }
         }
     }
 
     public static void RegisterHateGain(ulong steamId, string factionId, float baseHate)
     {
-        if (!_initialized || string.IsNullOrWhiteSpace(factionId) || baseHate <= 0f)
+        if (!_initialized || steamId == 0UL || string.IsNullOrWhiteSpace(factionId) || baseHate <= 0f)
         {
             return;
         }
@@ -96,11 +116,25 @@ internal static class FactionInfamySystem
         var adjusted = baseHate * _config.HateGainMultiplier;
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         var entry = data.GetHate(factionId);
-        var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
+        var newHate = MathF.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
         entry.Hate = newHate;
         entry.LastUpdated = DateTime.UtcNow;
         data.SetHate(factionId, entry);
         _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
+    }
+
+    public static void RegisterHateGain(IEnumerable<ulong> steamIds, string factionId, float baseHate)
+    {
+        if (steamIds is null)
+        {
+            throw new ArgumentNullException(nameof(steamIds));
+        }
+
+        foreach (var steamId in steamIds)
+        {
+            RegisterHateGain(steamId, factionId, baseHate);
+        }
     }
 
     public static void RegisterDeath(ulong steamId)
@@ -113,6 +147,7 @@ internal static class FactionInfamySystem
         if (PlayerHate.TryRemove(steamId, out _))
         {
             _dirty = true;
+            FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
         }
     }
 
@@ -125,6 +160,7 @@ internal static class FactionInfamySystem
 
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         data.LastCombatStart = DateTime.UtcNow;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static void RegisterCombatEnd(ulong steamId)
@@ -140,6 +176,7 @@ internal static class FactionInfamySystem
         }
 
         data.LastCombatEnd = DateTime.UtcNow;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static void RegisterAmbush(ulong steamId, string factionId)
@@ -154,6 +191,7 @@ internal static class FactionInfamySystem
         entry.LastAmbush = DateTime.UtcNow;
         data.SetHate(factionId, entry);
         _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static bool TryGetPlayerHate(ulong steamId, out FactionInfamyPlayerSnapshot snapshot)
@@ -166,7 +204,7 @@ internal static class FactionInfamySystem
 
         if (PlayerHate.TryGetValue(steamId, out var data))
         {
-            snapshot = new FactionInfamyPlayerSnapshot(steamId, data.ExportSnapshot(), data.LastCombatStart, data.LastCombatEnd);
+            snapshot = CreateSnapshot(steamId, data);
             return true;
         }
 
@@ -184,6 +222,7 @@ internal static class FactionInfamySystem
         if (PlayerHate.TryRemove(steamId, out _))
         {
             _dirty = true;
+            FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
         }
     }
 
@@ -237,6 +276,11 @@ internal static class FactionInfamySystem
                                 LastUpdated = faction.Value.LastUpdated
                             })
                 });
+    }
+
+    private static FactionInfamyPlayerSnapshot CreateSnapshot(ulong steamId, PlayerHateData data)
+    {
+        return new FactionInfamyPlayerSnapshot(steamId, data.ExportSnapshot(), data.LastCombatStart, data.LastCombatEnd);
     }
 }
 

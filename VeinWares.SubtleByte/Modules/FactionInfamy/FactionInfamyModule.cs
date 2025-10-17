@@ -26,6 +26,8 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
             return;
         }
 
+        FactionInfamyRuntime.Initialize(context.Log);
+
         var snapshot = FactionInfamyConfig.CreateSnapshot();
         FactionInfamySystem.Initialize(snapshot, context.Log);
 
@@ -45,7 +47,11 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
             return;
         }
 
+        FactionInfamyRuntime.ProcessQueues();
+
         FactionInfamySystem.Tick(deltaTime);
+
+        FactionInfamyRuntime.ProcessQueues();
     }
 
     public void Dispose()
@@ -64,6 +70,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         {
             FactionInfamySystem.FlushPersistence();
             FactionInfamySystem.Shutdown();
+            FactionInfamyRuntime.Shutdown();
         }
 
         _disposed = true;
