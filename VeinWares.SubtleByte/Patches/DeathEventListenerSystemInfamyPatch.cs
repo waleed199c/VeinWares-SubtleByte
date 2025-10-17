@@ -56,6 +56,11 @@ internal static class DeathEventListenerSystemInfamyPatch
             return;
         }
 
+        if (FactionInfamyAmbushService.TryHandleAmbushKill(victim, steamId))
+        {
+            return;
+        }
+
         FactionInfamySystem.RegisterCombatStart(steamId);
         FactionInfamySystem.RegisterHateGain(steamId, factionId, baseHate);
     }
@@ -68,6 +73,7 @@ internal static class DeathEventListenerSystemInfamyPatch
         }
 
         FactionInfamySystem.RegisterDeath(steamId);
+        FactionInfamyAmbushService.ClearForPlayer(steamId);
     }
 
     private static bool QualifiesAsInfamyKill(EntityManager entityManager, Entity victim)
