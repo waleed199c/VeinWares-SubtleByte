@@ -113,7 +113,7 @@ internal static class BuffDebugSystemInfamyPatch
         }
         finally
         {
-            query.Dispose();
+              query.Dispose();
         }
     }
 }
