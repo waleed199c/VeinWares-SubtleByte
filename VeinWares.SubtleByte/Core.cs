@@ -16,7 +16,8 @@ namespace VeinWares.SubtleByte
 {
     internal static class Core
     {
-        public static World Server { get; } = GetServerWorld() ?? throw new Exception("There is no Server world!"); public static EntityManager EntityManager => Server.EntityManager;
+        public static World Server { get; } = GetServerWorld() ?? throw new Exception("There is no Server world!");
+        public static EntityManager EntityManager => Server.EntityManager;
         public static ManualLogSource Log => Plugin.LogInstance;
 
         public static PrefabCollectionSystem PrefabCollectionSystem { get; set; }
@@ -24,7 +25,6 @@ namespace VeinWares.SubtleByte
         public static ServerGameManager ServerGameManager => SystemService.ServerScriptMapper.GetServerGameManager();
         public static SystemService SystemService { get; } = new(Server);
 
-        private static GameObject _coroutineGO;
         private static CoroutineRunner _runner;
         public static bool _hasInitialized = false;
 

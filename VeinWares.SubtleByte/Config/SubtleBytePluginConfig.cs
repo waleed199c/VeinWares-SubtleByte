@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using BepInEx;
 using BepInEx.Configuration;
@@ -14,6 +15,21 @@ namespace VeinWares.SubtleByte.Config
         private static ConfigEntry<bool> _debugLogsEnabled;
         private static ConfigEntry<bool> _infamySystemEnabled;
 
+        private static readonly IReadOnlyList<ConfigDefinition> LegacyWantedDefinitions = new[]
+        {
+            new ConfigDefinition("Wanted System", "Enable Wanted System"),
+            new ConfigDefinition("Wanted System", "Enable Ambush Spawns"),
+            new ConfigDefinition("Wanted System", "Heat Gain Multiplier"),
+            new ConfigDefinition("Wanted System", "Heat Decay Per Minute"),
+            new ConfigDefinition("Wanted System", "Cooldown Grace Seconds"),
+            new ConfigDefinition("Wanted System", "Combat Cooldown Seconds"),
+            new ConfigDefinition("Wanted System", "Ambush Cooldown Minutes"),
+            new ConfigDefinition("Wanted System", "Minimum Ambush Heat"),
+            new ConfigDefinition("Wanted System", "Maximum Heat"),
+            new ConfigDefinition("Wanted System", "Autosave Minutes"),
+            new ConfigDefinition("Wanted System", "Autosave Backups")
+        };
+
         public static bool EmptyBottleRefundEnabled => _emptyBottleRefundEnabled?.Value ?? true;
         internal static ConfigEntry<bool> EmptyBottleRefundEnabledEntry => _emptyBottleRefundEnabled;
         public static bool RelicDebugEventsEnabled => _relicDebugEventsEnabled?.Value ?? true;
@@ -28,6 +44,7 @@ namespace VeinWares.SubtleByte.Config
 
             var path = Path.Combine(Paths.ConfigPath, "Genji.VeinWares-SubtleByte.cfg");
             _configFile = new ConfigFile(path, true);
+            RemoveLegacyWantedConfig(_configFile);
 
             _emptyBottleRefundEnabled = _configFile.Bind(
                 "Blood Homogenizer",
@@ -73,5 +90,30 @@ namespace VeinWares.SubtleByte.Config
         }
 
         internal static ConfigEntry<bool> InfamySystemEnabledEntry => _infamySystemEnabled;
+
+        private static void RemoveLegacyWantedConfig(ConfigFile configFile)
+        {
+            if (configFile is null)
+            {
+                return;
+            }
+
+            var removed = false;
+            foreach (var definition in LegacyWantedDefinitions)
+            {
+                if (!configFile.TryGetEntry(definition, out _))
+                {
+                    continue;
+                }
+
+                configFile.Remove(definition);
+                removed = true;
+            }
+
+            if (removed)
+            {
+                configFile.Save();
+            }
+        }
     }
 }
