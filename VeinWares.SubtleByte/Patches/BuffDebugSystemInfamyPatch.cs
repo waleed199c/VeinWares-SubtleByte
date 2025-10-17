@@ -1,8 +1,7 @@
+using System;
 using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
-using Stunlock.Core;
-using System;
 using Unity.Collections;
 using Unity.Entities;
 using VeinWares.SubtleByte.Services.FactionInfamy;
@@ -114,7 +113,7 @@ internal static class BuffDebugSystemInfamyPatch
         }
         finally
         {
-              query.Dispose();
+            query.Dispose();
         }
     }
 }

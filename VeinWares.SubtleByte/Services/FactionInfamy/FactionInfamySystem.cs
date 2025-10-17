@@ -34,6 +34,8 @@ internal static class FactionInfamySystem
 
     internal static TimeSpan AmbushCooldown => _ambushCooldown;
 
+    internal static float MaximumHate => _maximumHate;
+
     public static int AutosaveBackupCount { get; private set; }
 
     public static void Initialize(FactionInfamyConfigSnapshot config, ManualLogSource log)
