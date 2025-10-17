@@ -256,11 +256,6 @@ internal static class FactionInfamySystem
             return;
         }
 
-        if (!data.InCombat && data.LastCombatEnd != DateTime.MinValue && now - data.LastCombatEnd < _combatCooldown)
-        {
-            return;
-        }
-
         data.InCombat = true;
         data.LastCombatStart = now;
         data.LastCombatEnd = DateTime.MinValue;

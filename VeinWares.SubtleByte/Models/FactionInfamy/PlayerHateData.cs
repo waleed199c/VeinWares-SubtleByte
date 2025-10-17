@@ -49,6 +49,7 @@ internal sealed class PlayerHateData
         }
 
         var toRemove = new List<string>();
+        var updates = new List<KeyValuePair<string, HateEntry>>(_factionHate.Count);
         var changed = false;
         var decayAmount = decayPerSecond * deltaSeconds;
 
@@ -73,7 +74,7 @@ internal sealed class PlayerHateData
 
             entry.Hate = newHate;
             entry.LastUpdated = DateTime.UtcNow;
-            _factionHate[pair.Key] = entry;
+            updates.Add(new KeyValuePair<string, HateEntry>(pair.Key, entry));
 
             if (newHate <= removalThreshold)
             {
@@ -81,8 +82,15 @@ internal sealed class PlayerHateData
             }
         }
 
-        foreach (var faction in toRemove)
+        for (var i = 0; i < updates.Count; i++)
         {
+            var update = updates[i];
+            _factionHate[update.Key] = update.Value;
+        }
+
+        for (var i = 0; i < toRemove.Count; i++)
+        {
+            var faction = toRemove[i];
             _factionHate.Remove(faction);
             changed = true;
         }
