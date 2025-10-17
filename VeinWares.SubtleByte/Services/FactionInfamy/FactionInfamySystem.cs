@@ -226,6 +226,31 @@ internal static class FactionInfamySystem
         }
     }
 
+    public static IReadOnlyList<FactionInfamyPlayerSnapshot> GetAllPlayerHate()
+    {
+        if (!_initialized)
+        {
+            return Array.Empty<FactionInfamyPlayerSnapshot>();
+        }
+
+        return PlayerHate
+            .Select(static pair => CreateSnapshot(pair.Key, pair.Value))
+            .ToList();
+    }
+
+    public static IReadOnlyCollection<string> GetTrackedFactions()
+    {
+        if (!_initialized)
+        {
+            return Array.Empty<string>();
+        }
+
+        return PlayerHate
+            .SelectMany(static pair => pair.Value.ExportSnapshot().Keys)
+            .Distinct(StringComparer.OrdinalIgnoreCase)
+            .ToArray();
+    }
+
     public static void FlushPersistence()
     {
         if (!_initialized || !_dirty)
