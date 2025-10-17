@@ -96,7 +96,7 @@ internal static class FactionInfamySystem
         var adjusted = baseHate * _config.HateGainMultiplier;
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         var entry = data.GetHate(factionId);
-        var newHate = MathF.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
+        var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
         entry.Hate = newHate;
         entry.LastUpdated = DateTime.UtcNow;
         data.SetHate(factionId, entry);
