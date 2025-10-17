@@ -31,6 +31,7 @@ public sealed class BottleRefundModule : IModule
     private ItemData? _cachedBottleData;
     private EntityQuery _attachmentQuery;
     private bool _attachmentQueryInitialized;
+    private World? _attachmentQueryWorld;
 
     public void Initialize(ModuleContext context)
     {
@@ -60,6 +61,7 @@ public sealed class BottleRefundModule : IModule
         {
             _attachmentQuery.Dispose();
             _attachmentQueryInitialized = false;
+            _attachmentQueryWorld = null;
         }
 
         if (_instance == this)
@@ -253,7 +255,7 @@ public sealed class BottleRefundModule : IModule
             }
         }
 
-        if (TryResolveInventoryByQuery(em, mixer, out inventory))
+        if (TryResolveInventoryByQuery(system.World, em, mixer, out inventory))
         {
             _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
             return true;
@@ -394,12 +396,18 @@ public sealed class BottleRefundModule : IModule
         return false;
     }
 
-    private bool TryResolveInventoryByQuery(EntityManager em, Entity mixer, out Entity inventory)
+    private bool TryResolveInventoryByQuery(World world, EntityManager em, Entity mixer, out Entity inventory)
     {
         inventory = Entity.Null;
 
-        if (!_attachmentQueryInitialized)
+        if (!_attachmentQueryInitialized || !ReferenceEquals(_attachmentQueryWorld, world))
         {
+            if (_attachmentQueryInitialized)
+            {
+                _attachmentQuery.Dispose();
+                _attachmentQueryInitialized = false;
+            }
+
             var attachmentQueryDesc = new EntityQueryDesc
             {
                 All = new[]
@@ -412,6 +420,7 @@ public sealed class BottleRefundModule : IModule
 
             _attachmentQuery = em.CreateEntityQuery(attachmentQueryDesc);
             _attachmentQueryInitialized = true;
+            _attachmentQueryWorld = world;
         }
 
         var entities = _attachmentQuery.ToEntityArray(Allocator.Temp);

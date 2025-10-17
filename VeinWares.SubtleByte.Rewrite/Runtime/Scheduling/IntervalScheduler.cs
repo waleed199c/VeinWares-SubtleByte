@@ -61,7 +61,14 @@ public sealed class IntervalScheduler : IDisposable
                 SafeInvoke(entry.Callback);
             }
 
-            _actions[index] = entry;
+            if (index < _actions.Count)
+            {
+                var current = _actions[index];
+                if (current.Id == entry.Id && current.IsActive)
+                {
+                    _actions[index] = entry;
+                }
+            }
         }
 
         _actions.RemoveAll(static action => !action.IsActive);
