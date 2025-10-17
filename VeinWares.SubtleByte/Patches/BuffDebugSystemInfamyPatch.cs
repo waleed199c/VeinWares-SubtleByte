@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
@@ -29,6 +30,7 @@ internal static class BuffDebugSystemInfamyPatch
     };
 
     private static bool _buffQueryUnavailable;
+    private static readonly HashSet<ulong> PlayersInCombat = new();
 
     private static void Postfix(BuffDebugSystem __instance)
     {
@@ -98,12 +100,17 @@ internal static class BuffDebugSystemInfamyPatch
 
                     if (combatStart)
                     {
+                        var isNewCombat = PlayersInCombat.Add(steamId);
                         FactionInfamySystem.RegisterCombatStart(steamId);
-                        FactionInfamyAmbushService.TryTriggerAmbush(__instance.EntityManager, owner, steamId);
+                        if (isNewCombat)
+                        {
+                            FactionInfamyAmbushService.TryTriggerAmbush(__instance.EntityManager, owner, steamId);
+                        }
                     }
                     else
                     {
                         FactionInfamySystem.RegisterCombatEnd(steamId);
+                        PlayersInCombat.Remove(steamId);
                     }
                 }
             }

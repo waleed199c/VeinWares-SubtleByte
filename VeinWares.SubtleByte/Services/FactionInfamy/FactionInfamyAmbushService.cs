@@ -73,6 +73,8 @@ internal static class FactionInfamyAmbushService
     private static bool _initialized;
     private static int _lifetimeSequence;
 
+    public static bool HasPendingSpawns => PendingSpawns.Count > 0;
+
     public static void Initialize(ManualLogSource log)
     {
         _log = log ?? throw new ArgumentNullException(nameof(log));
@@ -128,6 +130,8 @@ internal static class FactionInfamyAmbushService
             return;
         }
 
+        var previousAmbushTimestamp = target.Value.LastAmbush;
+
         if (!FactionInfamySystem.TryConsumeAmbush(steamId, target.Key))
         {
             return;
@@ -138,6 +142,7 @@ internal static class FactionInfamyAmbushService
         if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate, difficulty))
         {
             _log?.LogWarning($"[Infamy] Failed to spawn ambush squad for faction '{target.Key}'.");
+            FactionInfamySystem.RollbackAmbushCooldown(steamId, target.Key, previousAmbushTimestamp);
             return;
         }
 
@@ -147,6 +152,11 @@ internal static class FactionInfamyAmbushService
     public static void TryHandleSpawnedEntity(EntityManager entityManager, Entity entity, float lifetime)
     {
         if (!_initialized)
+        {
+            return;
+        }
+
+        if (ActiveAmbushes.ContainsKey(entity))
         {
             return;
         }
@@ -341,21 +351,21 @@ internal static class FactionInfamyAmbushService
     {
         var maximumHate = Math.Max(1f, FactionInfamySystem.MaximumHate);
         var normalized = Math.Clamp(hateValue / maximumHate, 0f, 1f);
-        var bucket = 5 - (int)Math.Floor(normalized * 5.0);
+        var bucket = (int)Math.Floor(normalized * 5.0) + 1;
         if (normalized >= 0.999f)
         {
-            bucket = 1;
+            bucket = 5;
         }
 
         bucket = Math.Clamp(bucket, 1, 5);
 
         var offset = bucket switch
         {
-            1 => 10,
-            2 => 0,
-            3 => 5,
-            4 => -2,
-            5 => -20,
+            1 => -20,
+            2 => -2,
+            3 => 0,
+            4 => 5,
+            5 => 10,
             _ => 0
         };
 
