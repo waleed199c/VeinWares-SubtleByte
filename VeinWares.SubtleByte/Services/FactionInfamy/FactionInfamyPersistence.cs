@@ -84,7 +84,8 @@ internal static class FactionInfamyPersistence
         var data = new PlayerHateData
         {
             LastCombatStart = record.LastCombatStart,
-            LastCombatEnd = record.LastCombatEnd
+            LastCombatEnd = record.LastCombatEnd,
+            InCombat = false
         };
 
         if (record.Factions is null)
