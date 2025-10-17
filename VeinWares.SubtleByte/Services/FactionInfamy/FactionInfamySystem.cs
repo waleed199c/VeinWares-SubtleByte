@@ -453,6 +453,34 @@ internal static class FactionInfamySystem
         return true;
     }
 
+    public static void RollbackAmbushCooldown(ulong steamId, string factionId, DateTime previousTimestamp)
+    {
+        if (!_initialized || steamId == 0UL || string.IsNullOrWhiteSpace(factionId))
+        {
+            return;
+        }
+
+        if (!PlayerHate.TryGetValue(steamId, out var data))
+        {
+            return;
+        }
+
+        if (!data.TryGetHate(factionId, out var entry))
+        {
+            return;
+        }
+
+        if (entry.LastAmbush == previousTimestamp)
+        {
+            return;
+        }
+
+        entry.LastAmbush = previousTimestamp;
+        data.SetHate(factionId, entry);
+        _dirty = true;
+        FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
+    }
+
     public static void FlushPersistence()
     {
         if (!_initialized || !_dirty)
