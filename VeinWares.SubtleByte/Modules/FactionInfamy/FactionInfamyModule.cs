@@ -27,11 +27,11 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         }
 
         FactionInfamyRuntime.Initialize(context.Log);
+        FactionInfamyChatConfig.Initialize(context.Log);
 
         var snapshot = FactionInfamyConfig.CreateSnapshot();
         FactionInfamySystem.Initialize(snapshot, context.Log);
-
-       
+        FactionInfamyAmbushService.Initialize(context.Log);
 
         _autosaveHandle = context.Scheduler.Schedule(
             snapshot.AutosaveInterval,
@@ -73,6 +73,8 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
             FactionInfamySystem.FlushPersistence();
             FactionInfamySystem.Shutdown();
             FactionInfamyRuntime.Shutdown();
+            FactionInfamyAmbushService.Shutdown();
+            FactionInfamyChatConfig.Shutdown();
         }
 
         _disposed = true;
