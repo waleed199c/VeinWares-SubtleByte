@@ -170,15 +170,11 @@ internal static class FactionInfamyAmbushService
         if (pending.Remaining <= 0)
         {
             PendingSpawns.TryRemove(key, out _);
+            FactionInfamySpawnUtility.CancelSpawnCallback(lifetime);
             return;
         }
 
-        if (entityManager.HasComponent<UnitLevel>(entity))
-        {
-            var unitLevel = entityManager.GetComponentData<UnitLevel>(entity);
-            unitLevel.Level._Value = pending.UnitLevel;
-            entityManager.SetComponentData(entity, unitLevel);
-        }
+        ApplyAmbushScaling(entityManager, entity, pending.UnitLevel);
 
         if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
         {
@@ -196,6 +192,7 @@ internal static class FactionInfamyAmbushService
         if (pending.Remaining <= 0)
         {
             PendingSpawns.TryRemove(key, out _);
+            FactionInfamySpawnUtility.CancelSpawnCallback(lifetime);
         }
     }
 
@@ -278,12 +275,20 @@ internal static class FactionInfamyAmbushService
 
             try
             {
-                FactionInfamySpawnUtility.SpawnUnit(unit.Prefab, position, count, unit.MinRange, unit.MaxRange, encodedLifetime);
+                FactionInfamySpawnUtility.SpawnUnit(
+                    unit.Prefab,
+                    position,
+                    count,
+                    unit.MinRange,
+                    unit.MaxRange,
+                    encodedLifetime,
+                    (manager, spawnedEntity) => ApplyAmbushScaling(manager, spawnedEntity, targetLevel));
             }
             catch (Exception ex)
             {
                 _log?.LogError($"[Infamy] Failed to spawn ambush unit {unit.Prefab.GuidHash} for faction '{factionId}': {ex.Message}");
                 PendingSpawns.TryRemove(key, out _);
+                FactionInfamySpawnUtility.CancelSpawnCallback(encodedLifetime);
             }
         }
 
@@ -370,6 +375,34 @@ internal static class FactionInfamyAmbushService
         };
 
         return new AmbushDifficulty(bucket, offset);
+    }
+
+    private static void ApplyAmbushScaling(EntityManager entityManager, Entity entity, int targetLevel)
+    {
+        if (targetLevel <= 0)
+        {
+            return;
+        }
+
+        if (entityManager.HasComponent<UnitLevel>(entity))
+        {
+            var unitLevel = entityManager.GetComponentData<UnitLevel>(entity);
+            if (unitLevel.Level._Value != targetLevel)
+            {
+                unitLevel.Level._Value = targetLevel;
+                entityManager.SetComponentData(entity, unitLevel);
+            }
+
+            if (!entityManager.HasComponent<UnitLevelChanged>(entity))
+            {
+                entityManager.AddComponent<UnitLevelChanged>(entity);
+            }
+        }
+
+        if (entityManager.HasComponent<UnitStats>(entity) && !entityManager.HasComponent<UnitBaseStatsTypeChanged>(entity))
+        {
+            entityManager.AddComponent<UnitBaseStatsTypeChanged>(entity);
+        }
     }
 
     private sealed class PendingAmbushSpawn
