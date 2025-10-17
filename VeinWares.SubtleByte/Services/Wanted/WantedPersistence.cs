@@ -19,29 +19,29 @@ internal static class WantedPersistence
     private static string ConfigDirectory => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte");
     private static string SavePath => Path.Combine(ConfigDirectory, "playerWantedLevel.json");
 
-    public static Dictionary<ulong, PlayerHeatData> Load()
+    public static Dictionary<ulong, PlayerHateData> Load()
     {
         try
         {
             if (!File.Exists(SavePath))
             {
-                return new Dictionary<ulong, PlayerHeatData>();
+                return new Dictionary<ulong, PlayerHateData>();
             }
 
             var json = File.ReadAllText(SavePath);
             if (string.IsNullOrWhiteSpace(json))
             {
-                return new Dictionary<ulong, PlayerHeatData>();
+                return new Dictionary<ulong, PlayerHateData>();
             }
 
-            var payload = JsonSerializer.Deserialize<Dictionary<string, PlayerHeatRecord>>(json, Options);
+            var payload = JsonSerializer.Deserialize<Dictionary<string, PlayerHateRecord>>(json, Options);
             if (payload is null)
             {
-                return new Dictionary<ulong, PlayerHeatData>();
+                return new Dictionary<ulong, PlayerHateData>();
             }
 
             return payload
-                .Select(static pair => new KeyValuePair<ulong, PlayerHeatData>(
+                .Select(static pair => new KeyValuePair<ulong, PlayerHateData>(
                     ulong.TryParse(pair.Key, out var steamId) ? steamId : 0,
                     FromRecord(pair.Value)))
                 .Where(static pair => pair.Key != 0)
@@ -49,12 +49,12 @@ internal static class WantedPersistence
         }
         catch (Exception ex)
         {
-            ModLogger.Error($"[WantedPersistence] Failed to load heat data: {ex.Message}");
-            return new Dictionary<ulong, PlayerHeatData>();
+            ModLogger.Error($"[WantedPersistence] Failed to load hate data: {ex.Message}");
+            return new Dictionary<ulong, PlayerHateData>();
         }
     }
 
-    public static void Save(Dictionary<string, PlayerHeatRecord> snapshot, int backupCount)
+    public static void Save(Dictionary<string, PlayerHateRecord> snapshot, int backupCount)
     {
         if (snapshot is null)
         {
@@ -75,13 +75,13 @@ internal static class WantedPersistence
         }
         catch (Exception ex)
         {
-            ModLogger.Error($"[WantedPersistence] Failed to save heat data: {ex.Message}");
+            ModLogger.Error($"[WantedPersistence] Failed to save hate data: {ex.Message}");
         }
     }
 
-    private static PlayerHeatData FromRecord(PlayerHeatRecord record)
+    private static PlayerHateData FromRecord(PlayerHateRecord record)
     {
-        var data = new PlayerHeatData
+        var data = new PlayerHateData
         {
             LastCombatStart = record.LastCombatStart,
             LastCombatEnd = record.LastCombatEnd
@@ -94,13 +94,13 @@ internal static class WantedPersistence
 
         foreach (var faction in record.Factions)
         {
-            var entry = new HeatEntry
+            var entry = new HateEntry
             {
-                Heat = faction.Value.Heat,
+                Hate = faction.Value.Hate,
                 LastAmbush = faction.Value.LastAmbush,
                 LastUpdated = faction.Value.LastUpdated
             };
-            data.SetHeat(faction.Key, entry);
+            data.SetHate(faction.Key, entry);
         }
 
         return data;
@@ -135,18 +135,18 @@ internal static class WantedPersistence
     }
 }
 
-internal sealed class PlayerHeatRecord
+internal sealed class PlayerHateRecord
 {
-    public Dictionary<string, HeatEntryRecord> Factions { get; set; } = new();
+    public Dictionary<string, HateEntryRecord> Factions { get; set; } = new();
 
     public DateTime LastCombatStart { get; set; }
 
     public DateTime LastCombatEnd { get; set; }
 }
 
-internal sealed class HeatEntryRecord
+internal sealed class HateEntryRecord
 {
-    public float Heat { get; set; }
+    public float Hate { get; set; }
 
     public DateTime LastUpdated { get; set; }
 

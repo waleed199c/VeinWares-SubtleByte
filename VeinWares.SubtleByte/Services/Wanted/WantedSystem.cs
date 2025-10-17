@@ -10,7 +10,7 @@ namespace VeinWares.SubtleByte.Services.Wanted;
 
 internal static class WantedSystem
 {
-    private static readonly ConcurrentDictionary<ulong, PlayerHeatData> PlayerHeat = new();
+    private static readonly ConcurrentDictionary<ulong, PlayerHateData> PlayerHate = new();
     private static ManualLogSource? _log;
     private static WantedConfigSnapshot _config;
     private static bool _initialized;
@@ -31,11 +31,11 @@ internal static class WantedSystem
         _config = config;
         AutosaveBackupCount = config.AutosaveBackupCount;
 
-        PlayerHeat.Clear();
+        PlayerHate.Clear();
         var loaded = WantedPersistence.Load();
         foreach (var pair in loaded)
         {
-            PlayerHeat[pair.Key] = pair.Value;
+            PlayerHate[pair.Key] = pair.Value;
         }
 
         _dirty = false;
@@ -51,7 +51,7 @@ internal static class WantedSystem
         }
 
         FlushPersistence();
-        PlayerHeat.Clear();
+        PlayerHate.Clear();
         _initialized = false;
         _log?.LogInfo("[Wanted] Wanted system shut down.");
     }
@@ -63,7 +63,7 @@ internal static class WantedSystem
             return;
         }
 
-        if (_config.HeatDecayPerSecond <= 0f)
+        if (_config.HateDecayPerSecond <= 0f)
         {
             return;
         }
@@ -71,7 +71,7 @@ internal static class WantedSystem
         var now = DateTime.UtcNow;
         var removalThreshold = 0.01f;
 
-        foreach (var pair in PlayerHeat)
+        foreach (var pair in PlayerHate)
         {
             var data = pair.Value;
             if (!IsEligibleForCooldown(data, now))
@@ -79,27 +79,27 @@ internal static class WantedSystem
                 continue;
             }
 
-            if (data.RunCooldown(_config.HeatDecayPerSecond, deltaTime, removalThreshold))
+            if (data.RunCooldown(_config.HateDecayPerSecond, deltaTime, removalThreshold))
             {
                 _dirty = true;
             }
         }
     }
 
-    public static void RegisterHeatGain(ulong steamId, string factionId, float baseHeat)
+    public static void RegisterHateGain(ulong steamId, string factionId, float baseHate)
     {
-        if (!_initialized || string.IsNullOrWhiteSpace(factionId) || baseHeat <= 0f)
+        if (!_initialized || string.IsNullOrWhiteSpace(factionId) || baseHate <= 0f)
         {
             return;
         }
 
-        var adjusted = baseHeat * _config.HeatGainMultiplier;
-        var data = PlayerHeat.GetOrAdd(steamId, static _ => new PlayerHeatData());
-        var entry = data.GetHeat(factionId);
-        var newHeat = Math.Clamp(entry.Heat + adjusted, 0f, _config.MaximumHeat);
-        entry.Heat = newHeat;
+        var adjusted = baseHate * _config.HateGainMultiplier;
+        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
+        var entry = data.GetHate(factionId);
+        var newHate = MathF.Clamp(entry.Hate + adjusted, 0f, _config.MaximumHate);
+        entry.Hate = newHate;
         entry.LastUpdated = DateTime.UtcNow;
-        data.SetHeat(factionId, entry);
+        data.SetHate(factionId, entry);
         _dirty = true;
     }
 
@@ -110,7 +110,7 @@ internal static class WantedSystem
             return;
         }
 
-        if (PlayerHeat.TryRemove(steamId, out _))
+        if (PlayerHate.TryRemove(steamId, out _))
         {
             _dirty = true;
         }
@@ -123,7 +123,7 @@ internal static class WantedSystem
             return;
         }
 
-        var data = PlayerHeat.GetOrAdd(steamId, static _ => new PlayerHeatData());
+        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         data.LastCombatStart = DateTime.UtcNow;
     }
 
@@ -134,7 +134,7 @@ internal static class WantedSystem
             return;
         }
 
-        if (!PlayerHeat.TryGetValue(steamId, out var data))
+        if (!PlayerHate.TryGetValue(steamId, out var data))
         {
             return;
         }
@@ -149,39 +149,39 @@ internal static class WantedSystem
             return;
         }
 
-        var data = PlayerHeat.GetOrAdd(steamId, static _ => new PlayerHeatData());
-        var entry = data.GetHeat(factionId);
+        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
+        var entry = data.GetHate(factionId);
         entry.LastAmbush = DateTime.UtcNow;
-        data.SetHeat(factionId, entry);
+        data.SetHate(factionId, entry);
         _dirty = true;
     }
 
-    public static bool TryGetPlayerHeat(ulong steamId, out WantedPlayerSnapshot snapshot)
+    public static bool TryGetPlayerHate(ulong steamId, out WantedPlayerSnapshot snapshot)
     {
         if (!_initialized)
         {
-            snapshot = new WantedPlayerSnapshot(steamId, new Dictionary<string, HeatEntry>(), DateTime.MinValue, DateTime.MinValue);
+            snapshot = new WantedPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue);
             return false;
         }
 
-        if (PlayerHeat.TryGetValue(steamId, out var data))
+        if (PlayerHate.TryGetValue(steamId, out var data))
         {
             snapshot = new WantedPlayerSnapshot(steamId, data.ExportSnapshot(), data.LastCombatStart, data.LastCombatEnd);
             return true;
         }
 
-        snapshot = new WantedPlayerSnapshot(steamId, new Dictionary<string, HeatEntry>(), DateTime.MinValue, DateTime.MinValue);
+        snapshot = new WantedPlayerSnapshot(steamId, new Dictionary<string, HateEntry>(), DateTime.MinValue, DateTime.MinValue);
         return false;
     }
 
-    public static void ClearPlayerHeat(ulong steamId)
+    public static void ClearPlayerHate(ulong steamId)
     {
         if (!_initialized)
         {
             return;
         }
 
-        if (PlayerHeat.TryRemove(steamId, out _))
+        if (PlayerHate.TryRemove(steamId, out _))
         {
             _dirty = true;
         }
@@ -206,7 +206,7 @@ internal static class WantedSystem
         }
     }
 
-    private static bool IsEligibleForCooldown(PlayerHeatData data, DateTime now)
+    private static bool IsEligibleForCooldown(PlayerHateData data, DateTime now)
     {
         if (data.LastCombatEnd == DateTime.MinValue)
         {
@@ -217,22 +217,22 @@ internal static class WantedSystem
         return elapsed >= _config.CooldownGrace;
     }
 
-    private static Dictionary<string, PlayerHeatRecord> CreateSerializableSnapshot()
+    private static Dictionary<string, PlayerHateRecord> CreateSerializableSnapshot()
     {
-        return PlayerHeat
-            .Where(static pair => pair.Value.FactionHeat.Count > 0)
+        return PlayerHate
+            .Where(static pair => pair.Value.FactionHate.Count > 0)
             .ToDictionary(
                 static pair => pair.Key.ToString(),
-                static pair => new PlayerHeatRecord
+                static pair => new PlayerHateRecord
                 {
                     LastCombatStart = pair.Value.LastCombatStart,
                     LastCombatEnd = pair.Value.LastCombatEnd,
                     Factions = pair.Value.ExportSnapshot()
                         .ToDictionary(
                             static faction => faction.Key,
-                            static faction => new HeatEntryRecord
+                            static faction => new HateEntryRecord
                             {
-                                Heat = faction.Value.Heat,
+                                Hate = faction.Value.Hate,
                                 LastAmbush = faction.Value.LastAmbush,
                                 LastUpdated = faction.Value.LastUpdated
                             })
@@ -242,6 +242,6 @@ internal static class WantedSystem
 
 internal readonly record struct WantedPlayerSnapshot(
     ulong SteamId,
-    IReadOnlyDictionary<string, HeatEntry> HeatByFaction,
+    IReadOnlyDictionary<string, HateEntry> HateByFaction,
     DateTime LastCombatStart,
     DateTime LastCombatEnd);
