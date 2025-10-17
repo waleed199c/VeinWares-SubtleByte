@@ -18,4 +18,7 @@
     <PackageReference Include="VRising.Unhollowed.Client" Version="1.1.*" />
     <PackageReference Include="VRising.VampireCommandFramework" Version="0.10.*" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Refrences\" />
+  </ItemGroup>
 </Project>
