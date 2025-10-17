@@ -6,6 +6,8 @@ using Unity.Collections;
 using Unity.Entities;
 using VeinWares.SubtleByte.Services.FactionInfamy;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Patches;
 
 [HarmonyPatch(typeof(BuffDebugSystem), nameof(BuffDebugSystem.OnUpdate))]
@@ -24,7 +26,7 @@ internal static class BuffDebugSystemInfamyPatch
             return;
         }
 
-        if (!TryGetBuffQuery(__instance, out var query) || !query.IsCreated)
+        if (!TryGetBuffQuery(__instance, out var query))
         {
             return;
         }
@@ -109,6 +111,6 @@ internal static class BuffDebugSystemInfamyPatch
         }
 
         query = _buffQueryAccessor!(instance);
-        return true;
+        return !query.Equals(default(EntityQuery));
     }
 }

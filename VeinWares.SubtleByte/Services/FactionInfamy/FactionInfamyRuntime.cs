@@ -2,6 +2,8 @@ using System;
 using System.Collections.Concurrent;
 using BepInEx.Logging;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal static class FactionInfamyRuntime
