@@ -6,6 +6,8 @@ using System.Text.Json;
 using BepInEx;
 using BepInEx.Logging;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Config;
 
 internal static class FactionInfamyChatConfig
@@ -78,7 +80,7 @@ internal static class FactionInfamyChatConfig
             _configuration.Factions.TryGetValue(factionId, out var entry) &&
             !string.IsNullOrWhiteSpace(entry.AmbushMessage))
         {
-            return entry.AmbushMessage!;
+            return entry.AmbushMessage ?? string.Empty;
         }
 
         return _configuration.DefaultMessage;

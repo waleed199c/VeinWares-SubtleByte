@@ -89,8 +89,7 @@ internal static class ChatHelper
     {
         try
         {
-            FixedString512Bytes chatMessage = default;
-            chatMessage.Append(message);
+            var chatMessage = new FixedString512Bytes(message);
             ServerChatUtils.SendSystemMessageToClient(entityManager, user, ref chatMessage);
             return true;
         }

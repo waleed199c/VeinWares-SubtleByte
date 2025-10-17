@@ -2,7 +2,6 @@ using System;
 using HarmonyLib;
 using ProjectM;
 using ProjectM.Network;
-using Stunlock.Core;
 using Unity.Collections;
 using Unity.Entities;
 using VeinWares.SubtleByte.Services.FactionInfamy;

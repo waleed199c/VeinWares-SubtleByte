@@ -12,6 +12,8 @@ using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;
 using VeinWares.SubtleByte.Utilities;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal static class FactionInfamyAmbushService
@@ -67,7 +69,7 @@ internal static class FactionInfamyAmbushService
     };
 
     private static ManualLogSource? _log;
-    private static readonly System.Random Random = new();
+    private static readonly Random Random = new();
     private static bool _initialized;
     private static int _lifetimeSequence;
 
