@@ -15,6 +15,7 @@ using VeinWares.SubtleByte.Modules.Crafting;
 using VeinWares.SubtleByte.Runtime.Unity;
 using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
+using VeinWares.SubtleByte.Modules.Wanted;
 
 namespace VeinWares.SubtleByte
 {
@@ -46,11 +47,14 @@ namespace VeinWares.SubtleByte
 
             var performanceLogPath = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "performance.log");
             var performanceTracker = new PerformanceTracker(Log, thresholdMilliseconds: 5.0, performanceLogPath);
-            var moduleConfig = new ModuleConfig(SubtleBytePluginConfig.EmptyBottleRefundEnabledEntry);
+            var moduleConfig = new ModuleConfig(
+                SubtleBytePluginConfig.EmptyBottleRefundEnabledEntry,
+                SubtleBytePluginConfig.WantedSystemEnabledEntry);
             _moduleHost = ModuleHost.Create(Log, performanceTracker, new Func<IModule>[]
             {
                 () => new HeartbeatModule(),
                 () => new BottleRefundModule(),
+                () => new WantedModule(),
             }, moduleConfig);
 
             _moduleHost.Initialize();
