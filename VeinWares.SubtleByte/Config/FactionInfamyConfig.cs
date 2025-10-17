@@ -11,6 +11,8 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<float> _cooldownGraceSeconds;
     private static ConfigEntry<float> _combatCooldownSeconds;
     private static ConfigEntry<float> _ambushCooldownMinutes;
+    private static ConfigEntry<int> _ambushChancePercent;
+    private static ConfigEntry<float> _ambushLifetimeSeconds;
     private static ConfigEntry<float> _minimumAmbushHate;
     private static ConfigEntry<int> _maximumHate;
     private static ConfigEntry<int> _autosaveMinutes;
@@ -58,6 +60,18 @@ internal static class FactionInfamyConfig
             15.0f,
             "Minimum number of minutes that must pass before the same player can be ambushed again.");
 
+        _ambushChancePercent = configFile.Bind(
+            "Faction Infamy",
+            "Ambush Chance Percent",
+            50,
+            "Percent chance that an eligible combat engagement will spawn an ambush squad.");
+
+        _ambushLifetimeSeconds = configFile.Bind(
+            "Faction Infamy",
+            "Ambush Squad Lifetime Seconds",
+            300.0f,
+            "How long ambush squads remain alive before despawning automatically.");
+
         _minimumAmbushHate = configFile.Bind(
             "Faction Infamy",
             "Minimum Ambush Hate",
@@ -102,6 +116,8 @@ internal static class FactionInfamyConfig
             TimeSpan.FromSeconds(Math.Max(0f, _cooldownGraceSeconds.Value)),
             TimeSpan.FromSeconds(Math.Max(1f, _combatCooldownSeconds.Value)),
             TimeSpan.FromMinutes(Math.Max(1f, _ambushCooldownMinutes.Value)),
+            Math.Clamp(_ambushChancePercent.Value, 0, 100),
+            TimeSpan.FromSeconds(Math.Max(10f, _ambushLifetimeSeconds.Value)),
             Math.Max(0f, _minimumAmbushHate.Value),
             Math.Max(1, _maximumHate.Value),
             TimeSpan.FromMinutes(Math.Max(1, _autosaveMinutes.Value)),
@@ -135,6 +151,21 @@ internal static class FactionInfamyConfig
             _ambushCooldownMinutes.Value = 1f;
         }
 
+        if (_ambushChancePercent.Value < 0)
+        {
+            _ambushChancePercent.Value = 0;
+        }
+
+        if (_ambushChancePercent.Value > 100)
+        {
+            _ambushChancePercent.Value = 100;
+        }
+
+        if (_ambushLifetimeSeconds.Value < 10f)
+        {
+            _ambushLifetimeSeconds.Value = 10f;
+        }
+
         if (_minimumAmbushHate.Value < 0f)
         {
             _minimumAmbushHate.Value = 0f;
@@ -163,6 +194,8 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     TimeSpan CooldownGrace,
     TimeSpan CombatCooldown,
     TimeSpan AmbushCooldown,
+    int AmbushChancePercent,
+    TimeSpan AmbushLifetime,
     float MinimumAmbushHate,
     int MaximumHate,
     TimeSpan AutosaveInterval,
