@@ -59,6 +59,7 @@ internal static class UnitSpawnerReactSystemInfamyPatch
                         continue;
                     }
 
+                    FactionInfamySpawnUtility.TryExecuteSpawnCallback(entityManager, entity, lifetime.Duration);
                     FactionInfamyAmbushService.TryHandleSpawnedEntity(entityManager, entity, lifetime.Duration);
                 }
             }
