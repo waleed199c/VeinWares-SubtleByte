@@ -31,7 +31,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         var snapshot = FactionInfamyConfig.CreateSnapshot();
         FactionInfamySystem.Initialize(snapshot, context.Log);
 
-        FactionInfamyHooks.Initialize(context);
+       
 
         _autosaveHandle = context.Scheduler.Schedule(
             snapshot.AutosaveInterval,
