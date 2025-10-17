@@ -116,7 +116,7 @@ public sealed class BottleRefundModule : IModule
                 _seenMixers.Add(mixer);
 
                 var shared = em.GetComponentData<BloodMixer_Shared>(mixer);
-                if (!TryGetOutputInventory(em, mixer, out var outputInv))
+                if (!TryGetOutputInventory(system.World, em, mixer, out var outputInv))
                 {
                     _snapshots[mixer] = new MixerSnapshot(shared.State, 0);
                     continue;
@@ -159,7 +159,7 @@ public sealed class BottleRefundModule : IModule
         }
     }
 
-    private bool TryGetOutputInventory(EntityManager em, Entity mixer, out Entity inventory)
+    private bool TryGetOutputInventory(World world, EntityManager em, Entity mixer, out Entity inventory)
     {
         if (_inventoryCache.TryGetValue(mixer, out var cacheEntry))
         {
@@ -255,7 +255,7 @@ public sealed class BottleRefundModule : IModule
             }
         }
 
-        if (TryResolveInventoryByQuery(system.World, em, mixer, out inventory))
+        if (TryResolveInventoryByQuery(world, em, mixer, out inventory))
         {
             _inventoryCache[mixer] = new InventoryCacheEntry(inventory, knownMissing: false, _updateIndex);
             return true;
