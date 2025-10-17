@@ -69,7 +69,7 @@ internal static class FactionInfamyAmbushService
     };
 
     private static ManualLogSource? _log;
-    private static readonly Random Random = new();
+    private static readonly System.Random Random = new();
     private static bool _initialized;
     private static int _lifetimeSequence;
 

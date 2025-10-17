@@ -101,7 +101,8 @@ namespace VeinWares.SubtleByte.Config
             var removed = false;
             foreach (var definition in LegacyWantedDefinitions)
             {
-                if (!configFile.TryGetEntry(definition, out _))
+                // Explicitly specify the type argument for TryGetEntry<T>
+                if (!configFile.TryGetEntry<object>(definition, out _))
                 {
                     continue;
                 }
