@@ -8,6 +8,9 @@ using Stunlock.Core;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
+using VeinWares.SubtleByte.Config;
+using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
@@ -129,10 +132,14 @@ internal static class FactionInfamyAmbushService
         }
 
         var playerLevel = ResolvePlayerLevel(entityManager, playerEntity);
-        if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate))
+        var difficulty = EvaluateDifficulty(target.Value.Hate);
+        if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate, difficulty))
         {
             _log?.LogWarning($"[Infamy] Failed to spawn ambush squad for faction '{target.Key}'.");
+            return;
         }
+
+        NotifyAmbush(playerEntity, steamId, target.Key, target.Value.Hate, difficulty);
     }
 
     public static void TryHandleSpawnedEntity(EntityManager entityManager, Entity entity, float lifetime)
@@ -229,7 +236,7 @@ internal static class FactionInfamyAmbushService
         }
     }
 
-    private static bool TrySpawnSquad(ulong steamId, string factionId, int playerLevel, float3 position, float hateValue)
+    private static bool TrySpawnSquad(ulong steamId, string factionId, int playerLevel, float3 position, float hateValue, AmbushDifficulty difficulty)
     {
         if (!SquadDefinitions.TryGetValue(factionId, out var squad))
         {
@@ -248,7 +255,8 @@ internal static class FactionInfamyAmbushService
         foreach (var unit in squad.Units)
         {
             var count = Math.Max(1, unit.Count);
-            var targetLevel = Math.Max(1, playerLevel + unit.LevelOffset);
+            var levelOffset = difficulty.LevelOffset + unit.LevelOffset;
+            var targetLevel = Math.Clamp(playerLevel + levelOffset, 1, 999);
             var lifetimeSeconds = GetNextLifetimeSeconds();
             var encodedLifetime = FactionInfamySpawnUtility.EncodeLifetime(lifetimeSeconds, targetLevel, SpawnFaction.Default);
 
@@ -269,6 +277,25 @@ internal static class FactionInfamyAmbushService
 
         _log?.LogInfo($"[Infamy] Spawned ambush squad for faction '{factionId}' targeting {steamId}.");
         return true;
+    }
+
+    private static void NotifyAmbush(Entity playerEntity, ulong steamId, string factionId, float hateValue, AmbushDifficulty difficulty)
+    {
+        var message = FactionInfamyChatConfig.GetAmbushMessage(factionId, difficulty.Tier, hateValue, difficulty.LevelOffset);
+        if (string.IsNullOrWhiteSpace(message))
+        {
+            return;
+        }
+
+        if (playerEntity.Exists() && ChatHelper.TrySendSystemMessage(playerEntity, message))
+        {
+            return;
+        }
+
+        if (steamId != 0UL)
+        {
+            ChatHelper.TrySendSystemMessage(steamId, message);
+        }
     }
 
     private static int GetNextLifetimeSeconds()
@@ -306,6 +333,31 @@ internal static class FactionInfamyAmbushService
         }
 
         return 1;
+    }
+
+    private static AmbushDifficulty EvaluateDifficulty(float hateValue)
+    {
+        var maximumHate = Math.Max(1f, FactionInfamySystem.MaximumHate);
+        var normalized = Math.Clamp(hateValue / maximumHate, 0f, 1f);
+        var bucket = 5 - (int)Math.Floor(normalized * 5.0);
+        if (normalized >= 0.999f)
+        {
+            bucket = 1;
+        }
+
+        bucket = Math.Clamp(bucket, 1, 5);
+
+        var offset = bucket switch
+        {
+            1 => 10,
+            2 => 0,
+            3 => 5,
+            4 => -2,
+            5 => -20,
+            _ => 0
+        };
+
+        return new AmbushDifficulty(bucket, offset);
     }
 
     private sealed class PendingAmbushSpawn
@@ -379,5 +431,18 @@ internal static class FactionInfamyAmbushService
         public IReadOnlyList<AmbushUnitDefinition> Units { get; }
 
         public int TotalUnits { get; }
+    }
+
+    private readonly struct AmbushDifficulty
+    {
+        public AmbushDifficulty(int tier, int levelOffset)
+        {
+            Tier = tier;
+            LevelOffset = levelOffset;
+        }
+
+        public int Tier { get; }
+
+        public int LevelOffset { get; }
     }
 }
