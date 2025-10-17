@@ -96,7 +96,7 @@ internal static class WantedSystem
         var adjusted = baseHeat * _config.HeatGainMultiplier;
         var data = PlayerHeat.GetOrAdd(steamId, static _ => new PlayerHeatData());
         var entry = data.GetHeat(factionId);
-        var newHeat = MathF.Clamp(entry.Heat + adjusted, 0f, _config.MaximumHeat);
+        var newHeat = Math.Clamp(entry.Heat + adjusted, 0f, _config.MaximumHeat);
         entry.Heat = newHeat;
         entry.LastUpdated = DateTime.UtcNow;
         data.SetHeat(factionId, entry);
