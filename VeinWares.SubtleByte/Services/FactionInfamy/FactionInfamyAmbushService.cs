@@ -161,38 +161,16 @@ internal static class FactionInfamyAmbushService
             return;
         }
 
-        var key = BitConverter.SingleToInt32Bits(lifetime);
-        if (!PendingSpawns.TryGetValue(key, out var pending))
+        var marker = (int)Math.Round(lifetime);
+        if (!PendingSpawns.TryGetValue(marker, out var pending))
         {
             return;
         }
 
-        if (pending.Remaining <= 0)
+        var completed = FinalizeAmbushSpawn(entityManager, entity, marker, pending, pending.LifetimeSeconds);
+        if (completed)
         {
-            PendingSpawns.TryRemove(key, out _);
-            FactionInfamySpawnUtility.CancelSpawnCallback(lifetime);
-            return;
-        }
-
-        ApplyAmbushScaling(entityManager, entity, pending.UnitLevel);
-
-        if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
-        {
-            entityManager.AddComponent<DestroyWhenDisabled>(entity);
-        }
-
-        if (entityManager.HasComponent<Minion>(entity))
-        {
-            entityManager.RemoveComponent<Minion>(entity);
-        }
-
-        ActiveAmbushes[entity] = new ActiveAmbush(pending.TargetSteamId, pending.FactionId, pending.HateReliefPerUnit);
-
-        pending.Remaining--;
-        if (pending.Remaining <= 0)
-        {
-            PendingSpawns.TryRemove(key, out _);
-            FactionInfamySpawnUtility.CancelSpawnCallback(lifetime);
+            FactionInfamySpawnUtility.CancelSpawnCallback(marker);
         }
     }
 
@@ -241,6 +219,7 @@ internal static class FactionInfamyAmbushService
             if (pair.Value.TargetSteamId == steamId)
             {
                 PendingSpawns.TryRemove(pair.Key, out _);
+                FactionInfamySpawnUtility.CancelSpawnCallback(pair.Key);
             }
         }
     }
@@ -267,28 +246,42 @@ internal static class FactionInfamyAmbushService
             var levelOffset = difficulty.LevelOffset + unit.LevelOffset;
             var targetLevel = Math.Clamp(playerLevel + levelOffset, 1, 999);
             var lifetimeSeconds = GetNextLifetimeSeconds();
-            var encodedLifetime = FactionInfamySpawnUtility.EncodeLifetime(lifetimeSeconds, targetLevel, SpawnFaction.Default);
-
-            var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit);
-            var key = BitConverter.SingleToInt32Bits(encodedLifetime);
-            PendingSpawns[key] = pending;
+            var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit, lifetimeSeconds);
+            var marker = 0;
 
             try
             {
-                FactionInfamySpawnUtility.SpawnUnit(
+                marker = FactionInfamySpawnUtility.SpawnUnit(
                     unit.Prefab,
                     position,
                     count,
                     unit.MinRange,
                     unit.MaxRange,
-                    encodedLifetime,
-                    (manager, spawnedEntity) => ApplyAmbushScaling(manager, spawnedEntity, targetLevel));
+                    lifetimeSeconds,
+                    (manager, spawnedEntity, key, actualLifetime) =>
+                    {
+                        if (!PendingSpawns.TryGetValue(key, out var registered))
+                        {
+                            return;
+                        }
+
+                        var completed = FinalizeAmbushSpawn(manager, spawnedEntity, key, registered, actualLifetime);
+                        if (completed)
+                        {
+                            FactionInfamySpawnUtility.CancelSpawnCallback(key);
+                        }
+                    });
+
+                PendingSpawns[marker] = pending;
             }
             catch (Exception ex)
             {
                 _log?.LogError($"[Infamy] Failed to spawn ambush unit {unit.Prefab.GuidHash} for faction '{factionId}': {ex.Message}");
-                PendingSpawns.TryRemove(key, out _);
-                FactionInfamySpawnUtility.CancelSpawnCallback(encodedLifetime);
+                if (marker != 0)
+                {
+                    PendingSpawns.TryRemove(marker, out _);
+                    FactionInfamySpawnUtility.CancelSpawnCallback(marker);
+                }
             }
         }
 
@@ -377,6 +370,40 @@ internal static class FactionInfamyAmbushService
         return new AmbushDifficulty(bucket, offset);
     }
 
+    private static bool FinalizeAmbushSpawn(EntityManager entityManager, Entity entity, int marker, PendingAmbushSpawn pending, float lifetimeSeconds)
+    {
+        if (entityManager.HasComponent<LifeTime>(entity))
+        {
+            var lifeTime = entityManager.GetComponentData<LifeTime>(entity);
+            lifeTime.Duration = lifetimeSeconds;
+            lifeTime.EndAction = lifetimeSeconds < 0 ? LifeTimeEndAction.None : LifeTimeEndAction.Destroy;
+            entityManager.SetComponentData(entity, lifeTime);
+        }
+
+        ApplyAmbushScaling(entityManager, entity, pending.UnitLevel);
+
+        if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
+        {
+            entityManager.AddComponent<DestroyWhenDisabled>(entity);
+        }
+
+        if (entityManager.HasComponent<Minion>(entity))
+        {
+            entityManager.RemoveComponent<Minion>(entity);
+        }
+
+        ActiveAmbushes[entity] = new ActiveAmbush(pending.TargetSteamId, pending.FactionId, pending.HateReliefPerUnit);
+
+        pending.Remaining--;
+        if (pending.Remaining <= 0)
+        {
+            PendingSpawns.TryRemove(marker, out _);
+            return true;
+        }
+
+        return false;
+    }
+
     private static void ApplyAmbushScaling(EntityManager entityManager, Entity entity, int targetLevel)
     {
         if (targetLevel <= 0)
@@ -407,13 +434,14 @@ internal static class FactionInfamyAmbushService
 
     private sealed class PendingAmbushSpawn
     {
-        public PendingAmbushSpawn(ulong targetSteamId, string factionId, int unitLevel, int remaining, float hateReliefPerUnit)
+        public PendingAmbushSpawn(ulong targetSteamId, string factionId, int unitLevel, int remaining, float hateReliefPerUnit, float lifetimeSeconds)
         {
             TargetSteamId = targetSteamId;
             FactionId = factionId;
             UnitLevel = unitLevel;
             Remaining = remaining;
             HateReliefPerUnit = hateReliefPerUnit;
+            LifetimeSeconds = lifetimeSeconds;
         }
 
         public ulong TargetSteamId { get; }
@@ -425,6 +453,8 @@ internal static class FactionInfamyAmbushService
         public int Remaining { get; set; }
 
         public float HateReliefPerUnit { get; }
+
+        public float LifetimeSeconds { get; }
     }
 
     private readonly struct ActiveAmbush
