@@ -12,6 +12,8 @@ internal static class FactionInfamySpawnUtility
     private static readonly Entity PlaceholderEntity = new();
     private static readonly ConcurrentDictionary<int, PendingSpawnCallback> PendingCallbacks = new();
 
+    public static bool HasPendingCallbacks => !PendingCallbacks.IsEmpty;
+
     public static float EncodeLifetime(int lifetimeSeconds, int level, SpawnFaction faction)
     {
         lifetimeSeconds = Math.Clamp(lifetimeSeconds / 10 * 10, 10, 990);
