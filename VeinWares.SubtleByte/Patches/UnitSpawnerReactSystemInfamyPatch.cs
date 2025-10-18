@@ -22,9 +22,14 @@ internal static class UnitSpawnerReactSystemInfamyPatch
 
     private static bool _queryUnavailable;
 
-    private static void Postfix(UnitSpawnerReactSystem __instance)
+    private static void Prefix(UnitSpawnerReactSystem __instance)
     {
-        if (!FactionInfamySystem.Enabled || _queryUnavailable || !FactionInfamyAmbushService.HasPendingSpawns)
+        if (!FactionInfamySystem.Enabled || _queryUnavailable)
+        {
+            return;
+        }
+
+        if (!FactionInfamyAmbushService.HasPendingSpawns && !FactionInfamySpawnUtility.HasPendingCallbacks)
         {
             return;
         }
@@ -47,29 +52,34 @@ internal static class UnitSpawnerReactSystemInfamyPatch
                 return;
             }
 
-            var entityManager = __instance.EntityManager;
-            var entities = query.ToEntityArray(Allocator.Temp);
-            try
-            {
-                for (var i = 0; i < entities.Length; i++)
-                {
-                    var entity = entities[i];
-                    if (!entityManager.TryGetComponentData(entity, out LifeTime lifetime))
-                    {
-                        continue;
-                    }
-
-                    FactionInfamyAmbushService.TryHandleSpawnedEntity(entityManager, entity, lifetime.Duration);
-                }
-            }
-            finally
-            {
-                entities.Dispose();
-            }
+            ProcessPendingSpawns(__instance.EntityManager, query);
         }
         finally
         {
             query.Dispose();
+        }
+    }
+
+    private static void ProcessPendingSpawns(EntityManager entityManager, EntityQuery query)
+    {
+        var entities = query.ToEntityArray(Allocator.Temp);
+        try
+        {
+            for (var i = 0; i < entities.Length; i++)
+            {
+                var entity = entities[i];
+                if (!entityManager.TryGetComponentData(entity, out LifeTime lifetime))
+                {
+                    continue;
+                }
+
+                FactionInfamySpawnUtility.TryExecuteSpawnCallback(entityManager, entity, lifetime.Duration);
+                FactionInfamyAmbushService.TryHandleSpawnedEntity(entityManager, entity, lifetime.Duration);
+            }
+        }
+        finally
+        {
+            entities.Dispose();
         }
     }
 }
