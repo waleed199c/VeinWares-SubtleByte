@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using BepInEx.Logging;
 using ProjectM;
+using ProjectM.Network;
 using Stunlock.Core;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -85,6 +87,10 @@ internal static class FactionInfamyAmbushService
     {
         _initialized = false;
         _log = null;
+        foreach (var pair in PendingSpawns.ToArray())
+        {
+            FactionInfamySpawnUtility.CancelSpawnCallback(pair.Key);
+        }
         PendingSpawns.Clear();
         ActiveAmbushes.Clear();
     }
@@ -137,7 +143,7 @@ internal static class FactionInfamyAmbushService
             return;
         }
 
-        var playerLevel = ResolvePlayerLevel(entityManager, playerEntity);
+        var playerLevel = ResolvePlayerLevel(entityManager, playerEntity, steamId);
         var difficulty = EvaluateDifficulty(target.Value.Hate);
         if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate, difficulty))
         {
@@ -335,14 +341,76 @@ internal static class FactionInfamyAmbushService
         return false;
     }
 
-    private static int ResolvePlayerLevel(EntityManager entityManager, Entity playerEntity)
+    private static int ResolvePlayerLevel(EntityManager entityManager, Entity playerEntity, ulong steamId)
     {
         if (entityManager.TryGetComponentData(playerEntity, out UnitLevel unitLevel))
         {
             return Math.Max(1, unitLevel.Level._Value);
         }
 
+        if (steamId != 0UL && TryResolvePlayerCharacter(entityManager, steamId, out var resolved) &&
+            entityManager.TryGetComponentData(resolved, out unitLevel))
+        {
+            return Math.Max(1, unitLevel.Level._Value);
+        }
+
         return 1;
+    }
+
+    private static bool TryResolvePlayerCharacter(EntityManager entityManager, ulong steamId, out Entity character)
+    {
+        character = Entity.Null;
+        if (steamId == 0UL)
+        {
+            return false;
+        }
+
+        EntityQuery query;
+        try
+        {
+            query = entityManager.CreateEntityQuery(ComponentType.ReadOnly<User>());
+        }
+        catch (Exception)
+        {
+            return false;
+        }
+
+        try
+        {
+            var userEntities = query.ToEntityArray(Allocator.Temp);
+            try
+            {
+                foreach (var userEntity in userEntities)
+                {
+                    if (!entityManager.TryGetComponentData(userEntity, out User user) || user.PlatformId != steamId)
+                    {
+                        continue;
+                    }
+
+                    var resolved = user.LocalCharacter.GetEntityOnServer();
+                    if (!resolved.Exists())
+                    {
+                        resolved = user.LocalCharacter._Entity;
+                    }
+
+                    if (resolved.Exists())
+                    {
+                        character = resolved;
+                        return true;
+                    }
+                }
+            }
+            finally
+            {
+                userEntities.Dispose();
+            }
+        }
+        finally
+        {
+            query.Dispose();
+        }
+
+        return false;
     }
 
     private static AmbushDifficulty EvaluateDifficulty(float hateValue)
