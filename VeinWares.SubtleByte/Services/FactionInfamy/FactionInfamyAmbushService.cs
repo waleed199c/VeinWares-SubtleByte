@@ -29,45 +29,97 @@ internal static class FactionInfamyAmbushService
     private static readonly Dictionary<string, AmbushSquadDefinition> SquadDefinitions = new(StringComparer.OrdinalIgnoreCase)
     {
         ["Bandits"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(-1030822544), 2, -1, 1.5f, 8f), // Deadeye
                 new AmbushUnitDefinition(new PrefabGUID(-301730941), 2, -2, 1f, 6f) // Thug
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(-1128238456), 1, 2, 1.5f, 7f) // Bomber
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Blackfangs"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(1864177126), 2, 0, 1.5f, 7f), // Venomblade
                 new AmbushUnitDefinition(new PrefabGUID(326501064), 1, 1, 2f, 9f) // Alchemist
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(1531777139), 1, 2, 2f, 9f) // Sentinel
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Militia"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(1148936156), 3, -1, 2f, 10f), // Rifleman
                 new AmbushUnitDefinition(new PrefabGUID(794228023), 1, 1, 1.5f, 6f) // Knight Shield
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(2005508157), 1, 2, 2f, 8f) // Heavy
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Gloomrot"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(-322293503), 2, 0, 3f, 10f), // Pyro
                 new AmbushUnitDefinition(new PrefabGUID(1732477970), 1, 2, 4f, 12f) // Railgunner
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(1401026468), 1, 2, 3f, 10f) // Sentry Officer
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Legion"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(1980594081), 2, 1, 2f, 9f), // Shadowkin
                 new AmbushUnitDefinition(new PrefabGUID(-1009917656), 1, 3, 3f, 11f) // Nightmare
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(1912966420), 1, 2, 3f, 10f) // Blood Prophet
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Undead"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(-1287507270), 3, -1, 1.5f, 7f), // Skeleton Mage
                 new AmbushUnitDefinition(new PrefabGUID(-1365627158), 1, 1, 2f, 8f) // Assassin
+            },
+            tier5Representatives: new[]
+            {
+                new AmbushUnitDefinition(new PrefabGUID(-1967480038), 1, 2, 2f, 8f) // Guardian
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             }),
         ["Werewolf"] = new AmbushSquadDefinition(
-            new[]
+            baseUnits: new[]
             {
                 new AmbushUnitDefinition(new PrefabGUID(-951976780), 3, 0, 1.5f, 8f) // Hostile villager werewolf
+            },
+            seasonalUnits: new[]
+            {
+                AmbushSeasonalDefinition.HalloweenScarecrow
             })
     };
 
@@ -238,7 +290,13 @@ internal static class FactionInfamyAmbushService
             return false;
         }
 
-        var totalUnits = squad.TotalUnits;
+        var spawnRequests = BuildSpawnRequests(squad, difficulty);
+        if (spawnRequests.Count == 0)
+        {
+            return false;
+        }
+
+        var totalUnits = spawnRequests.Sum(request => request.Count);
         if (totalUnits <= 0)
         {
             return false;
@@ -247,9 +305,10 @@ internal static class FactionInfamyAmbushService
         var totalRelief = Math.Max(MinimumReliefPerSquad, hateValue * HateReliefFraction);
         var reliefPerUnit = totalRelief / totalUnits;
 
-        foreach (var unit in squad.Units)
+        foreach (var request in spawnRequests)
         {
-            var count = Math.Max(1, unit.Count);
+            var unit = request.Definition;
+            var count = request.Count;
             var levelOffset = difficulty.LevelOffset + unit.LevelOffset;
             var cappedTarget = Math.Min(playerLevel + levelOffset, playerLevel + MaxPositiveLevelOffset);
             var targetLevel = Math.Clamp(cappedTarget, 1, 999);
@@ -295,6 +354,83 @@ internal static class FactionInfamyAmbushService
 
         _log?.LogInfo($"[Infamy] Spawned ambush squad for faction '{factionId}' targeting {steamId}.");
         return true;
+    }
+
+    private static List<AmbushSpawnRequest> BuildSpawnRequests(AmbushSquadDefinition squad, AmbushDifficulty difficulty)
+    {
+        var requests = new List<AmbushSpawnRequest>();
+
+        AddUnits(requests, squad.BaseUnits);
+
+        if (difficulty.Tier != 5)
+        {
+            return requests;
+        }
+
+        AddUnits(requests, squad.Tier5Representatives);
+
+        if (!FactionInfamySystem.HalloweenAmbushEnabled)
+        {
+            return requests;
+        }
+
+        var seasonalUnits = squad.GetSeasonalUnits(SeasonalAmbushType.Halloween);
+        if (seasonalUnits.Count == 0)
+        {
+            return requests;
+        }
+
+        var scarecrowCount = RollHalloweenScarecrowCount();
+        if (scarecrowCount <= 0)
+        {
+            return requests;
+        }
+
+        foreach (var seasonal in seasonalUnits)
+        {
+            var count = seasonal.UseSharedRollCount
+                ? scarecrowCount
+                : Math.Max(1, seasonal.Unit.Count);
+
+            requests.Add(new AmbushSpawnRequest(seasonal.Unit, count));
+        }
+
+        return requests;
+    }
+
+    private static void AddUnits(List<AmbushSpawnRequest> destination, IReadOnlyList<AmbushUnitDefinition> units)
+    {
+        if (units is null || units.Count == 0)
+        {
+            return;
+        }
+
+        for (var i = 0; i < units.Count; i++)
+        {
+            var unit = units[i];
+            destination.Add(new AmbushSpawnRequest(unit, Math.Max(1, unit.Count)));
+        }
+    }
+
+    private static int RollHalloweenScarecrowCount()
+    {
+        var min = Math.Max(0, FactionInfamySystem.HalloweenScarecrowMinimum);
+        var max = Math.Max(min, FactionInfamySystem.HalloweenScarecrowMaximum);
+        if (max <= 0)
+        {
+            return 0;
+        }
+
+        var count = Random.Next(min, max + 1);
+
+        var rareChance = Math.Clamp(FactionInfamySystem.HalloweenScarecrowRareChancePercent, 0, 100);
+        if (rareChance > 0 && Random.Next(0, 100) < rareChance)
+        {
+            var multiplier = Math.Max(1, FactionInfamySystem.HalloweenScarecrowRareMultiplier);
+            count *= multiplier;
+        }
+
+        return Math.Max(0, count);
     }
 
     private static void NotifyAmbush(Entity playerEntity, ulong steamId, string factionId, float hateValue, AmbushDifficulty difficulty)
@@ -608,15 +744,77 @@ internal static class FactionInfamyAmbushService
 
     private sealed class AmbushSquadDefinition
     {
-        public AmbushSquadDefinition(IReadOnlyList<AmbushUnitDefinition> units)
+        private static readonly IReadOnlyList<AmbushUnitDefinition> EmptyUnits = Array.Empty<AmbushUnitDefinition>();
+
+        private readonly Dictionary<SeasonalAmbushType, IReadOnlyList<AmbushSeasonalDefinition>> _seasonalUnits;
+
+        public AmbushSquadDefinition(
+            IReadOnlyList<AmbushUnitDefinition> baseUnits,
+            IReadOnlyList<AmbushUnitDefinition>? tier5Representatives = null,
+            IReadOnlyList<AmbushSeasonalDefinition>? seasonalUnits = null)
         {
-            Units = units;
-            TotalUnits = units.Sum(u => Math.Max(1, u.Count));
+            BaseUnits = baseUnits ?? EmptyUnits;
+            Tier5Representatives = tier5Representatives ?? EmptyUnits;
+
+            var seasonal = seasonalUnits ?? Array.Empty<AmbushSeasonalDefinition>();
+            _seasonalUnits = seasonal.Count == 0
+                ? new Dictionary<SeasonalAmbushType, IReadOnlyList<AmbushSeasonalDefinition>>()
+                : seasonal
+                    .GroupBy(definition => definition.Type)
+                    .ToDictionary(
+                        group => group.Key,
+                        group => (IReadOnlyList<AmbushSeasonalDefinition>)group.ToArray());
         }
 
-        public IReadOnlyList<AmbushUnitDefinition> Units { get; }
+        public IReadOnlyList<AmbushUnitDefinition> BaseUnits { get; }
 
-        public int TotalUnits { get; }
+        public IReadOnlyList<AmbushUnitDefinition> Tier5Representatives { get; }
+
+        public IReadOnlyList<AmbushSeasonalDefinition> GetSeasonalUnits(SeasonalAmbushType type)
+        {
+            return _seasonalUnits.TryGetValue(type, out var units)
+                ? units
+                : Array.Empty<AmbushSeasonalDefinition>();
+        }
+    }
+
+    private sealed class AmbushSeasonalDefinition
+    {
+        public AmbushSeasonalDefinition(SeasonalAmbushType type, AmbushUnitDefinition unit, bool useSharedRollCount)
+        {
+            Type = type;
+            Unit = unit;
+            UseSharedRollCount = useSharedRollCount;
+        }
+
+        public SeasonalAmbushType Type { get; }
+
+        public AmbushUnitDefinition Unit { get; }
+
+        public bool UseSharedRollCount { get; }
+
+        public static AmbushSeasonalDefinition HalloweenScarecrow { get; } = new(
+            SeasonalAmbushType.Halloween,
+            new AmbushUnitDefinition(new PrefabGUID(-1750347680), 1, 0, 2.5f, 8f),
+            useSharedRollCount: true);
+    }
+
+    private enum SeasonalAmbushType
+    {
+        Halloween
+    }
+
+    private readonly struct AmbushSpawnRequest
+    {
+        public AmbushSpawnRequest(AmbushUnitDefinition definition, int count)
+        {
+            Definition = definition;
+            Count = Math.Max(1, count);
+        }
+
+        public AmbushUnitDefinition Definition { get; }
+
+        public int Count { get; }
     }
 
     private readonly struct AmbushDifficulty
