@@ -353,13 +353,6 @@ internal static class FactionInfamyAmbushService
         {
             return level;
         }
-
-        if (steamId != 0UL && TryResolvePlayerCharacter(entityManager, steamId, out var resolved) &&
-            entityManager.TryGetComponentData(resolved, out unitLevel))
-        {
-            return Math.Max(1, unitLevel.Level._Value);
-        }
-
         return 1;
     }
 
