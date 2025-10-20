@@ -123,6 +123,23 @@ internal static class FactionInfamyAmbushService
             })
     };
 
+    private static readonly PrefabGUID ManticoreVisual = new(1670636401);
+    private static readonly PrefabGUID DraculaVisual = new(1199823151);
+    private static readonly PrefabGUID MonsterVisual = new(-2067402784);
+    private static readonly PrefabGUID SolarusVisual = new(178225731);
+    private static readonly PrefabGUID MegaraVisual = new(-2104035188);
+
+    private static readonly Dictionary<string, PrefabGUID> FactionVisualBuffs = new(StringComparer.OrdinalIgnoreCase)
+    {
+        ["Bandits"] = ManticoreVisual,
+        ["Blackfangs"] = DraculaVisual,
+        ["Militia"] = SolarusVisual,
+        ["Gloomrot"] = MegaraVisual,
+        ["Legion"] = MonsterVisual,
+        ["Undead"] = MonsterVisual,
+        ["Werewolf"] = ManticoreVisual
+    };
+
     private static ManualLogSource? _log;
     private static readonly System.Random Random = new();
     private static bool _initialized;
@@ -632,6 +649,11 @@ internal static class FactionInfamyAmbushService
         }
 
         ApplyAmbushScaling(entityManager, entity, pending.UnitLevel, multipliers);
+
+        if (FactionVisualBuffs.TryGetValue(pending.FactionId, out var visualBuff))
+        {
+            entity.TryApplyVisualBuff(visualBuff);
+        }
 
         if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
         {
