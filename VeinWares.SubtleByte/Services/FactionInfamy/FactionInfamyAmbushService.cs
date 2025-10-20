@@ -22,6 +22,7 @@ internal static class FactionInfamyAmbushService
 {
     private const float HateReliefFraction = 0.25f;
     private const float MinimumReliefPerSquad = 10f;
+    private const int MaxPositiveLevelOffset = 10;
 
     private static readonly ConcurrentDictionary<int, PendingAmbushSpawn> PendingSpawns = new();
     private static readonly ConcurrentDictionary<Entity, ActiveAmbush> ActiveAmbushes = new();
@@ -250,7 +251,8 @@ internal static class FactionInfamyAmbushService
         {
             var count = Math.Max(1, unit.Count);
             var levelOffset = difficulty.LevelOffset + unit.LevelOffset;
-            var targetLevel = Math.Clamp(playerLevel + levelOffset, 1, 999);
+            var cappedTarget = Math.Min(playerLevel + levelOffset, playerLevel + MaxPositiveLevelOffset);
+            var targetLevel = Math.Clamp(cappedTarget, 1, 999);
             var lifetimeSeconds = GetNextLifetimeSeconds();
             var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit, lifetimeSeconds);
             var marker = 0;
@@ -353,6 +355,7 @@ internal static class FactionInfamyAmbushService
         {
             return level;
         }
+
         return 1;
     }
 
