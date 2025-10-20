@@ -343,9 +343,15 @@ internal static class FactionInfamyAmbushService
 
     private static int ResolvePlayerLevel(EntityManager entityManager, Entity playerEntity, ulong steamId)
     {
-        if (entityManager.TryGetComponentData(playerEntity, out UnitLevel unitLevel))
+        if (TryGetPlayerLevel(entityManager, playerEntity, out var level))
         {
-            return Math.Max(1, unitLevel.Level._Value);
+            return level;
+        }
+
+        if (steamId != 0UL && TryResolvePlayerCharacter(entityManager, steamId, out var resolved) &&
+            TryGetPlayerLevel(entityManager, resolved, out level))
+        {
+            return level;
         }
 
         if (steamId != 0UL && TryResolvePlayerCharacter(entityManager, steamId, out var resolved) &&
@@ -355,6 +361,47 @@ internal static class FactionInfamyAmbushService
         }
 
         return 1;
+    }
+
+    private static bool TryGetPlayerLevel(EntityManager entityManager, Entity entity, out int level)
+    {
+        if (TryGetUnitLevel(entityManager, entity, out level))
+        {
+            return true;
+        }
+
+        if (TryGetEquipmentLevel(entityManager, entity, out level))
+        {
+            return true;
+        }
+
+        level = 0;
+        return false;
+    }
+
+    private static bool TryGetUnitLevel(EntityManager entityManager, Entity entity, out int level)
+    {
+        level = 0;
+        if (!entityManager.TryGetComponentData(entity, out UnitLevel unitLevel))
+        {
+            return false;
+        }
+
+        level = Math.Max(1, unitLevel.Level._Value);
+        return true;
+    }
+
+    private static bool TryGetEquipmentLevel(EntityManager entityManager, Entity entity, out int level)
+    {
+        level = 0;
+        if (!entityManager.TryGetComponentData(entity, out Equipment equipment))
+        {
+            return false;
+        }
+
+        var total = equipment.ArmorLevel.Value + equipment.WeaponLevel.Value + equipment.SpellLevel.Value;
+        level = Math.Max(1, (int)total);
+        return true;
     }
 
     private static bool TryResolvePlayerCharacter(EntityManager entityManager, ulong steamId, out Entity character)
