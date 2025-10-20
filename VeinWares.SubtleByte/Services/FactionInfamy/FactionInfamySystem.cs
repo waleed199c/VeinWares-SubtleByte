@@ -28,6 +28,24 @@ internal static class FactionInfamySystem
     private static int _halloweenScarecrowMaximum;
     private static int _halloweenScarecrowRareMultiplier;
     private static int _halloweenScarecrowRareChancePercent;
+    private static bool _enableEliteAmbush;
+    private static bool _enableAmbushKnockbackResistance;
+    private static float _eliteHealthMultiplier;
+    private static float _eliteDamageReductionMultiplier;
+    private static float _eliteResistanceMultiplier;
+    private static float _elitePowerMultiplier;
+    private static float _eliteAttackSpeedMultiplier;
+    private static float _eliteSpellSpeedMultiplier;
+    private static float _eliteMoveSpeedMultiplier;
+    private static float _eliteKnockbackResistanceMultiplier;
+    private static float _eliteRepresentativeHealthRatio;
+    private static float _eliteRepresentativeDamageReductionRatio;
+    private static float _eliteRepresentativeResistanceRatio;
+    private static float _eliteRepresentativePowerRatio;
+    private static float _eliteRepresentativeAttackSpeedRatio;
+    private static float _eliteRepresentativeSpellSpeedRatio;
+    private static float _eliteRepresentativeMoveSpeedRatio;
+    private static float _eliteRepresentativeKnockbackResistanceRatio;
 
     public static bool Enabled => _initialized;
 
@@ -50,6 +68,42 @@ internal static class FactionInfamySystem
     internal static int HalloweenScarecrowRareMultiplier => _halloweenScarecrowRareMultiplier;
 
     internal static int HalloweenScarecrowRareChancePercent => _halloweenScarecrowRareChancePercent;
+
+    internal static bool EliteAmbushEnabled => _enableEliteAmbush;
+
+    internal static bool AmbushKnockbackResistanceEnabled => _enableAmbushKnockbackResistance;
+
+    internal static float EliteHealthMultiplier => _eliteHealthMultiplier;
+
+    internal static float EliteDamageReductionMultiplier => _eliteDamageReductionMultiplier;
+
+    internal static float EliteResistanceMultiplier => _eliteResistanceMultiplier;
+
+    internal static float ElitePowerMultiplier => _elitePowerMultiplier;
+
+    internal static float EliteAttackSpeedMultiplier => _eliteAttackSpeedMultiplier;
+
+    internal static float EliteSpellSpeedMultiplier => _eliteSpellSpeedMultiplier;
+
+    internal static float EliteMoveSpeedMultiplier => _eliteMoveSpeedMultiplier;
+
+    internal static float EliteKnockbackResistanceMultiplier => _eliteKnockbackResistanceMultiplier;
+
+    internal static float EliteRepresentativeHealthRatio => _eliteRepresentativeHealthRatio;
+
+    internal static float EliteRepresentativeDamageReductionRatio => _eliteRepresentativeDamageReductionRatio;
+
+    internal static float EliteRepresentativeResistanceRatio => _eliteRepresentativeResistanceRatio;
+
+    internal static float EliteRepresentativePowerRatio => _eliteRepresentativePowerRatio;
+
+    internal static float EliteRepresentativeAttackSpeedRatio => _eliteRepresentativeAttackSpeedRatio;
+
+    internal static float EliteRepresentativeSpellSpeedRatio => _eliteRepresentativeSpellSpeedRatio;
+
+    internal static float EliteRepresentativeMoveSpeedRatio => _eliteRepresentativeMoveSpeedRatio;
+
+    internal static float EliteRepresentativeKnockbackResistanceRatio => _eliteRepresentativeKnockbackResistanceRatio;
 
     public static int AutosaveBackupCount { get; private set; }
 
@@ -74,6 +128,24 @@ internal static class FactionInfamySystem
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
         _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
         _halloweenScarecrowRareChancePercent = config.HalloweenScarecrowRareChancePercent;
+        _enableEliteAmbush = config.EnableEliteAmbush;
+        _enableAmbushKnockbackResistance = config.EnableAmbushKnockbackResistance;
+        _eliteHealthMultiplier = config.EliteHealthMultiplier;
+        _eliteDamageReductionMultiplier = config.EliteDamageReductionMultiplier;
+        _eliteResistanceMultiplier = config.EliteResistanceMultiplier;
+        _elitePowerMultiplier = config.ElitePowerMultiplier;
+        _eliteAttackSpeedMultiplier = config.EliteAttackSpeedMultiplier;
+        _eliteSpellSpeedMultiplier = config.EliteSpellSpeedMultiplier;
+        _eliteMoveSpeedMultiplier = config.EliteMoveSpeedMultiplier;
+        _eliteKnockbackResistanceMultiplier = config.EliteKnockbackResistanceMultiplier;
+        _eliteRepresentativeHealthRatio = config.EliteRepresentativeHealthRatio;
+        _eliteRepresentativeDamageReductionRatio = config.EliteRepresentativeDamageReductionRatio;
+        _eliteRepresentativeResistanceRatio = config.EliteRepresentativeResistanceRatio;
+        _eliteRepresentativePowerRatio = config.EliteRepresentativePowerRatio;
+        _eliteRepresentativeAttackSpeedRatio = config.EliteRepresentativeAttackSpeedRatio;
+        _eliteRepresentativeSpellSpeedRatio = config.EliteRepresentativeSpellSpeedRatio;
+        _eliteRepresentativeMoveSpeedRatio = config.EliteRepresentativeMoveSpeedRatio;
+        _eliteRepresentativeKnockbackResistanceRatio = config.EliteRepresentativeKnockbackResistanceRatio;
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();

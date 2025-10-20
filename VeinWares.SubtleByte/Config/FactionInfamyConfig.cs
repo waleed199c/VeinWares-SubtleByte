@@ -22,6 +22,24 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
     private static ConfigEntry<int> _halloweenScarecrowRareChancePercent;
+    private static ConfigEntry<bool> _enableEliteAmbush;
+    private static ConfigEntry<float> _eliteHealthMultiplier;
+    private static ConfigEntry<float> _eliteDamageReductionMultiplier;
+    private static ConfigEntry<float> _eliteResistanceMultiplier;
+    private static ConfigEntry<float> _elitePowerMultiplier;
+    private static ConfigEntry<float> _eliteAttackSpeedMultiplier;
+    private static ConfigEntry<float> _eliteSpellSpeedMultiplier;
+    private static ConfigEntry<float> _eliteMoveSpeedMultiplier;
+    private static ConfigEntry<float> _eliteKnockbackResistanceMultiplier;
+    private static ConfigEntry<float> _eliteRepresentativeHealthRatio;
+    private static ConfigEntry<float> _eliteRepresentativeDamageReductionRatio;
+    private static ConfigEntry<float> _eliteRepresentativeResistanceRatio;
+    private static ConfigEntry<float> _eliteRepresentativePowerRatio;
+    private static ConfigEntry<float> _eliteRepresentativeAttackSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeSpellSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeMoveSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeKnockbackResistanceRatio;
+    private static ConfigEntry<bool> _enableAmbushKnockbackResistance;
 
     public static void Initialize(ConfigFile configFile)
     {
@@ -131,6 +149,114 @@ internal static class FactionInfamyConfig
             5,
             "Percent chance that the scarecrow roll will be multiplied by the rare multiplier value. Set to zero to disable the rare roll.");
 
+        _enableEliteAmbush = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Enable Elite Ambush",
+            false,
+            "When true, Tier 5 ambush squads receive elite stat multipliers and representative bonuses.");
+
+        _eliteHealthMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Health Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit health when elite ambushes are enabled.");
+
+        _eliteDamageReductionMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Damage Reduction Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit damage reduction stats when elite ambushes are enabled.");
+
+        _eliteResistanceMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Resistance Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit resistances when elite ambushes are enabled.");
+
+        _elitePowerMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Power Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit physical and spell power when elite ambushes are enabled.");
+
+        _eliteAttackSpeedMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Attack Speed Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit primary attack speed when elite ambushes are enabled.");
+
+        _eliteSpellSpeedMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Spell Speed Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit ability (spell) speed when elite ambushes are enabled.");
+
+        _eliteMoveSpeedMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Move Speed Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit movement speeds when elite ambushes are enabled.");
+
+        _eliteKnockbackResistanceMultiplier = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Knockback Resistance Multiplier",
+            1.0f,
+            "Multiplier applied to ambush unit knockback resistance when elite ambushes are enabled.");
+
+        _eliteRepresentativeHealthRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Health Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative health on top of the base elite multiplier.");
+
+        _eliteRepresentativeDamageReductionRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Damage Reduction Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative damage reduction on top of the base elite multiplier.");
+
+        _eliteRepresentativeResistanceRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Resistance Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative resistances on top of the base elite multiplier.");
+
+        _eliteRepresentativePowerRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Power Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative power on top of the base elite multiplier.");
+
+        _eliteRepresentativeAttackSpeedRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Attack Speed Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative primary attack speed on top of the base elite multiplier.");
+
+        _eliteRepresentativeSpellSpeedRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Spell Speed Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative spell speed on top of the base elite multiplier.");
+
+        _eliteRepresentativeMoveSpeedRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Move Speed Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative movement speed on top of the base elite multiplier.");
+
+        _eliteRepresentativeKnockbackResistanceRatio = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Knockback Resistance Ratio",
+            1.0f,
+            "Additional multiplier applied to elite representative knockback resistance on top of the base elite multiplier.");
+
+        _enableAmbushKnockbackResistance = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Enable Ambush Knockback Resistance",
+            false,
+            "When true, the elite ambush knockback resistance multiplier is applied to spawned units.");
+
         ClampValues();
 
         _initialized = true;
@@ -148,6 +274,24 @@ internal static class FactionInfamyConfig
         var scarecrowMin = Math.Max(0, _halloweenScarecrowMinimum.Value);
         var scarecrowMax = Math.Max(scarecrowMin, _halloweenScarecrowMaximum.Value);
 
+        var eliteHealth = Math.Max(0f, _eliteHealthMultiplier.Value);
+        var eliteDamageReduction = Math.Max(0f, _eliteDamageReductionMultiplier.Value);
+        var eliteResistance = Math.Max(0f, _eliteResistanceMultiplier.Value);
+        var elitePower = Math.Max(0f, _elitePowerMultiplier.Value);
+        var eliteAttackSpeed = Math.Max(0f, _eliteAttackSpeedMultiplier.Value);
+        var eliteSpellSpeed = Math.Max(0f, _eliteSpellSpeedMultiplier.Value);
+        var eliteMoveSpeed = Math.Max(0f, _eliteMoveSpeedMultiplier.Value);
+        var eliteKnockback = Math.Max(0f, _eliteKnockbackResistanceMultiplier.Value);
+
+        var eliteRepHealth = Math.Max(0f, _eliteRepresentativeHealthRatio.Value);
+        var eliteRepDamageReduction = Math.Max(0f, _eliteRepresentativeDamageReductionRatio.Value);
+        var eliteRepResistance = Math.Max(0f, _eliteRepresentativeResistanceRatio.Value);
+        var eliteRepPower = Math.Max(0f, _eliteRepresentativePowerRatio.Value);
+        var eliteRepAttackSpeed = Math.Max(0f, _eliteRepresentativeAttackSpeedRatio.Value);
+        var eliteRepSpellSpeed = Math.Max(0f, _eliteRepresentativeSpellSpeedRatio.Value);
+        var eliteRepMoveSpeed = Math.Max(0f, _eliteRepresentativeMoveSpeedRatio.Value);
+        var eliteRepKnockback = Math.Max(0f, _eliteRepresentativeKnockbackResistanceRatio.Value);
+
         return new FactionInfamyConfigSnapshot(
             Math.Max(0f, _hateGainMultiplier.Value),
             Math.Max(0f, _hateDecayPerMinute.Value) / 60f,
@@ -164,7 +308,25 @@ internal static class FactionInfamyConfig
             scarecrowMin,
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
-            Math.Clamp(_halloweenScarecrowRareChancePercent.Value, 0, 100));
+            Math.Clamp(_halloweenScarecrowRareChancePercent.Value, 0, 100),
+            _enableEliteAmbush.Value,
+            eliteHealth,
+            eliteDamageReduction,
+            eliteResistance,
+            elitePower,
+            eliteAttackSpeed,
+            eliteSpellSpeed,
+            eliteMoveSpeed,
+            eliteKnockback,
+            eliteRepHealth,
+            eliteRepDamageReduction,
+            eliteRepResistance,
+            eliteRepPower,
+            eliteRepAttackSpeed,
+            eliteRepSpellSpeed,
+            eliteRepMoveSpeed,
+            eliteRepKnockback,
+            _enableAmbushKnockbackResistance.Value);
     }
 
     private static void ClampValues()
@@ -253,6 +415,86 @@ internal static class FactionInfamyConfig
         {
             _halloweenScarecrowRareChancePercent.Value = 100;
         }
+
+        if (_eliteHealthMultiplier.Value < 0f)
+        {
+            _eliteHealthMultiplier.Value = 0f;
+        }
+
+        if (_eliteDamageReductionMultiplier.Value < 0f)
+        {
+            _eliteDamageReductionMultiplier.Value = 0f;
+        }
+
+        if (_eliteResistanceMultiplier.Value < 0f)
+        {
+            _eliteResistanceMultiplier.Value = 0f;
+        }
+
+        if (_elitePowerMultiplier.Value < 0f)
+        {
+            _elitePowerMultiplier.Value = 0f;
+        }
+
+        if (_eliteAttackSpeedMultiplier.Value < 0f)
+        {
+            _eliteAttackSpeedMultiplier.Value = 0f;
+        }
+
+        if (_eliteSpellSpeedMultiplier.Value < 0f)
+        {
+            _eliteSpellSpeedMultiplier.Value = 0f;
+        }
+
+        if (_eliteMoveSpeedMultiplier.Value < 0f)
+        {
+            _eliteMoveSpeedMultiplier.Value = 0f;
+        }
+
+        if (_eliteKnockbackResistanceMultiplier.Value < 0f)
+        {
+            _eliteKnockbackResistanceMultiplier.Value = 0f;
+        }
+
+        if (_eliteRepresentativeHealthRatio.Value < 0f)
+        {
+            _eliteRepresentativeHealthRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeDamageReductionRatio.Value < 0f)
+        {
+            _eliteRepresentativeDamageReductionRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeResistanceRatio.Value < 0f)
+        {
+            _eliteRepresentativeResistanceRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativePowerRatio.Value < 0f)
+        {
+            _eliteRepresentativePowerRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeAttackSpeedRatio.Value < 0f)
+        {
+            _eliteRepresentativeAttackSpeedRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeSpellSpeedRatio.Value < 0f)
+        {
+            _eliteRepresentativeSpellSpeedRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeMoveSpeedRatio.Value < 0f)
+        {
+            _eliteRepresentativeMoveSpeedRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeKnockbackResistanceRatio.Value < 0f)
+        {
+            _eliteRepresentativeKnockbackResistanceRatio.Value = 0f;
+        }
     }
 }
 
@@ -272,4 +514,22 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,
-    int HalloweenScarecrowRareChancePercent);
+    int HalloweenScarecrowRareChancePercent,
+    bool EnableEliteAmbush,
+    float EliteHealthMultiplier,
+    float EliteDamageReductionMultiplier,
+    float EliteResistanceMultiplier,
+    float ElitePowerMultiplier,
+    float EliteAttackSpeedMultiplier,
+    float EliteSpellSpeedMultiplier,
+    float EliteMoveSpeedMultiplier,
+    float EliteKnockbackResistanceMultiplier,
+    float EliteRepresentativeHealthRatio,
+    float EliteRepresentativeDamageReductionRatio,
+    float EliteRepresentativeResistanceRatio,
+    float EliteRepresentativePowerRatio,
+    float EliteRepresentativeAttackSpeedRatio,
+    float EliteRepresentativeSpellSpeedRatio,
+    float EliteRepresentativeMoveSpeedRatio,
+    float EliteRepresentativeKnockbackResistanceRatio,
+    bool EnableAmbushKnockbackResistance);

@@ -226,7 +226,7 @@ internal static class FactionInfamyAmbushService
             return;
         }
 
-        var completed = FinalizeAmbushSpawn(entityManager, entity, marker, pending, pending.LifetimeSeconds);
+        var completed = FinalizeAmbushSpawn(entityManager, entity, marker, pending, pending.LifetimeSeconds, pending.Multipliers);
         if (completed)
         {
             FactionInfamySpawnUtility.CancelSpawnCallback(marker);
@@ -304,6 +304,7 @@ internal static class FactionInfamyAmbushService
 
         var totalRelief = Math.Max(MinimumReliefPerSquad, hateValue * HateReliefFraction);
         var reliefPerUnit = totalRelief / totalUnits;
+        var useEliteMultipliers = FactionInfamySystem.EliteAmbushEnabled && difficulty.Tier == 5;
 
         foreach (var request in spawnRequests)
         {
@@ -313,7 +314,10 @@ internal static class FactionInfamyAmbushService
             var cappedTarget = Math.Min(playerLevel + levelOffset, playerLevel + MaxPositiveLevelOffset);
             var targetLevel = Math.Clamp(cappedTarget, 1, 999);
             var lifetimeSeconds = GetNextLifetimeSeconds();
-            var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit, lifetimeSeconds);
+            var multipliers = useEliteMultipliers
+                ? AmbushStatMultipliers.Create(request.IsRepresentative)
+                : AmbushStatMultipliers.Identity;
+            var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit, lifetimeSeconds, multipliers);
             var marker = 0;
 
             try
@@ -332,7 +336,7 @@ internal static class FactionInfamyAmbushService
                             return;
                         }
 
-                        var completed = FinalizeAmbushSpawn(manager, spawnedEntity, key, registered, actualLifetime);
+                        var completed = FinalizeAmbushSpawn(manager, spawnedEntity, key, registered, actualLifetime, registered.Multipliers);
                         if (completed)
                         {
                             FactionInfamySpawnUtility.CancelSpawnCallback(key);
@@ -360,14 +364,14 @@ internal static class FactionInfamyAmbushService
     {
         var requests = new List<AmbushSpawnRequest>();
 
-        AddUnits(requests, squad.BaseUnits);
+        AddUnits(requests, squad.BaseUnits, isRepresentative: false);
 
         if (difficulty.Tier != 5)
         {
             return requests;
         }
 
-        AddUnits(requests, squad.Tier5Representatives);
+        AddUnits(requests, squad.Tier5Representatives, isRepresentative: true);
 
         if (!FactionInfamySystem.HalloweenAmbushEnabled)
         {
@@ -392,13 +396,13 @@ internal static class FactionInfamyAmbushService
                 ? scarecrowCount
                 : Math.Max(1, seasonal.Unit.Count);
 
-            requests.Add(new AmbushSpawnRequest(seasonal.Unit, count));
+            requests.Add(new AmbushSpawnRequest(seasonal.Unit, count, isRepresentative: false));
         }
 
         return requests;
     }
 
-    private static void AddUnits(List<AmbushSpawnRequest> destination, IReadOnlyList<AmbushUnitDefinition> units)
+    private static void AddUnits(List<AmbushSpawnRequest> destination, IReadOnlyList<AmbushUnitDefinition> units, bool isRepresentative)
     {
         if (units is null || units.Count == 0)
         {
@@ -408,7 +412,7 @@ internal static class FactionInfamyAmbushService
         for (var i = 0; i < units.Count; i++)
         {
             var unit = units[i];
-            destination.Add(new AmbushSpawnRequest(unit, Math.Max(1, unit.Count)));
+            destination.Add(new AmbushSpawnRequest(unit, Math.Max(1, unit.Count), isRepresentative));
         }
     }
 
@@ -617,7 +621,7 @@ internal static class FactionInfamyAmbushService
         return new AmbushDifficulty(bucket, offset);
     }
 
-    private static bool FinalizeAmbushSpawn(EntityManager entityManager, Entity entity, int marker, PendingAmbushSpawn pending, float lifetimeSeconds)
+    private static bool FinalizeAmbushSpawn(EntityManager entityManager, Entity entity, int marker, PendingAmbushSpawn pending, float lifetimeSeconds, AmbushStatMultipliers multipliers)
     {
         if (entityManager.HasComponent<LifeTime>(entity))
         {
@@ -627,7 +631,7 @@ internal static class FactionInfamyAmbushService
             entityManager.SetComponentData(entity, lifeTime);
         }
 
-        ApplyAmbushScaling(entityManager, entity, pending.UnitLevel);
+        ApplyAmbushScaling(entityManager, entity, pending.UnitLevel, multipliers);
 
         if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
         {
@@ -651,7 +655,7 @@ internal static class FactionInfamyAmbushService
         return false;
     }
 
-    private static void ApplyAmbushScaling(EntityManager entityManager, Entity entity, int targetLevel)
+    private static void ApplyAmbushScaling(EntityManager entityManager, Entity entity, int targetLevel, AmbushStatMultipliers multipliers)
     {
         if (targetLevel <= 0)
         {
@@ -673,15 +677,138 @@ internal static class FactionInfamyAmbushService
             }
         }
 
-        if (entityManager.HasComponent<UnitStats>(entity) && !entityManager.HasComponent<UnitBaseStatsTypeChanged>(entity))
+        if (multipliers.HasHealth && entityManager.HasComponent<Health>(entity))
         {
-            entityManager.AddComponent<UnitBaseStatsTypeChanged>(entity);
+            var health = entityManager.GetComponentData<Health>(entity);
+            var maxHealth = health.MaxHealth;
+            maxHealth._Value *= multipliers.HealthMultiplier;
+            health.MaxHealth = maxHealth;
+            health.Value = Math.Min(health.Value * multipliers.HealthMultiplier, health.MaxHealth._Value);
+            health.MaxRecoveryHealth *= multipliers.HealthMultiplier;
+            entityManager.SetComponentData(entity, health);
+        }
+
+        if (entityManager.HasComponent<UnitStats>(entity))
+        {
+            var stats = entityManager.GetComponentData<UnitStats>(entity);
+            var statsChanged = false;
+
+            if (multipliers.HasPower)
+            {
+                var physicalPower = stats.PhysicalPower;
+                physicalPower._Value *= multipliers.PowerMultiplier;
+                stats.PhysicalPower = physicalPower;
+
+                var spellPower = stats.SpellPower;
+                spellPower._Value *= multipliers.PowerMultiplier;
+                stats.SpellPower = spellPower;
+
+                statsChanged = true;
+            }
+
+            if (multipliers.HasResistance)
+            {
+                var physicalResistance = stats.PhysicalResistance;
+                physicalResistance._Value *= multipliers.ResistanceMultiplier;
+                stats.PhysicalResistance = physicalResistance;
+
+                var spellResistance = stats.SpellResistance;
+                spellResistance._Value *= multipliers.ResistanceMultiplier;
+                stats.SpellResistance = spellResistance;
+
+                var fireResistance = stats.FireResistance;
+                fireResistance._Value = Math.Max(0, (int)MathF.Round(fireResistance._Value * multipliers.ResistanceMultiplier));
+                stats.FireResistance = fireResistance;
+
+                statsChanged = true;
+            }
+
+            if (multipliers.HasDamageReduction)
+            {
+                var damageReduction = stats.DamageReduction;
+                damageReduction._Value *= multipliers.DamageReductionMultiplier;
+                stats.DamageReduction = damageReduction;
+
+                var corruption = stats.CorruptionDamageReduction;
+                corruption._Value *= multipliers.DamageReductionMultiplier;
+                stats.CorruptionDamageReduction = corruption;
+
+                statsChanged = true;
+            }
+
+            if (statsChanged)
+            {
+                entityManager.SetComponentData(entity, stats);
+            }
+
+            if (!entityManager.HasComponent<UnitBaseStatsTypeChanged>(entity))
+            {
+                entityManager.AddComponent<UnitBaseStatsTypeChanged>(entity);
+            }
+        }
+
+        if (entityManager.HasComponent<AbilityBar_Shared>(entity) && (multipliers.HasAttackSpeed || multipliers.HasSpellSpeed))
+        {
+            var abilityBar = entityManager.GetComponentData<AbilityBar_Shared>(entity);
+            var abilityChanged = false;
+
+            if (multipliers.HasAttackSpeed)
+            {
+                var primarySpeed = abilityBar.PrimaryAttackSpeed;
+                primarySpeed._Value *= multipliers.AttackSpeedMultiplier;
+                abilityBar.PrimaryAttackSpeed = primarySpeed;
+                abilityChanged = true;
+            }
+
+            if (multipliers.HasSpellSpeed)
+            {
+                var abilitySpeed = abilityBar.AbilityAttackSpeed;
+                abilitySpeed._Value *= multipliers.SpellSpeedMultiplier;
+                abilityBar.AbilityAttackSpeed = abilitySpeed;
+                abilityChanged = true;
+            }
+
+            if (abilityChanged)
+            {
+                entityManager.SetComponentData(entity, abilityBar);
+            }
+        }
+
+        if (multipliers.HasMoveSpeed && entityManager.HasComponent<AiMoveSpeeds>(entity))
+        {
+            var speeds = entityManager.GetComponentData<AiMoveSpeeds>(entity);
+            var walk = speeds.Walk;
+            walk._Value *= multipliers.MoveSpeedMultiplier;
+            speeds.Walk = walk;
+
+            var run = speeds.Run;
+            run._Value *= multipliers.MoveSpeedMultiplier;
+            speeds.Run = run;
+
+            var circle = speeds.Circle;
+            circle._Value *= multipliers.MoveSpeedMultiplier;
+            speeds.Circle = circle;
+
+            var retreat = speeds.Return;
+            retreat._Value *= multipliers.MoveSpeedMultiplier;
+            speeds.Return = retreat;
+
+            entityManager.SetComponentData(entity, speeds);
+        }
+
+        if (multipliers.HasKnockback && entityManager.HasComponent<Buffable>(entity))
+        {
+            var buffable = entityManager.GetComponentData<Buffable>(entity);
+            var knockback = buffable.KnockbackResistanceIndex;
+            knockback._Value = Math.Max(0, (int)MathF.Round(knockback._Value * multipliers.KnockbackResistanceMultiplier));
+            buffable.KnockbackResistanceIndex = knockback;
+            entityManager.SetComponentData(entity, buffable);
         }
     }
 
     private sealed class PendingAmbushSpawn
     {
-        public PendingAmbushSpawn(ulong targetSteamId, string factionId, int unitLevel, int remaining, float hateReliefPerUnit, float lifetimeSeconds)
+        public PendingAmbushSpawn(ulong targetSteamId, string factionId, int unitLevel, int remaining, float hateReliefPerUnit, float lifetimeSeconds, AmbushStatMultipliers multipliers)
         {
             TargetSteamId = targetSteamId;
             FactionId = factionId;
@@ -689,6 +816,7 @@ internal static class FactionInfamyAmbushService
             Remaining = remaining;
             HateReliefPerUnit = hateReliefPerUnit;
             LifetimeSeconds = lifetimeSeconds;
+            Multipliers = multipliers;
         }
 
         public ulong TargetSteamId { get; }
@@ -702,6 +830,8 @@ internal static class FactionInfamyAmbushService
         public float HateReliefPerUnit { get; }
 
         public float LifetimeSeconds { get; }
+
+        public AmbushStatMultipliers Multipliers { get; }
     }
 
     private readonly struct ActiveAmbush
@@ -718,6 +848,121 @@ internal static class FactionInfamyAmbushService
         public string FactionId { get; }
 
         public float HateReliefPerKill { get; }
+    }
+
+    private readonly struct AmbushStatMultipliers
+    {
+        private const float Epsilon = 0.0001f;
+
+        public AmbushStatMultipliers(
+            float healthMultiplier,
+            float damageReductionMultiplier,
+            float resistanceMultiplier,
+            float powerMultiplier,
+            float attackSpeedMultiplier,
+            float spellSpeedMultiplier,
+            float moveSpeedMultiplier,
+            float knockbackResistanceMultiplier,
+            bool applyKnockbackResistance)
+        {
+            HealthMultiplier = healthMultiplier;
+            DamageReductionMultiplier = damageReductionMultiplier;
+            ResistanceMultiplier = resistanceMultiplier;
+            PowerMultiplier = powerMultiplier;
+            AttackSpeedMultiplier = attackSpeedMultiplier;
+            SpellSpeedMultiplier = spellSpeedMultiplier;
+            MoveSpeedMultiplier = moveSpeedMultiplier;
+            KnockbackResistanceMultiplier = knockbackResistanceMultiplier;
+            ApplyKnockbackResistance = applyKnockbackResistance;
+        }
+
+        public float HealthMultiplier { get; }
+
+        public float DamageReductionMultiplier { get; }
+
+        public float ResistanceMultiplier { get; }
+
+        public float PowerMultiplier { get; }
+
+        public float AttackSpeedMultiplier { get; }
+
+        public float SpellSpeedMultiplier { get; }
+
+        public float MoveSpeedMultiplier { get; }
+
+        public float KnockbackResistanceMultiplier { get; }
+
+        public bool ApplyKnockbackResistance { get; }
+
+        public bool HasHealth => !IsApproximatelyOne(HealthMultiplier);
+
+        public bool HasDamageReduction => !IsApproximatelyOne(DamageReductionMultiplier);
+
+        public bool HasResistance => !IsApproximatelyOne(ResistanceMultiplier);
+
+        public bool HasPower => !IsApproximatelyOne(PowerMultiplier);
+
+        public bool HasAttackSpeed => !IsApproximatelyOne(AttackSpeedMultiplier);
+
+        public bool HasSpellSpeed => !IsApproximatelyOne(SpellSpeedMultiplier);
+
+        public bool HasMoveSpeed => !IsApproximatelyOne(MoveSpeedMultiplier);
+
+        public bool HasKnockback => ApplyKnockbackResistance && !IsApproximatelyOne(KnockbackResistanceMultiplier);
+
+        private static bool IsApproximatelyOne(float value)
+        {
+            return Math.Abs(value - 1f) <= Epsilon;
+        }
+
+        private static float ResolveMultiplier(float baseMultiplier, float representativeRatio, bool isRepresentative)
+        {
+            var resolved = Math.Max(0f, baseMultiplier);
+            if (isRepresentative)
+            {
+                resolved *= Math.Max(0f, representativeRatio);
+            }
+
+            return resolved;
+        }
+
+        public static AmbushStatMultipliers Create(bool isRepresentative)
+        {
+            var health = ResolveMultiplier(FactionInfamySystem.EliteHealthMultiplier, FactionInfamySystem.EliteRepresentativeHealthRatio, isRepresentative);
+            var damageReduction = ResolveMultiplier(FactionInfamySystem.EliteDamageReductionMultiplier, FactionInfamySystem.EliteRepresentativeDamageReductionRatio, isRepresentative);
+            var resistance = ResolveMultiplier(FactionInfamySystem.EliteResistanceMultiplier, FactionInfamySystem.EliteRepresentativeResistanceRatio, isRepresentative);
+            var power = ResolveMultiplier(FactionInfamySystem.ElitePowerMultiplier, FactionInfamySystem.EliteRepresentativePowerRatio, isRepresentative);
+            var attackSpeed = ResolveMultiplier(FactionInfamySystem.EliteAttackSpeedMultiplier, FactionInfamySystem.EliteRepresentativeAttackSpeedRatio, isRepresentative);
+            var spellSpeed = ResolveMultiplier(FactionInfamySystem.EliteSpellSpeedMultiplier, FactionInfamySystem.EliteRepresentativeSpellSpeedRatio, isRepresentative);
+            var moveSpeed = ResolveMultiplier(FactionInfamySystem.EliteMoveSpeedMultiplier, FactionInfamySystem.EliteRepresentativeMoveSpeedRatio, isRepresentative);
+            var knockback = ResolveMultiplier(FactionInfamySystem.EliteKnockbackResistanceMultiplier, FactionInfamySystem.EliteRepresentativeKnockbackResistanceRatio, isRepresentative);
+            var applyKnockback = FactionInfamySystem.AmbushKnockbackResistanceEnabled && !IsApproximatelyOne(knockback);
+
+            if (IsApproximatelyOne(health)
+                && IsApproximatelyOne(damageReduction)
+                && IsApproximatelyOne(resistance)
+                && IsApproximatelyOne(power)
+                && IsApproximatelyOne(attackSpeed)
+                && IsApproximatelyOne(spellSpeed)
+                && IsApproximatelyOne(moveSpeed)
+                && (!applyKnockback || IsApproximatelyOne(knockback)))
+            {
+                return Identity;
+            }
+
+            return new AmbushStatMultipliers(
+                health,
+                damageReduction,
+                resistance,
+                power,
+                attackSpeed,
+                spellSpeed,
+                moveSpeed,
+                knockback,
+                applyKnockback);
+        }
+
+        public static AmbushStatMultipliers Identity { get; } = new(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, false);
     }
 
     private readonly struct AmbushUnitDefinition
@@ -806,15 +1051,18 @@ internal static class FactionInfamyAmbushService
 
     private readonly struct AmbushSpawnRequest
     {
-        public AmbushSpawnRequest(AmbushUnitDefinition definition, int count)
+        public AmbushSpawnRequest(AmbushUnitDefinition definition, int count, bool isRepresentative)
         {
             Definition = definition;
             Count = Math.Max(1, count);
+            IsRepresentative = isRepresentative;
         }
 
         public AmbushUnitDefinition Definition { get; }
 
         public int Count { get; }
+
+        public bool IsRepresentative { get; }
     }
 
     private readonly struct AmbushDifficulty
