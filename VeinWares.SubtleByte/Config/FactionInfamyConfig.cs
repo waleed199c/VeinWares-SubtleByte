@@ -17,6 +17,11 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _maximumHate;
     private static ConfigEntry<int> _autosaveMinutes;
     private static ConfigEntry<int> _autosaveBackups;
+    private static ConfigEntry<bool> _enableHalloweenAmbush;
+    private static ConfigEntry<int> _halloweenScarecrowMinimum;
+    private static ConfigEntry<int> _halloweenScarecrowMaximum;
+    private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
+    private static ConfigEntry<int> _halloweenScarecrowRareChancePercent;
 
     public static void Initialize(ConfigFile configFile)
     {
@@ -96,6 +101,36 @@ internal static class FactionInfamyConfig
             3,
             "Number of rolling backup files to keep whenever the Faction Infamy system saves the hate database.");
 
+        _enableHalloweenAmbush = configFile.Bind(
+            "Faction Infamy",
+            "Enable Halloween Ambush",
+            false,
+            "When true, Tier 5 ambush squads can include seasonal scarecrow reinforcements.");
+
+        _halloweenScarecrowMinimum = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Scarecrow Minimum",
+            1,
+            "Minimum number of scarecrows to spawn alongside Tier 5 ambush squads when the Halloween event is enabled.");
+
+        _halloweenScarecrowMaximum = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Scarecrow Maximum",
+            3,
+            "Maximum number of scarecrows to spawn alongside Tier 5 ambush squads when the Halloween event is enabled.");
+
+        _halloweenScarecrowRareMultiplier = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Scarecrow Rare Multiplier",
+            2,
+            "Multiplier applied to the rolled scarecrow count when the rare Halloween scarecrow chance succeeds.");
+
+        _halloweenScarecrowRareChancePercent = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Scarecrow Rare Chance Percent",
+            5,
+            "Percent chance that the scarecrow roll will be multiplied by the rare multiplier value. Set to zero to disable the rare roll.");
+
         ClampValues();
 
         _initialized = true;
@@ -110,6 +145,9 @@ internal static class FactionInfamyConfig
 
         ClampValues();
 
+        var scarecrowMin = Math.Max(0, _halloweenScarecrowMinimum.Value);
+        var scarecrowMax = Math.Max(scarecrowMin, _halloweenScarecrowMaximum.Value);
+
         return new FactionInfamyConfigSnapshot(
             Math.Max(0f, _hateGainMultiplier.Value),
             Math.Max(0f, _hateDecayPerMinute.Value) / 60f,
@@ -121,7 +159,12 @@ internal static class FactionInfamyConfig
             Math.Max(0f, _minimumAmbushHate.Value),
             Math.Max(1, _maximumHate.Value),
             TimeSpan.FromMinutes(Math.Max(1, _autosaveMinutes.Value)),
-            Math.Clamp(_autosaveBackups.Value, 0, 20));
+            Math.Clamp(_autosaveBackups.Value, 0, 20),
+            _enableHalloweenAmbush.Value,
+            scarecrowMin,
+            scarecrowMax,
+            Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
+            Math.Clamp(_halloweenScarecrowRareChancePercent.Value, 0, 100));
     }
 
     private static void ClampValues()
@@ -185,6 +228,31 @@ internal static class FactionInfamyConfig
         {
             _autosaveBackups.Value = 0;
         }
+
+        if (_halloweenScarecrowMinimum.Value < 0)
+        {
+            _halloweenScarecrowMinimum.Value = 0;
+        }
+
+        if (_halloweenScarecrowMaximum.Value < _halloweenScarecrowMinimum.Value)
+        {
+            _halloweenScarecrowMaximum.Value = _halloweenScarecrowMinimum.Value;
+        }
+
+        if (_halloweenScarecrowRareMultiplier.Value < 1)
+        {
+            _halloweenScarecrowRareMultiplier.Value = 1;
+        }
+
+        if (_halloweenScarecrowRareChancePercent.Value < 0)
+        {
+            _halloweenScarecrowRareChancePercent.Value = 0;
+        }
+
+        if (_halloweenScarecrowRareChancePercent.Value > 100)
+        {
+            _halloweenScarecrowRareChancePercent.Value = 100;
+        }
     }
 }
 
@@ -199,4 +267,9 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     float MinimumAmbushHate,
     int MaximumHate,
     TimeSpan AutosaveInterval,
-    int AutosaveBackupCount);
+    int AutosaveBackupCount,
+    bool EnableHalloweenAmbush,
+    int HalloweenScarecrowMinimum,
+    int HalloweenScarecrowMaximum,
+    int HalloweenScarecrowRareMultiplier,
+    int HalloweenScarecrowRareChancePercent);

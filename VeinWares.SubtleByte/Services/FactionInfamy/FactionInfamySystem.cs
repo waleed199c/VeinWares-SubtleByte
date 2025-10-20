@@ -23,6 +23,11 @@ internal static class FactionInfamySystem
     private static int _ambushChancePercent;
     private static float _minimumAmbushHate;
     private static float _maximumHate;
+    private static bool _enableHalloweenAmbush;
+    private static int _halloweenScarecrowMinimum;
+    private static int _halloweenScarecrowMaximum;
+    private static int _halloweenScarecrowRareMultiplier;
+    private static int _halloweenScarecrowRareChancePercent;
 
     public static bool Enabled => _initialized;
 
@@ -35,6 +40,16 @@ internal static class FactionInfamySystem
     internal static TimeSpan AmbushCooldown => _ambushCooldown;
 
     internal static float MaximumHate => _maximumHate;
+
+    internal static bool HalloweenAmbushEnabled => _enableHalloweenAmbush;
+
+    internal static int HalloweenScarecrowMinimum => _halloweenScarecrowMinimum;
+
+    internal static int HalloweenScarecrowMaximum => _halloweenScarecrowMaximum;
+
+    internal static int HalloweenScarecrowRareMultiplier => _halloweenScarecrowRareMultiplier;
+
+    internal static int HalloweenScarecrowRareChancePercent => _halloweenScarecrowRareChancePercent;
 
     public static int AutosaveBackupCount { get; private set; }
 
@@ -54,6 +69,11 @@ internal static class FactionInfamySystem
         _ambushLifetime = config.AmbushLifetime;
         _minimumAmbushHate = config.MinimumAmbushHate;
         _maximumHate = config.MaximumHate;
+        _enableHalloweenAmbush = config.EnableHalloweenAmbush;
+        _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
+        _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
+        _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
+        _halloweenScarecrowRareChancePercent = config.HalloweenScarecrowRareChancePercent;
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();
