@@ -22,6 +22,9 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
     private static ConfigEntry<int> _halloweenScarecrowRareChancePercent;
+    private static ConfigEntry<int> _seasonalFollowUpChancePercent;
+    private static ConfigEntry<int> _seasonalFollowUpMinimum;
+    private static ConfigEntry<int> _seasonalFollowUpMaximum;
     private static ConfigEntry<bool> _enableEliteAmbush;
     private static ConfigEntry<float> _eliteHealthMultiplier;
     private static ConfigEntry<float> _eliteDamageReductionMultiplier;
@@ -149,6 +152,24 @@ internal static class FactionInfamyConfig
             5,
             "Percent chance that the scarecrow roll will be multiplied by the rare multiplier value. Set to zero to disable the rare roll.");
 
+        _seasonalFollowUpChancePercent = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Follow-Up Wave Chance Percent",
+            0,
+            "Percent chance that a second seasonal ambush wave spawns after the core squad. Set to zero to disable follow-up waves.");
+
+        _seasonalFollowUpMinimum = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Follow-Up Wave Minimum",
+            1,
+            "Minimum number of shared seasonal units to spawn in the follow-up wave when enabled.");
+
+        _seasonalFollowUpMaximum = configFile.Bind(
+            "Faction Infamy",
+            "Halloween Follow-Up Wave Maximum",
+            2,
+            "Maximum number of shared seasonal units to spawn in the follow-up wave when enabled. Values below the minimum will be clamped.");
+
         _enableEliteAmbush = configFile.Bind(
             "Faction Infamy - Elite Ambush",
             "Enable Elite Ambush",
@@ -273,6 +294,9 @@ internal static class FactionInfamyConfig
 
         var scarecrowMin = Math.Max(0, _halloweenScarecrowMinimum.Value);
         var scarecrowMax = Math.Max(scarecrowMin, _halloweenScarecrowMaximum.Value);
+        var followUpChance = Math.Clamp(_seasonalFollowUpChancePercent.Value, 0, 100);
+        var followUpMin = Math.Max(0, _seasonalFollowUpMinimum.Value);
+        var followUpMax = Math.Max(followUpMin, _seasonalFollowUpMaximum.Value);
 
         var eliteHealth = Math.Max(0f, _eliteHealthMultiplier.Value);
         var eliteDamageReduction = Math.Max(0f, _eliteDamageReductionMultiplier.Value);
@@ -309,6 +333,9 @@ internal static class FactionInfamyConfig
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
             Math.Clamp(_halloweenScarecrowRareChancePercent.Value, 0, 100),
+            followUpChance,
+            followUpMin,
+            followUpMax,
             _enableEliteAmbush.Value,
             eliteHealth,
             eliteDamageReduction,
@@ -416,6 +443,26 @@ internal static class FactionInfamyConfig
             _halloweenScarecrowRareChancePercent.Value = 100;
         }
 
+        if (_seasonalFollowUpChancePercent.Value < 0)
+        {
+            _seasonalFollowUpChancePercent.Value = 0;
+        }
+
+        if (_seasonalFollowUpChancePercent.Value > 100)
+        {
+            _seasonalFollowUpChancePercent.Value = 100;
+        }
+
+        if (_seasonalFollowUpMinimum.Value < 0)
+        {
+            _seasonalFollowUpMinimum.Value = 0;
+        }
+
+        if (_seasonalFollowUpMaximum.Value < _seasonalFollowUpMinimum.Value)
+        {
+            _seasonalFollowUpMaximum.Value = _seasonalFollowUpMinimum.Value;
+        }
+
         if (_eliteHealthMultiplier.Value < 0f)
         {
             _eliteHealthMultiplier.Value = 0f;
@@ -515,6 +562,9 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,
     int HalloweenScarecrowRareChancePercent,
+    int SeasonalFollowUpChancePercent,
+    int SeasonalFollowUpMinimum,
+    int SeasonalFollowUpMaximum,
     bool EnableEliteAmbush,
     float EliteHealthMultiplier,
     float EliteDamageReductionMultiplier,

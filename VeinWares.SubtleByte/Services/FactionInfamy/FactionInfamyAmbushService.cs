@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using BepInEx.Logging;
 using ProjectM;
 using ProjectM.Network;
@@ -40,7 +41,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Blackfangs"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -54,7 +58,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Militia"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -68,7 +75,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Gloomrot"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -82,7 +92,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Legion"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -96,7 +109,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Undead"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -110,7 +126,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             }),
         ["Werewolf"] = new AmbushSquadDefinition(
             baseUnits: new[]
@@ -119,7 +138,10 @@ internal static class FactionInfamyAmbushService
             },
             seasonalUnits: new[]
             {
-                AmbushSeasonalDefinition.HalloweenScarecrow
+                AmbushSeasonalDefinition.HalloweenScarecrow,
+                AmbushSeasonalDefinition.HalloweenGhostBanshee,
+                AmbushSeasonalDefinition.HalloweenGhostGuardian,
+                AmbushSeasonalDefinition.HalloweenGhostAssassin
             })
     };
 
@@ -307,13 +329,18 @@ internal static class FactionInfamyAmbushService
             return false;
         }
 
-        var spawnRequests = BuildSpawnRequests(squad, difficulty);
+        var spawnPlan = BuildSpawnRequests(squad, difficulty);
+        var spawnRequests = spawnPlan.CoreRequests;
         if (spawnRequests.Count == 0)
         {
             return false;
         }
 
         var totalUnits = spawnRequests.Sum(request => request.Count);
+        if (spawnPlan.FollowUpRequests.Count > 0)
+        {
+            totalUnits += spawnPlan.FollowUpRequests.Sum(request => request.Count);
+        }
         if (totalUnits <= 0)
         {
             return false;
@@ -322,6 +349,19 @@ internal static class FactionInfamyAmbushService
         var totalRelief = Math.Max(MinimumReliefPerSquad, hateValue * HateReliefFraction);
         var reliefPerUnit = totalRelief / totalUnits;
         var useEliteMultipliers = FactionInfamySystem.EliteAmbushEnabled && difficulty.Tier == 5;
+
+        AmbushSquadTracker? followUpTracker = spawnPlan.FollowUpRequests.Count == 0
+            ? null
+            : new AmbushSquadTracker(
+                steamId,
+                factionId,
+                playerLevel,
+                position,
+                difficulty,
+                reliefPerUnit,
+                useEliteMultipliers,
+                spawnPlan.FollowUpRequests,
+                spawnRequests.Count);
 
         foreach (var request in spawnRequests)
         {
@@ -334,7 +374,15 @@ internal static class FactionInfamyAmbushService
             var multipliers = useEliteMultipliers
                 ? AmbushStatMultipliers.Create(request.IsRepresentative)
                 : AmbushStatMultipliers.Identity;
-            var pending = new PendingAmbushSpawn(steamId, factionId, targetLevel, count, reliefPerUnit, lifetimeSeconds, multipliers);
+            var pending = new PendingAmbushSpawn(
+                steamId,
+                factionId,
+                targetLevel,
+                count,
+                reliefPerUnit,
+                lifetimeSeconds,
+                multipliers,
+                followUpTracker);
             var marker = 0;
 
             try
@@ -377,35 +425,33 @@ internal static class FactionInfamyAmbushService
         return true;
     }
 
-    private static List<AmbushSpawnRequest> BuildSpawnRequests(AmbushSquadDefinition squad, AmbushDifficulty difficulty)
+    private static AmbushSpawnPlan BuildSpawnRequests(AmbushSquadDefinition squad, AmbushDifficulty difficulty)
     {
         var requests = new List<AmbushSpawnRequest>();
+        var followUps = new List<AmbushSpawnRequest>();
 
         AddUnits(requests, squad.BaseUnits, isRepresentative: false);
 
         if (difficulty.Tier != 5)
         {
-            return requests;
+            return new AmbushSpawnPlan(requests, followUps);
         }
 
         AddUnits(requests, squad.Tier5Representatives, isRepresentative: true);
 
         if (!FactionInfamySystem.HalloweenAmbushEnabled)
         {
-            return requests;
+            return new AmbushSpawnPlan(requests, followUps);
         }
 
         var seasonalUnits = squad.GetSeasonalUnits(SeasonalAmbushType.Halloween);
         if (seasonalUnits.Count == 0)
         {
-            return requests;
+            return new AmbushSpawnPlan(requests, followUps);
         }
 
         var scarecrowCount = RollHalloweenScarecrowCount();
-        if (scarecrowCount <= 0)
-        {
-            return requests;
-        }
+        var followUpCount = RollHalloweenFollowUpCount();
 
         foreach (var seasonal in seasonalUnits)
         {
@@ -413,10 +459,25 @@ internal static class FactionInfamyAmbushService
                 ? scarecrowCount
                 : Math.Max(1, seasonal.Unit.Count);
 
-            requests.Add(new AmbushSpawnRequest(seasonal.Unit, count, isRepresentative: false));
+            if (count > 0)
+            {
+                requests.Add(new AmbushSpawnRequest(seasonal.Unit, count, isRepresentative: false));
+
+                if (followUpCount > 0)
+                {
+                    var followUp = seasonal.UseSharedRollCount
+                        ? followUpCount
+                        : Math.Max(1, seasonal.Unit.Count);
+
+                    if (followUp > 0)
+                    {
+                        followUps.Add(new AmbushSpawnRequest(seasonal.Unit, followUp, isRepresentative: false));
+                    }
+                }
+            }
         }
 
-        return requests;
+        return new AmbushSpawnPlan(requests, followUps);
     }
 
     private static void AddUnits(List<AmbushSpawnRequest> destination, IReadOnlyList<AmbushUnitDefinition> units, bool isRepresentative)
@@ -451,6 +512,25 @@ internal static class FactionInfamyAmbushService
             count *= multiplier;
         }
 
+        return Math.Max(0, count);
+    }
+
+    private static int RollHalloweenFollowUpCount()
+    {
+        var chance = Math.Clamp(FactionInfamySystem.SeasonalFollowUpChancePercent, 0, 100);
+        if (chance <= 0 || Random.Next(0, 100) >= chance)
+        {
+            return 0;
+        }
+
+        var min = Math.Max(0, FactionInfamySystem.SeasonalFollowUpMinimum);
+        var max = Math.Max(min, FactionInfamySystem.SeasonalFollowUpMaximum);
+        if (max <= 0)
+        {
+            return 0;
+        }
+
+        var count = Random.Next(min, max + 1);
         return Math.Max(0, count);
     }
 
@@ -663,6 +743,7 @@ internal static class FactionInfamyAmbushService
         if (pending.Remaining <= 0)
         {
             PendingSpawns.TryRemove(marker, out _);
+            pending.SquadTracker?.OnCoreRequestCompleted();
             return true;
         }
 
@@ -822,7 +903,15 @@ internal static class FactionInfamyAmbushService
 
     private sealed class PendingAmbushSpawn
     {
-        public PendingAmbushSpawn(ulong targetSteamId, string factionId, int unitLevel, int remaining, float hateReliefPerUnit, float lifetimeSeconds, AmbushStatMultipliers multipliers)
+        public PendingAmbushSpawn(
+            ulong targetSteamId,
+            string factionId,
+            int unitLevel,
+            int remaining,
+            float hateReliefPerUnit,
+            float lifetimeSeconds,
+            AmbushStatMultipliers multipliers,
+            AmbushSquadTracker? squadTracker = null)
         {
             TargetSteamId = targetSteamId;
             FactionId = factionId;
@@ -831,6 +920,7 @@ internal static class FactionInfamyAmbushService
             HateReliefPerUnit = hateReliefPerUnit;
             LifetimeSeconds = lifetimeSeconds;
             Multipliers = multipliers;
+            SquadTracker = squadTracker;
         }
 
         public ulong TargetSteamId { get; }
@@ -846,6 +936,144 @@ internal static class FactionInfamyAmbushService
         public float LifetimeSeconds { get; }
 
         public AmbushStatMultipliers Multipliers { get; }
+
+        public AmbushSquadTracker? SquadTracker { get; }
+    }
+
+    private sealed class AmbushSquadTracker
+    {
+        private readonly ulong _steamId;
+        private readonly string _factionId;
+        private readonly int _playerLevel;
+        private readonly AmbushDifficulty _difficulty;
+        private readonly float3 _position;
+        private readonly float _hateReliefPerUnit;
+        private readonly bool _useEliteMultipliers;
+        private readonly List<AmbushSpawnRequest> _followUpRequests;
+        private int _remainingCoreRequests;
+        private int _followUpQueued;
+
+        public AmbushSquadTracker(
+            ulong steamId,
+            string factionId,
+            int playerLevel,
+            float3 position,
+            AmbushDifficulty difficulty,
+            float hateReliefPerUnit,
+            bool useEliteMultipliers,
+            IReadOnlyList<AmbushSpawnRequest> followUpRequests,
+            int remainingCoreRequests)
+        {
+            _steamId = steamId;
+            _factionId = factionId;
+            _playerLevel = playerLevel;
+            _position = position;
+            _difficulty = difficulty;
+            _hateReliefPerUnit = hateReliefPerUnit;
+            _useEliteMultipliers = useEliteMultipliers;
+            _followUpRequests = followUpRequests?.Count > 0
+                ? new List<AmbushSpawnRequest>(followUpRequests)
+                : new List<AmbushSpawnRequest>();
+            _remainingCoreRequests = Math.Max(0, remainingCoreRequests);
+            _followUpQueued = 0;
+        }
+
+        public void OnCoreRequestCompleted()
+        {
+            if (_remainingCoreRequests <= 0)
+            {
+                return;
+            }
+
+            if (Interlocked.Decrement(ref _remainingCoreRequests) <= 0)
+            {
+                QueueFollowUpWave();
+            }
+        }
+
+        private void QueueFollowUpWave()
+        {
+            if (_followUpRequests.Count == 0)
+            {
+                return;
+            }
+
+            if (Interlocked.Exchange(ref _followUpQueued, 1) != 0)
+            {
+                return;
+            }
+
+            var spawnedAny = false;
+
+            foreach (var request in _followUpRequests)
+            {
+                var unit = request.Definition;
+                var count = request.Count;
+                if (count <= 0)
+                {
+                    continue;
+                }
+
+                var levelOffset = _difficulty.LevelOffset + unit.LevelOffset;
+                var cappedTarget = Math.Min(_playerLevel + levelOffset, _playerLevel + MaxPositiveLevelOffset);
+                var targetLevel = Math.Clamp(cappedTarget, 1, 999);
+                var lifetimeSeconds = GetNextLifetimeSeconds();
+                var multipliers = _useEliteMultipliers
+                    ? AmbushStatMultipliers.Create(request.IsRepresentative)
+                    : AmbushStatMultipliers.Identity;
+                var pending = new PendingAmbushSpawn(
+                    _steamId,
+                    _factionId,
+                    targetLevel,
+                    count,
+                    _hateReliefPerUnit,
+                    lifetimeSeconds,
+                    multipliers);
+
+                var marker = 0;
+
+                try
+                {
+                    marker = FactionInfamySpawnUtility.SpawnUnit(
+                        unit.Prefab,
+                        _position,
+                        count,
+                        unit.MinRange,
+                        unit.MaxRange,
+                        lifetimeSeconds,
+                        (manager, spawnedEntity, key, actualLifetime) =>
+                        {
+                            if (!PendingSpawns.TryGetValue(key, out var registered))
+                            {
+                                return;
+                            }
+
+                            var completed = FinalizeAmbushSpawn(manager, spawnedEntity, key, registered, actualLifetime, registered.Multipliers);
+                            if (completed)
+                            {
+                                FactionInfamySpawnUtility.CancelSpawnCallback(key);
+                            }
+                        });
+
+                    PendingSpawns[marker] = pending;
+                    spawnedAny = true;
+                }
+                catch (Exception ex)
+                {
+                    _log?.LogError($"[Infamy] Failed to spawn seasonal follow-up unit {unit.Prefab.GuidHash} for faction '{_factionId}': {ex.Message}");
+                    if (marker != 0)
+                    {
+                        PendingSpawns.TryRemove(marker, out _);
+                        FactionInfamySpawnUtility.CancelSpawnCallback(marker);
+                    }
+                }
+            }
+
+            if (spawnedAny)
+            {
+                _log?.LogInfo($"[Infamy] Spawned seasonal follow-up wave for faction '{_factionId}' targeting {_steamId}.");
+            }
+        }
     }
 
     private readonly struct ActiveAmbush
@@ -1056,11 +1284,39 @@ internal static class FactionInfamyAmbushService
             SeasonalAmbushType.Halloween,
             new AmbushUnitDefinition(new PrefabGUID(-1750347680), 1, 0, 2.5f, 8f),
             useSharedRollCount: true);
+
+        public static AmbushSeasonalDefinition HalloweenGhostBanshee { get; } = new(
+            SeasonalAmbushType.Halloween,
+            new AmbushUnitDefinition(new PrefabGUID(-1146194149), 1, 2, 2.5f, 10f),
+            useSharedRollCount: false);
+
+        public static AmbushSeasonalDefinition HalloweenGhostGuardian { get; } = new(
+            SeasonalAmbushType.Halloween,
+            new AmbushUnitDefinition(new PrefabGUID(-458883491), 1, 3, 2f, 9f),
+            useSharedRollCount: false);
+
+        public static AmbushSeasonalDefinition HalloweenGhostAssassin { get; } = new(
+            SeasonalAmbushType.Halloween,
+            new AmbushUnitDefinition(new PrefabGUID(849891426), 2, 1, 2.5f, 10f),
+            useSharedRollCount: false);
     }
 
     private enum SeasonalAmbushType
     {
         Halloween
+    }
+
+    private readonly struct AmbushSpawnPlan
+    {
+        public AmbushSpawnPlan(List<AmbushSpawnRequest> coreRequests, List<AmbushSpawnRequest> followUpRequests)
+        {
+            CoreRequests = coreRequests ?? new List<AmbushSpawnRequest>();
+            FollowUpRequests = followUpRequests ?? new List<AmbushSpawnRequest>();
+        }
+
+        public List<AmbushSpawnRequest> CoreRequests { get; }
+
+        public List<AmbushSpawnRequest> FollowUpRequests { get; }
     }
 
     private readonly struct AmbushSpawnRequest
