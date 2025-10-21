@@ -95,11 +95,18 @@ internal static class FactionInfamyPersistence
 
         foreach (var faction in record.Factions)
         {
+            var factionRecord = faction.Value;
+            if (factionRecord is null)
+            {
+                continue;
+            }
+
             var entry = new HateEntry
             {
-                Hate = faction.Value.Hate,
-                LastAmbush = faction.Value.LastAmbush,
-                LastUpdated = faction.Value.LastUpdated
+                Hate = factionRecord.Hate,
+                LastAmbush = factionRecord.LastAmbush,
+                LastUpdated = factionRecord.LastUpdated,
+                LastAnnouncedTier = factionRecord.LastAnnouncedTier
             };
             data.SetHate(faction.Key, entry);
         }
@@ -152,4 +159,6 @@ internal sealed class HateEntryRecord
     public DateTime LastUpdated { get; set; }
 
     public DateTime LastAmbush { get; set; }
+
+    public int LastAnnouncedTier { get; set; }
 }
