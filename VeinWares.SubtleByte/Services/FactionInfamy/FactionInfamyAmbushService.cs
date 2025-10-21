@@ -451,6 +451,11 @@ internal static class FactionInfamyAmbushService
         }
 
         var scarecrowCount = RollHalloweenScarecrowCount();
+        if (scarecrowCount <= 0)
+        {
+            return new AmbushSpawnPlan(requests, followUps);
+        }
+
         var followUpCount = RollHalloweenFollowUpCount();
 
         foreach (var seasonal in seasonalUnits)
