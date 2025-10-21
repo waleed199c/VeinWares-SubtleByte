@@ -354,7 +354,9 @@ internal static class FactionInfamyChatConfig
 
     private sealed class AmbushChatConfiguration
     {
-        public string DefaultColor { get; set; } = DefaultColor;
+        private const string DefaultColorValue = "#FFFFFF";
+
+        public string DefaultColor { get; set; } = DefaultColorValue;
 
         public Dictionary<int, string> DefaultTierMessages { get; set; } = new();
 
@@ -362,7 +364,7 @@ internal static class FactionInfamyChatConfig
 
         public void Normalise()
         {
-            DefaultColor = NormaliseColor(DefaultColor, DefaultColor);
+            DefaultColor = NormaliseColor(DefaultColor, DefaultColorValue);
             DefaultTierMessages = NormaliseTierMessages(DefaultTierMessages, CreateDefaultTierMessages());
 
             if (Factions == null)
