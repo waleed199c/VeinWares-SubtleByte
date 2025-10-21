@@ -1,0 +1,48 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FactionInfamyAmbushChat",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "defaultColor": {
+      "type": "string",
+      "pattern": "^#?[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+    },
+    "defaultTierMessages": {
+      "type": "object",
+      "additionalProperties": false,
+      "patternProperties": {
+        "^[1-5]$": {
+          "type": "string"
+        }
+      }
+    },
+    "factions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "color": {
+            "type": "string",
+            "pattern": "^#?[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+          },
+          "tierMessages": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+              "^[1-5]$": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "defaultColor",
+    "defaultTierMessages",
+    "factions"
+  ]
+}

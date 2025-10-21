@@ -5,6 +5,7 @@ using System.Linq;
 using BepInEx.Logging;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Models.FactionInfamy;
+using VeinWares.SubtleByte.Utilities;
 
 #nullable enable
 
@@ -217,7 +218,7 @@ internal static class FactionInfamySystem
                 continue;
             }
 
-            if (data.RunCooldown(_config.HateDecayPerSecond, deltaTime, removalThreshold))
+            if (data.RunCooldown(_config.HateDecayPerSecond, deltaTime, removalThreshold, _maximumHate))
             {
                 _dirty = true;
                 if (data.FactionHate.Count == 0)
@@ -252,8 +253,20 @@ internal static class FactionInfamySystem
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         var entry = data.GetHate(factionId);
         var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _maximumHate);
+        var newTier = FactionInfamyTierHelper.CalculateTier(newHate, _maximumHate);
+        var previousTier = entry.LastAnnouncedTier;
         entry.Hate = newHate;
         entry.LastUpdated = DateTime.UtcNow;
+        if (newTier > previousTier)
+        {
+            var message = FactionInfamyChatConfig.GetTierAnnouncement(factionId, newTier, newHate);
+            if (!string.IsNullOrWhiteSpace(message))
+            {
+                ChatHelper.TrySendSystemMessage(steamId, message);
+            }
+        }
+
+        entry.LastAnnouncedTier = newTier;
         data.SetHate(factionId, entry);
         _dirty = true;
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
@@ -293,6 +306,7 @@ internal static class FactionInfamySystem
         var now = DateTime.UtcNow;
         entry.Hate = newHate;
         entry.LastUpdated = now;
+        entry.LastAnnouncedTier = FactionInfamyTierHelper.CalculateTier(newHate, _maximumHate);
 
         if (newHate <= 0.01f)
         {
@@ -620,7 +634,8 @@ internal static class FactionInfamySystem
                             {
                                 Hate = faction.Value.Hate,
                                 LastAmbush = faction.Value.LastAmbush,
-                                LastUpdated = faction.Value.LastUpdated
+                                LastUpdated = faction.Value.LastUpdated,
+                                LastAnnouncedTier = faction.Value.LastAnnouncedTier
                             })
                 });
     }

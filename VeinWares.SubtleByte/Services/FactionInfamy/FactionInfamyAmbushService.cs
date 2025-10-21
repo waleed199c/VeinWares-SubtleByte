@@ -615,15 +615,7 @@ internal static class FactionInfamyAmbushService
 
     private static AmbushDifficulty EvaluateDifficulty(float hateValue)
     {
-        var maximumHate = Math.Max(1f, FactionInfamySystem.MaximumHate);
-        var normalized = Math.Clamp(hateValue / maximumHate, 0f, 1f);
-        var bucket = (int)Math.Floor(normalized * 5.0) + 1;
-        if (normalized >= 0.999f)
-        {
-            bucket = 5;
-        }
-
-        bucket = Math.Clamp(bucket, 1, 5);
+        var bucket = FactionInfamyTierHelper.CalculateTier(hateValue, FactionInfamySystem.MaximumHate);
 
         var offset = bucket switch
         {

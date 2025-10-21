@@ -41,7 +41,7 @@ internal sealed class PlayerHateData
         return result;
     }
 
-    public bool RunCooldown(float decayPerSecond, float deltaSeconds, float removalThreshold)
+    public bool RunCooldown(float decayPerSecond, float deltaSeconds, float removalThreshold, float maximumHate)
     {
         if (_factionHate.Count == 0 || decayPerSecond <= 0f || deltaSeconds <= 0f)
         {
@@ -74,6 +74,7 @@ internal sealed class PlayerHateData
 
             entry.Hate = newHate;
             entry.LastUpdated = DateTime.UtcNow;
+            entry.LastAnnouncedTier = FactionInfamyTierHelper.CalculateTier(newHate, maximumHate);
             updates.Add(new KeyValuePair<string, HateEntry>(pair.Key, entry));
 
             if (newHate <= removalThreshold)
@@ -106,4 +107,6 @@ internal struct HateEntry
     public DateTime LastUpdated { get; set; }
 
     public DateTime LastAmbush { get; set; }
+
+    public int LastAnnouncedTier { get; set; }
 }
