@@ -29,6 +29,9 @@ internal static class FactionInfamySystem
     private static int _halloweenScarecrowMaximum;
     private static int _halloweenScarecrowRareMultiplier;
     private static int _halloweenScarecrowRareChancePercent;
+    private static int _seasonalFollowUpChancePercent;
+    private static int _seasonalFollowUpMinimum;
+    private static int _seasonalFollowUpMaximum;
     private static bool _enableEliteAmbush;
     private static bool _enableAmbushKnockbackResistance;
     private static float _eliteHealthMultiplier;
@@ -69,6 +72,12 @@ internal static class FactionInfamySystem
     internal static int HalloweenScarecrowRareMultiplier => _halloweenScarecrowRareMultiplier;
 
     internal static int HalloweenScarecrowRareChancePercent => _halloweenScarecrowRareChancePercent;
+
+    internal static int SeasonalFollowUpChancePercent => _seasonalFollowUpChancePercent;
+
+    internal static int SeasonalFollowUpMinimum => _seasonalFollowUpMinimum;
+
+    internal static int SeasonalFollowUpMaximum => _seasonalFollowUpMaximum;
 
     internal static bool EliteAmbushEnabled => _enableEliteAmbush;
 
@@ -129,6 +138,9 @@ internal static class FactionInfamySystem
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
         _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
         _halloweenScarecrowRareChancePercent = config.HalloweenScarecrowRareChancePercent;
+        _seasonalFollowUpChancePercent = config.SeasonalFollowUpChancePercent;
+        _seasonalFollowUpMinimum = config.SeasonalFollowUpMinimum;
+        _seasonalFollowUpMaximum = config.SeasonalFollowUpMaximum;
         _enableEliteAmbush = config.EnableEliteAmbush;
         _enableAmbushKnockbackResistance = config.EnableAmbushKnockbackResistance;
         _eliteHealthMultiplier = config.EliteHealthMultiplier;
