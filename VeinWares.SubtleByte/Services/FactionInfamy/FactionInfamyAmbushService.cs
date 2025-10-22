@@ -763,12 +763,20 @@ internal static class FactionInfamyAmbushService
 
         UpdateFactionReference(entityManager, entity, factionGuid);
 
-        if (!TryCacheFactionTeamData(entityManager, entity, pending.FactionId, factionGuid, out var cachedTeam))
+        if (FactionTeamCache.TryGetValue(pending.FactionId, out var cachedTeam) &&
+            cachedTeam.IsValid &&
+            cachedTeam.FactionGuid.GuidHash == factionGuid.GuidHash)
         {
-            FactionTeamCache.TryGetValue(pending.FactionId, out cachedTeam);
+            if (!IsEntityAlignedWithTeamData(entityManager, entity, cachedTeam))
+            {
+                ApplyTeamData(entityManager, entity, cachedTeam);
+            }
+
+            return;
         }
 
-        if (!cachedTeam.IsValid)
+        if (!TryCacheFactionTeamData(entityManager, entity, pending.FactionId, factionGuid, out cachedTeam) ||
+            !cachedTeam.IsValid)
         {
             return;
         }
@@ -793,6 +801,26 @@ internal static class FactionInfamyAmbushService
             factionReference.FactionGuid._Value = factionGuid;
             entityManager.AddComponentData(entity, factionReference);
         }
+    }
+
+    private static bool IsEntityAlignedWithTeamData(EntityManager entityManager, Entity entity, FactionTeamData teamData)
+    {
+        if (!teamData.IsValid)
+        {
+            return false;
+        }
+
+        if (!entityManager.HasComponent<Team>(entity) || !entityManager.HasComponent<TeamReference>(entity))
+        {
+            return false;
+        }
+
+        var team = entityManager.GetComponentData<Team>(entity);
+        var teamReference = entityManager.GetComponentData<TeamReference>(entity);
+
+        return team.Value == teamData.Team.Value &&
+               team.FactionIndex == teamData.Team.FactionIndex &&
+               teamReference.Value._Value == teamData.TeamReference.Value._Value;
     }
 
     private static bool TryCacheFactionTeamData(
