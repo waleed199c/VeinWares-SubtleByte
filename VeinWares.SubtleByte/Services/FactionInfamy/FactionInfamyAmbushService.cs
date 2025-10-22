@@ -27,6 +27,7 @@ internal static class FactionInfamyAmbushService
 
     private static readonly ConcurrentDictionary<int, PendingAmbushSpawn> PendingSpawns = new();
     private static readonly ConcurrentDictionary<Entity, ActiveAmbush> ActiveAmbushes = new();
+    private static readonly ConcurrentDictionary<string, FactionTeamData> FactionTeamCache = new(StringComparer.OrdinalIgnoreCase);
     private static readonly Dictionary<string, AmbushSquadDefinition> SquadDefinitions = new(StringComparer.OrdinalIgnoreCase)
     {
         ["Bandits"] = new AmbushSquadDefinition(
@@ -185,6 +186,7 @@ internal static class FactionInfamyAmbushService
         }
         PendingSpawns.Clear();
         ActiveAmbushes.Clear();
+        FactionTeamCache.Clear();
     }
 
     public static void TryTriggerAmbush(EntityManager entityManager, Entity playerEntity, ulong steamId)
@@ -737,6 +739,8 @@ internal static class FactionInfamyAmbushService
             entityManager.RemoveComponent<Minion>(entity);
         }
 
+        EnsureFactionAlignment(entityManager, entity, pending);
+
         ActiveAmbushes[entity] = new ActiveAmbush(pending.TargetSteamId, pending.FactionId, pending.HateReliefPerUnit);
 
         pending.Remaining--;
@@ -748,6 +752,114 @@ internal static class FactionInfamyAmbushService
         }
 
         return false;
+    }
+
+    private static void EnsureFactionAlignment(EntityManager entityManager, Entity entity, PendingAmbushSpawn pending)
+    {
+        if (!FactionInfamyVictimResolver.TryResolveFactionGuid(pending.FactionId, out var factionGuid))
+        {
+            return;
+        }
+
+        UpdateFactionReference(entityManager, entity, factionGuid);
+
+        if (!TryCacheFactionTeamData(entityManager, entity, pending.FactionId, factionGuid, out var cachedTeam))
+        {
+            FactionTeamCache.TryGetValue(pending.FactionId, out cachedTeam);
+        }
+
+        if (!cachedTeam.IsValid)
+        {
+            return;
+        }
+
+        ApplyTeamData(entityManager, entity, cachedTeam);
+    }
+
+    private static void UpdateFactionReference(EntityManager entityManager, Entity entity, PrefabGUID factionGuid)
+    {
+        if (entityManager.HasComponent<FactionReference>(entity))
+        {
+            var factionReference = entityManager.GetComponentData<FactionReference>(entity);
+            if (factionReference.FactionGuid._Value.GuidHash != factionGuid.GuidHash)
+            {
+                factionReference.FactionGuid._Value = factionGuid;
+                entityManager.SetComponentData(entity, factionReference);
+            }
+        }
+        else
+        {
+            var factionReference = new FactionReference();
+            factionReference.FactionGuid._Value = factionGuid;
+            entityManager.AddComponentData(entity, factionReference);
+        }
+    }
+
+    private static bool TryCacheFactionTeamData(
+        EntityManager entityManager,
+        Entity entity,
+        string factionId,
+        PrefabGUID factionGuid,
+        out FactionTeamData teamData)
+    {
+        teamData = default;
+
+        if (!entityManager.HasComponent<FactionReference>(entity))
+        {
+            return false;
+        }
+
+        var factionReference = entityManager.GetComponentData<FactionReference>(entity);
+        if (factionReference.FactionGuid._Value.GuidHash != factionGuid.GuidHash)
+        {
+            return false;
+        }
+
+        if (!entityManager.HasComponent<Team>(entity) || !entityManager.HasComponent<TeamReference>(entity))
+        {
+            return false;
+        }
+
+        var team = entityManager.GetComponentData<Team>(entity);
+        var teamReference = entityManager.GetComponentData<TeamReference>(entity);
+
+        if (teamReference.Value._Value == Entity.Null)
+        {
+            return false;
+        }
+
+        teamData = new FactionTeamData(factionGuid, team, teamReference);
+        FactionTeamCache[factionId] = teamData;
+        return true;
+    }
+
+    private static void ApplyTeamData(EntityManager entityManager, Entity entity, FactionTeamData teamData)
+    {
+        if (!teamData.IsValid)
+        {
+            return;
+        }
+
+        if (entityManager.HasComponent<Team>(entity))
+        {
+            var team = entityManager.GetComponentData<Team>(entity);
+            if (team.Value != teamData.Team.Value || team.FactionIndex != teamData.Team.FactionIndex)
+            {
+                team.Value = teamData.Team.Value;
+                team.FactionIndex = teamData.Team.FactionIndex;
+                entityManager.SetComponentData(entity, team);
+            }
+        }
+
+        if (entityManager.HasComponent<TeamReference>(entity))
+        {
+            var teamReference = entityManager.GetComponentData<TeamReference>(entity);
+            if (teamReference.Value._Value != teamData.TeamReference.Value._Value)
+            {
+                teamReference.Value._Value = teamData.TeamReference.Value._Value;
+                entityManager.SetComponentData(entity, teamReference);
+            }
+        }
     }
 
     private static void ApplyAmbushScaling(EntityManager entityManager, Entity entity, int targetLevel, AmbushStatMultipliers multipliers)
@@ -899,6 +1011,24 @@ internal static class FactionInfamyAmbushService
             buffable.KnockbackResistanceIndex = knockback;
             entityManager.SetComponentData(entity, buffable);
         }
+    }
+
+    private readonly struct FactionTeamData
+    {
+        public FactionTeamData(PrefabGUID factionGuid, Team team, TeamReference teamReference)
+        {
+            FactionGuid = factionGuid;
+            Team = team;
+            TeamReference = teamReference;
+        }
+
+        public PrefabGUID FactionGuid { get; }
+
+        public Team Team { get; }
+
+        public TeamReference TeamReference { get; }
+
+        public bool IsValid => TeamReference.Value._Value != Entity.Null;
     }
 
     private sealed class PendingAmbushSpawn
