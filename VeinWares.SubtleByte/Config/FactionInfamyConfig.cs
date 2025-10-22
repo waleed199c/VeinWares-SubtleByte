@@ -17,6 +17,7 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _maximumHate;
     private static ConfigEntry<int> _autosaveMinutes;
     private static ConfigEntry<int> _autosaveBackups;
+    private static ConfigEntry<bool> _enableAmbushVisualBuffs;
     private static ConfigEntry<bool> _enableHalloweenAmbush;
     private static ConfigEntry<int> _halloweenScarecrowMinimum;
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
@@ -129,6 +130,12 @@ internal static class FactionInfamyConfig
             "Autosave Backups",
             3,
             "Number of rolling backup files to keep whenever the Faction Infamy system saves the hate database.");
+
+        _enableAmbushVisualBuffs = configFile.Bind(
+            "Faction Infamy",
+            "Enable Ambush Visual Buffs",
+            true,
+            "When true, ambush squads can apply randomised visual buffs to spawned units.");
 
         _enableHalloweenAmbush = configFile.Bind(
             "Faction Infamy",
@@ -392,6 +399,7 @@ internal static class FactionInfamyConfig
             Math.Max(1, _maximumHate.Value),
             TimeSpan.FromMinutes(Math.Max(1, _autosaveMinutes.Value)),
             Math.Clamp(_autosaveBackups.Value, 0, 20),
+            _enableAmbushVisualBuffs.Value,
             _enableHalloweenAmbush.Value,
             scarecrowMin,
             scarecrowMax,
@@ -669,6 +677,7 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     int MaximumHate,
     TimeSpan AutosaveInterval,
     int AutosaveBackupCount,
+    bool EnableAmbushVisualBuffs,
     bool EnableHalloweenAmbush,
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
