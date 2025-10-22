@@ -24,6 +24,7 @@ internal static class FactionInfamySystem
     private static int _ambushChancePercent;
     private static float _minimumAmbushHate;
     private static float _maximumHate;
+    private static bool _enableAmbushVisualBuffs;
     private static bool _enableHalloweenAmbush;
     private static int _halloweenScarecrowMinimum;
     private static int _halloweenScarecrowMaximum;
@@ -70,6 +71,8 @@ internal static class FactionInfamySystem
     internal static TimeSpan AmbushCooldown => _ambushCooldown;
 
     internal static float MaximumHate => _maximumHate;
+
+    internal static bool AmbushVisualBuffsEnabled => _enableAmbushVisualBuffs;
 
     internal static bool HalloweenAmbushEnabled => _enableHalloweenAmbush;
 
@@ -157,6 +160,7 @@ internal static class FactionInfamySystem
         _ambushLifetime = config.AmbushLifetime;
         _minimumAmbushHate = config.MinimumAmbushHate;
         _maximumHate = config.MaximumHate;
+        _enableAmbushVisualBuffs = config.EnableAmbushVisualBuffs;
         _enableHalloweenAmbush = config.EnableHalloweenAmbush;
         _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;

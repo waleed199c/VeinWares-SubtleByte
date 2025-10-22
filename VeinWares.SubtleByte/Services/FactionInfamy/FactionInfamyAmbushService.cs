@@ -152,16 +152,70 @@ internal static class FactionInfamyAmbushService
     private static readonly PrefabGUID SolarusVisual = new(178225731);
     private static readonly PrefabGUID MegaraVisual = new(-2104035188);
 
-    private static readonly Dictionary<string, PrefabGUID> FactionVisualBuffs = new(StringComparer.OrdinalIgnoreCase)
+    private static readonly IReadOnlyList<PrefabGUID> DefaultVisualBuffPool = new[]
     {
-        ["Bandits"] = ManticoreVisual,
-        ["Blackfangs"] = DraculaVisual,
-        ["Militia"] = SolarusVisual,
-        ["Gloomrot"] = MegaraVisual,
-        ["Legion"] = MonsterVisual,
-        ["Undead"] = MonsterVisual,
-        ["Werewolf"] = ManticoreVisual
+        ManticoreVisual,
+        DraculaVisual,
+        MonsterVisual,
+        SolarusVisual,
+        MegaraVisual
     };
+
+    private static readonly Dictionary<string, IReadOnlyList<PrefabGUID>> FactionVisualBuffPools =
+        new(StringComparer.OrdinalIgnoreCase)
+        {
+            ["Bandits"] = new[] { ManticoreVisual, DraculaVisual, MonsterVisual },
+            ["Blackfangs"] = new[] { DraculaVisual, MonsterVisual, SolarusVisual },
+            ["Militia"] = new[] { SolarusVisual, DraculaVisual, MegaraVisual },
+            ["Gloomrot"] = new[] { MegaraVisual, MonsterVisual, SolarusVisual },
+            ["Legion"] = new[] { MonsterVisual, DraculaVisual, MegaraVisual },
+            ["Undead"] = new[] { MonsterVisual, DraculaVisual, MegaraVisual },
+            ["Werewolf"] = new[] { ManticoreVisual, MonsterVisual }
+        };
+
+    private static bool TryRollVisualBuff(string factionId, out PrefabGUID visualBuff)
+    {
+        if (!string.IsNullOrWhiteSpace(factionId)
+            && FactionVisualBuffPools.TryGetValue(factionId, out var factionPool)
+            && TryPickVisualBuff(factionPool, out visualBuff))
+        {
+            return true;
+        }
+
+        return TryPickVisualBuff(DefaultVisualBuffPool, out visualBuff);
+    }
+
+    private static bool TryPickVisualBuff(IReadOnlyList<PrefabGUID> pool, out PrefabGUID visualBuff)
+    {
+        if (pool is null || pool.Count == 0)
+        {
+            visualBuff = default;
+            return false;
+        }
+
+        var index = Random.Next(pool.Count);
+        visualBuff = pool[index];
+        return true;
+    }
+
+    private static PrefabGUID? ResolveSharedVisualBuff(string factionId, IEnumerable<AmbushSpawnRequest> requests)
+    {
+        if (!FactionInfamySystem.AmbushVisualBuffsEnabled || requests is null)
+        {
+            return null;
+        }
+
+        foreach (var request in requests)
+        {
+            if (request.VisualStrategy == VisualBuffStrategy.Shared
+                && TryRollVisualBuff(factionId, out var visualBuff))
+            {
+                return visualBuff;
+            }
+        }
+
+        return null;
+    }
 
     private static ManualLogSource? _log;
     private static readonly System.Random Random = new();
@@ -365,6 +419,8 @@ internal static class FactionInfamyAmbushService
                 spawnPlan.FollowUpRequests,
                 spawnRequests.Count);
 
+        var sharedVisualBuff = ResolveSharedVisualBuff(factionId, spawnRequests);
+
         foreach (var request in spawnRequests)
         {
             var unit = request.Definition;
@@ -384,6 +440,8 @@ internal static class FactionInfamyAmbushService
                 reliefPerUnit,
                 lifetimeSeconds,
                 multipliers,
+                request.VisualStrategy,
+                request.VisualStrategy == VisualBuffStrategy.Shared ? sharedVisualBuff : null,
                 followUpTracker);
             var marker = 0;
 
@@ -432,14 +490,14 @@ internal static class FactionInfamyAmbushService
         var requests = new List<AmbushSpawnRequest>();
         var followUps = new List<AmbushSpawnRequest>();
 
-        AddUnits(requests, squad.BaseUnits, isRepresentative: false);
+        AddUnits(requests, squad.BaseUnits, isRepresentative: false, VisualBuffStrategy.Shared);
 
         if (difficulty.Tier != 5)
         {
             return new AmbushSpawnPlan(requests, followUps);
         }
 
-        AddUnits(requests, squad.Tier5Representatives, isRepresentative: true);
+        AddUnits(requests, squad.Tier5Representatives, isRepresentative: true, VisualBuffStrategy.Shared);
 
         if (!FactionInfamySystem.HalloweenAmbushEnabled)
         {
@@ -463,7 +521,7 @@ internal static class FactionInfamyAmbushService
 
             if (count > 0)
             {
-                requests.Add(new AmbushSpawnRequest(seasonal.Unit, count, isRepresentative: false));
+                requests.Add(new AmbushSpawnRequest(seasonal.Unit, count, isRepresentative: false, VisualBuffStrategy.RandomPerUnit));
 
                 if (followUpCount > 0)
                 {
@@ -473,7 +531,7 @@ internal static class FactionInfamyAmbushService
 
                     if (followUp > 0)
                     {
-                        followUps.Add(new AmbushSpawnRequest(seasonal.Unit, followUp, isRepresentative: false));
+                        followUps.Add(new AmbushSpawnRequest(seasonal.Unit, followUp, isRepresentative: false, VisualBuffStrategy.RandomPerUnit));
                     }
                 }
             }
@@ -482,7 +540,11 @@ internal static class FactionInfamyAmbushService
         return new AmbushSpawnPlan(requests, followUps);
     }
 
-    private static void AddUnits(List<AmbushSpawnRequest> destination, IReadOnlyList<AmbushUnitDefinition> units, bool isRepresentative)
+    private static void AddUnits(
+        List<AmbushSpawnRequest> destination,
+        IReadOnlyList<AmbushUnitDefinition> units,
+        bool isRepresentative,
+        VisualBuffStrategy visualStrategy)
     {
         if (units is null || units.Count == 0)
         {
@@ -492,7 +554,7 @@ internal static class FactionInfamyAmbushService
         for (var i = 0; i < units.Count; i++)
         {
             var unit = units[i];
-            destination.Add(new AmbushSpawnRequest(unit, Math.Max(1, unit.Count), isRepresentative));
+            destination.Add(new AmbushSpawnRequest(unit, Math.Max(1, unit.Count), isRepresentative, visualStrategy));
         }
     }
 
@@ -724,9 +786,21 @@ internal static class FactionInfamyAmbushService
 
         ApplyAmbushScaling(entityManager, entity, pending.UnitLevel, multipliers);
 
-        if (FactionVisualBuffs.TryGetValue(pending.FactionId, out var visualBuff))
+        if (FactionInfamySystem.AmbushVisualBuffsEnabled)
         {
-            entity.TryApplyVisualBuff(visualBuff);
+            PrefabGUID? visualBuff = pending.VisualStrategy switch
+            {
+                VisualBuffStrategy.Shared => pending.SharedVisualBuff,
+                VisualBuffStrategy.RandomPerUnit => TryRollVisualBuff(pending.FactionId, out var rolled)
+                    ? rolled
+                    : null,
+                _ => null
+            };
+
+            if (visualBuff.HasValue)
+            {
+                entity.TryApplyVisualBuff(visualBuff.Value);
+            }
         }
 
         if (!entityManager.HasComponent<DestroyWhenDisabled>(entity))
@@ -1041,6 +1115,8 @@ internal static class FactionInfamyAmbushService
             float hateReliefPerUnit,
             float lifetimeSeconds,
             AmbushStatMultipliers multipliers,
+            VisualBuffStrategy visualStrategy,
+            PrefabGUID? sharedVisualBuff,
             AmbushSquadTracker? squadTracker = null)
         {
             TargetSteamId = targetSteamId;
@@ -1050,6 +1126,8 @@ internal static class FactionInfamyAmbushService
             HateReliefPerUnit = hateReliefPerUnit;
             LifetimeSeconds = lifetimeSeconds;
             Multipliers = multipliers;
+            VisualStrategy = visualStrategy;
+            SharedVisualBuff = sharedVisualBuff;
             SquadTracker = squadTracker;
         }
 
@@ -1066,6 +1144,10 @@ internal static class FactionInfamyAmbushService
         public float LifetimeSeconds { get; }
 
         public AmbushStatMultipliers Multipliers { get; }
+
+        public VisualBuffStrategy VisualStrategy { get; }
+
+        public PrefabGUID? SharedVisualBuff { get; }
 
         public AmbushSquadTracker? SquadTracker { get; }
     }
@@ -1134,6 +1216,7 @@ internal static class FactionInfamyAmbushService
             }
 
             var spawnedAny = false;
+            var sharedVisualBuff = ResolveSharedVisualBuff(_factionId, _followUpRequests);
 
             foreach (var request in _followUpRequests)
             {
@@ -1158,7 +1241,9 @@ internal static class FactionInfamyAmbushService
                     count,
                     _hateReliefPerUnit,
                     lifetimeSeconds,
-                    multipliers);
+                    multipliers,
+                    request.VisualStrategy,
+                    request.VisualStrategy == VisualBuffStrategy.Shared ? sharedVisualBuff : null);
 
                 var marker = 0;
 
@@ -1495,13 +1580,24 @@ internal static class FactionInfamyAmbushService
         public List<AmbushSpawnRequest> FollowUpRequests { get; }
     }
 
+    private enum VisualBuffStrategy
+    {
+        Shared,
+        RandomPerUnit
+    }
+
     private readonly struct AmbushSpawnRequest
     {
-        public AmbushSpawnRequest(AmbushUnitDefinition definition, int count, bool isRepresentative)
+        public AmbushSpawnRequest(
+            AmbushUnitDefinition definition,
+            int count,
+            bool isRepresentative,
+            VisualBuffStrategy visualStrategy)
         {
             Definition = definition;
             Count = Math.Max(1, count);
             IsRepresentative = isRepresentative;
+            VisualStrategy = visualStrategy;
         }
 
         public AmbushUnitDefinition Definition { get; }
@@ -1509,6 +1605,8 @@ internal static class FactionInfamyAmbushService
         public int Count { get; }
 
         public bool IsRepresentative { get; }
+
+        public VisualBuffStrategy VisualStrategy { get; }
     }
 
     private readonly struct AmbushDifficulty
