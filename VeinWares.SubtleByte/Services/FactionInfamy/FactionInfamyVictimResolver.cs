@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Unity.Entities;
 using ProjectM;
 using VeinWares.SubtleByte.Extensions;
+using Stunlock.Core;
 
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
@@ -30,6 +32,8 @@ internal static class FactionInfamyVictimResolver
         { PrefabsFactionIds.Werewolf, "Werewolf" },
         { PrefabsFactionIds.WerewolfHuman, "Werewolf" },
     };
+
+    private static readonly Dictionary<string, PrefabGUID> AggregatedFactionReverseMap = BuildReverseMap();
 
     private static readonly Dictionary<int, float> BaseHateOverrides = new()
     {
@@ -68,6 +72,36 @@ internal static class FactionInfamyVictimResolver
         }
 
         return baseHate > 0f;
+    }
+
+    public static bool TryResolveFactionGuid(string factionId, out PrefabGUID factionGuid)
+    {
+        factionGuid = default;
+
+        if (string.IsNullOrWhiteSpace(factionId))
+        {
+            return false;
+        }
+
+        return AggregatedFactionReverseMap.TryGetValue(factionId, out factionGuid);
+    }
+
+    private static Dictionary<string, PrefabGUID> BuildReverseMap()
+    {
+        var reverse = new Dictionary<string, PrefabGUID>(StringComparer.OrdinalIgnoreCase);
+
+        foreach (var pair in AggregatedFactionMap)
+        {
+            var key = pair.Value;
+            if (reverse.ContainsKey(key))
+            {
+                continue;
+            }
+
+            reverse[key] = new PrefabGUID(pair.Key);
+        }
+
+        return reverse;
     }
 
     private static class PrefabsFactionIds
