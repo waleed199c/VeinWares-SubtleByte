@@ -35,13 +35,21 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<float> _eliteMoveSpeedMultiplier;
     private static ConfigEntry<float> _eliteKnockbackResistanceMultiplier;
     private static ConfigEntry<float> _eliteRepresentativeHealthRatio;
+    private static ConfigEntry<float> _eliteRepresentativeHealthAdditive;
     private static ConfigEntry<float> _eliteRepresentativeDamageReductionRatio;
+    private static ConfigEntry<float> _eliteRepresentativeDamageReductionAdditive;
     private static ConfigEntry<float> _eliteRepresentativeResistanceRatio;
+    private static ConfigEntry<float> _eliteRepresentativeResistanceAdditive;
     private static ConfigEntry<float> _eliteRepresentativePowerRatio;
+    private static ConfigEntry<float> _eliteRepresentativePowerAdditive;
     private static ConfigEntry<float> _eliteRepresentativeAttackSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeAttackSpeedAdditive;
     private static ConfigEntry<float> _eliteRepresentativeSpellSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeSpellSpeedAdditive;
     private static ConfigEntry<float> _eliteRepresentativeMoveSpeedRatio;
+    private static ConfigEntry<float> _eliteRepresentativeMoveSpeedAdditive;
     private static ConfigEntry<float> _eliteRepresentativeKnockbackResistanceRatio;
+    private static ConfigEntry<float> _eliteRepresentativeKnockbackResistanceAdditive;
     private static ConfigEntry<bool> _enableAmbushKnockbackResistance;
 
     public static void Initialize(ConfigFile configFile)
@@ -230,11 +238,23 @@ internal static class FactionInfamyConfig
             1.0f,
             "Additional multiplier applied to elite representative health on top of the base elite multiplier.");
 
+        _eliteRepresentativeHealthAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Health Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative health multipliers after the squad multiplier and ratio are applied.");
+
         _eliteRepresentativeDamageReductionRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
             "Elite Representative Damage Reduction Ratio",
             1.0f,
             "Additional multiplier applied to elite representative damage reduction on top of the base elite multiplier.");
+
+        _eliteRepresentativeDamageReductionAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Damage Reduction Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative damage reduction multipliers after the squad multiplier and ratio are applied.");
 
         _eliteRepresentativeResistanceRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
@@ -242,11 +262,23 @@ internal static class FactionInfamyConfig
             1.0f,
             "Additional multiplier applied to elite representative resistances on top of the base elite multiplier.");
 
+        _eliteRepresentativeResistanceAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Resistance Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative resistance multipliers after the squad multiplier and ratio are applied.");
+
         _eliteRepresentativePowerRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
             "Elite Representative Power Ratio",
             1.0f,
             "Additional multiplier applied to elite representative power on top of the base elite multiplier.");
+
+        _eliteRepresentativePowerAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Power Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative power multipliers after the squad multiplier and ratio are applied.");
 
         _eliteRepresentativeAttackSpeedRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
@@ -254,11 +286,23 @@ internal static class FactionInfamyConfig
             1.0f,
             "Additional multiplier applied to elite representative primary attack speed on top of the base elite multiplier.");
 
+        _eliteRepresentativeAttackSpeedAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Attack Speed Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative attack speed multipliers after the squad multiplier and ratio are applied.");
+
         _eliteRepresentativeSpellSpeedRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
             "Elite Representative Spell Speed Ratio",
             1.0f,
             "Additional multiplier applied to elite representative spell speed on top of the base elite multiplier.");
+
+        _eliteRepresentativeSpellSpeedAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Spell Speed Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative spell speed multipliers after the squad multiplier and ratio are applied.");
 
         _eliteRepresentativeMoveSpeedRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
@@ -266,11 +310,23 @@ internal static class FactionInfamyConfig
             1.0f,
             "Additional multiplier applied to elite representative movement speed on top of the base elite multiplier.");
 
+        _eliteRepresentativeMoveSpeedAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Move Speed Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative move speed multipliers after the squad multiplier and ratio are applied.");
+
         _eliteRepresentativeKnockbackResistanceRatio = configFile.Bind(
             "Faction Infamy - Elite Ambush",
             "Elite Representative Knockback Resistance Ratio",
             1.0f,
             "Additional multiplier applied to elite representative knockback resistance on top of the base elite multiplier.");
+
+        _eliteRepresentativeKnockbackResistanceAdditive = configFile.Bind(
+            "Faction Infamy - Elite Ambush",
+            "Elite Representative Knockback Resistance Bonus",
+            0.0f,
+            "Flat bonus applied to elite representative knockback resistance multipliers after the squad multiplier and ratio are applied.");
 
         _enableAmbushKnockbackResistance = configFile.Bind(
             "Faction Infamy - Elite Ambush",
@@ -308,13 +364,21 @@ internal static class FactionInfamyConfig
         var eliteKnockback = Math.Max(0f, _eliteKnockbackResistanceMultiplier.Value);
 
         var eliteRepHealth = Math.Max(0f, _eliteRepresentativeHealthRatio.Value);
+        var eliteRepHealthAdd = Math.Max(0f, _eliteRepresentativeHealthAdditive.Value);
         var eliteRepDamageReduction = Math.Max(0f, _eliteRepresentativeDamageReductionRatio.Value);
+        var eliteRepDamageReductionAdd = Math.Max(0f, _eliteRepresentativeDamageReductionAdditive.Value);
         var eliteRepResistance = Math.Max(0f, _eliteRepresentativeResistanceRatio.Value);
+        var eliteRepResistanceAdd = Math.Max(0f, _eliteRepresentativeResistanceAdditive.Value);
         var eliteRepPower = Math.Max(0f, _eliteRepresentativePowerRatio.Value);
+        var eliteRepPowerAdd = Math.Max(0f, _eliteRepresentativePowerAdditive.Value);
         var eliteRepAttackSpeed = Math.Max(0f, _eliteRepresentativeAttackSpeedRatio.Value);
+        var eliteRepAttackSpeedAdd = Math.Max(0f, _eliteRepresentativeAttackSpeedAdditive.Value);
         var eliteRepSpellSpeed = Math.Max(0f, _eliteRepresentativeSpellSpeedRatio.Value);
+        var eliteRepSpellSpeedAdd = Math.Max(0f, _eliteRepresentativeSpellSpeedAdditive.Value);
         var eliteRepMoveSpeed = Math.Max(0f, _eliteRepresentativeMoveSpeedRatio.Value);
+        var eliteRepMoveSpeedAdd = Math.Max(0f, _eliteRepresentativeMoveSpeedAdditive.Value);
         var eliteRepKnockback = Math.Max(0f, _eliteRepresentativeKnockbackResistanceRatio.Value);
+        var eliteRepKnockbackAdd = Math.Max(0f, _eliteRepresentativeKnockbackResistanceAdditive.Value);
 
         return new FactionInfamyConfigSnapshot(
             Math.Max(0f, _hateGainMultiplier.Value),
@@ -346,13 +410,21 @@ internal static class FactionInfamyConfig
             eliteMoveSpeed,
             eliteKnockback,
             eliteRepHealth,
+            eliteRepHealthAdd,
             eliteRepDamageReduction,
+            eliteRepDamageReductionAdd,
             eliteRepResistance,
+            eliteRepResistanceAdd,
             eliteRepPower,
+            eliteRepPowerAdd,
             eliteRepAttackSpeed,
+            eliteRepAttackSpeedAdd,
             eliteRepSpellSpeed,
+            eliteRepSpellSpeedAdd,
             eliteRepMoveSpeed,
+            eliteRepMoveSpeedAdd,
             eliteRepKnockback,
+            eliteRepKnockbackAdd,
             _enableAmbushKnockbackResistance.Value);
     }
 
@@ -508,9 +580,19 @@ internal static class FactionInfamyConfig
             _eliteRepresentativeHealthRatio.Value = 0f;
         }
 
+        if (_eliteRepresentativeHealthAdditive.Value < 0f)
+        {
+            _eliteRepresentativeHealthAdditive.Value = 0f;
+        }
+
         if (_eliteRepresentativeDamageReductionRatio.Value < 0f)
         {
             _eliteRepresentativeDamageReductionRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeDamageReductionAdditive.Value < 0f)
+        {
+            _eliteRepresentativeDamageReductionAdditive.Value = 0f;
         }
 
         if (_eliteRepresentativeResistanceRatio.Value < 0f)
@@ -518,9 +600,19 @@ internal static class FactionInfamyConfig
             _eliteRepresentativeResistanceRatio.Value = 0f;
         }
 
+        if (_eliteRepresentativeResistanceAdditive.Value < 0f)
+        {
+            _eliteRepresentativeResistanceAdditive.Value = 0f;
+        }
+
         if (_eliteRepresentativePowerRatio.Value < 0f)
         {
             _eliteRepresentativePowerRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativePowerAdditive.Value < 0f)
+        {
+            _eliteRepresentativePowerAdditive.Value = 0f;
         }
 
         if (_eliteRepresentativeAttackSpeedRatio.Value < 0f)
@@ -528,9 +620,19 @@ internal static class FactionInfamyConfig
             _eliteRepresentativeAttackSpeedRatio.Value = 0f;
         }
 
+        if (_eliteRepresentativeAttackSpeedAdditive.Value < 0f)
+        {
+            _eliteRepresentativeAttackSpeedAdditive.Value = 0f;
+        }
+
         if (_eliteRepresentativeSpellSpeedRatio.Value < 0f)
         {
             _eliteRepresentativeSpellSpeedRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeSpellSpeedAdditive.Value < 0f)
+        {
+            _eliteRepresentativeSpellSpeedAdditive.Value = 0f;
         }
 
         if (_eliteRepresentativeMoveSpeedRatio.Value < 0f)
@@ -538,9 +640,19 @@ internal static class FactionInfamyConfig
             _eliteRepresentativeMoveSpeedRatio.Value = 0f;
         }
 
+        if (_eliteRepresentativeMoveSpeedAdditive.Value < 0f)
+        {
+            _eliteRepresentativeMoveSpeedAdditive.Value = 0f;
+        }
+
         if (_eliteRepresentativeKnockbackResistanceRatio.Value < 0f)
         {
             _eliteRepresentativeKnockbackResistanceRatio.Value = 0f;
+        }
+
+        if (_eliteRepresentativeKnockbackResistanceAdditive.Value < 0f)
+        {
+            _eliteRepresentativeKnockbackResistanceAdditive.Value = 0f;
         }
     }
 }
@@ -575,11 +687,19 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     float EliteMoveSpeedMultiplier,
     float EliteKnockbackResistanceMultiplier,
     float EliteRepresentativeHealthRatio,
+    float EliteRepresentativeHealthAdditive,
     float EliteRepresentativeDamageReductionRatio,
+    float EliteRepresentativeDamageReductionAdditive,
     float EliteRepresentativeResistanceRatio,
+    float EliteRepresentativeResistanceAdditive,
     float EliteRepresentativePowerRatio,
+    float EliteRepresentativePowerAdditive,
     float EliteRepresentativeAttackSpeedRatio,
+    float EliteRepresentativeAttackSpeedAdditive,
     float EliteRepresentativeSpellSpeedRatio,
+    float EliteRepresentativeSpellSpeedAdditive,
     float EliteRepresentativeMoveSpeedRatio,
+    float EliteRepresentativeMoveSpeedAdditive,
     float EliteRepresentativeKnockbackResistanceRatio,
+    float EliteRepresentativeKnockbackResistanceAdditive,
     bool EnableAmbushKnockbackResistance);

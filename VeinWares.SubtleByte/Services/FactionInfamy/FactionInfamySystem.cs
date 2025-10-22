@@ -43,13 +43,21 @@ internal static class FactionInfamySystem
     private static float _eliteMoveSpeedMultiplier;
     private static float _eliteKnockbackResistanceMultiplier;
     private static float _eliteRepresentativeHealthRatio;
+    private static float _eliteRepresentativeHealthAdditive;
     private static float _eliteRepresentativeDamageReductionRatio;
+    private static float _eliteRepresentativeDamageReductionAdditive;
     private static float _eliteRepresentativeResistanceRatio;
+    private static float _eliteRepresentativeResistanceAdditive;
     private static float _eliteRepresentativePowerRatio;
+    private static float _eliteRepresentativePowerAdditive;
     private static float _eliteRepresentativeAttackSpeedRatio;
+    private static float _eliteRepresentativeAttackSpeedAdditive;
     private static float _eliteRepresentativeSpellSpeedRatio;
+    private static float _eliteRepresentativeSpellSpeedAdditive;
     private static float _eliteRepresentativeMoveSpeedRatio;
+    private static float _eliteRepresentativeMoveSpeedAdditive;
     private static float _eliteRepresentativeKnockbackResistanceRatio;
+    private static float _eliteRepresentativeKnockbackResistanceAdditive;
 
     public static bool Enabled => _initialized;
 
@@ -101,19 +109,35 @@ internal static class FactionInfamySystem
 
     internal static float EliteRepresentativeHealthRatio => _eliteRepresentativeHealthRatio;
 
+    internal static float EliteRepresentativeHealthAdditive => _eliteRepresentativeHealthAdditive;
+
     internal static float EliteRepresentativeDamageReductionRatio => _eliteRepresentativeDamageReductionRatio;
+
+    internal static float EliteRepresentativeDamageReductionAdditive => _eliteRepresentativeDamageReductionAdditive;
 
     internal static float EliteRepresentativeResistanceRatio => _eliteRepresentativeResistanceRatio;
 
+    internal static float EliteRepresentativeResistanceAdditive => _eliteRepresentativeResistanceAdditive;
+
     internal static float EliteRepresentativePowerRatio => _eliteRepresentativePowerRatio;
+
+    internal static float EliteRepresentativePowerAdditive => _eliteRepresentativePowerAdditive;
 
     internal static float EliteRepresentativeAttackSpeedRatio => _eliteRepresentativeAttackSpeedRatio;
 
+    internal static float EliteRepresentativeAttackSpeedAdditive => _eliteRepresentativeAttackSpeedAdditive;
+
     internal static float EliteRepresentativeSpellSpeedRatio => _eliteRepresentativeSpellSpeedRatio;
+
+    internal static float EliteRepresentativeSpellSpeedAdditive => _eliteRepresentativeSpellSpeedAdditive;
 
     internal static float EliteRepresentativeMoveSpeedRatio => _eliteRepresentativeMoveSpeedRatio;
 
+    internal static float EliteRepresentativeMoveSpeedAdditive => _eliteRepresentativeMoveSpeedAdditive;
+
     internal static float EliteRepresentativeKnockbackResistanceRatio => _eliteRepresentativeKnockbackResistanceRatio;
+
+    internal static float EliteRepresentativeKnockbackResistanceAdditive => _eliteRepresentativeKnockbackResistanceAdditive;
 
     public static int AutosaveBackupCount { get; private set; }
 
@@ -152,13 +176,21 @@ internal static class FactionInfamySystem
         _eliteMoveSpeedMultiplier = config.EliteMoveSpeedMultiplier;
         _eliteKnockbackResistanceMultiplier = config.EliteKnockbackResistanceMultiplier;
         _eliteRepresentativeHealthRatio = config.EliteRepresentativeHealthRatio;
+        _eliteRepresentativeHealthAdditive = config.EliteRepresentativeHealthAdditive;
         _eliteRepresentativeDamageReductionRatio = config.EliteRepresentativeDamageReductionRatio;
+        _eliteRepresentativeDamageReductionAdditive = config.EliteRepresentativeDamageReductionAdditive;
         _eliteRepresentativeResistanceRatio = config.EliteRepresentativeResistanceRatio;
+        _eliteRepresentativeResistanceAdditive = config.EliteRepresentativeResistanceAdditive;
         _eliteRepresentativePowerRatio = config.EliteRepresentativePowerRatio;
+        _eliteRepresentativePowerAdditive = config.EliteRepresentativePowerAdditive;
         _eliteRepresentativeAttackSpeedRatio = config.EliteRepresentativeAttackSpeedRatio;
+        _eliteRepresentativeAttackSpeedAdditive = config.EliteRepresentativeAttackSpeedAdditive;
         _eliteRepresentativeSpellSpeedRatio = config.EliteRepresentativeSpellSpeedRatio;
+        _eliteRepresentativeSpellSpeedAdditive = config.EliteRepresentativeSpellSpeedAdditive;
         _eliteRepresentativeMoveSpeedRatio = config.EliteRepresentativeMoveSpeedRatio;
+        _eliteRepresentativeMoveSpeedAdditive = config.EliteRepresentativeMoveSpeedAdditive;
         _eliteRepresentativeKnockbackResistanceRatio = config.EliteRepresentativeKnockbackResistanceRatio;
+        _eliteRepresentativeKnockbackResistanceAdditive = config.EliteRepresentativeKnockbackResistanceAdditive;
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();
