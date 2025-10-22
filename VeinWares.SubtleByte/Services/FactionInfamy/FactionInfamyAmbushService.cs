@@ -1287,27 +1287,53 @@ internal static class FactionInfamyAmbushService
             return Math.Abs(value - 1f) <= Epsilon;
         }
 
-        private static float ResolveMultiplier(float baseMultiplier, float representativeRatio, bool isRepresentative)
-        {
-            var resolved = Math.Max(0f, baseMultiplier);
-            if (isRepresentative)
-            {
-                resolved *= Math.Max(0f, representativeRatio);
-            }
-
-            return resolved;
-        }
-
         public static AmbushStatMultipliers Create(bool isRepresentative)
         {
-            var health = ResolveMultiplier(FactionInfamySystem.EliteHealthMultiplier, FactionInfamySystem.EliteRepresentativeHealthRatio, isRepresentative);
-            var damageReduction = ResolveMultiplier(FactionInfamySystem.EliteDamageReductionMultiplier, FactionInfamySystem.EliteRepresentativeDamageReductionRatio, isRepresentative);
-            var resistance = ResolveMultiplier(FactionInfamySystem.EliteResistanceMultiplier, FactionInfamySystem.EliteRepresentativeResistanceRatio, isRepresentative);
-            var power = ResolveMultiplier(FactionInfamySystem.ElitePowerMultiplier, FactionInfamySystem.EliteRepresentativePowerRatio, isRepresentative);
-            var attackSpeed = ResolveMultiplier(FactionInfamySystem.EliteAttackSpeedMultiplier, FactionInfamySystem.EliteRepresentativeAttackSpeedRatio, isRepresentative);
-            var spellSpeed = ResolveMultiplier(FactionInfamySystem.EliteSpellSpeedMultiplier, FactionInfamySystem.EliteRepresentativeSpellSpeedRatio, isRepresentative);
-            var moveSpeed = ResolveMultiplier(FactionInfamySystem.EliteMoveSpeedMultiplier, FactionInfamySystem.EliteRepresentativeMoveSpeedRatio, isRepresentative);
-            var knockback = ResolveMultiplier(FactionInfamySystem.EliteKnockbackResistanceMultiplier, FactionInfamySystem.EliteRepresentativeKnockbackResistanceRatio, isRepresentative);
+            if (!FactionInfamySystem.EliteAmbushEnabled)
+            {
+                return Identity;
+            }
+
+            var health = ResolveMultiplier(
+                FactionInfamySystem.EliteHealthMultiplier,
+                FactionInfamySystem.EliteRepresentativeHealthRatio,
+                FactionInfamySystem.EliteRepresentativeHealthAdditive,
+                isRepresentative);
+            var damageReduction = ResolveMultiplier(
+                FactionInfamySystem.EliteDamageReductionMultiplier,
+                FactionInfamySystem.EliteRepresentativeDamageReductionRatio,
+                FactionInfamySystem.EliteRepresentativeDamageReductionAdditive,
+                isRepresentative);
+            var resistance = ResolveMultiplier(
+                FactionInfamySystem.EliteResistanceMultiplier,
+                FactionInfamySystem.EliteRepresentativeResistanceRatio,
+                FactionInfamySystem.EliteRepresentativeResistanceAdditive,
+                isRepresentative);
+            var power = ResolveMultiplier(
+                FactionInfamySystem.ElitePowerMultiplier,
+                FactionInfamySystem.EliteRepresentativePowerRatio,
+                FactionInfamySystem.EliteRepresentativePowerAdditive,
+                isRepresentative);
+            var attackSpeed = ResolveMultiplier(
+                FactionInfamySystem.EliteAttackSpeedMultiplier,
+                FactionInfamySystem.EliteRepresentativeAttackSpeedRatio,
+                FactionInfamySystem.EliteRepresentativeAttackSpeedAdditive,
+                isRepresentative);
+            var spellSpeed = ResolveMultiplier(
+                FactionInfamySystem.EliteSpellSpeedMultiplier,
+                FactionInfamySystem.EliteRepresentativeSpellSpeedRatio,
+                FactionInfamySystem.EliteRepresentativeSpellSpeedAdditive,
+                isRepresentative);
+            var moveSpeed = ResolveMultiplier(
+                FactionInfamySystem.EliteMoveSpeedMultiplier,
+                FactionInfamySystem.EliteRepresentativeMoveSpeedRatio,
+                FactionInfamySystem.EliteRepresentativeMoveSpeedAdditive,
+                isRepresentative);
+            var knockback = ResolveMultiplier(
+                FactionInfamySystem.EliteKnockbackResistanceMultiplier,
+                FactionInfamySystem.EliteRepresentativeKnockbackResistanceRatio,
+                FactionInfamySystem.EliteRepresentativeKnockbackResistanceAdditive,
+                isRepresentative);
             var applyKnockback = FactionInfamySystem.AmbushKnockbackResistanceEnabled && !IsApproximatelyOne(knockback);
 
             if (IsApproximatelyOne(health)
@@ -1335,6 +1361,26 @@ internal static class FactionInfamyAmbushService
         }
 
         public static AmbushStatMultipliers Identity { get; } = new(1f, 1f, 1f, 1f, 1f, 1f, 1f, 1f, false);
+
+        private static float ResolveMultiplier(
+            float squadMultiplier,
+            float representativeRatio,
+            float representativeAdditive,
+            bool isRepresentative)
+        {
+            var resolved = Math.Max(0f, squadMultiplier);
+
+            if (!isRepresentative)
+            {
+                return resolved;
+            }
+
+            var ratio = Math.Max(0f, representativeRatio);
+            var additive = Math.Max(0f, representativeAdditive);
+            resolved = resolved * ratio + additive;
+
+            return Math.Max(0f, resolved);
+        }
     }
 
     private readonly struct AmbushUnitDefinition
