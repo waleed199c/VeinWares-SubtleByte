@@ -20,6 +20,7 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<bool> _enableAmbushVisualBuffs;
     private static ConfigEntry<bool> _enableHalloweenAmbush;
     private static ConfigEntry<bool> _disableBloodConsumeOnSpawn;
+    private static ConfigEntry<bool> _disableCharmOnSpawn;
     private static ConfigEntry<int> _halloweenScarecrowMinimum;
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
@@ -149,6 +150,12 @@ internal static class FactionInfamyConfig
             "DisableBloodConsumeOnSpawn",
             false,
             "When enabled, ambush spawns strip blood consume and feed components so they cannot be fed upon immediately.");
+
+        _disableCharmOnSpawn = configFile.Bind(
+            "Faction Infamy",
+            "DisableCharmOnSpawn",
+            false,
+            "When enabled, ambush spawns strip charm-related components so they cannot be charmed immediately after spawning.");
 
         _halloweenScarecrowMinimum = configFile.Bind(
             "Faction Infamy",
@@ -409,6 +416,7 @@ internal static class FactionInfamyConfig
             _enableAmbushVisualBuffs.Value,
             _enableHalloweenAmbush.Value,
             _disableBloodConsumeOnSpawn.Value,
+            _disableCharmOnSpawn.Value,
             scarecrowMin,
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
@@ -688,6 +696,7 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     bool EnableAmbushVisualBuffs,
     bool EnableHalloweenAmbush,
     bool DisableBloodConsumeOnSpawn,
+    bool DisableCharmOnSpawn,
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,

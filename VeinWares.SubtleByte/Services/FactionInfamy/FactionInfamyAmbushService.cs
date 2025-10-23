@@ -816,11 +816,15 @@ internal static class FactionInfamyAmbushService
 
         EnsureFactionAlignment(entityManager, entity, pending);
 
-        if (FactionInfamySystem.SuppressBloodConsumeOnSpawn)
+        var suppressFeed = FactionInfamySystem.SuppressBloodConsumeOnSpawn;
+        var suppressCharm = FactionInfamySystem.SuppressCharmOnSpawn;
+        if (suppressFeed || suppressCharm)
         {
-            SpawnFeedSuppressionService.SuppressFeedingComponents(
+            SpawnSuppressionService.SuppressSpawnComponents(
                 entityManager,
                 entity,
+                suppressFeed,
+                suppressCharm,
                 $"ambush faction '{pending.FactionId}'");
         }
 
