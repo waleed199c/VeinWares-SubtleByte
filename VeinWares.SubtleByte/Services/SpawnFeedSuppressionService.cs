@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Il2CppInterop.Runtime;
 using ProjectM;
 using Unity.Entities;
 using VeinWares.SubtleByte.Extensions;
@@ -21,7 +22,7 @@ internal static class SpawnFeedSuppressionService
         "ProjectM.Feedable",
     };
 
-    private static readonly IReadOnlyList<Type> AdditionalFeedComponentTypes = ResolveAdditionalFeedComponentTypes();
+    private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes = ResolveAdditionalFeedComponentTypes();
 
     public static bool SuppressFeedingComponents(EntityManager entityManager, Entity entity, string? context = null)
     {
@@ -44,17 +45,15 @@ internal static class SpawnFeedSuppressionService
             removedComponents.Add(nameof(FeedableInventory));
         }
 
-        foreach (var componentType in AdditionalFeedComponentTypes)
+        foreach (var component in AdditionalFeedComponentTypes)
         {
-            if (componentType == null)
+            if (!entityManager.HasComponent(entity, component.ComponentType))
             {
                 continue;
             }
 
-            if (TryRemoveComponent(entityManager, entity, componentType))
-            {
-                removedComponents.Add(componentType.Name);
-            }
+            entityManager.RemoveComponent(entity, component.ComponentType);
+            removedComponents.Add(component.DisplayName);
         }
 
         if (removedComponents.Count == 0)
@@ -67,40 +66,21 @@ internal static class SpawnFeedSuppressionService
         return true;
     }
 
-    private static bool TryRemoveComponent(EntityManager entityManager, Entity entity, Type componentType)
-    {
-        try
-        {
-            var typeIndex = TypeManager.GetTypeIndex(componentType);
-            var resolvedComponent = ComponentType.FromTypeIndex(typeIndex);
-            if (!entityManager.HasComponent(entity, resolvedComponent))
-            {
-                return false;
-            }
-
-            entityManager.RemoveComponent(entity, resolvedComponent);
-            return true;
-        }
-        catch
-        {
-            return false;
-        }
-    }
-
-    private static IReadOnlyList<Type> ResolveAdditionalFeedComponentTypes()
+    private static IReadOnlyList<ComponentRemovalTarget> ResolveAdditionalFeedComponentTypes()
     {
         return AdditionalFeedComponentTypeNames
-            .Select(FindType)
-            .Where(type => type != null)
-            .ToArray()!;
+            .Select(FindComponentType)
+            .Where(component => component.HasValue)
+            .Select(component => component!.Value)
+            .ToArray();
     }
 
-    private static Type? FindType(string typeName)
+    private static ComponentRemovalTarget? FindComponentType(string typeName)
     {
         var type = Type.GetType(typeName);
         if (type != null)
         {
-            return type;
+            return TryCreateComponentType(type);
         }
 
         foreach (var assembly in AppDomain.CurrentDomain.GetAssemblies())
@@ -108,10 +88,27 @@ internal static class SpawnFeedSuppressionService
             type = assembly.GetType(typeName);
             if (type != null)
             {
-                return type;
+                return TryCreateComponentType(type);
             }
         }
 
         return null;
     }
+
+    private static ComponentRemovalTarget? TryCreateComponentType(Type managedType)
+    {
+        try
+        {
+            var il2CppType = Il2CppType.From(managedType);
+            var typeIndex = TypeManager.GetTypeIndex(il2CppType);
+            var componentType = ComponentType.FromTypeIndex(typeIndex);
+            return new ComponentRemovalTarget(componentType, managedType.Name);
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
+    private readonly record struct ComponentRemovalTarget(ComponentType ComponentType, string DisplayName);
 }
