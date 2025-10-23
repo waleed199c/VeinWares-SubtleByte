@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Il2CppInterop.Runtime;
 using ProjectM;
+using Unity.Collections;
 using Unity.Entities;
 using VeinWares.SubtleByte.Extensions;
 using VeinWares.SubtleByte.Utilities;
 
 namespace VeinWares.SubtleByte.Services;
 
-internal static class SpawnFeedSuppressionService
+internal static class SpawnSuppressionService
 {
     private static readonly string[] AdditionalFeedComponentTypeNames =
     {
@@ -24,15 +25,42 @@ internal static class SpawnFeedSuppressionService
 
     private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes = ResolveAdditionalFeedComponentTypes();
 
-    public static bool SuppressFeedingComponents(EntityManager entityManager, Entity entity, string? context = null)
+    public static bool SuppressSpawnComponents(
+        EntityManager entityManager,
+        Entity entity,
+        bool suppressFeed,
+        bool suppressCharm,
+        string? context = null)
     {
-        if (!entity.Exists())
+        if (!entity.Exists() || (!suppressFeed && !suppressCharm))
         {
             return false;
         }
 
         var removedComponents = new List<string>();
 
+        if (suppressFeed)
+        {
+            SuppressFeedComponents(entityManager, entity, removedComponents);
+        }
+
+        if (suppressCharm)
+        {
+            SuppressCharmComponents(entityManager, entity, removedComponents);
+        }
+
+        if (removedComponents.Count == 0)
+        {
+            return false;
+        }
+
+        var contextSuffix = string.IsNullOrWhiteSpace(context) ? string.Empty : $" ({context})";
+        ModLogger.Info($"[Spawn] Removed components [{string.Join(", ", removedComponents)}] from entity {entity.Index}{contextSuffix}.");
+        return true;
+    }
+
+    private static void SuppressFeedComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    {
         if (entity.Has<BloodConsumeSource>())
         {
             entity.Remove<BloodConsumeSource>();
@@ -55,15 +83,67 @@ internal static class SpawnFeedSuppressionService
             entityManager.RemoveComponent(entity, component.ComponentType);
             removedComponents.Add(component.DisplayName);
         }
+    }
 
-        if (removedComponents.Count == 0)
+    private static void SuppressCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    {
+        var componentTypes = entityManager.GetComponentTypes(entity);
+        if (!componentTypes.IsCreated || componentTypes.Length == 0)
+        {
+            return;
+        }
+
+        try
+        {
+            var toRemove = new List<ComponentType>();
+
+            for (var i = 0; i < componentTypes.Length; i++)
+            {
+                var componentType = componentTypes[i];
+                var typeInfo = TypeManager.GetTypeInfo(componentType.TypeIndex);
+                var managedTypeName = typeInfo.DebugTypeName.ToString();
+
+                if (string.IsNullOrEmpty(managedTypeName))
+                {
+                    continue;
+                }
+
+                if (!IsCharmRelated(managedTypeName))
+                {
+                    continue;
+                }
+
+                toRemove.Add(componentType);
+                removedComponents.Add(managedTypeName);
+            }
+
+            foreach (var componentType in toRemove)
+            {
+                if (entityManager.HasComponent(entity, componentType))
+                {
+                    entityManager.RemoveComponent(entity, componentType);
+                }
+            }
+        }
+        finally
+        {
+            componentTypes.Dispose();
+        }
+    }
+
+    private static bool IsCharmRelated(string managedTypeName)
+    {
+        if (string.IsNullOrEmpty(managedTypeName))
         {
             return false;
         }
 
-        var contextSuffix = string.IsNullOrWhiteSpace(context) ? string.Empty : $" ({context})";
-        ModLogger.Info($"[Spawn] Removed feed components [{string.Join(", ", removedComponents)}] from entity {entity.Index}{contextSuffix}.");
-        return true;
+        if (managedTypeName.IndexOf("Charm", StringComparison.OrdinalIgnoreCase) < 0)
+        {
+            return false;
+        }
+
+        return managedTypeName.Contains("ProjectM.", StringComparison.Ordinal);
     }
 
     private static IReadOnlyList<ComponentRemovalTarget> ResolveAdditionalFeedComponentTypes()
