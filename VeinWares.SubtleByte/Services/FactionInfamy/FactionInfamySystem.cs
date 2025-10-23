@@ -26,6 +26,7 @@ internal static class FactionInfamySystem
     private static float _maximumHate;
     private static bool _enableAmbushVisualBuffs;
     private static bool _enableHalloweenAmbush;
+    private static bool _disableBloodConsumeOnSpawn;
     private static int _halloweenScarecrowMinimum;
     private static int _halloweenScarecrowMaximum;
     private static int _halloweenScarecrowRareMultiplier;
@@ -75,6 +76,8 @@ internal static class FactionInfamySystem
     internal static bool AmbushVisualBuffsEnabled => _enableAmbushVisualBuffs;
 
     internal static bool HalloweenAmbushEnabled => _enableHalloweenAmbush;
+
+    internal static bool SuppressBloodConsumeOnSpawn => _disableBloodConsumeOnSpawn;
 
     internal static int HalloweenScarecrowMinimum => _halloweenScarecrowMinimum;
 
@@ -162,6 +165,7 @@ internal static class FactionInfamySystem
         _maximumHate = config.MaximumHate;
         _enableAmbushVisualBuffs = config.EnableAmbushVisualBuffs;
         _enableHalloweenAmbush = config.EnableHalloweenAmbush;
+        _disableBloodConsumeOnSpawn = config.DisableBloodConsumeOnSpawn;
         _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
         _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
