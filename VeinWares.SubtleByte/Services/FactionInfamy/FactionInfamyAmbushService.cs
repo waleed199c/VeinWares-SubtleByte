@@ -13,6 +13,7 @@ using Unity.Mathematics;
 using Unity.Transforms;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Extensions;
+using VeinWares.SubtleByte.Services;
 using VeinWares.SubtleByte.Utilities;
 
 #nullable enable
@@ -814,6 +815,14 @@ internal static class FactionInfamyAmbushService
         }
 
         EnsureFactionAlignment(entityManager, entity, pending);
+
+        if (FactionInfamySystem.SuppressBloodConsumeOnSpawn)
+        {
+            SpawnFeedSuppressionService.SuppressFeedingComponents(
+                entityManager,
+                entity,
+                $"ambush faction '{pending.FactionId}'");
+        }
 
         ActiveAmbushes[entity] = new ActiveAmbush(pending.TargetSteamId, pending.FactionId, pending.HateReliefPerUnit);
 

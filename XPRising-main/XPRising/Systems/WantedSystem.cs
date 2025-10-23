@@ -23,6 +23,7 @@ namespace XPRising.Systems
         public static float AmbushDespawnTimer = 300;
         public static int VBloodMultiplier = 20;
         public static float RequiredDistanceFromVBlood = 100;
+        public static bool DisableBloodConsume = false;
 
         private static readonly System.Random InternalRandom = new();
         public static int HeatPercentageLostOnDeath = 100;

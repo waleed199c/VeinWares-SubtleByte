@@ -79,11 +79,32 @@ your kills to ensure you don't get hunted by an extremely elite group of assassi
 Another way of lowering your wanted level is to kill Vampire Hunters.
 
 Otherwise, if you are dead for any reason at all, your wanted level will reset back to 0. This behaviour can be modified by editing the "Heat percentage lost on death" option in the `BepInEx\config\XPRising_XXXXX\WantedConfig.cfg` file.
+
+#### Configuration
+
+Key options in `WantedConfig.cfg` include:
+- `Heat Cooldown` – controls how much heat is reduced each minute while players lay low.
+- `Ambush Interval` – sets how long the system waits before another ambush can trigger for a player.
+- `Ambush Chance` – determines the probability that an ambush will occur after the cooldown.
+- `Disable Blood Consume On Spawn` – removes blood consume and feed components from ambush squads so they cannot be fed upon as soon as they appear.
 ```
 Note:
 - Ambush may only occur when the player is in combat.
 - All mobs spawned by this system is assigned to Faction_VampireHunters, except for the legion
 ```
+</details>
+
+## Random Encounters
+<details>
+Random encounters periodically select an eligible player and spawn an NPC nearby. Defeating the NPC within the time limit grants a reward that can optionally be announced to other players or administrators.
+
+#### Configuration
+
+Key options in `RandomEncountersConfig/Main.cfg` include:
+- `SkipPlayersInCastle` – excludes vampires who are safely inside their castle boundaries.
+- `EncounterTimerMin`/`EncounterTimerMax` – define the randomised window between encounter spawns (scaled by online player count).
+- `EncounterLength` – limits how long the encounter NPC remains before despawning.
+- `DisableBloodConsumeOnSpawn` – strips blood consume and feed components from spawned encounter units so they cannot be fed upon immediately.
 </details>
 
 ## Challenge System

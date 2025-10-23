@@ -19,6 +19,7 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _autosaveBackups;
     private static ConfigEntry<bool> _enableAmbushVisualBuffs;
     private static ConfigEntry<bool> _enableHalloweenAmbush;
+    private static ConfigEntry<bool> _disableBloodConsumeOnSpawn;
     private static ConfigEntry<int> _halloweenScarecrowMinimum;
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
@@ -142,6 +143,12 @@ internal static class FactionInfamyConfig
             "Enable Halloween Ambush",
             false,
             "When true, Tier 5 ambush squads can include seasonal scarecrow reinforcements.");
+
+        _disableBloodConsumeOnSpawn = configFile.Bind(
+            "Faction Infamy",
+            "DisableBloodConsumeOnSpawn",
+            false,
+            "When enabled, ambush spawns strip blood consume and feed components so they cannot be fed upon immediately.");
 
         _halloweenScarecrowMinimum = configFile.Bind(
             "Faction Infamy",
@@ -401,6 +408,7 @@ internal static class FactionInfamyConfig
             Math.Clamp(_autosaveBackups.Value, 0, 20),
             _enableAmbushVisualBuffs.Value,
             _enableHalloweenAmbush.Value,
+            _disableBloodConsumeOnSpawn.Value,
             scarecrowMin,
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
@@ -679,6 +687,7 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     int AutosaveBackupCount,
     bool EnableAmbushVisualBuffs,
     bool EnableHalloweenAmbush,
+    bool DisableBloodConsumeOnSpawn,
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,
