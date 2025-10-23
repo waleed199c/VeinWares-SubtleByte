@@ -21,6 +21,7 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<bool> _enableHalloweenAmbush;
     private static ConfigEntry<bool> _disableBloodConsumeOnSpawn;
     private static ConfigEntry<bool> _disableCharmOnSpawn;
+    private static ConfigEntry<bool> _enableNativeDropTables;
     private static ConfigEntry<int> _halloweenScarecrowMinimum;
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
@@ -156,6 +157,12 @@ internal static class FactionInfamyConfig
             "DisableCharmOnSpawn",
             false,
             "When enabled, ambush spawns strip charm-related components so they cannot be charmed immediately after spawning.");
+
+        _enableNativeDropTables = configFile.Bind(
+            "Faction Infamy",
+            "EnableNativeDropTables",
+            false,
+            "When true, ambush squads retain their default drop tables instead of clearing them for custom loot handling.");
 
         _halloweenScarecrowMinimum = configFile.Bind(
             "Faction Infamy",
@@ -417,6 +424,7 @@ internal static class FactionInfamyConfig
             _enableHalloweenAmbush.Value,
             _disableBloodConsumeOnSpawn.Value,
             _disableCharmOnSpawn.Value,
+            _enableNativeDropTables.Value,
             scarecrowMin,
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
@@ -697,6 +705,7 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     bool EnableHalloweenAmbush,
     bool DisableBloodConsumeOnSpawn,
     bool DisableCharmOnSpawn,
+    bool EnableNativeDropTables,
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,
