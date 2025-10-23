@@ -27,6 +27,7 @@ namespace XPRising.Configuration
         public static ConfigEntry<int> MinSpawnDistance { get; private set; }
         public static ConfigEntry<int> MaxSpawnDistance { get; private set; }
         public static ConfigEntry<bool> SkipPlayersInCombat { get; private set; }
+        public static ConfigEntry<bool> DisableBloodConsumeOnSpawn { get; private set; }
 
         public static Dictionary<int, ConfigEntry<bool>> Npcs = new();
         public static Dictionary<int, ConfigEntry<int>> Items = new();
@@ -62,6 +63,13 @@ namespace XPRising.Configuration
             NotifyAllPlayersAboutRewards = _mainConfig.Bind("Main", "NotifyAllPlayersAboutRewards", false, "When enabled, all online players are notified about any player's rewards.");
             MinSpawnDistance = _mainConfig.Bind("Main", "MinSpawnDistance", 2, "Minimum spawn distance for the spawned unit.");
             MaxSpawnDistance = _mainConfig.Bind("Main", "MaxSpawnDistance", 4, "Maximum spawn distance for the spawned unit.");
+            DisableBloodConsumeOnSpawn = _mainConfig.Bind("Main", "DisableBloodConsumeOnSpawn", false, "When enabled, spawned encounter units have their blood consume and feed components removed so they cannot be fed upon.");
+
+            DisableBloodConsumeOnSpawn.SettingChanged += (_, _) =>
+            {
+                RandomEncountersSystem.DisableBloodConsume = DisableBloodConsumeOnSpawn.Value;
+            };
+            RandomEncountersSystem.DisableBloodConsume = DisableBloodConsumeOnSpawn.Value;
 
             foreach (var itemModel in DataFactory.GetAllItems().OrderBy(i => i.Name))
             {
@@ -74,6 +82,7 @@ namespace XPRising.Configuration
         {
             _mainConfig.Clear();
             _itemsConfig.Clear();
+            RandomEncountersSystem.DisableBloodConsume = false;
         }
 
         private static string CleanupName(string name)

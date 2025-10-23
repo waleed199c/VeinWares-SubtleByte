@@ -10,6 +10,7 @@ using Stunlock.Core;
 using Unity.Transforms;
 using XPRising.Configuration;
 using XPRising.Models;
+using XPRising.Hooks;
 using XPRising.Models.RandomEncounters;
 using XPRising.Utils;
 using XPRising.Utils.RandomEncounters;
@@ -25,6 +26,7 @@ namespace XPRising.Systems
         private static readonly Entity StationEntity = new();
         private static float Lifetime => RandomEncountersConfig.EncounterLength.Value;
         private static string MessageTemplate => RandomEncountersConfig.EncounterMessageTemplate.Value;
+        internal static bool DisableBloodConsume { get; set; } = false;
 
         internal static Dictionary<long, (float actualDuration, Action<Entity> Actions)> PostActions = new();
 
@@ -124,6 +126,11 @@ namespace XPRising.Systems
                 }
             }
             RewardsMap[steamID][entity.Index] = DataFactory.GetRandomItem();
+
+            if (DisableBloodConsume)
+            {
+                UnitSpawnBloodConsumeHelper.SuppressFeedingComponents(entity, Plugin.LogSystem.RandomEncounter);
+            }
         }
 
         internal static void ServerEvents_OnDeath(DeathEvent deathEvent, User userModel)

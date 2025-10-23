@@ -94,6 +94,11 @@ public static class UnitSpawnerReactSystemPatch
             {
                 // Add the entity to our list of spawned entities so we can match them as reducing heat when killed
                 WantedSystem.AddAmbushingEntity(entity, currentTime);
+
+                if (WantedSystem.DisableBloodConsume)
+                {
+                    UnitSpawnBloodConsumeHelper.SuppressFeedingComponents(entity, Plugin.LogSystem.SquadSpawn);
+                }
             }
         }
     }
