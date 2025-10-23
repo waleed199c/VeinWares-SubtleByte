@@ -87,55 +87,63 @@ internal static class SpawnSuppressionService
 
     private static void SuppressCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
     {
-        using var componentTypes = entityManager.GetComponentTypes(entity);
+        var componentTypes = entityManager.GetComponentTypes(entity);
         if (!componentTypes.IsCreated || componentTypes.Length == 0)
         {
             return;
         }
 
-        var toRemove = new List<ComponentType>();
-
-        for (var i = 0; i < componentTypes.Length; i++)
+        try
         {
-            var componentType = componentTypes[i];
-            var managedType = TypeManager.GetType(componentType.TypeIndex);
-            if (managedType == null)
+            var toRemove = new List<ComponentType>();
+
+            for (var i = 0; i < componentTypes.Length; i++)
             {
-                continue;
+                var componentType = componentTypes[i];
+                var typeInfo = TypeManager.GetTypeInfo(componentType.TypeIndex);
+                var managedTypeName = typeInfo.DebugTypeName.ToString();
+
+                if (string.IsNullOrEmpty(managedTypeName))
+                {
+                    continue;
+                }
+
+                if (!IsCharmRelated(managedTypeName))
+                {
+                    continue;
+                }
+
+                toRemove.Add(componentType);
+                removedComponents.Add(managedTypeName);
             }
 
-            if (!IsCharmRelated(managedType))
+            foreach (var componentType in toRemove)
             {
-                continue;
+                if (entityManager.HasComponent(entity, componentType))
+                {
+                    entityManager.RemoveComponent(entity, componentType);
+                }
             }
-
-            toRemove.Add(componentType);
-            removedComponents.Add(managedType.Name);
         }
-
-        foreach (var componentType in toRemove)
+        finally
         {
-            if (entityManager.HasComponent(entity, componentType))
-            {
-                entityManager.RemoveComponent(entity, componentType);
-            }
+            componentTypes.Dispose();
         }
     }
 
-    private static bool IsCharmRelated(Type managedType)
+    private static bool IsCharmRelated(string managedTypeName)
     {
-        var fullName = managedType.FullName ?? managedType.Name;
-        if (string.IsNullOrEmpty(fullName))
+        if (string.IsNullOrEmpty(managedTypeName))
         {
             return false;
         }
 
-        if (fullName.IndexOf("Charm", StringComparison.OrdinalIgnoreCase) < 0)
+        if (managedTypeName.IndexOf("Charm", StringComparison.OrdinalIgnoreCase) < 0)
         {
             return false;
         }
 
-        return fullName.Contains("ProjectM.", StringComparison.Ordinal);
+        return managedTypeName.Contains("ProjectM.", StringComparison.Ordinal);
     }
 
     private static IReadOnlyList<ComponentRemovalTarget> ResolveAdditionalFeedComponentTypes()
