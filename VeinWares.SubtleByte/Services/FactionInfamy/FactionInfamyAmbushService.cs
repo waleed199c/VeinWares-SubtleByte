@@ -6,6 +6,7 @@ using System.Threading;
 using BepInEx.Logging;
 using ProjectM;
 using ProjectM.Network;
+using ProjectM.Shared;
 using Stunlock.Core;
 using Unity.Collections;
 using Unity.Entities;
@@ -816,6 +817,11 @@ internal static class FactionInfamyAmbushService
 
         EnsureFactionAlignment(entityManager, entity, pending);
 
+        if (!FactionInfamySystem.NativeDropTablesEnabled)
+        {
+            ClearNativeDropTables(entityManager, entity, pending.FactionId);
+        }
+
         var suppressFeed = FactionInfamySystem.SuppressBloodConsumeOnSpawn;
         var suppressCharm = FactionInfamySystem.SuppressCharmOnSpawn;
         if (suppressFeed || suppressCharm)
@@ -861,6 +867,25 @@ internal static class FactionInfamyAmbushService
         }
 
         ApplyTeamData(entityManager, entity, cachedTeam);
+    }
+
+    private static void ClearNativeDropTables(EntityManager entityManager, Entity entity, string factionId)
+    {
+        if (!entityManager.HasComponent<DropTableBuffer>(entity))
+        {
+            return;
+        }
+
+        var buffer = entityManager.GetBuffer<DropTableBuffer>(entity);
+        if (buffer.Length == 0)
+        {
+            return;
+        }
+
+        buffer.Clear();
+
+        var context = string.IsNullOrWhiteSpace(factionId) ? "unknown" : factionId;
+        _log?.LogInfo($"[Spawn] Cleared existing DropTableBuffer for ambush faction '{context}' (entity {entity.Index}).");
     }
 
     private static void UpdateFactionReference(EntityManager entityManager, Entity entity, PrefabGUID factionGuid)

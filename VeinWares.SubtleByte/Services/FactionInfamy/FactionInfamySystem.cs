@@ -28,6 +28,7 @@ internal static class FactionInfamySystem
     private static bool _enableHalloweenAmbush;
     private static bool _disableBloodConsumeOnSpawn;
     private static bool _disableCharmOnSpawn;
+    private static bool _enableNativeDropTables;
     private static int _halloweenScarecrowMinimum;
     private static int _halloweenScarecrowMaximum;
     private static int _halloweenScarecrowRareMultiplier;
@@ -81,6 +82,8 @@ internal static class FactionInfamySystem
     internal static bool SuppressBloodConsumeOnSpawn => _disableBloodConsumeOnSpawn;
 
     internal static bool SuppressCharmOnSpawn => _disableCharmOnSpawn;
+
+    internal static bool NativeDropTablesEnabled => _enableNativeDropTables;
 
     internal static int HalloweenScarecrowMinimum => _halloweenScarecrowMinimum;
 
@@ -170,6 +173,7 @@ internal static class FactionInfamySystem
         _enableHalloweenAmbush = config.EnableHalloweenAmbush;
         _disableBloodConsumeOnSpawn = config.DisableBloodConsumeOnSpawn;
         _disableCharmOnSpawn = config.DisableCharmOnSpawn;
+        _enableNativeDropTables = config.EnableNativeDropTables;
         _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
         _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
