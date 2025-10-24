@@ -23,7 +23,16 @@ internal static class SpawnSuppressionService
         "ProjectM.Feedable",
     };
 
-    private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes = ResolveAdditionalFeedComponentTypes();
+    private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes =
+        ResolveComponentTypes(AdditionalFeedComponentTypeNames);
+
+    private static readonly string[] CharmComponentTypeNames =
+    {
+        "ProjectM.CharmSource",
+    };
+
+    private static readonly IReadOnlyList<ComponentRemovalTarget> CharmComponentTypes =
+        ResolveComponentTypes(CharmComponentTypeNames);
 
     public static bool SuppressSpawnComponents(
         EntityManager entityManager,
@@ -61,16 +70,14 @@ internal static class SpawnSuppressionService
 
     private static void SuppressFeedComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
     {
-        if (entity.Has<BloodConsumeSource>())
-        {
-            entity.Remove<BloodConsumeSource>();
-            removedComponents.Add(nameof(BloodConsumeSource));
-        }
+        var suppressedQuality = ApplyBloodConsumeSourceSuppression(entityManager, entity, removedComponents);
+        var removedAny = false;
 
         if (entity.Has<FeedableInventory>())
         {
             entity.Remove<FeedableInventory>();
             removedComponents.Add(nameof(FeedableInventory));
+            removedAny = true;
         }
 
         foreach (var component in AdditionalFeedComponentTypes)
@@ -82,11 +89,79 @@ internal static class SpawnSuppressionService
 
             entityManager.RemoveComponent(entity, component.ComponentType);
             removedComponents.Add(component.DisplayName);
+            removedAny = true;
         }
+
+        if (!suppressedQuality.HasValue && removedAny)
+        {
+            var fallbackQuality = CalculateSuppressedBloodQuality(ReadSpawnBloodQuality(entityManager, entity));
+            if (TrySetSpawnBloodQuality(entityManager, entity, fallbackQuality))
+            {
+                removedComponents.Add($"{nameof(UnitSpawnData)}.{nameof(UnitSpawnData.BloodQuality)}={(int)MathF.Round(fallbackQuality)}");
+            }
+        }
+    }
+
+    private static float? ApplyBloodConsumeSourceSuppression(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    {
+        if (!entityManager.TryGetComponentData(entity, out BloodConsumeSource bloodConsumeSource))
+        {
+            return null;
+        }
+
+        var sourceQuality = DetermineBloodQualitySource(entityManager, entity, bloodConsumeSource);
+        var suppressedQuality = CalculateSuppressedBloodQuality(sourceQuality);
+        var changed = false;
+
+        if (bloodConsumeSource.CanBeConsumed)
+        {
+            bloodConsumeSource.CanBeConsumed = false;
+            removedComponents.Add($"{nameof(BloodConsumeSource)}.{nameof(BloodConsumeSource.CanBeConsumed)}=false");
+            changed = true;
+        }
+
+        if (!Approximately(bloodConsumeSource.BloodQuality, suppressedQuality))
+        {
+            bloodConsumeSource.BloodQuality = suppressedQuality;
+            removedComponents.Add($"{nameof(BloodConsumeSource)}.{nameof(BloodConsumeSource.BloodQuality)}={(int)MathF.Round(suppressedQuality)}");
+            changed = true;
+        }
+
+        if (changed)
+        {
+            entityManager.SetComponentData(entity, bloodConsumeSource);
+        }
+
+        if (TrySetSpawnBloodQuality(entityManager, entity, suppressedQuality))
+        {
+            removedComponents.Add($"{nameof(UnitSpawnData)}.{nameof(UnitSpawnData.BloodQuality)}={(int)MathF.Round(suppressedQuality)}");
+        }
+
+        return suppressedQuality;
+    }
+
+    private static float DetermineBloodQualitySource(EntityManager entityManager, Entity entity, in BloodConsumeSource bloodConsumeSource)
+    {
+        if (entityManager.TryGetComponentData(entity, out UnitSpawnData spawnData) && spawnData.BloodQuality >= 0f)
+        {
+            return spawnData.BloodQuality;
+        }
+
+        if (bloodConsumeSource.BloodQuality >= 0f)
+        {
+            return bloodConsumeSource.BloodQuality;
+        }
+
+        return 0f;
     }
 
     private static void SuppressCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
     {
+        if (RemoveKnownCharmComponents(entityManager, entity, removedComponents))
+        {
+            return;
+        }
+
         var componentTypes = entityManager.GetComponentTypes(entity);
         if (!componentTypes.IsCreated || componentTypes.Length == 0)
         {
@@ -130,6 +205,25 @@ internal static class SpawnSuppressionService
         }
     }
 
+    private static bool RemoveKnownCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    {
+        var removedAny = false;
+
+        foreach (var component in CharmComponentTypes)
+        {
+            if (!entityManager.HasComponent(entity, component.ComponentType))
+            {
+                continue;
+            }
+
+            entityManager.RemoveComponent(entity, component.ComponentType);
+            removedComponents.Add(component.DisplayName);
+            removedAny = true;
+        }
+
+        return removedAny;
+    }
+
     private static bool IsCharmRelated(string managedTypeName)
     {
         if (string.IsNullOrEmpty(managedTypeName))
@@ -145,9 +239,88 @@ internal static class SpawnSuppressionService
         return managedTypeName.Contains("ProjectM.", StringComparison.Ordinal);
     }
 
-    private static IReadOnlyList<ComponentRemovalTarget> ResolveAdditionalFeedComponentTypes()
+    private static bool TrySetSpawnBloodQuality(EntityManager entityManager, Entity entity, float suppressedQuality)
     {
-        return AdditionalFeedComponentTypeNames
+        if (!entityManager.TryGetComponentData(entity, out UnitSpawnData spawnData))
+        {
+            return false;
+        }
+
+        if (Approximately(spawnData.BloodQuality, suppressedQuality))
+        {
+            return false;
+        }
+
+        spawnData.BloodQuality = suppressedQuality;
+        entityManager.SetComponentData(entity, spawnData);
+        return true;
+    }
+
+    private static float ReadSpawnBloodQuality(EntityManager entityManager, Entity entity)
+    {
+        if (entityManager.TryGetComponentData(entity, out UnitSpawnData spawnData) && spawnData.BloodQuality >= 0f)
+        {
+            return spawnData.BloodQuality;
+        }
+
+        return 0f;
+    }
+
+    private static float CalculateSuppressedBloodQuality(float currentQuality)
+    {
+        var sanitizedQuality = Clamp(currentQuality, 0f, 100f);
+
+        if (sanitizedQuality >= 100f)
+        {
+            return 100f;
+        }
+
+        ReadOnlySpan<(float Threshold, float BaseQuality)> tiers = stackalloc (float, float)[]
+        {
+            (20f, 20f),
+            (40f, 40f),
+            (60f, 60f),
+            (80f, 80f),
+        };
+
+        foreach (var tier in tiers)
+        {
+            if (sanitizedQuality > tier.Threshold)
+            {
+                continue;
+            }
+
+            var offsetBaseline = tier.BaseQuality - 20f;
+            var offset = Clamp(sanitizedQuality - offsetBaseline, 0f, 9f);
+            return tier.BaseQuality + offset;
+        }
+
+        return 100f;
+    }
+
+    private static float Clamp(float value, float min, float max)
+    {
+        if (value < min)
+        {
+            return min;
+        }
+
+        if (value > max)
+        {
+            return max;
+        }
+
+        return value;
+    }
+
+    private static bool Approximately(float left, float right)
+    {
+        return Math.Abs(left - right) <= 0.001f;
+    }
+
+    private static IReadOnlyList<ComponentRemovalTarget> ResolveComponentTypes(IEnumerable<string> typeNames)
+    {
+        return typeNames
             .Select(FindComponentType)
             .Where(component => component.HasValue)
             .Select(component => component!.Value)
