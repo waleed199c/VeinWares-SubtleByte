@@ -100,8 +100,7 @@ internal static class SpawnSuppressionService
             for (var i = 0; i < componentTypes.Length; i++)
             {
                 var componentType = componentTypes[i];
-                var typeInfo = TypeManager.GetTypeInfo(componentType.TypeIndex);
-                var managedTypeName = typeInfo.DebugTypeName.ToString();
+                var managedTypeName = componentType.ToString();
 
                 if (string.IsNullOrEmpty(managedTypeName))
                 {
