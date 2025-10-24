@@ -5,6 +5,8 @@ using Stunlock.Core;
 using Unity.Entities;
 using Unity.Mathematics;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal static class FactionInfamySpawnUtility

@@ -176,8 +176,10 @@ internal static class FactionInfamyAmbushData
 
     internal static bool TryGetFactionByGuid(int guidHash, out string factionId, out float baseHate)
     {
-        if (_squadSnapshot.AggregatedFactions.TryGetValue(guidHash, out factionId))
+        if (_squadSnapshot.AggregatedFactions.TryGetValue(guidHash, out var foundFactionId)
+            && !string.IsNullOrEmpty(foundFactionId))
         {
+            factionId = foundFactionId;
             baseHate = _squadSnapshot.BaseHateOverrides.TryGetValue(guidHash, out var overrideValue)
                 ? overrideValue
                 : 0f;

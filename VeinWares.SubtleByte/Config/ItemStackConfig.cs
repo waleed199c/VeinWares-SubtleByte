@@ -6,6 +6,8 @@ using System.Text.Json.Serialization;
 using BepInEx;
 using VeinWares.SubtleByte.Utilities;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Config
 {
     public static class ItemStackConfig

@@ -15,7 +15,7 @@ internal static class FactionInfamySystem
 {
     private static readonly ConcurrentDictionary<ulong, PlayerHateData> PlayerHate = new();
     private static ManualLogSource? _log;
-    private static FactionInfamyConfigSnapshot _config;
+    private static FactionInfamyConfigSnapshot _config = null!;
     private static bool _initialized;
     private static bool _dirty;
     private static TimeSpan _combatCooldown;
