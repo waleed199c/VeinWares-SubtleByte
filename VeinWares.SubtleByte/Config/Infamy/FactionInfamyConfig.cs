@@ -106,7 +106,7 @@ internal static class FactionInfamyConfig
             _hateGainMultiplier = Bind(Section.Core, "Hate Gain Multiplier", 1.0f,
                 "Scales the amount of hate granted per qualifying kill.", LegacySection);
 
-            _hateDecayPerMinute = Bind(Section.Core, "Hate Decay Per Minute", 10.0f,
+            _hateDecayPerMinute = Bind(Section.Core, "Hate Decay Per Minute", 2.0f,
                 "Amount of hate removed from every active faction bucket each minute while the player is eligible for cooldown.", LegacySection);
 
             _cooldownGraceSeconds = Bind(Section.Combat, "Cooldown Grace Seconds", 30.0f,
