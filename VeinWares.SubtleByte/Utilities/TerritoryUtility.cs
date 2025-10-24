@@ -53,7 +53,8 @@ internal static class TerritoryUtility
                     continue;
                 }
 
-                if (!Contains(territory.WorldBounds, position))
+                var insideTerritory = TryContainsTerritory(territory, position);
+                if (!insideTerritory)
                 {
                     continue;
                 }
@@ -122,6 +123,16 @@ internal static class TerritoryUtility
         }
 
         return false;
+    }
+
+    private static bool TryContainsTerritory(in CastleTerritory territory, in float3 position)
+    {
+        if (NativeCastleTerritoryHelper.TryContains(territory, position, out var contains))
+        {
+            return contains;
+        }
+
+        return Contains(territory.WorldBounds, position);
     }
 
     private static Entity ResolveTeamEntity(EntityManager entityManager, Entity entity)
