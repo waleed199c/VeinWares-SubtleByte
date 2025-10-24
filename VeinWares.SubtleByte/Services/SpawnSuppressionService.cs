@@ -8,6 +8,8 @@ using Unity.Entities;
 using VeinWares.SubtleByte.Extensions;
 using VeinWares.SubtleByte.Utilities;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services;
 
 internal static class SpawnSuppressionService

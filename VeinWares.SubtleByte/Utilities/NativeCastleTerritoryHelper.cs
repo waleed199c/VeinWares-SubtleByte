@@ -4,6 +4,8 @@ using ProjectM.CastleBuilding;
 using VeinWares.SubtleByte;
 using Unity.Mathematics;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Utilities;
 
 internal static class NativeCastleTerritoryHelper

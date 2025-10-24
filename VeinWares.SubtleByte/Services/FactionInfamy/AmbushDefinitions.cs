@@ -4,6 +4,8 @@ using System.Linq;
 using ProjectM.Shared;
 using Stunlock.Core;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal readonly struct AmbushUnitDefinition

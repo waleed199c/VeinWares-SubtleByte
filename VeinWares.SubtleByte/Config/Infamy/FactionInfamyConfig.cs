@@ -1,6 +1,8 @@
 using System;
 using BepInEx.Configuration;
 
+#nullable enable
+
 namespace VeinWares.SubtleByte.Config;
 
 internal static class FactionInfamyConfig
