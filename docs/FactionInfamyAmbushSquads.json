@@ -1,0 +1,616 @@
+{
+  "defaultVisuals": [
+    1670636401,
+    1199823151,
+    -2067402784,
+    178225731,
+    -2104035188
+  ],
+  "factions": [
+    {
+      "id": "Bandits",
+      "factionGuids": [
+        -413163549,
+        30052367
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": -1030822544,
+          "count": 2,
+          "levelOffset": -1,
+          "minRange": 1.5,
+          "maxRange": 8
+        },
+        {
+          "prefabGuid": -301730941,
+          "count": 2,
+          "levelOffset": -2,
+          "minRange": 1,
+          "maxRange": 6
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": -1128238456,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 1.5,
+          "maxRange": 7
+        }
+      ],
+      "visualBuffs": [
+        1670636401,
+        1199823151,
+        -2067402784
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ],
+      "baseHateOverrides": [
+        {
+          "factionGuid": 30052367,
+          "hate": 300
+        }
+      ]
+    },
+    {
+      "id": "Blackfangs",
+      "factionGuids": [
+        932337192,
+        -1460095921
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": 1864177126,
+          "count": 2,
+          "levelOffset": 0,
+          "minRange": 1.5,
+          "maxRange": 7
+        },
+        {
+          "prefabGuid": 326501064,
+          "count": 1,
+          "levelOffset": 1,
+          "minRange": 2,
+          "maxRange": 9
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": 1531777139,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 2,
+          "maxRange": 9
+        }
+      ],
+      "visualBuffs": [
+        1199823151,
+        -2067402784,
+        178225731
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "Militia",
+      "factionGuids": [
+        1057375699,
+        1094603131,
+        2395673,
+        887347866,
+        1977351396
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": 1148936156,
+          "count": 3,
+          "levelOffset": -1,
+          "minRange": 2,
+          "maxRange": 10
+        },
+        {
+          "prefabGuid": 794228023,
+          "count": 1,
+          "levelOffset": 1,
+          "minRange": 1.5,
+          "maxRange": 6
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": 2005508157,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 2,
+          "maxRange": 8
+        }
+      ],
+      "visualBuffs": [
+        178225731,
+        1199823151,
+        -2104035188
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ],
+      "baseHateOverrides": [
+        {
+          "factionGuid": 2395673,
+          "hate": 25
+        },
+        {
+          "factionGuid": 1094603131,
+          "hate": 15
+        }
+      ]
+    },
+    {
+      "id": "Gloomrot",
+      "factionGuids": [
+        -1632475814
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": -322293503,
+          "count": 2,
+          "levelOffset": 0,
+          "minRange": 3,
+          "maxRange": 10
+        },
+        {
+          "prefabGuid": 1732477970,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 4,
+          "maxRange": 12
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": 1401026468,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 3,
+          "maxRange": 10
+        }
+      ],
+      "visualBuffs": [
+        -2104035188,
+        -2067402784,
+        178225731
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "Legion",
+      "factionGuids": [
+        -772044125
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": 1980594081,
+          "count": 2,
+          "levelOffset": 1,
+          "minRange": 2,
+          "maxRange": 9
+        },
+        {
+          "prefabGuid": -1009917656,
+          "count": 1,
+          "levelOffset": 3,
+          "minRange": 3,
+          "maxRange": 11
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": 1912966420,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 3,
+          "maxRange": 10
+        }
+      ],
+      "visualBuffs": [
+        -2067402784,
+        1199823151,
+        -2104035188
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ]
+    },
+    {
+      "id": "Undead",
+      "factionGuids": [
+        929074293
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": -1287507270,
+          "count": 3,
+          "levelOffset": -1,
+          "minRange": 1.5,
+          "maxRange": 7
+        },
+        {
+          "prefabGuid": -1365627158,
+          "count": 1,
+          "levelOffset": 1,
+          "minRange": 2,
+          "maxRange": 8
+        }
+      ],
+      "representatives": [
+        {
+          "prefabGuid": -1967480038,
+          "count": 1,
+          "levelOffset": 2,
+          "minRange": 2,
+          "maxRange": 8
+        }
+      ],
+      "visualBuffs": [
+        -2067402784,
+        1199823151,
+        -2104035188
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ],
+      "baseHateOverrides": [
+        {
+          "factionGuid": 929074293,
+          "hate": 5
+        }
+      ]
+    },
+    {
+      "id": "Werewolf",
+      "factionGuids": [
+        -2024618997,
+        62959306
+      ],
+      "baseUnits": [
+        {
+          "prefabGuid": -951976780,
+          "count": 3,
+          "levelOffset": 0,
+          "minRange": 1.5,
+          "maxRange": 8
+        }
+      ],
+      "visualBuffs": [
+        1670636401,
+        -2067402784
+      ],
+      "seasonal": [
+        {
+          "season": "Halloween",
+          "useSharedRollCount": true,
+          "unit": {
+            "prefabGuid": -1750347680,
+            "count": 1,
+            "levelOffset": 0,
+            "minRange": 2.5,
+            "maxRange": 8
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -1146194149,
+            "count": 1,
+            "levelOffset": 2,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": -458883491,
+            "count": 1,
+            "levelOffset": 3,
+            "minRange": 2,
+            "maxRange": 9
+          }
+        },
+        {
+          "season": "Halloween",
+          "useSharedRollCount": false,
+          "unit": {
+            "prefabGuid": 849891426,
+            "count": 2,
+            "levelOffset": 1,
+            "minRange": 2.5,
+            "maxRange": 10
+          }
+        }
+      ],
+      "baseHateOverrides": [
+        {
+          "factionGuid": -2024618997,
+          "hate": 20
+        },
+        {
+          "factionGuid": 62959306,
+          "hate": 20
+        }
+      ]
+    },
+    {
+      "id": "Critters",
+      "factionGuids": [
+        1344481611,
+        10678632,
+        -1671358863
+      ],
+      "baseHateOverrides": []
+    }
+  ]
+}

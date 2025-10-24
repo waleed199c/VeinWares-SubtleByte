@@ -30,6 +30,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         FactionInfamyChatConfig.Initialize(context.Log);
 
         var snapshot = FactionInfamyConfig.CreateSnapshot();
+        FactionInfamyAmbushData.Initialize(context.Log);
         FactionInfamySystem.Initialize(snapshot, context.Log);
         FactionInfamyAmbushService.Initialize(context.Log);
 
@@ -74,6 +75,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
             FactionInfamySystem.Shutdown();
             FactionInfamyRuntime.Shutdown();
             FactionInfamyAmbushService.Shutdown();
+            FactionInfamyAmbushData.Shutdown();
             FactionInfamyChatConfig.Shutdown();
         }
 
