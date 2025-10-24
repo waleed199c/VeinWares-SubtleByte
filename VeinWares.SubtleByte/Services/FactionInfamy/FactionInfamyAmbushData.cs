@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -15,6 +16,8 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using VeinWares.SubtleByte;
+
+#nullable enable
 
 namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
@@ -234,14 +237,13 @@ internal static class FactionInfamyAmbushData
             }
 
             var entityManager = Core.EntityManager;
-            var prefabMap = Core.PrefabCollectionSystem?._PrefabGuidToEntityMap;
 
             foreach (var pair in LootPrefabCache.ToArray())
             {
                 var entity = pair.Value;
-                if (prefabMap != null && _lootSnapshot.Definitions.TryGetValue(pair.Key, out var definition))
+                if (_lootSnapshot.Definitions.TryGetValue(pair.Key, out var definition))
                 {
-                    prefabMap.Remove(definition.DropTableGuid);
+                    UnregisterDropTablePrefab(definition.DropTableGuid);
                 }
 
                 if (entityManager.Exists(entity))
@@ -405,15 +407,15 @@ internal static class FactionInfamyAmbushData
         try
         {
             var entity = entityManager.CreateEntity(
-                typeof(DropTableData),
-                typeof(DropTableDataBuffer),
-                typeof(PrefabGUID),
-                typeof(Prefab),
-                typeof(SpawnTag),
-                typeof(LocalTransform),
-                typeof(LocalToWorld),
-                typeof(Translation),
-                typeof(Rotation));
+                ComponentType.ReadWrite<DropTableData>(),
+                ComponentType.ReadWrite<DropTableDataBuffer>(),
+                ComponentType.ReadWrite<PrefabGUID>(),
+                ComponentType.ReadWrite<Prefab>(),
+                ComponentType.ReadWrite<SpawnTag>(),
+                ComponentType.ReadWrite<LocalTransform>(),
+                ComponentType.ReadWrite<LocalToWorld>(),
+                ComponentType.ReadWrite<Translation>(),
+                ComponentType.ReadWrite<Rotation>());
 
             entityManager.SetComponentData(entity, definition.DropTableGuid);
 
@@ -442,11 +444,7 @@ internal static class FactionInfamyAmbushData
             entityManager.SetComponentData(entity, new Translation { Value = float3.zero });
             entityManager.SetComponentData(entity, new Rotation { Value = quaternion.identity });
 
-            var collection = Core.PrefabCollectionSystem;
-            if (collection?._PrefabGuidToEntityMap != null)
-            {
-                collection._PrefabGuidToEntityMap[definition.DropTableGuid] = entity;
-            }
+            RegisterDropTablePrefab(definition.DropTableGuid, entity);
 
             return entity;
         }
@@ -483,11 +481,104 @@ internal static class FactionInfamyAmbushData
             });
         }
 
-        var collection = Core.PrefabCollectionSystem;
-        if (collection?._PrefabGuidToEntityMap != null)
+        RegisterDropTablePrefab(definition.DropTableGuid, entity);
+    }
+
+    private static void RegisterDropTablePrefab(PrefabGUID guid, Entity entity)
+    {
+        if (Core.PrefabCollectionSystem is not { } collection)
         {
-            collection._PrefabGuidToEntityMap[definition.DropTableGuid] = entity;
+            return;
         }
+
+        var prefabMap = collection._PrefabGuidToEntityMap;
+        if (prefabMap == null)
+        {
+            return;
+        }
+
+        try
+        {
+            InvokePrefabMapRemove(prefabMap, guid);
+            if (!InvokePrefabMapTryAdd(prefabMap, guid, entity))
+            {
+                _log?.LogWarning($"[Infamy] Unable to register drop table prefab for guid {guid.GuidHash}.");
+            }
+        }
+        catch (Exception ex)
+        {
+            _log?.LogWarning($"[Infamy] Failed to register drop table prefab for guid {guid.GuidHash}: {ex.Message}");
+        }
+    }
+
+    private static void UnregisterDropTablePrefab(PrefabGUID guid)
+    {
+        if (Core.PrefabCollectionSystem is not { } collection)
+        {
+            return;
+        }
+
+        var prefabMap = collection._PrefabGuidToEntityMap;
+        if (prefabMap == null)
+        {
+            return;
+        }
+
+        try
+        {
+            InvokePrefabMapRemove(prefabMap, guid);
+        }
+        catch (Exception ex)
+        {
+            _log?.LogWarning($"[Infamy] Failed to unregister drop table prefab for guid {guid.GuidHash}: {ex.Message}");
+        }
+    }
+
+    private static void InvokePrefabMapRemove(object prefabMap, PrefabGUID guid)
+    {
+        var mapType = prefabMap.GetType();
+
+        var directRemove = mapType.GetMethod("Remove", new[] { typeof(PrefabGUID) });
+        if (directRemove != null)
+        {
+            directRemove.Invoke(prefabMap, new object[] { guid });
+            return;
+        }
+
+        var removeWithOut = mapType.GetMethod("Remove", new[] { typeof(PrefabGUID), typeof(Entity).MakeByRefType() });
+        if (removeWithOut != null)
+        {
+            var parameters = new object[] { guid, null! };
+            removeWithOut.Invoke(prefabMap, parameters);
+        }
+    }
+
+    private static bool InvokePrefabMapTryAdd(object prefabMap, PrefabGUID guid, Entity entity)
+    {
+        var mapType = prefabMap.GetType();
+
+        var tryAdd = mapType.GetMethod("TryAdd", new[] { typeof(PrefabGUID), typeof(Entity) });
+        if (tryAdd != null)
+        {
+            tryAdd.Invoke(prefabMap, new object[] { guid, entity });
+            return true;
+        }
+
+        var add = mapType.GetMethod("Add", new[] { typeof(PrefabGUID), typeof(Entity) });
+        if (add != null)
+        {
+            add.Invoke(prefabMap, new object[] { guid, entity });
+            return true;
+        }
+
+        var indexer = mapType.GetProperty("Item");
+        if (indexer?.CanWrite == true)
+        {
+            indexer.SetValue(prefabMap, entity, new object[] { guid });
+            return true;
+        }
+
+        return false;
     }
 
     private static string DefaultSquadJson => @"{
@@ -1220,7 +1311,7 @@ internal static class FactionInfamyAmbushData
   ]
 }";
 
-    private sealed class SquadConfigSnapshot
+    internal sealed class SquadConfigSnapshot
     {
         private SquadConfigSnapshot(
             Dictionary<string, AmbushSquadDefinition> squads,
@@ -1395,7 +1486,7 @@ internal static class FactionInfamyAmbushData
         }
     }
 
-    private sealed class LootConfigSnapshot
+    internal sealed class LootConfigSnapshot
     {
         private LootConfigSnapshot(Dictionary<string, AmbushLootDefinition> definitions)
         {
