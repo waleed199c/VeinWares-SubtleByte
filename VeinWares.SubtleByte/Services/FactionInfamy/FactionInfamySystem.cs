@@ -427,10 +427,7 @@ internal static class FactionInfamySystem
             return;
         }
 
-        if (!PlayerHate.TryGetValue(steamId, out var data))
-        {
-            return;
-        }
+        var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
 
         var now = DateTime.UtcNow;
 
