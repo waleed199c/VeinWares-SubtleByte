@@ -241,8 +241,14 @@ internal static class FactionInfamySystem
         var loaded = FactionInfamyPersistence.Load();
         foreach (var pair in loaded)
         {
-            PlayerHate[pair.Key] = pair.Value;
-            FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, pair.Value));
+            var data = pair.Value ?? new PlayerHateData();
+            if (SanitizeLoadedHate(data))
+            {
+                _dirty = true;
+            }
+
+            PlayerHate[pair.Key] = data;
+            FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
         }
 
         _dirty = false;
@@ -273,6 +279,45 @@ internal static class FactionInfamySystem
             $"AmbushChance={ambush.ChancePercent}%, Cooldown={ambush.Cooldown.TotalMinutes:0.#}m, " +
             $"Lifetime={ambush.Lifetime.TotalSeconds:0.#}s, VisualBuffs={visualState}, Autosave={autosaveSummary}, " +
             $"Seasonal={seasonalState}, Elite={eliteState} (Knockback {knockbackState}).");
+    }
+
+    private static bool SanitizeLoadedHate(PlayerHateData data)
+    {
+        if (data is null)
+        {
+            return false;
+        }
+
+        var updates = new List<KeyValuePair<string, HateEntry>>();
+        var changed = false;
+
+        foreach (var pair in data.FactionHate)
+        {
+            var entry = pair.Value;
+            var clamped = Math.Clamp(entry.Hate, 0f, _maximumHate);
+            if (Math.Abs(clamped - entry.Hate) > 0.001f)
+            {
+                entry.Hate = clamped;
+                changed = true;
+            }
+
+            var tier = FactionInfamyTierHelper.CalculateTier(clamped, _maximumHate);
+            if (tier != entry.LastAnnouncedTier)
+            {
+                entry.LastAnnouncedTier = tier;
+                changed = true;
+            }
+
+            updates.Add(new KeyValuePair<string, HateEntry>(pair.Key, entry));
+        }
+
+        for (var i = 0; i < updates.Count; i++)
+        {
+            var update = updates[i];
+            data.SetHate(update.Key, update.Value);
+        }
+
+        return changed;
     }
 
     public static void Shutdown()

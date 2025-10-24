@@ -39,7 +39,8 @@ internal static class SpawnSuppressionService
         Entity entity,
         bool suppressFeed,
         bool suppressCharm,
-        string? context = null)
+        string? context = null,
+        int? forcedBloodQualityTier = null)
     {
         if (!entity.Exists() || (!suppressFeed && !suppressCharm))
         {
@@ -50,7 +51,7 @@ internal static class SpawnSuppressionService
 
         if (suppressFeed)
         {
-            SuppressFeedComponents(entityManager, entity, removedComponents);
+            SuppressFeedComponents(entityManager, entity, removedComponents, forcedBloodQualityTier);
         }
 
         if (suppressCharm)
@@ -68,9 +69,13 @@ internal static class SpawnSuppressionService
         return true;
     }
 
-    private static void SuppressFeedComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    private static void SuppressFeedComponents(
+        EntityManager entityManager,
+        Entity entity,
+        List<string> removedComponents,
+        int? forcedBloodQualityTier)
     {
-        var suppressedQuality = ApplyBloodConsumeSourceSuppression(entityManager, entity, removedComponents);
+        var suppressedQuality = ApplyBloodConsumeSourceSuppression(entityManager, entity, removedComponents, forcedBloodQualityTier);
         var removedAny = false;
 
         if (entity.Has<FeedableInventory>())
@@ -94,7 +99,7 @@ internal static class SpawnSuppressionService
 
         if (!suppressedQuality.HasValue && removedAny)
         {
-            var fallbackQuality = CalculateSuppressedBloodQuality(ReadSpawnBloodQuality(entityManager, entity));
+            var fallbackQuality = CalculateSuppressedBloodQuality(ReadSpawnBloodQuality(entityManager, entity), forcedBloodQualityTier);
             if (TrySetSpawnBloodQuality(entityManager, entity, fallbackQuality))
             {
                 removedComponents.Add($"{nameof(UnitSpawnData)}.{nameof(UnitSpawnData.BloodQuality)}={(int)MathF.Round(fallbackQuality)}");
@@ -102,7 +107,11 @@ internal static class SpawnSuppressionService
         }
     }
 
-    private static float? ApplyBloodConsumeSourceSuppression(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    private static float? ApplyBloodConsumeSourceSuppression(
+        EntityManager entityManager,
+        Entity entity,
+        List<string> removedComponents,
+        int? forcedBloodQualityTier)
     {
         if (!entityManager.TryGetComponentData(entity, out BloodConsumeSource bloodConsumeSource))
         {
@@ -110,7 +119,7 @@ internal static class SpawnSuppressionService
         }
 
         var sourceQuality = DetermineBloodQualitySource(entityManager, entity, bloodConsumeSource);
-        var suppressedQuality = CalculateSuppressedBloodQuality(sourceQuality);
+        var suppressedQuality = CalculateSuppressedBloodQuality(sourceQuality, forcedBloodQualityTier);
         var changed = false;
 
         if (bloodConsumeSource.CanBeConsumed)
@@ -266,9 +275,32 @@ internal static class SpawnSuppressionService
         return 0f;
     }
 
-    private static float CalculateSuppressedBloodQuality(float currentQuality)
+    private static float CalculateSuppressedBloodQuality(float currentQuality, int? forcedBloodQualityTier)
     {
         var sanitizedQuality = Clamp(currentQuality, 0f, 100f);
+
+        if (forcedBloodQualityTier.HasValue)
+        {
+            var tier = Math.Clamp(forcedBloodQualityTier.Value, 1, 5);
+            if (tier >= 5)
+            {
+                return 100f;
+            }
+
+            ReadOnlySpan<(float Threshold, float BaseQuality)> forcedTiers = stackalloc (float, float)[]
+            {
+                (20f, 20f),
+                (40f, 40f),
+                (60f, 60f),
+                (80f, 80f)
+            };
+
+            var index = Math.Clamp(tier - 1, 0, forcedTiers.Length - 1);
+            var baseQuality = forcedTiers[index].BaseQuality;
+            var offsetBaseline = Math.Max(0f, baseQuality - 20f);
+            var offset = Clamp(sanitizedQuality - offsetBaseline, 0f, 9f);
+            return Clamp(baseQuality + offset, 0f, 100f);
+        }
 
         if (sanitizedQuality >= 100f)
         {
