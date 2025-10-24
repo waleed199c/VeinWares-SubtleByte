@@ -115,7 +115,7 @@ internal static class FactionInfamyConfig
             _combatCooldownSeconds = Bind(Section.Combat, "Combat Cooldown Seconds", 15.0f,
                 "Minimum time between combat triggers that will reset the hate decay timer.", LegacySection);
 
-            _minimumAmbushHate = Bind(Section.Core, "Minimum Ambush Hate", 50.0f,
+            _minimumAmbushHate = Bind(Section.Core, "Minimum Ambush Hate", 10.0f,
                 "Players must reach this hate level (after multipliers) before ambush squads are considered.", LegacySection);
 
             _maximumHate = Bind(Section.Core, "Maximum Hate", 100,
