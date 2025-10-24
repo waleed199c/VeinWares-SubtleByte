@@ -14,15 +14,24 @@ public sealed class PerformanceTracker
     private readonly ManualLogSource _log;
     private readonly double _thresholdMilliseconds;
     private readonly string? _logFilePath;
+    private readonly bool _isEnabled;
     private readonly Stopwatch _stopwatch = new();
     private readonly object _fileLock = new();
     private readonly long _maxLogBytes;
 
-    public PerformanceTracker(ManualLogSource log, double thresholdMilliseconds, string? logFilePath = null, long? maxLogBytes = null)
+    public PerformanceTracker(ManualLogSource log, double thresholdMilliseconds, string? logFilePath = null, long? maxLogBytes = null, bool isEnabled = true)
     {
         _log = log;
         _thresholdMilliseconds = thresholdMilliseconds;
         _maxLogBytes = Math.Max(1024, maxLogBytes ?? DefaultMaxLogBytes);
+        _isEnabled = isEnabled;
+
+        if (!_isEnabled)
+        {
+            _logFilePath = null;
+            return;
+        }
+
         if (!string.IsNullOrWhiteSpace(logFilePath))
         {
             _logFilePath = logFilePath;
@@ -56,6 +65,12 @@ public sealed class PerformanceTracker
             return;
         }
 
+        if (!_isEnabled)
+        {
+            action();
+            return;
+        }
+
         _stopwatch.Restart();
         try
         {
@@ -75,6 +90,11 @@ public sealed class PerformanceTracker
 
     private void WriteEntry(string message)
     {
+        if (!_isEnabled)
+        {
+            return;
+        }
+
         if (!string.IsNullOrEmpty(_logFilePath))
         {
             lock (_fileLock)
