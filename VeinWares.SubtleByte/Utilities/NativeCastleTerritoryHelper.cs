@@ -108,7 +108,7 @@ internal static class NativeCastleTerritoryHelper
     }
 
     private static void TryBind<T>(MethodInfo method, ref T? target)
-        where T : class
+        where T : Delegate
     {
         if (target is not null)
         {
