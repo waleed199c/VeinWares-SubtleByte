@@ -25,9 +25,10 @@ internal static class TerritoryUtility
         }
 
         var query = entityManager.CreateEntityQuery(ComponentType.ReadOnly<CastleTerritory>());
+        NativeArray<Entity> territories = default;
         try
         {
-            using var territories = query.ToEntityArray(Allocator.Temp);
+            territories = query.ToEntityArray(Allocator.Temp);
 
             foreach (var territoryEntity in territories)
             {
@@ -72,6 +73,11 @@ internal static class TerritoryUtility
         }
         finally
         {
+            if (territories.IsCreated)
+            {
+                territories.Dispose();
+            }
+
             query.Dispose();
         }
 
