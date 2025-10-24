@@ -37,7 +37,6 @@ namespace VeinWares.SubtleByte
                 return;
 
             SubtleBytePluginConfig.Initialize();
-            CleanupMarkerService.Initialize(Log);
             ModLogger.Info($"[Bootstrap] {MyPluginInfo.PLUGIN_NAME} v{MyPluginInfo.PLUGIN_VERSION} loading...");
             ClassInjector.RegisterTypeInIl2Cpp<CoroutineRunner>();
             ClassInjector.RegisterTypeInIl2Cpp<ModuleHostBehaviour>();
@@ -69,7 +68,6 @@ namespace VeinWares.SubtleByte
         public override bool Unload()
         {
             CommandRegistry.UnregisterAssembly();
-            CleanupMarkerService.Shutdown();
 
             _serverBootstrap?.Dispose();
             _serverBootstrap = null;
