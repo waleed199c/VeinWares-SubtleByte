@@ -12,7 +12,7 @@ namespace VeinWares.SubtleByte.Config
         private static ConfigEntry<bool> _emptyBottleRefundEnabled;
         private static ConfigEntry<bool> _relicDebugEventsEnabled;
         private static ConfigEntry<bool> _itemStackServiceEnabled;
-        private static ConfigEntry<bool> _debugLogsEnabled;
+        private static ConfigEntry<bool> _verboseLogsEnabled;
         private static ConfigEntry<bool> _infamySystemEnabled;
 
         private static readonly IReadOnlyList<ConfigDefinition> LegacyWantedDefinitions = new[]
@@ -34,7 +34,8 @@ namespace VeinWares.SubtleByte.Config
         internal static ConfigEntry<bool> EmptyBottleRefundEnabledEntry => _emptyBottleRefundEnabled;
         public static bool RelicDebugEventsEnabled => _relicDebugEventsEnabled?.Value ?? true;
         public static bool ItemStackServiceEnabled => _itemStackServiceEnabled?.Value ?? true;
-        public static bool DebugLogsEnabled => _debugLogsEnabled?.Value ?? false;
+        public static bool VerboseLogsEnabled => _verboseLogsEnabled?.Value ?? false;
+        public static bool DebugLogsEnabled => VerboseLogsEnabled;
         public static bool InfamySystemEnabled => _infamySystemEnabled?.Value ?? false;
 
         public static void Initialize()
@@ -64,11 +65,13 @@ namespace VeinWares.SubtleByte.Config
                 true,
                 "Apply ItemStackConfig.json values to set max stack sizes for configured prefabs on server start.");
 
-            _debugLogsEnabled = _configFile.Bind(
+            _verboseLogsEnabled = _configFile.Bind(
                 "Diagnostics",
-                "Enable Debug Logs",
+                "Enable Verbose Logging",
                 false,
-                "When true, SubtleByte emits all diagnostic log messages. Set to false to silence the mod's logging entirely.");
+                "When true, SubtleByte emits detailed diagnostic messages. Core warnings and errors are always logged.");
+
+            MigrateLegacyLoggingEntry(_configFile, _verboseLogsEnabled);
 
             _infamySystemEnabled = _configFile.Bind(
                 "Faction Infamy",
@@ -82,14 +85,27 @@ namespace VeinWares.SubtleByte.Config
         public static void SetDebugLogs(bool enabled)
         {
             Initialize();
-            if (_debugLogsEnabled == null)
+            if (_verboseLogsEnabled == null)
                 return;
 
-            _debugLogsEnabled.Value = enabled;
+            _verboseLogsEnabled.Value = enabled;
             _configFile?.Save();
         }
 
         internal static ConfigEntry<bool> InfamySystemEnabledEntry => _infamySystemEnabled;
+
+        private static void MigrateLegacyLoggingEntry(ConfigFile configFile, ConfigEntry<bool> target)
+        {
+            var legacyDefinition = new ConfigDefinition("Diagnostics", "Enable Debug Logs");
+            if (!configFile.TryGetEntry(legacyDefinition, out ConfigEntry<bool> legacy))
+            {
+                return;
+            }
+
+            target.Value = legacy.Value;
+            configFile.Remove(legacyDefinition);
+            configFile.Save();
+        }
 
         private static void RemoveLegacyWantedConfig(ConfigFile configFile)
         {

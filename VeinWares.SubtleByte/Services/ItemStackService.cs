@@ -14,12 +14,12 @@ namespace VeinWares.SubtleByte.Services
         {
             foreach (var entry in ItemStackConfig.Entries)
             {
-                var prefabGuid = new PrefabGUID(entry.PrefabGUID);
+                var prefabGuid = new PrefabGUID(entry.PrefabGuid);
                 var prefabMap = Core.Server.GetExistingSystemManaged<PrefabCollectionSystem>()._PrefabGuidToEntityMap;
 
                 if (!prefabMap.TryGetValue(prefabGuid, out var prefabEntity))
                 {
-                    ModLogger.Warn($"[Services] Prefab not found for GUID {entry.PrefabGUID}");
+                    ModLogger.Warn($"[Services] Prefab not found for GUID {entry.PrefabGuid}");
                     continue;
                 }
 
@@ -30,7 +30,8 @@ namespace VeinWares.SubtleByte.Services
                 var gameDataMap = Core.Server.GetExistingSystemManaged<GameDataSystem>().ItemHashLookupMap;
                 gameDataMap[prefabGuid] = itemData;
 
-                ModLogger.Info($"[Services] Set max stack to {itemData.MaxAmount} for GUID={entry.PrefabGUID}");
+                var labelSuffix = string.IsNullOrWhiteSpace(entry.Label) ? string.Empty : $" ({entry.Label})";
+                ModLogger.Info($"[Services] Set max stack to {itemData.MaxAmount} for GUID={entry.PrefabGuid}{labelSuffix}");
             }
 
         }

@@ -1,42 +1,60 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "FactionInfamyAmbushChat",
+  "description": "Controls the chat lines broadcast when the Faction Infamy system announces ambush activity.",
   "type": "object",
   "additionalProperties": false,
   "properties": {
     "defaultColor": {
       "type": "string",
+      "description": "Fallback colour applied to all formatted messages. Accepts #RRGGBB or #RRGGBBAA values.",
       "pattern": "^#?[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
     },
     "defaultTierMessages": {
       "type": "object",
+      "description": "Base message templates keyed by ambush tier (1-5).",
       "additionalProperties": false,
       "patternProperties": {
         "^[1-5]$": {
-          "type": "string"
+          "type": "string",
+          "description": "Message template for the corresponding tier."
         }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Optional helper text displayed to server administrators editing the file.",
+      "additionalProperties": {
+        "type": "string"
       }
     },
     "factions": {
       "type": "object",
+      "description": "Per-faction overrides for colour and tier messages.",
       "additionalProperties": {
         "type": "object",
         "additionalProperties": false,
         "properties": {
           "color": {
             "type": "string",
+            "description": "Hex colour applied to this faction's announcements.",
             "pattern": "^#?[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
           },
           "tierMessages": {
             "type": "object",
+            "description": "Message overrides keyed by ambush tier.",
             "additionalProperties": false,
             "patternProperties": {
               "^[1-5]$": {
-                "type": "string"
+                "type": "string",
+                "description": "Override template for the tier."
               }
             }
           }
-        }
+        },
+        "required": [
+          "tierMessages"
+        ]
       }
     }
   },

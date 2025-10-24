@@ -28,7 +28,7 @@ internal static class FactionInfamyAmbushData
     private const string LootFileName = "FactionInfamyAmbushLoot.json";
     private const int ReloadDebounceMs = 300;
 
-    private static readonly string ConfigDirectory = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte");
+    private static readonly string ConfigDirectory = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "Infamy");
     private static readonly string SquadConfigPath = Path.Combine(ConfigDirectory, SquadFileName);
     private static readonly string LootConfigPath = Path.Combine(ConfigDirectory, LootFileName);
 

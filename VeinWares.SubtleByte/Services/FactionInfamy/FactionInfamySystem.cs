@@ -176,54 +176,66 @@ internal static class FactionInfamySystem
 
         _log = log;
         _config = config;
-        AutosaveBackupCount = config.AutosaveBackupCount;
-        _combatCooldown = config.CombatCooldown;
-        _ambushCooldown = config.AmbushCooldown;
-        _ambushChancePercent = config.AmbushChancePercent;
-        _ambushLifetime = config.AmbushLifetime;
-        _minimumAmbushHate = config.MinimumAmbushHate;
-        _maximumHate = config.MaximumHate;
-        _enableAmbushVisualBuffs = config.EnableAmbushVisualBuffs;
-        _enableHalloweenAmbush = config.EnableHalloweenAmbush;
-        _ambushesRespectTerritory = config.AmbushesRespectTerritory;
-        _disableBloodConsumeOnSpawn = config.DisableBloodConsumeOnSpawn;
-        _disableCharmOnSpawn = config.DisableCharmOnSpawn;
-        _enableNativeDropTables = config.EnableNativeDropTables;
-        _prestigeLevelBonusPerTier = config.PrestigeLevelBonusPerTier;
-        _prestigeEliteMultiplier = config.PrestigeEliteMultiplier;
-        _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
-        _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
-        _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
-        _halloweenScarecrowRareChancePercent = config.HalloweenScarecrowRareChancePercent;
-        _seasonalFollowUpChancePercent = config.SeasonalFollowUpChancePercent;
-        _seasonalFollowUpMinimum = config.SeasonalFollowUpMinimum;
-        _seasonalFollowUpMaximum = config.SeasonalFollowUpMaximum;
-        _enableEliteAmbush = config.EnableEliteAmbush;
-        _enableAmbushKnockbackResistance = config.EnableAmbushKnockbackResistance;
-        _eliteHealthMultiplier = config.EliteHealthMultiplier;
-        _eliteDamageReductionMultiplier = config.EliteDamageReductionMultiplier;
-        _eliteResistanceMultiplier = config.EliteResistanceMultiplier;
-        _elitePowerMultiplier = config.ElitePowerMultiplier;
-        _eliteAttackSpeedMultiplier = config.EliteAttackSpeedMultiplier;
-        _eliteSpellSpeedMultiplier = config.EliteSpellSpeedMultiplier;
-        _eliteMoveSpeedMultiplier = config.EliteMoveSpeedMultiplier;
-        _eliteKnockbackResistanceMultiplier = config.EliteKnockbackResistanceMultiplier;
-        _eliteRepresentativeHealthRatio = config.EliteRepresentativeHealthRatio;
-        _eliteRepresentativeHealthAdditive = config.EliteRepresentativeHealthAdditive;
-        _eliteRepresentativeDamageReductionRatio = config.EliteRepresentativeDamageReductionRatio;
-        _eliteRepresentativeDamageReductionAdditive = config.EliteRepresentativeDamageReductionAdditive;
-        _eliteRepresentativeResistanceRatio = config.EliteRepresentativeResistanceRatio;
-        _eliteRepresentativeResistanceAdditive = config.EliteRepresentativeResistanceAdditive;
-        _eliteRepresentativePowerRatio = config.EliteRepresentativePowerRatio;
-        _eliteRepresentativePowerAdditive = config.EliteRepresentativePowerAdditive;
-        _eliteRepresentativeAttackSpeedRatio = config.EliteRepresentativeAttackSpeedRatio;
-        _eliteRepresentativeAttackSpeedAdditive = config.EliteRepresentativeAttackSpeedAdditive;
-        _eliteRepresentativeSpellSpeedRatio = config.EliteRepresentativeSpellSpeedRatio;
-        _eliteRepresentativeSpellSpeedAdditive = config.EliteRepresentativeSpellSpeedAdditive;
-        _eliteRepresentativeMoveSpeedRatio = config.EliteRepresentativeMoveSpeedRatio;
-        _eliteRepresentativeMoveSpeedAdditive = config.EliteRepresentativeMoveSpeedAdditive;
-        _eliteRepresentativeKnockbackResistanceRatio = config.EliteRepresentativeKnockbackResistanceRatio;
-        _eliteRepresentativeKnockbackResistanceAdditive = config.EliteRepresentativeKnockbackResistanceAdditive;
+
+        AutosaveBackupCount = config.Persistence.AutosaveBackupCount;
+
+        var core = config.Core;
+        var ambush = config.Ambush;
+        var seasonal = config.Seasonal;
+        var prestige = config.Prestige;
+        var elite = config.Elite;
+        var squad = elite.Squad;
+        var representative = elite.Representative;
+
+        _combatCooldown = core.CombatCooldown;
+        _ambushCooldown = ambush.Cooldown;
+        _ambushChancePercent = ambush.ChancePercent;
+        _ambushLifetime = ambush.Lifetime;
+        _minimumAmbushHate = core.MinimumAmbushHate;
+        _maximumHate = core.MaximumHate;
+        _enableAmbushVisualBuffs = ambush.VisualBuffsEnabled;
+        _enableHalloweenAmbush = seasonal.EnableHalloween;
+        _ambushesRespectTerritory = ambush.RespectTerritory;
+        _disableBloodConsumeOnSpawn = ambush.DisableBloodConsumeOnSpawn;
+        _disableCharmOnSpawn = ambush.DisableCharmOnSpawn;
+        _enableNativeDropTables = ambush.EnableNativeDropTables;
+        _prestigeLevelBonusPerTier = prestige.LevelBonusPerTier;
+        _prestigeEliteMultiplier = prestige.EliteMultiplier;
+        _halloweenScarecrowMinimum = seasonal.ScarecrowMinimum;
+        _halloweenScarecrowMaximum = seasonal.ScarecrowMaximum;
+        _halloweenScarecrowRareMultiplier = seasonal.ScarecrowRareMultiplier;
+        _halloweenScarecrowRareChancePercent = seasonal.ScarecrowRareChancePercent;
+        _seasonalFollowUpChancePercent = seasonal.FollowUpChancePercent;
+        _seasonalFollowUpMinimum = seasonal.FollowUpMinimum;
+        _seasonalFollowUpMaximum = seasonal.FollowUpMaximum;
+        _enableEliteAmbush = elite.Enabled;
+        _enableAmbushKnockbackResistance = elite.ApplyKnockbackResistance;
+        _eliteHealthMultiplier = squad.HealthMultiplier;
+        _eliteDamageReductionMultiplier = squad.DamageReductionMultiplier;
+        _eliteResistanceMultiplier = squad.ResistanceMultiplier;
+        _elitePowerMultiplier = squad.PowerMultiplier;
+        _eliteAttackSpeedMultiplier = squad.AttackSpeedMultiplier;
+        _eliteSpellSpeedMultiplier = squad.SpellSpeedMultiplier;
+        _eliteMoveSpeedMultiplier = squad.MoveSpeedMultiplier;
+        _eliteKnockbackResistanceMultiplier = squad.KnockbackResistanceMultiplier;
+        _eliteRepresentativeHealthRatio = representative.HealthRatio;
+        _eliteRepresentativeHealthAdditive = representative.HealthBonus;
+        _eliteRepresentativeDamageReductionRatio = representative.DamageReductionRatio;
+        _eliteRepresentativeDamageReductionAdditive = representative.DamageReductionBonus;
+        _eliteRepresentativeResistanceRatio = representative.ResistanceRatio;
+        _eliteRepresentativeResistanceAdditive = representative.ResistanceBonus;
+        _eliteRepresentativePowerRatio = representative.PowerRatio;
+        _eliteRepresentativePowerAdditive = representative.PowerBonus;
+        _eliteRepresentativeAttackSpeedRatio = representative.AttackSpeedRatio;
+        _eliteRepresentativeAttackSpeedAdditive = representative.AttackSpeedBonus;
+        _eliteRepresentativeSpellSpeedRatio = representative.SpellSpeedRatio;
+        _eliteRepresentativeSpellSpeedAdditive = representative.SpellSpeedBonus;
+        _eliteRepresentativeMoveSpeedRatio = representative.MoveSpeedRatio;
+        _eliteRepresentativeMoveSpeedAdditive = representative.MoveSpeedBonus;
+        _eliteRepresentativeKnockbackResistanceRatio = representative.KnockbackResistanceRatio;
+        _eliteRepresentativeKnockbackResistanceAdditive = representative.KnockbackResistanceBonus;
+
+        LogConfigurationSummary(core, ambush, seasonal, elite, config.Persistence);
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();
@@ -236,6 +248,31 @@ internal static class FactionInfamySystem
         _dirty = false;
         _initialized = true;
         _log.LogInfo("[Infamy] Faction Infamy system initialised.");
+    }
+
+    private static void LogConfigurationSummary(
+        InfamyCoreSettings core,
+        AmbushSettings ambush,
+        SeasonalSettings seasonal,
+        EliteSettings elite,
+        PersistenceSettings persistence)
+    {
+        if (_log is null)
+        {
+            return;
+        }
+
+        var autosaveSummary = $"{persistence.AutosaveInterval.TotalMinutes:0.#}m/{persistence.AutosaveBackupCount}";
+        var seasonalState = seasonal.EnableHalloween ? "Enabled" : "Disabled";
+        var eliteState = elite.Enabled ? "Enabled" : "Disabled";
+        var knockbackState = elite.ApplyKnockbackResistance ? "On" : "Off";
+        var visualState = ambush.VisualBuffsEnabled ? "On" : "Off";
+
+        _log.LogInfo(
+            $"[Infamy] Config → HateGain={core.HateGainMultiplier:0.##}, Decay/s={core.HateDecayPerSecond:0.##}, " +
+            $"AmbushChance={ambush.ChancePercent}%, Cooldown={ambush.Cooldown.TotalMinutes:0.#}m, " +
+            $"Lifetime={ambush.Lifetime.TotalSeconds:0.#}s, VisualBuffs={visualState}, Autosave={autosaveSummary}, " +
+            $"Seasonal={seasonalState}, Elite={eliteState} (Knockback {knockbackState}).");
     }
 
     public static void Shutdown()
@@ -258,7 +295,7 @@ internal static class FactionInfamySystem
             return;
         }
 
-        if (_config.HateDecayPerSecond <= 0f)
+        if (_config.Core.HateDecayPerSecond <= 0f)
         {
             return;
         }
@@ -295,7 +332,7 @@ internal static class FactionInfamySystem
                 continue;
             }
 
-            if (data.RunCooldown(_config.HateDecayPerSecond, deltaTime, removalThreshold, _maximumHate))
+            if (data.RunCooldown(_config.Core.HateDecayPerSecond, deltaTime, removalThreshold, _maximumHate))
             {
                 _dirty = true;
                 if (data.FactionHate.Count == 0)
@@ -326,7 +363,7 @@ internal static class FactionInfamySystem
             return;
         }
 
-        var adjusted = baseHate * _config.HateGainMultiplier;
+        var adjusted = baseHate * _config.Core.HateGainMultiplier;
         var data = PlayerHate.GetOrAdd(steamId, static _ => new PlayerHateData());
         var entry = data.GetHate(factionId);
         var newHate = Math.Clamp(entry.Hate + adjusted, 0f, _maximumHate);
@@ -688,7 +725,7 @@ internal static class FactionInfamySystem
         }
 
         var elapsed = now - data.LastCombatEnd;
-        return elapsed >= _config.CooldownGrace;
+        return elapsed >= _config.Core.CooldownGrace;
     }
 
     private static Dictionary<string, PlayerHateRecord> CreateSerializableSnapshot()
