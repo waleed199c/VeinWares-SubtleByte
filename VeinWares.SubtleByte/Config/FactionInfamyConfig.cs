@@ -19,9 +19,12 @@ internal static class FactionInfamyConfig
     private static ConfigEntry<int> _autosaveBackups;
     private static ConfigEntry<bool> _enableAmbushVisualBuffs;
     private static ConfigEntry<bool> _enableHalloweenAmbush;
+    private static ConfigEntry<bool> _ambushesRespectTerritory;
     private static ConfigEntry<bool> _disableBloodConsumeOnSpawn;
     private static ConfigEntry<bool> _disableCharmOnSpawn;
     private static ConfigEntry<bool> _enableNativeDropTables;
+    private static ConfigEntry<float> _prestigeLevelBonusPerTier;
+    private static ConfigEntry<float> _prestigeEliteMultiplier;
     private static ConfigEntry<int> _halloweenScarecrowMinimum;
     private static ConfigEntry<int> _halloweenScarecrowMaximum;
     private static ConfigEntry<int> _halloweenScarecrowRareMultiplier;
@@ -122,6 +125,12 @@ internal static class FactionInfamyConfig
             300,
             "Upper bound for hate per faction. Any calculated hate beyond this value will be clamped.");
 
+        _ambushesRespectTerritory = configFile.Bind(
+            "Faction Infamy",
+            "Ambushes Respect Territory",
+            true,
+            "When enabled, ambush squads will not spawn inside castle territory owned by the targeted player.");
+
         _autosaveMinutes = configFile.Bind(
             "Faction Infamy",
             "Autosave Minutes",
@@ -163,6 +172,18 @@ internal static class FactionInfamyConfig
             "EnableNativeDropTables",
             false,
             "When true, ambush squads retain their default drop tables instead of clearing them for custom loot handling.");
+
+        _prestigeLevelBonusPerTier = configFile.Bind(
+            "Faction Infamy - Prestige",
+            "Prestige Level Bonus Per Tier",
+            0.01f,
+            "Additional stat multiplier applied per Bloodcraft prestige level and ambush tier when calculating ambush scaling.");
+
+        _prestigeEliteMultiplier = configFile.Bind(
+            "Faction Infamy - Prestige",
+            "Prestige Elite Multiplier",
+            1.25f,
+            "Additional multiplier applied to the prestige bonus when elite ambush scaling is active.");
 
         _halloweenScarecrowMinimum = configFile.Bind(
             "Faction Infamy",
@@ -422,9 +443,12 @@ internal static class FactionInfamyConfig
             Math.Clamp(_autosaveBackups.Value, 0, 20),
             _enableAmbushVisualBuffs.Value,
             _enableHalloweenAmbush.Value,
+            _ambushesRespectTerritory.Value,
             _disableBloodConsumeOnSpawn.Value,
             _disableCharmOnSpawn.Value,
             _enableNativeDropTables.Value,
+            Math.Max(0f, _prestigeLevelBonusPerTier.Value),
+            Math.Max(0f, _prestigeEliteMultiplier.Value),
             scarecrowMin,
             scarecrowMax,
             Math.Max(1, _halloweenScarecrowRareMultiplier.Value),
@@ -510,6 +534,16 @@ internal static class FactionInfamyConfig
         if (_maximumHate.Value < 1)
         {
             _maximumHate.Value = 1;
+        }
+
+        if (_prestigeLevelBonusPerTier.Value < 0f)
+        {
+            _prestigeLevelBonusPerTier.Value = 0f;
+        }
+
+        if (_prestigeEliteMultiplier.Value < 0f)
+        {
+            _prestigeEliteMultiplier.Value = 0f;
         }
 
         if (_autosaveMinutes.Value < 1)
@@ -703,9 +737,12 @@ internal readonly record struct FactionInfamyConfigSnapshot(
     int AutosaveBackupCount,
     bool EnableAmbushVisualBuffs,
     bool EnableHalloweenAmbush,
+    bool AmbushesRespectTerritory,
     bool DisableBloodConsumeOnSpawn,
     bool DisableCharmOnSpawn,
     bool EnableNativeDropTables,
+    float PrestigeLevelBonusPerTier,
+    float PrestigeEliteMultiplier,
     int HalloweenScarecrowMinimum,
     int HalloweenScarecrowMaximum,
     int HalloweenScarecrowRareMultiplier,
