@@ -13,6 +13,7 @@ using ProjectM;
 using ProjectM.Shared;
 using Stunlock.Core;
 using Unity.Entities;
+using Unity.Collections;
 using Unity.Mathematics;
 using Unity.Transforms;
 using VeinWares.SubtleByte;
@@ -140,7 +141,14 @@ internal static class FactionInfamyAmbushData
             return false;
         }
 
-        return _squadSnapshot.Squads.TryGetValue(factionId, out squad);
+        if (_squadSnapshot.Squads.TryGetValue(factionId, out var definition))
+        {
+            squad = definition;
+            return true;
+        }
+
+        squad = default!;
+        return false;
     }
 
     internal static IReadOnlyList<PrefabGUID> GetDefaultVisualPool()
@@ -156,7 +164,14 @@ internal static class FactionInfamyAmbushData
             return false;
         }
 
-        return _squadSnapshot.VisualPools.TryGetValue(factionId, out pool);
+        if (_squadSnapshot.VisualPools.TryGetValue(factionId, out var visualPool))
+        {
+            pool = visualPool;
+            return true;
+        }
+
+        pool = Array.Empty<PrefabGUID>();
+        return false;
     }
 
     internal static bool TryGetFactionByGuid(int guidHash, out string factionId, out float baseHate)
@@ -198,7 +213,14 @@ internal static class FactionInfamyAmbushData
             return false;
         }
 
-        return _lootSnapshot.Definitions.TryGetValue(factionId, out definition);
+        if (_lootSnapshot.Definitions.TryGetValue(factionId, out var found))
+        {
+            definition = found;
+            return true;
+        }
+
+        definition = AmbushLootDefinition.Empty;
+        return false;
     }
 
     internal static bool TryEnsureLootPrefab(EntityManager entityManager, string factionId, AmbushLootDefinition definition, out Entity prefabEntity)
@@ -492,7 +514,7 @@ internal static class FactionInfamyAmbushData
         }
 
         var prefabMap = collection._PrefabGuidToEntityMap;
-        if (prefabMap == null)
+        if (!prefabMap.IsCreated)
         {
             return;
         }
@@ -519,7 +541,7 @@ internal static class FactionInfamyAmbushData
         }
 
         var prefabMap = collection._PrefabGuidToEntityMap;
-        if (prefabMap == null)
+        if (!prefabMap.IsCreated)
         {
             return;
         }
@@ -1584,7 +1606,7 @@ internal static class FactionInfamyAmbushData
         }
     }
 
-    private sealed class SquadConfigFile
+    internal sealed class SquadConfigFile
     {
         [JsonPropertyName("defaultVisuals")]
         public List<int>? DefaultVisuals { get; set; }
@@ -1656,7 +1678,7 @@ internal static class FactionInfamyAmbushData
         public float Hate { get; set; }
     }
 
-    private sealed class LootConfigFile
+    internal sealed class LootConfigFile
     {
         [JsonPropertyName("factions")]
         public List<LootConfigEntry>? Factions { get; set; }
