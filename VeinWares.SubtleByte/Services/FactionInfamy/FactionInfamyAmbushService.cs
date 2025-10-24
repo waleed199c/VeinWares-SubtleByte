@@ -148,6 +148,8 @@ internal static class FactionInfamyAmbushService
             })
     };
 
+    private static readonly PrefabGUID BlackfangSentinelPrefab = new(1531777139);
+    private static readonly PrefabGUID LevelAuraSelfBuff = new(-2104035188);
     private static readonly PrefabGUID ManticoreVisual = new(1670636401);
     private static readonly PrefabGUID DraculaVisual = new(1199823151);
     private static readonly PrefabGUID MonsterVisual = new(-2067402784);
@@ -435,6 +437,7 @@ internal static class FactionInfamyAmbushService
                 ? AmbushStatMultipliers.Create(request.IsRepresentative)
                 : AmbushStatMultipliers.Identity;
             var pending = new PendingAmbushSpawn(
+                unit.Prefab,
                 steamId,
                 factionId,
                 targetLevel,
@@ -787,6 +790,7 @@ internal static class FactionInfamyAmbushService
         }
 
         ApplyAmbushScaling(entityManager, entity, pending.UnitLevel, multipliers);
+        RemoveSentinelLevelAura(entityManager, entity, pending.Prefab);
 
         if (FactionInfamySystem.AmbushVisualBuffsEnabled)
         {
@@ -845,6 +849,54 @@ internal static class FactionInfamyAmbushService
         }
 
         return false;
+    }
+
+    private static void RemoveSentinelLevelAura(EntityManager entityManager, Entity entity, PrefabGUID prefab)
+    {
+        if (prefab.GuidHash != BlackfangSentinelPrefab.GuidHash)
+        {
+            return;
+        }
+
+        if (BuffUtility.TryGetBuff(entityManager, entity, LevelAuraSelfBuff, out var buffEntity))
+        {
+            DestroyUtility.Destroy(entityManager, buffEntity, DestroyDebugReason.TryRemoveBuff);
+        }
+
+        if (!entityManager.TryGetComponentData(entity, out ApplyBuffOnGameplayEvent applyBuff))
+        {
+            return;
+        }
+
+        var changed = false;
+        if (applyBuff.Buff0.GuidHash == LevelAuraSelfBuff.GuidHash)
+        {
+            applyBuff.Buff0 = default;
+            changed = true;
+        }
+
+        if (applyBuff.Buff1.GuidHash == LevelAuraSelfBuff.GuidHash)
+        {
+            applyBuff.Buff1 = default;
+            changed = true;
+        }
+
+        if (applyBuff.Buff2.GuidHash == LevelAuraSelfBuff.GuidHash)
+        {
+            applyBuff.Buff2 = default;
+            changed = true;
+        }
+
+        if (applyBuff.Buff3.GuidHash == LevelAuraSelfBuff.GuidHash)
+        {
+            applyBuff.Buff3 = default;
+            changed = true;
+        }
+
+        if (changed)
+        {
+            entityManager.SetComponentData(entity, applyBuff);
+        }
     }
 
     private static void EnsureFactionAlignment(EntityManager entityManager, Entity entity, PendingAmbushSpawn pending)
@@ -1146,6 +1198,7 @@ internal static class FactionInfamyAmbushService
     private sealed class PendingAmbushSpawn
     {
         public PendingAmbushSpawn(
+            PrefabGUID prefab,
             ulong targetSteamId,
             string factionId,
             int unitLevel,
@@ -1157,6 +1210,7 @@ internal static class FactionInfamyAmbushService
             PrefabGUID? sharedVisualBuff,
             AmbushSquadTracker? squadTracker = null)
         {
+            Prefab = prefab;
             TargetSteamId = targetSteamId;
             FactionId = factionId;
             UnitLevel = unitLevel;
@@ -1168,6 +1222,8 @@ internal static class FactionInfamyAmbushService
             SharedVisualBuff = sharedVisualBuff;
             SquadTracker = squadTracker;
         }
+
+        public PrefabGUID Prefab { get; }
 
         public ulong TargetSteamId { get; }
 
@@ -1273,6 +1329,7 @@ internal static class FactionInfamyAmbushService
                     ? AmbushStatMultipliers.Create(request.IsRepresentative)
                     : AmbushStatMultipliers.Identity;
                 var pending = new PendingAmbushSpawn(
+                    unit.Prefab,
                     _steamId,
                     _factionId,
                     targetLevel,
