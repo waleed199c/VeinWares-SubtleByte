@@ -204,9 +204,12 @@ internal static class FactionInfamyAmbushService
         return true;
     }
 
-    private static PrefabGUID? ResolveSharedVisualBuff(string factionId, IEnumerable<AmbushSpawnRequest> requests)
+    private static PrefabGUID? ResolveSharedVisualBuff(
+        string factionId,
+        IEnumerable<AmbushSpawnRequest> requests,
+        bool isElite)
     {
-        if (!FactionInfamySystem.AmbushVisualBuffsEnabled || requests is null)
+        if (!FactionInfamySystem.ShouldApplyAmbushVisualBuffs(isElite) || requests is null)
         {
             return null;
         }
@@ -470,7 +473,7 @@ internal static class FactionInfamyAmbushService
                 spawnPlan.FollowUpRequests,
                 spawnRequests.Count);
 
-        var sharedVisualBuff = ResolveSharedVisualBuff(factionId, spawnRequests);
+        var sharedVisualBuff = ResolveSharedVisualBuff(factionId, spawnRequests, useEliteMultipliers);
 
         foreach (var request in spawnRequests)
         {
@@ -491,6 +494,7 @@ internal static class FactionInfamyAmbushService
                 lifetimeSeconds,
                 multipliers,
                 request.VisualStrategy,
+                useEliteMultipliers,
                 request.VisualStrategy == VisualBuffStrategy.Shared ? sharedVisualBuff : null,
                 followUpTracker);
             var marker = 0;
@@ -837,7 +841,7 @@ internal static class FactionInfamyAmbushService
         ApplyAmbushScaling(entityManager, entity, pending.UnitLevel, multipliers);
         RemoveSentinelLevelAura(entityManager, entity, pending.Prefab);
 
-        if (FactionInfamySystem.AmbushVisualBuffsEnabled)
+        if (FactionInfamySystem.ShouldApplyAmbushVisualBuffs(pending.IsElite))
         {
             PrefabGUID? visualBuff = pending.VisualStrategy switch
             {
@@ -1252,6 +1256,7 @@ internal static class FactionInfamyAmbushService
             float lifetimeSeconds,
             AmbushStatMultipliers multipliers,
             VisualBuffStrategy visualStrategy,
+            bool isElite,
             PrefabGUID? sharedVisualBuff,
             AmbushSquadTracker? squadTracker = null)
         {
@@ -1264,6 +1269,7 @@ internal static class FactionInfamyAmbushService
             LifetimeSeconds = lifetimeSeconds;
             Multipliers = multipliers;
             VisualStrategy = visualStrategy;
+            IsElite = isElite;
             SharedVisualBuff = sharedVisualBuff;
             SquadTracker = squadTracker;
         }
@@ -1285,6 +1291,8 @@ internal static class FactionInfamyAmbushService
         public AmbushStatMultipliers Multipliers { get; }
 
         public VisualBuffStrategy VisualStrategy { get; }
+
+        public bool IsElite { get; }
 
         public PrefabGUID? SharedVisualBuff { get; }
 
@@ -1358,7 +1366,7 @@ internal static class FactionInfamyAmbushService
             }
 
             var spawnedAny = false;
-            var sharedVisualBuff = ResolveSharedVisualBuff(_factionId, _followUpRequests);
+            var sharedVisualBuff = ResolveSharedVisualBuff(_factionId, _followUpRequests, _useEliteMultipliers);
 
             foreach (var request in _followUpRequests)
             {
@@ -1384,6 +1392,7 @@ internal static class FactionInfamyAmbushService
                     lifetimeSeconds,
                     multipliers,
                     request.VisualStrategy,
+                    _useEliteMultipliers,
                     request.VisualStrategy == VisualBuffStrategy.Shared ? sharedVisualBuff : null);
 
                 var marker = 0;

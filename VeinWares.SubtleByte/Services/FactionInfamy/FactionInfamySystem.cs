@@ -78,7 +78,12 @@ internal static class FactionInfamySystem
 
     internal static float MaximumHate => _maximumHate;
 
-    internal static bool AmbushVisualBuffsEnabled => _enableAmbushVisualBuffs;
+    internal static bool AmbushVisualBuffsEnabled => _enableEliteAmbush && _enableAmbushVisualBuffs;
+
+    internal static bool ShouldApplyAmbushVisualBuffs(bool isElite)
+    {
+        return AmbushVisualBuffsEnabled && isElite;
+    }
 
     internal static bool HalloweenAmbushEnabled => _enableHalloweenAmbush;
 

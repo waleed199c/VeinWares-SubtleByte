@@ -14,3 +14,10 @@ below highlights the core values that server operators tend to tune most often.
 
 Additional seasonal, elite, and visual buff options are available in the same section for
 fine-grained control of late-game ambushes.
+
+## Elite ambush visuals
+
+`EnableEliteAmbush` must stay enabled for any elite-only functionality, including the
+`EnableAmbushVisualBuffs` toggle. When both options are true, elite ambush squads gain the
+distinct "elite" visual effects while regular ambushes remain unchanged. Disabling either
+setting prevents the additional visuals from appearing.
