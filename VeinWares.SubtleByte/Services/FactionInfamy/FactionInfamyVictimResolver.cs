@@ -9,7 +9,7 @@ namespace VeinWares.SubtleByte.Services.FactionInfamy;
 
 internal static class FactionInfamyVictimResolver
 {
-    private const float DefaultBaseHate = 10f;
+    private const float DefaultBaseHate = 2f;
     private const float VBloodHateMultiplier = 10f;
 
     public static bool TryGetHateForVictim(Entity victim, out string factionId, out float baseHate)

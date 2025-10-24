@@ -106,7 +106,7 @@ internal static class FactionInfamyConfig
             _hateGainMultiplier = Bind(Section.Core, "Hate Gain Multiplier", 1.0f,
                 "Scales the amount of hate granted per qualifying kill.", LegacySection);
 
-            _hateDecayPerMinute = Bind(Section.Core, "Hate Decay Per Minute", 10.0f,
+            _hateDecayPerMinute = Bind(Section.Core, "Hate Decay Per Minute", 2.0f,
                 "Amount of hate removed from every active faction bucket each minute while the player is eligible for cooldown.", LegacySection);
 
             _cooldownGraceSeconds = Bind(Section.Combat, "Cooldown Grace Seconds", 30.0f,
@@ -115,7 +115,7 @@ internal static class FactionInfamyConfig
             _combatCooldownSeconds = Bind(Section.Combat, "Combat Cooldown Seconds", 15.0f,
                 "Minimum time between combat triggers that will reset the hate decay timer.", LegacySection);
 
-            _minimumAmbushHate = Bind(Section.Core, "Minimum Ambush Hate", 50.0f,
+            _minimumAmbushHate = Bind(Section.Core, "Minimum Ambush Hate", 10.0f,
                 "Players must reach this hate level (after multipliers) before ambush squads are considered.", LegacySection);
 
             _maximumHate = Bind(Section.Core, "Maximum Hate", 100,
