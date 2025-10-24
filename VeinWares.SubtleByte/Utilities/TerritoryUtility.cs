@@ -10,7 +10,12 @@ namespace VeinWares.SubtleByte.Utilities;
 
 internal static class TerritoryUtility
 {
-    public static bool IsInsidePlayerTerritory(EntityManager entityManager, Entity playerEntity, float3 position, out int territoryIndex)
+    public static bool IsInsidePlayerTerritory(
+        EntityManager entityManager,
+        Entity playerEntity,
+        ulong steamId,
+        float3 position,
+        out int territoryIndex)
     {
         territoryIndex = -1;
 
@@ -85,22 +90,27 @@ internal static class TerritoryUtility
                     sameTeam = true;
                 }
 
-                if (!sameTeam && userEntity != Entity.Null
-                    && entityManager.TryGetComponentData(heartEntity, out UserOwner userOwner))
+                if (!sameTeam && entityManager.TryGetComponentData(heartEntity, out UserOwner userOwner))
                 {
                     var ownerUserEntity = userOwner.Owner.GetEntityOnServer();
                     if (ownerUserEntity != Entity.Null && TryExists(entityManager, ownerUserEntity))
                     {
-                        if (ownerUserEntity == userEntity)
+                        if (userEntity != Entity.Null && ownerUserEntity == userEntity)
                         {
                             sameTeam = true;
                         }
-                        else if (hasClan
-                            && entityManager.TryGetComponentData(ownerUserEntity, out User ownerUser)
-                            && !ownerUser.ClanEntity.Equals(NetworkedEntity.Empty)
-                            && ownerUser.ClanEntity.Equals(clanEntity))
+                        else if (entityManager.TryGetComponentData(ownerUserEntity, out User ownerUser))
                         {
-                            sameTeam = true;
+                            if (steamId != 0UL && ownerUser.PlatformId == steamId)
+                            {
+                                sameTeam = true;
+                            }
+                            else if (hasClan
+                                && !ownerUser.ClanEntity.Equals(NetworkedEntity.Empty)
+                                && ownerUser.ClanEntity.Equals(clanEntity))
+                            {
+                                sameTeam = true;
+                            }
                         }
                     }
                 }
