@@ -29,6 +29,7 @@ internal static class FactionInfamyPersistence
             var loadPath = GetLoadPath();
             if (loadPath is null)
             {
+                EnsureSaveFileExists();
                 return new Dictionary<ulong, PlayerHateData>();
             }
 
@@ -162,6 +163,30 @@ internal static class FactionInfamyPersistence
         catch (Exception ex)
         {
             ModLogger.Warn($"[InfamyPersistence] Failed to rotate backups: {ex.Message}");
+        }
+    }
+
+    private static void EnsureSaveFileExists()
+    {
+        try
+        {
+            Directory.CreateDirectory(ConfigDirectory);
+
+            if (File.Exists(SavePath))
+            {
+                return;
+            }
+
+            var emptyPayload = JsonSerializer.Serialize(
+                new Dictionary<string, PlayerHateRecord>(),
+                Options);
+
+            File.WriteAllText(SavePath, emptyPayload);
+            ModLogger.Info("[InfamyPersistence] Created new hate data save file");
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"[InfamyPersistence] Failed to create hate data save file: {ex.Message}");
         }
     }
 
