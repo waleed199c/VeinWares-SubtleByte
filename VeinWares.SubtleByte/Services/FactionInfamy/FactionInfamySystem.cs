@@ -26,9 +26,12 @@ internal static class FactionInfamySystem
     private static float _maximumHate;
     private static bool _enableAmbushVisualBuffs;
     private static bool _enableHalloweenAmbush;
+    private static bool _ambushesRespectTerritory;
     private static bool _disableBloodConsumeOnSpawn;
     private static bool _disableCharmOnSpawn;
     private static bool _enableNativeDropTables;
+    private static float _prestigeLevelBonusPerTier;
+    private static float _prestigeEliteMultiplier;
     private static int _halloweenScarecrowMinimum;
     private static int _halloweenScarecrowMaximum;
     private static int _halloweenScarecrowRareMultiplier;
@@ -84,6 +87,12 @@ internal static class FactionInfamySystem
     internal static bool SuppressCharmOnSpawn => _disableCharmOnSpawn;
 
     internal static bool NativeDropTablesEnabled => _enableNativeDropTables;
+
+    internal static bool AmbushTerritoryProtectionEnabled => _ambushesRespectTerritory;
+
+    internal static float PrestigeLevelBonusPerTier => _prestigeLevelBonusPerTier;
+
+    internal static float PrestigeEliteMultiplier => _prestigeEliteMultiplier;
 
     internal static int HalloweenScarecrowMinimum => _halloweenScarecrowMinimum;
 
@@ -171,9 +180,12 @@ internal static class FactionInfamySystem
         _maximumHate = config.MaximumHate;
         _enableAmbushVisualBuffs = config.EnableAmbushVisualBuffs;
         _enableHalloweenAmbush = config.EnableHalloweenAmbush;
+        _ambushesRespectTerritory = config.AmbushesRespectTerritory;
         _disableBloodConsumeOnSpawn = config.DisableBloodConsumeOnSpawn;
         _disableCharmOnSpawn = config.DisableCharmOnSpawn;
         _enableNativeDropTables = config.EnableNativeDropTables;
+        _prestigeLevelBonusPerTier = config.PrestigeLevelBonusPerTier;
+        _prestigeEliteMultiplier = config.PrestigeEliteMultiplier;
         _halloweenScarecrowMinimum = config.HalloweenScarecrowMinimum;
         _halloweenScarecrowMaximum = config.HalloweenScarecrowMaximum;
         _halloweenScarecrowRareMultiplier = config.HalloweenScarecrowRareMultiplier;
