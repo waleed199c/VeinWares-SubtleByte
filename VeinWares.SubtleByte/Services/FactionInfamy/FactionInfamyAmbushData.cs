@@ -1615,7 +1615,7 @@ internal static class FactionInfamyAmbushData
         public List<SquadConfigEntry>? Factions { get; set; }
     }
 
-    private sealed class SquadConfigEntry
+    internal sealed class SquadConfigEntry
     {
         [JsonPropertyName("id")]
         public string? Id { get; set; }
@@ -1639,7 +1639,7 @@ internal static class FactionInfamyAmbushData
         public List<BaseHateConfig>? BaseHateOverrides { get; set; }
     }
 
-    private sealed class UnitConfig
+    internal sealed class UnitConfig
     {
         [JsonPropertyName("prefabGuid")]
         public int PrefabGuid { get; set; }
@@ -1657,7 +1657,7 @@ internal static class FactionInfamyAmbushData
         public float MaxRange { get; set; }
     }
 
-    private sealed class SeasonalConfig
+    internal sealed class SeasonalConfig
     {
         [JsonPropertyName("season")]
         public string? Season { get; set; }
@@ -1669,7 +1669,7 @@ internal static class FactionInfamyAmbushData
         public UnitConfig? Unit { get; set; }
     }
 
-    private sealed class BaseHateConfig
+    internal sealed class BaseHateConfig
     {
         [JsonPropertyName("factionGuid")]
         public int FactionGuid { get; set; }
@@ -1684,7 +1684,7 @@ internal static class FactionInfamyAmbushData
         public List<LootConfigEntry>? Factions { get; set; }
     }
 
-    private sealed class LootConfigEntry
+    internal sealed class LootConfigEntry
     {
         [JsonPropertyName("id")]
         public string? Id { get; set; }
@@ -1693,7 +1693,7 @@ internal static class FactionInfamyAmbushData
         public List<LootDropConfig>? Loot { get; set; }
     }
 
-    private sealed class LootDropConfig
+    internal sealed class LootDropConfig
     {
         [JsonPropertyName("prefabGuid")]
         public int PrefabGuid { get; set; }
