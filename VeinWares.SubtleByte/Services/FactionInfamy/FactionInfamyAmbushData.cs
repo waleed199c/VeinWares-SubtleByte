@@ -762,6 +762,10 @@ internal static class FactionInfamyAmbushData
           \"hate\": 25
         },
         {
+          \"factionGuid\": 887347866,
+          \"hate\": 300
+        },
+        {
           \"factionGuid\": 1094603131,
           \"hate\": 15
         }
