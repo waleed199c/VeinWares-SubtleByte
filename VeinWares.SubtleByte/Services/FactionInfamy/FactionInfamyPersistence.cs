@@ -18,17 +18,19 @@ internal static class FactionInfamyPersistence
 
     private static string ConfigDirectory => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "Infamy");
     private static string SavePath => Path.Combine(ConfigDirectory, "playerInfamyLevel.json");
+    private static string LegacySavePath => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "playerInfamyLevel.json");
 
     public static Dictionary<ulong, PlayerHateData> Load()
     {
         try
         {
-            if (!File.Exists(SavePath))
+            var loadPath = GetLoadPath();
+            if (loadPath is null)
             {
                 return new Dictionary<ulong, PlayerHateData>();
             }
 
-            var json = File.ReadAllText(SavePath);
+            var json = File.ReadAllText(loadPath);
             if (string.IsNullOrWhiteSpace(json))
             {
                 return new Dictionary<ulong, PlayerHateData>();
@@ -51,6 +53,32 @@ internal static class FactionInfamyPersistence
         {
             ModLogger.Error($"[InfamyPersistence] Failed to load hate data: {ex.Message}");
             return new Dictionary<ulong, PlayerHateData>();
+        }
+    }
+
+    private static string? GetLoadPath()
+    {
+        if (File.Exists(SavePath))
+        {
+            return SavePath;
+        }
+
+        if (!File.Exists(LegacySavePath))
+        {
+            return null;
+        }
+
+        try
+        {
+            Directory.CreateDirectory(ConfigDirectory);
+            File.Move(LegacySavePath, SavePath);
+            ModLogger.Info("[InfamyPersistence] Migrated hate data to Infamy directory");
+            return SavePath;
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"[InfamyPersistence] Failed to migrate hate data: {ex.Message}");
+            return LegacySavePath;
         }
     }
 
