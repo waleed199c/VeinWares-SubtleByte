@@ -1,0 +1,8 @@
+Prefab VM_Mount_Horse_Spectral PrefabGuid(-152883584)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -152883584
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

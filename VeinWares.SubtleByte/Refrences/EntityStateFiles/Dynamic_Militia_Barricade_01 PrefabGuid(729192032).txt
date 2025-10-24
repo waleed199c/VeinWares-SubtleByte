@@ -1,0 +1,63 @@
+Prefab Dynamic_Militia_Barricade_01 PrefabGuid(729192032)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 729192032
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Militia_Barricade_01 PrefabGuid(729192032) - Entity(17570:2)
+
+   [1]
+    Value: Entity(29238:3)
+
+   [2]
+    Value: Entity(29364:3)
+
+   [3]
+    Value: Entity(29363:3)
+
+   [4]
+    Value: Entity(29362:3)
+
+   [5]
+    Value: Entity(29361:3)
+
+   [6]
+    Value: Entity(29490:3)
+
+   [7]
+    Value: Entity(29489:3)
+
+   [8]
+    Value: Entity(29488:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

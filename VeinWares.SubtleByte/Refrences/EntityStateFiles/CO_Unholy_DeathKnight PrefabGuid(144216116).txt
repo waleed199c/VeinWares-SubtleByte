@@ -1,0 +1,35 @@
+Prefab CO_Unholy_DeathKnight PrefabGuid(144216116)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 3.5
+
+  Stunlock.Core.PrefabGUID
+    _Value: 144216116
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Unholy_DeathKnight PrefabGuid(144216116) - Entity(62617:1)
+
+   [1]
+    Value: Entity(37900:4)
+
+   [2]
+    Value: Entity(2558:5)
+
+   [3]
+    Value: Entity(2559:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37900:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

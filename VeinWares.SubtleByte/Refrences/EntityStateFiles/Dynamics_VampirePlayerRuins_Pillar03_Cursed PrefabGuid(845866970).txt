@@ -1,0 +1,63 @@
+Prefab Dynamics_VampirePlayerRuins_Pillar03_Cursed PrefabGuid(845866970)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 6
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 845866970
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamics_VampirePlayerRuins_Pillar03_Cursed PrefabGuid(845866970) - Entity(17514:2)
+
+   [1]
+    Value: Entity(4475:2)
+
+   [2]
+    Value: Entity(4476:2)
+
+   [3]
+    Value: Entity(4477:2)
+
+   [4]
+    Value: Entity(4084:2)
+
+   [5]
+    Value: Entity(3905:2)
+
+   [6]
+    Value: Entity(3904:2)
+
+   [7]
+    Value: Entity(3903:2)
+
+   [8]
+    Value: Entity(22628:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

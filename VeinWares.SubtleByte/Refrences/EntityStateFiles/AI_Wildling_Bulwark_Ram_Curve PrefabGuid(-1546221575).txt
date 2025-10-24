@@ -1,0 +1,8 @@
+Prefab AI_Wildling_Bulwark_Ram_Curve PrefabGuid(-1546221575)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1546221575
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

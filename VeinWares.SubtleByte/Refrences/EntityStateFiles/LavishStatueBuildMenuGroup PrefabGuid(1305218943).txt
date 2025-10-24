@@ -1,0 +1,9 @@
+Prefab LavishStatueBuildMenuGroup PrefabGuid(1305218943)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1305218943
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

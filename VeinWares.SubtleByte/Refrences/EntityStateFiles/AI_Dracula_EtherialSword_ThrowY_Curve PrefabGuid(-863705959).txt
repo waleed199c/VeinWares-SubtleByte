@@ -1,0 +1,8 @@
+Prefab AI_Dracula_EtherialSword_ThrowY_Curve PrefabGuid(-863705959)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -863705959
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

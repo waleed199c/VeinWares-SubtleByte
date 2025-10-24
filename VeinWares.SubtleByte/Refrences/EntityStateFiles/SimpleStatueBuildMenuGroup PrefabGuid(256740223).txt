@@ -1,0 +1,9 @@
+Prefab SimpleStatueBuildMenuGroup PrefabGuid(256740223)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 256740223
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

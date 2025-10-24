@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Textures_PaintingFrames PrefabGuid(-1364093516)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1364093516
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

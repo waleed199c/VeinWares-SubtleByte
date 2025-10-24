@@ -1,0 +1,8 @@
+Prefab BishopOfShadow_Hard_Wave_Curve02 PrefabGuid(2015508768)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2015508768
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

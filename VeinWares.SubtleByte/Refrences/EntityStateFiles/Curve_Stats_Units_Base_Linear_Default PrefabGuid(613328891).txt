@@ -1,0 +1,8 @@
+Prefab Curve_Stats_Units_Base_Linear_Default PrefabGuid(613328891)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 613328891
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

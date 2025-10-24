@@ -1,0 +1,45 @@
+Prefab CO_CopperGolem PrefabGuid(-972365646)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 3.6
+
+  Stunlock.Core.PrefabGUID
+    _Value: -972365646
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_CopperGolem PrefabGuid(-972365646) - Entity(62559:1)
+
+   [1]
+    Value: Entity(38106:4)
+
+   [2]
+    Value: Entity(30395:6)
+
+   [3]
+    Value: Entity(30396:6)
+
+   [4]
+    Value: Entity(38107:4)
+
+   [5]
+    Value: Entity(30397:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38106:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState 1
+    Entity: Entity(38107:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

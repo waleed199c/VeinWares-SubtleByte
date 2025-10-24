@@ -1,0 +1,8 @@
+Prefab VM_Undead_Skeleton_Voice_Medium_Spectral PrefabGuid(-1381099250)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1381099250
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

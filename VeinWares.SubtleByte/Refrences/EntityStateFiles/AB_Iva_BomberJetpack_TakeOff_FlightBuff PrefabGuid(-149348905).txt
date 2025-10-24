@@ -1,0 +1,140 @@
+Prefab AB_Iva_BomberJetpack_TakeOff_FlightBuff PrefabGuid(-149348905)
+Components
+  ProjectM.Attach
+    Parent: Entity(0:0)
+
+  ProjectM.EntityOwner
+    Owner: Entity(0:0)
+
+  ProjectM.EntityCreator
+    Creator: NetworkedEntity(0:0)
+
+  ProjectM.Buff
+    StartTimeUnmodified: 0
+    Target: Entity(0:0)
+    BuffType: ProjectM.BuffType Replace
+    Stacks: 0
+    MaxStacks: 1
+    ResetAge: True
+    IncreaseStacks: False
+    CorrectlyCreated: False
+    OneInstancePerOwner: False
+    BuffEffectType: ProjectM.BuffEffectType Debuff
+
+  ProjectM.GetOwnerRotation
+    OffsetDegreesClockwise: 0
+    Type: ProjectM.GetRotationType Rotation
+    RotationSource: ProjectM.GetOwnerRotationComponent+GetRotationSource Owner
+    InverseRotation: False
+
+  ProjectM.GetTranslationOnSpawn
+    TranslationSource: ProjectM.GetTranslationSource Owner
+    SnapToGround: False
+
+  ProjectM.ModifyMovementSpeedBuff
+    MoveSpeed: 3
+    Curve: ProjectM.CurveReference ProjectM.CurveReference
+    MultiplyAdd: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Age
+    Value: 0
+
+  ProjectM.BuffCategory
+    Level: 0
+    Groups: ProjectM.BuffCategoryFlag None
+    KeepOldest: False
+
+  ProjectM.LifeTime
+    Duration: 20
+    EndAction: ProjectM.LifeTimeEndAction Destroy
+
+  ProjectM.ManualFirstFrameLastTranslation
+    Value: Il2CppSystem.Nullable_Unboxed`1[Unity.Mathematics.float3] 
+
+  ProjectM.Team
+    Value: 1
+    FactionIndex: -1
+
+  ProjectM.AdjustFlyHeightBuff
+    Height: 0
+
+  ProjectM.BuffModificationFlagData
+    ModificationTypes: 134218252
+    ModificationId: Unset
+
+  ProjectM.Scripting.ScriptDestroy
+    Handled: False
+
+  ProjectM.Network.Networked
+    CreateFrame: 0
+
+  ProjectM.Network.UpToDateUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+
+  ProjectM.Network.FrameChanged
+    Value: -1
+
+  ProjectM.Network.NetworkSnapshot
+    Type: ProjectM.Network.NetworkSnapshotType Snapshot_cbggkebbfk
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.Gameplay.Scripting.Script_Modify_Combat_Movement_Buff_Data
+    MinDistance: 1.5
+    GoalDistance: 2
+    GoalDistanceOuter: 0
+    MaxDistance: 2.5
+    MovePattern: ProjectM.AiMovePattern Circle
+    ForceLookAtTarget: ProjectM.AiForceLookAtTarget None
+    CircleCurveInRange: ProjectM.CurveReference ProjectM.CurveReference
+    CircleCurveOutOfRange: ProjectM.CurveReference ProjectM.CurveReference
+
+  ProjectM.Gameplay.Scripting.Script_Modify_Combat_Movement_Buff_State
+    MinDistanceModId: Unset
+    GoalDistanceModId: Unset
+    GoalDistanceOuterModId: Unset
+    MaxDistanceModId: Unset
+    MovePatternModId: Unset
+    ForceLookAtTargetModId: Unset
+    OldCircleCurveInRange: ProjectM.CurveReference ProjectM.CurveReference
+    OldCircleCurveOutOfRange: ProjectM.CurveReference ProjectM.CurveReference
+
+  ProjectM.Gameplay.Scripting.EvenSpreadCluster_Tick_DataServer
+    OffsetAngle: 0
+    RandomAngle: 2.0943952
+    RotationPerTick: 0.7853982
+    Count: 1
+    TicksDone: 0
+    IndividualRandom: True
+    UseAimDirection: False
+    UseSelfRotation: False
+    UseAIReturnPosAsOrigo: False
+    AlwaysMaxRange: False
+    SpawnOffset: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    IgnoreCollision: False
+    FullCircleSpread: True
+    SpawnPrefabInsteadIfConditionTrue: GUID Not Found
+    Condition: None
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Pr

@@ -1,0 +1,14 @@
+Prefab BuffResistance_Vampire PrefabGuid(-1022163918)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1022163918
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 0
+    ModifyDuration: False
+    DurationModifier: 1
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab WarEventUIData_Inactive PrefabGuid(-1349990434)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1349990434
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

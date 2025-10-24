@@ -1,0 +1,8 @@
+Prefab Weapon_Mace_Attack1Charged_Curve PrefabGuid(1167270723)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1167270723
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

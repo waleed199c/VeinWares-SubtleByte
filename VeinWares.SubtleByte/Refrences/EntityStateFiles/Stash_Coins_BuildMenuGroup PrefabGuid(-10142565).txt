@@ -1,0 +1,9 @@
+Prefab Stash_Coins_BuildMenuGroup PrefabGuid(-10142565)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -10142565
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

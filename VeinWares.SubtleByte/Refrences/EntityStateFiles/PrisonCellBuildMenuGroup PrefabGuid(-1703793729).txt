@@ -1,0 +1,9 @@
+Prefab PrisonCellBuildMenuGroup PrefabGuid(-1703793729)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1703793729
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

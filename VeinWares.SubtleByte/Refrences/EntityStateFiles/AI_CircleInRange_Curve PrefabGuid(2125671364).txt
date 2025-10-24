@@ -1,0 +1,8 @@
+Prefab AI_CircleInRange_Curve PrefabGuid(2125671364)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2125671364
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

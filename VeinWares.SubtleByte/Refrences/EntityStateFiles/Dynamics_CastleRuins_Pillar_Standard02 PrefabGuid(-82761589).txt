@@ -1,0 +1,93 @@
+Prefab Dynamics_CastleRuins_Pillar_Standard02 PrefabGuid(-82761589)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 6
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -82761589
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamics_CastleRuins_Pillar_Standard02 PrefabGuid(-82761589) - Entity(17071:2)
+
+   [1]
+    Value: Entity(3982:2)
+
+   [2]
+    Value: Entity(3983:2)
+
+   [3]
+    Value: Entity(3984:2)
+
+   [4]
+    Value: Entity(3985:2)
+
+   [5]
+    Value: Entity(3986:2)
+
+   [6]
+    Value: Entity(28008:2)
+
+   [7]
+    Value: Entity(4111:2)
+
+   [8]
+    Value: Entity(34799:1)
+
+   [9]
+    Value: Entity(28007:2)
+
+   [10]
+    Value: Entity(28006:2)
+
+   [11]
+    Value: Entity(34800:1)
+
+   [12]
+    Value: Entity(28005:2)
+
+   [13]
+    Value: Entity(28004:2)
+
+   [14]
+    Value: Entity(28003:2)
+
+   [15]
+    Value: Entity(28002:2)
+
+   [16]
+    Value: Entity(4112:2)
+
+   [17]
+    Value: Entity(28001:2)
+
+   [18]
+    Value: Entity(4113:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

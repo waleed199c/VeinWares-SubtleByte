@@ -1,0 +1,8 @@
+Prefab FlatInOutAndBackCurve3 PrefabGuid(931351954)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 931351954
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

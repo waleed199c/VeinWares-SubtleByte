@@ -1,0 +1,14 @@
+Prefab BuffResistance_UberMob PrefabGuid(1067748088)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1067748088
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 536871313
+    ModifyDuration: False
+    DurationModifier: 0
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

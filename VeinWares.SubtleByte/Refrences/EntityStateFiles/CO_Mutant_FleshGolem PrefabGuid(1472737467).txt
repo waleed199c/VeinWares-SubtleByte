@@ -1,0 +1,38 @@
+Prefab CO_Mutant_FleshGolem PrefabGuid(1472737467)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 25
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1472737467
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Mutant_FleshGolem PrefabGuid(1472737467) - Entity(62546:1)
+
+   [1]
+    Value: Entity(6767:5)
+
+   [2]
+    Value: Entity(11877:5)
+
+   [3]
+    Value: Entity(11878:5)
+
+   [4]
+    Value: Entity(11879:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6767:5)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,32 @@
+Prefab CO_Undead_ShadowSoldier_GateBoss PrefabGuid(1160695966)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1160695966
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_ShadowSoldier_GateBoss PrefabGuid(1160695966) - Entity(62762:1)
+
+   [1]
+    Value: Entity(37961:4)
+
+   [2]
+    Value: Entity(2589:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37961:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

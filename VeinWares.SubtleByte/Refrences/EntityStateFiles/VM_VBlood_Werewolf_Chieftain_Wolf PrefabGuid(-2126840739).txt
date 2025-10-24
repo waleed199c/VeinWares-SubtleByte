@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Werewolf_Chieftain_Wolf PrefabGuid(-2126840739)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2126840739
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

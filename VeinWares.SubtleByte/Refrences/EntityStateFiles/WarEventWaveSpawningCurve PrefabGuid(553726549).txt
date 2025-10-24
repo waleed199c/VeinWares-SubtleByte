@@ -1,0 +1,8 @@
+Prefab WarEventWaveSpawningCurve PrefabGuid(553726549)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 553726549
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab LinearCurve_Smoothed PrefabGuid(-1408753583)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1408753583
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

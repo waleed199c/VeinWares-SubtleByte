@@ -1,0 +1,8 @@
+Prefab Winter_Yeti_MeleeLunge_Curve PrefabGuid(-1811689564)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1811689564
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

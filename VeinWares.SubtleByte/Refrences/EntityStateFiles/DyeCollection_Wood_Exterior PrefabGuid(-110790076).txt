@@ -1,0 +1,8 @@
+Prefab DyeCollection_Wood_Exterior PrefabGuid(-110790076)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -110790076
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

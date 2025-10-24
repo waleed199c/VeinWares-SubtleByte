@@ -1,0 +1,8 @@
+Prefab AI_MountainBeast_ProjectileCurveX PrefabGuid(181504325)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 181504325
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

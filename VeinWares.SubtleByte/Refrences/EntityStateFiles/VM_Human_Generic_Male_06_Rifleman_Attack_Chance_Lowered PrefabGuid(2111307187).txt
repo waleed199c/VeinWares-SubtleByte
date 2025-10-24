@@ -1,0 +1,8 @@
+Prefab VM_Human_Generic_Male_06_Rifleman_Attack_Chance_Lowered PrefabGuid(2111307187)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2111307187
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

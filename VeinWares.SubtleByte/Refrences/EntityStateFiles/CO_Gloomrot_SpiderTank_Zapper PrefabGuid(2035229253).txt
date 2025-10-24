@@ -1,0 +1,35 @@
+Prefab CO_Gloomrot_SpiderTank_Zapper PrefabGuid(2035229253)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 16
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2035229253
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_SpiderTank_Zapper PrefabGuid(2035229253) - Entity(62604:1)
+
+   [1]
+    Value: Entity(38212:4)
+
+   [2]
+    Value: Entity(11439:5)
+
+   [3]
+    Value: Entity(11440:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38212:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,179 @@
+Prefab Snapping_PrefabSet_PillarTorches PrefabGuid(1907761274)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1907761274
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(381319529)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1117554565)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(171778355)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-962887562)
+
+   [4]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1615364717)
+
+   [5]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1507156777)
+
+   [6]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1996281667)
+
+   [7]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1123773678)
+
+   [8]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-876427373)
+
+   [9]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1039319072)
+
+   [10]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-725227635)
+
+   [11]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(623491931)
+
+   [12]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1027890023)
+
+   [13]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-432509803)
+
+   [14]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1810336204)
+
+   [15]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(318475524)
+
+   [16]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1998196357)
+
+   [17]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1398111223)
+
+   [18]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(222452688)
+
+   [19]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1591965530)
+
+   [20]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(514660688)
+
+   [21]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(962747391)
+
+   [22]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-760358969)
+
+   [23]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1303979929)
+
+   [24]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(876159415)
+
+   [25]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1701464100)
+
+   [26]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1171228583)
+
+   [27]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1938248109)
+
+   [28]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(955474763)
+
+   [29]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1952451618)
+
+   [30]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-777269524)
+
+   [31]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1990191735)
+
+   [32]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-42990661)
+
+   [33]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1727572164)
+
+   [34]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1317859336)
+
+   [35]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1870073967)
+
+   [36]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-163088387)
+
+   [37]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1969574504)
+
+   [38]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-721714254)
+
+   [39]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-19009133)
+
+   [40]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(87261865)
+
+   [41]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1037785378)
+
+   [42]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-479059917)
+
+   [43]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-558665859)
+
+   [44]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1713970619)
+
+   [45]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1652335816)
+
+   [46]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(328148479)
+
+   [47]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-328288413)
+
+   [48]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(172664191)
+
+   [49]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(229389372)
+
+   [50]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-359707458)
+
+   [51]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1932505670)
+
+   [52]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1209886173)
+
+   [53]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(743735705)
+
+   [54]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1321004130)
+
+   55 total elements but only showing the first 36
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(381319529)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,111 @@
+Prefab Dynamic_Strongblade_Table02 PrefabGuid(1573826676)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1573826676
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_Table02 PrefabGuid(1573826676) - Entity(17346:2)
+
+   [1]
+    Value: Entity(35517:1)
+
+   [2]
+    Value: Entity(29618:3)
+
+   [3]
+    Value: Entity(29617:3)
+
+   [4]
+    Value: Entity(35861:1)
+
+   [5]
+    Value: Entity(35860:1)
+
+   [6]
+    Value: Entity(35859:1)
+
+   [7]
+    Value: Entity(35858:1)
+
+   [8]
+    Value: Entity(29616:3)
+
+   [9]
+    Value: Entity(21930:3)
+
+   [10]
+    Value: Entity(21890:3)
+
+   [11]
+    Value: Entity(21889:3)
+
+   [12]
+    Value: Entity(21888:3)
+
+   [13]
+    Value: Entity(21887:3)
+
+   [14]
+    Value: Entity(21886:3)
+
+   [15]
+    Value: Entity(21885:3)
+
+   [16]
+    Value: Entity(21884:3)
+
+   [17]
+    Value: Entity(21883:3)
+
+   [18]
+    Value: Entity(21882:3)
+
+   [19]
+    Value: Entity(21881:3)
+
+   [20]
+    Value: Entity(21880:3)
+
+   [21]
+    Value: Entity(21879:3)
+
+   [22]
+    Value: Entity(21878:3)
+
+   [23]
+    Value: Entity(21877:3)
+
+   [24]
+    Value: Entity(21876:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

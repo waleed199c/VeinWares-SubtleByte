@@ -1,0 +1,32 @@
+Prefab CO_Bandit_Bomber PrefabGuid(-1108787568)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 6
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1108787568
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Bomber PrefabGuid(-1108787568) - Entity(62711:1)
+
+   [1]
+    Value: Entity(38129:4)
+
+   [2]
+    Value: Entity(2286:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38129:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

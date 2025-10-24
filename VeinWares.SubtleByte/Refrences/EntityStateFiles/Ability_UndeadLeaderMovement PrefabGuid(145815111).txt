@@ -1,0 +1,8 @@
+Prefab Ability_UndeadLeaderMovement PrefabGuid(145815111)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 145815111
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

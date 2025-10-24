@@ -1,0 +1,13 @@
+Prefab ServantPerk_BloodType_Scholar PrefabGuid(-1410655756)
+Components
+  ProjectM.PerkData
+    LootValue: 0
+    PrefabGUID: ServantPerk_BloodType_Scholar PrefabGuid(-1410655756)
+    PowerValue: 100
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1410655756
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

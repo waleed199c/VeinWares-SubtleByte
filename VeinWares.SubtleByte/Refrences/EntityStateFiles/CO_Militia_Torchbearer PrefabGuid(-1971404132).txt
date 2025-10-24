@@ -1,0 +1,32 @@
+Prefab CO_Militia_Torchbearer PrefabGuid(-1971404132)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 9
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1971404132
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Torchbearer PrefabGuid(-1971404132) - Entity(62580:1)
+
+   [1]
+    Value: Entity(38071:4)
+
+   [2]
+    Value: Entity(11812:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38071:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

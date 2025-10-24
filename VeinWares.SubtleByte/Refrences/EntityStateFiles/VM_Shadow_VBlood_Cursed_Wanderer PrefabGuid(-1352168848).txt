@@ -1,0 +1,8 @@
+Prefab VM_Shadow_VBlood_Cursed_Wanderer PrefabGuid(-1352168848)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1352168848
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

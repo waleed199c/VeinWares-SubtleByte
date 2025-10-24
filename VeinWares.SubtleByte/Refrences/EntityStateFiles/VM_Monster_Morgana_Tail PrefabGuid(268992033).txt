@@ -1,0 +1,8 @@
+Prefab VM_Monster_Morgana_Tail PrefabGuid(268992033)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 268992033
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

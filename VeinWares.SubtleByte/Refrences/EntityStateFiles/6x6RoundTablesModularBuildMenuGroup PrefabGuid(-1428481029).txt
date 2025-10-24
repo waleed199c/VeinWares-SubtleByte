@@ -1,0 +1,9 @@
+Prefab 6x6RoundTablesModularBuildMenuGroup PrefabGuid(-1428481029)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1428481029
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

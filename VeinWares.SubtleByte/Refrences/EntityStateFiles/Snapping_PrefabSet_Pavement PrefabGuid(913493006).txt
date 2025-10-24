@@ -1,0 +1,61 @@
+Prefab Snapping_PrefabSet_Pavement PrefabGuid(913493006)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 913493006
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1369764474)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-2068184188)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1917517340)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1468258825)
+
+   [4]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1604165419)
+
+   [5]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1311856292)
+
+   [6]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1202397949)
+
+   [7]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-855972220)
+
+   [8]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1150704729)
+
+   [9]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1590852004)
+
+   [10]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1834344633)
+
+   [11]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-330567583)
+
+   [12]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-133073227)
+
+   [13]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(940495998)
+
+   [14]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-342424861)
+
+   [15]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-2030277052)
+
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1369764474)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,9 @@
+Prefab MirrorsBuildMenuGroup PrefabGuid(466535423)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 466535423
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

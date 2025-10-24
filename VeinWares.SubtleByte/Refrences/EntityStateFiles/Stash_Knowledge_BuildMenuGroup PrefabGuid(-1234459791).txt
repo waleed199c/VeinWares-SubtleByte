@@ -1,0 +1,9 @@
+Prefab Stash_Knowledge_BuildMenuGroup PrefabGuid(-1234459791)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1234459791
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

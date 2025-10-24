@@ -1,0 +1,41 @@
+Prefab CO_Bandit_Leader PrefabGuid(1412702580)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1412702580
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Leader PrefabGuid(1412702580) - Entity(62655:1)
+
+   [1]
+    Value: Entity(38018:4)
+
+   [2]
+    Value: Entity(30375:6)
+
+   [3]
+    Value: Entity(30376:6)
+
+   [4]
+    Value: Entity(30377:6)
+
+   [5]
+    Value: Entity(30378:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38018:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

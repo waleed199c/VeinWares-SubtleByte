@@ -1,0 +1,8 @@
+Prefab ServantInjury_Ratform PrefabGuid(-1304230302)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1304230302
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

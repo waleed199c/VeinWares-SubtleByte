@@ -1,0 +1,81 @@
+Prefab SpiderTankScrap03_Broken PrefabGuid(1699935899)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1699935899
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab SpiderTankScrap03_Broken PrefabGuid(1699935899) - Entity(17200:2)
+
+   [1]
+    Value: Entity(28464:2)
+
+   [2]
+    Value: Entity(28625:2)
+
+   [3]
+    Value: Entity(28463:2)
+
+   [4]
+    Value: Entity(28462:2)
+
+   [5]
+    Value: Entity(28461:2)
+
+   [6]
+    Value: Entity(5483:2)
+
+   [7]
+    Value: Entity(28460:2)
+
+   [8]
+    Value: Entity(28624:2)
+
+   [9]
+    Value: Entity(5482:2)
+
+   [10]
+    Value: Entity(28459:2)
+
+   [11]
+    Value: Entity(27311:2)
+
+   [12]
+    Value: Entity(27310:2)
+
+   [13]
+    Value: Entity(28623:2)
+
+   [14]
+    Value: Entity(28622:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

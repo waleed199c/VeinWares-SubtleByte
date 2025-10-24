@@ -1,0 +1,8 @@
+Prefab AI_DireWolf_SpeedCurve PrefabGuid(1353440498)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1353440498
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

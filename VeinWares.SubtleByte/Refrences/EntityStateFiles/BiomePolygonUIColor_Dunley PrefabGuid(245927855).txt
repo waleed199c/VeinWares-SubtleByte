@@ -1,0 +1,8 @@
+Prefab BiomePolygonUIColor_Dunley PrefabGuid(245927855)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 245927855
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,50 @@
+Prefab CO_Bandit_Fisherman_VBlood PrefabGuid(588595323)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 24
+
+  Stunlock.Core.PrefabGUID
+    _Value: 588595323
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Fisherman_VBlood PrefabGuid(588595323) - Entity(62714:1)
+
+   [1]
+    Value: Entity(38126:4)
+
+   [2]
+    Value: Entity(2525:5)
+
+   [3]
+    Value: Entity(2526:5)
+
+   [4]
+    Value: Entity(2527:5)
+
+   [5]
+    Value: Entity(2528:5)
+
+   [6]
+    Value: Entity(2529:5)
+
+   [7]
+    Value: Entity(2530:5)
+
+   [8]
+    Value: Entity(2531:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38126:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Infiltrator_After_Image PrefabGuid(1935716246)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1935716246
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

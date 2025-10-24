@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_Monochrome PrefabGuid(-1566877804)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1566877804
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

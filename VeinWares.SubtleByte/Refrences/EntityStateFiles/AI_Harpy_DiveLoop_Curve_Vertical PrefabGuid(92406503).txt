@@ -1,0 +1,8 @@
+Prefab AI_Harpy_DiveLoop_Curve_Vertical PrefabGuid(92406503)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 92406503
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

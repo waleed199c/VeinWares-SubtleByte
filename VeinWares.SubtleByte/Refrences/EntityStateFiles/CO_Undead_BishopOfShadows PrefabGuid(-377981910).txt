@@ -1,0 +1,38 @@
+Prefab CO_Undead_BishopOfShadows PrefabGuid(-377981910)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: -377981910
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_BishopOfShadows PrefabGuid(-377981910) - Entity(62739:1)
+
+   [1]
+    Value: Entity(38278:4)
+
+   [2]
+    Value: Entity(2386:5)
+
+   [3]
+    Value: Entity(2387:5)
+
+   [4]
+    Value: Entity(2388:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38278:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

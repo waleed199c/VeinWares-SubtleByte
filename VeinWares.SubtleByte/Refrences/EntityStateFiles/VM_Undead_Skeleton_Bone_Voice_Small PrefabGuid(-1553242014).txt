@@ -1,0 +1,8 @@
+Prefab VM_Undead_Skeleton_Bone_Voice_Small PrefabGuid(-1553242014)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1553242014
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,9 @@
+Prefab WallHangingShelvesBuildMenuGroup PrefabGuid(1737280995)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1737280995
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

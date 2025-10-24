@@ -1,0 +1,57 @@
+Prefab CO_Forest_Bear_Dire_Vblood PrefabGuid(1437704949)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1437704949
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Forest_Bear_Dire_Vblood PrefabGuid(1437704949) - Entity(62753:1)
+
+   [1]
+    Value: Entity(38258:4)
+
+   [2]
+    Value: Entity(2607:5)
+
+   [3]
+    Value: Entity(2608:5)
+
+   [4]
+    Value: Entity(2609:5)
+
+   [5]
+    Value: Entity(2610:5)
+
+   [6]
+    Value: Entity(2611:5)
+
+   [7]
+    Value: Entity(2612:5)
+
+   [8]
+    Value: Entity(38259:4)
+
+   [9]
+    Value: Entity(2613:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38258:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState 3
+    Entity: Entity(38259:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

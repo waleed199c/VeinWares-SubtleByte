@@ -1,0 +1,8 @@
+Prefab AI_BishopOfDunley_SummonPillar_Height_Curve PrefabGuid(-1473005341)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1473005341
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

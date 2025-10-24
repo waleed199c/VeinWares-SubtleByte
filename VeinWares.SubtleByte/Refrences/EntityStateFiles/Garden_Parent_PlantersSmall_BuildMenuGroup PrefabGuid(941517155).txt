@@ -1,0 +1,9 @@
+Prefab Garden_Parent_PlantersSmall_BuildMenuGroup PrefabGuid(941517155)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 941517155
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

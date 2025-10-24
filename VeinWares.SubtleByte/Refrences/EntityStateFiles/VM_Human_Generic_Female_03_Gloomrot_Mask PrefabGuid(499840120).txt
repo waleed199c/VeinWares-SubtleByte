@@ -1,0 +1,8 @@
+Prefab VM_Human_Generic_Female_03_Gloomrot_Mask PrefabGuid(499840120)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 499840120
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

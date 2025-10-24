@@ -1,0 +1,25 @@
+Prefab Snapping_PrefabSet_HedgeCorners PrefabGuid(816992238)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 816992238
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1063814268)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(527160947)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-2120322883)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-258523558)
+
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1063814268)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

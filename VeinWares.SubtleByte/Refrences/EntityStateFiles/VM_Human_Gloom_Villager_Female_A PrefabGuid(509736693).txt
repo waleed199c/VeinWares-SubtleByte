@@ -1,0 +1,8 @@
+Prefab VM_Human_Gloom_Villager_Female_A PrefabGuid(509736693)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 509736693
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

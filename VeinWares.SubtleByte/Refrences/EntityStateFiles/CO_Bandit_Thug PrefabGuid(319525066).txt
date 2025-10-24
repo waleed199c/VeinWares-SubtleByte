@@ -1,0 +1,42 @@
+Prefab CO_Bandit_Thug PrefabGuid(319525066)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 1.5
+
+  Stunlock.Core.PrefabGUID
+    _Value: 319525066
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Thug PrefabGuid(319525066) - Entity(62664:1)
+
+   [1]
+    Value: Entity(38003:4)
+
+   [2]
+    Value: Entity(30240:6)
+
+   [3]
+    Value: Entity(38004:4)
+
+   [4]
+    Value: Entity(30241:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38003:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38004:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

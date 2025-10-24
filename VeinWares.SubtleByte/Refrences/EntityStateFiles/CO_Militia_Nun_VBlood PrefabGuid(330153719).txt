@@ -1,0 +1,38 @@
+Prefab CO_Militia_Nun_VBlood PrefabGuid(330153719)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: 330153719
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Nun_VBlood PrefabGuid(330153719) - Entity(62638:1)
+
+   [1]
+    Value: Entity(38167:4)
+
+   [2]
+    Value: Entity(2433:5)
+
+   [3]
+    Value: Entity(2434:5)
+
+   [4]
+    Value: Entity(2435:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38167:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

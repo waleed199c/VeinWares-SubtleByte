@@ -1,0 +1,32 @@
+Prefab CO_Gloomrot_Railgunner PrefabGuid(1300154463)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 14
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1300154463
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_Railgunner PrefabGuid(1300154463) - Entity(62640:1)
+
+   [1]
+    Value: Entity(38165:4)
+
+   [2]
+    Value: Entity(2431:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38165:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

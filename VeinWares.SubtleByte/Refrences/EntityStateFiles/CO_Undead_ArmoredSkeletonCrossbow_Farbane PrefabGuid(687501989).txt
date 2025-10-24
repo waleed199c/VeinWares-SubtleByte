@@ -1,0 +1,32 @@
+Prefab CO_Undead_ArmoredSkeletonCrossbow_Farbane PrefabGuid(687501989)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 10
+
+  Stunlock.Core.PrefabGUID
+    _Value: 687501989
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_ArmoredSkeletonCrossbow_Farbane PrefabGuid(687501989) - Entity(62535:1)
+
+   [1]
+    Value: Entity(6782:5)
+
+   [2]
+    Value: Entity(2669:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6782:5)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

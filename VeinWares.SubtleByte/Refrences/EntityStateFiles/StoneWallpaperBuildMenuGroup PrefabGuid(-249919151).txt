@@ -1,0 +1,9 @@
+Prefab StoneWallpaperBuildMenuGroup PrefabGuid(-249919151)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -249919151
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

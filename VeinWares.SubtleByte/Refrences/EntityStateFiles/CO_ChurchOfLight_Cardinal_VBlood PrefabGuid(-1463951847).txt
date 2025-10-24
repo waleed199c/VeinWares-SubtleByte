@@ -1,0 +1,44 @@
+Prefab CO_ChurchOfLight_Cardinal_VBlood PrefabGuid(-1463951847)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 22
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1463951847
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_ChurchOfLight_Cardinal_VBlood PrefabGuid(-1463951847) - Entity(62700:1)
+
+   [1]
+    Value: Entity(38146:4)
+
+   [2]
+    Value: Entity(2642:5)
+
+   [3]
+    Value: Entity(2643:5)
+
+   [4]
+    Value: Entity(2644:5)
+
+   [5]
+    Value: Entity(2645:5)
+
+   [6]
+    Value: Entity(2646:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38146:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

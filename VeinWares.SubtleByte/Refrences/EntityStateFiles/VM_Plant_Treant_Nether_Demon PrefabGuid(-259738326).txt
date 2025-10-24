@@ -1,0 +1,8 @@
+Prefab VM_Plant_Treant_Nether_Demon PrefabGuid(-259738326)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -259738326
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

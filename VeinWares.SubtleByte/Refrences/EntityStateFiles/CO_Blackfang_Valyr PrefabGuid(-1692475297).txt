@@ -1,0 +1,50 @@
+Prefab CO_Blackfang_Valyr PrefabGuid(-1692475297)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 50
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1692475297
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Blackfang_Valyr PrefabGuid(-1692475297) - Entity(62601:1)
+
+   [1]
+    Value: Entity(38038:4)
+
+   [2]
+    Value: Entity(11444:5)
+
+   [3]
+    Value: Entity(11445:5)
+
+   [4]
+    Value: Entity(11446:5)
+
+   [5]
+    Value: Entity(11447:5)
+
+   [6]
+    Value: Entity(11448:5)
+
+   [7]
+    Value: Entity(11449:5)
+
+   [8]
+    Value: Entity(11450:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38038:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

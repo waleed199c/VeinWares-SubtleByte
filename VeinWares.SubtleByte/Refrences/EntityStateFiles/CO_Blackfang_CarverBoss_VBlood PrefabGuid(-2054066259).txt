@@ -1,0 +1,64 @@
+Prefab CO_Blackfang_CarverBoss_VBlood PrefabGuid(-2054066259)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2054066259
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Blackfang_CarverBoss_VBlood PrefabGuid(-2054066259) - Entity(31277:6)
+
+   [1]
+    Value: Entity(38139:4)
+
+   [2]
+    Value: Entity(2307:5)
+
+   [3]
+    Value: Entity(2308:5)
+
+   [4]
+    Value: Entity(2309:5)
+
+   [5]
+    Value: Entity(2310:5)
+
+   [6]
+    Value: Entity(2311:5)
+
+   [7]
+    Value: Entity(2312:5)
+
+   [8]
+    Value: Entity(2775:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38139:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

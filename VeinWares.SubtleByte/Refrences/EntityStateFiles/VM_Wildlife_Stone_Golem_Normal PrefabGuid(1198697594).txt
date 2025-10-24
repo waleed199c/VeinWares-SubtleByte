@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Stone_Golem_Normal PrefabGuid(1198697594)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1198697594
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,45 @@
+Prefab CO_RockElemental PrefabGuid(-1999640100)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 99
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1999640100
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_RockElemental PrefabGuid(-1999640100) - Entity(62560:1)
+
+   [1]
+    Value: Entity(38001:4)
+
+   [2]
+    Value: Entity(30237:6)
+
+   [3]
+    Value: Entity(30238:6)
+
+   [4]
+    Value: Entity(38002:4)
+
+   [5]
+    Value: Entity(30239:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38001:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38002:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

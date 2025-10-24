@@ -1,0 +1,48 @@
+Prefab CO_Militia_Longbowman_LightArrow PrefabGuid(269502057)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: 269502057
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Longbowman_LightArrow PrefabGuid(269502057) - Entity(62628:1)
+
+   [1]
+    Value: Entity(37886:4)
+
+   [2]
+    Value: Entity(2721:5)
+
+   [3]
+    Value: Entity(2722:5)
+
+   [4]
+    Value: Entity(2723:5)
+
+   [5]
+    Value: Entity(37887:4)
+
+   [6]
+    Value: Entity(2724:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37886:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState 768
+    Entity: Entity(37887:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

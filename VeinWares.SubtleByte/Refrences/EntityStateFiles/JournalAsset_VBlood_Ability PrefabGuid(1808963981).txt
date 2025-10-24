@@ -1,0 +1,8 @@
+Prefab JournalAsset_VBlood_Ability PrefabGuid(1808963981)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1808963981
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

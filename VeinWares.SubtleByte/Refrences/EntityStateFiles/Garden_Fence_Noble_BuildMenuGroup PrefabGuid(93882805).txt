@@ -1,0 +1,9 @@
+Prefab Garden_Fence_Noble_BuildMenuGroup PrefabGuid(93882805)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 93882805
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Color_Gothic_Window03_Glass PrefabGuid(-1118320747)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1118320747
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

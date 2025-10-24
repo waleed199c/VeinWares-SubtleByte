@@ -1,0 +1,19 @@
+Prefab NeutralTeam PrefabGuid(-672413924)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.TeamData
+    TeamValue: -1
+
+  Stunlock.Core.PrefabGUID
+    _Value: -672413924
+
+  ProjectM.TeamAllies
+  ProjectM.NeutralTeam
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

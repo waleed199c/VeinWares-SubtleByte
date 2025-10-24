@@ -1,0 +1,8 @@
+Prefab AI_Manticore_ChargeProjectile_Curve PrefabGuid(1587442721)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1587442721
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

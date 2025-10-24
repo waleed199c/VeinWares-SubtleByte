@@ -1,0 +1,9 @@
+Prefab JewelFloorBuildMenuGroup PrefabGuid(-111344929)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -111344929
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

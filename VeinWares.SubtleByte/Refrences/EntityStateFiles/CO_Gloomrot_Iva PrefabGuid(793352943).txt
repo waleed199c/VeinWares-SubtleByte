@@ -1,0 +1,53 @@
+Prefab CO_Gloomrot_Iva PrefabGuid(793352943)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 793352943
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_Iva PrefabGuid(793352943) - Entity(62647:1)
+
+   [1]
+    Value: Entity(37857:4)
+
+   [2]
+    Value: Entity(36938:4)
+
+   [3]
+    Value: Entity(36939:4)
+
+   [4]
+    Value: Entity(36940:4)
+
+   [5]
+    Value: Entity(36941:4)
+
+   [6]
+    Value: Entity(36942:4)
+
+   [7]
+    Value: Entity(36943:4)
+
+   [8]
+    Value: Entity(36944:4)
+
+   [9]
+    Value: Entity(36945:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37857:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

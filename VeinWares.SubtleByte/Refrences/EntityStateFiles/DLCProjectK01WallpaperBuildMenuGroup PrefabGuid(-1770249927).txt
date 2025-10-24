@@ -1,0 +1,9 @@
+Prefab DLCProjectK01WallpaperBuildMenuGroup PrefabGuid(-1770249927)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1770249927
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,78 @@
+Prefab Dynamic_BattlementCursed_Wall02ShatterGroup PrefabGuid(1328208739)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1328208739
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_BattlementCursed_Wall02ShatterGroup PrefabGuid(1328208739) - Entity(17105:2)
+
+   [1]
+    Value: Entity(28671:2)
+
+   [2]
+    Value: Entity(28670:2)
+
+   [3]
+    Value: Entity(28669:2)
+
+   [4]
+    Value: Entity(28668:2)
+
+   [5]
+    Value: Entity(28833:2)
+
+   [6]
+    Value: Entity(28667:2)
+
+   [7]
+    Value: Entity(28666:2)
+
+   [8]
+    Value: Entity(28665:2)
+
+   [9]
+    Value: Entity(28394:2)
+
+   [10]
+    Value: Entity(28393:2)
+
+   [11]
+    Value: Entity(28392:2)
+
+   [12]
+    Value: Entity(28391:2)
+
+   [13]
+    Value: Entity(28390:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

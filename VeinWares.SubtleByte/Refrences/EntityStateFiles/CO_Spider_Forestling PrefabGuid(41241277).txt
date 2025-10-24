@@ -1,0 +1,32 @@
+Prefab CO_Spider_Forestling PrefabGuid(41241277)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 2
+
+  Stunlock.Core.PrefabGUID
+    _Value: 41241277
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Spider_Forestling PrefabGuid(41241277) - Entity(62578:1)
+
+   [1]
+    Value: Entity(37979:4)
+
+   [2]
+    Value: Entity(30183:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37979:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,36 @@
+Prefab Tech_Storage_Jewels_T02 PrefabGuid(1839251968)
+Components
+  ProjectM.TechData
+    Entity: Prefab Tech_Storage_Jewels_T02 PrefabGuid(1839251968) - Entity(21468:1)
+    Guid: Tech_Storage_Jewels_T02 PrefabGuid(1839251968)
+    TechCategory: ProjectM.TechCategory Structure
+    CraftDuration: 180
+    HudSortingOrder: 0
+    NeverShowQuestionmarkResearch: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1839251968
+
+  ProjectM.ProgressionBookShapeshiftElement
+  ProjectM.ProgressionBookMusicTrackElement
+  ProjectM.TechUnlockRecipeBuffer
+  ProjectM.TechUnlockBlueprintBuffer
+   [0]
+    Guid: TM_Castle_Container_Specialized_Jewels_T02 PrefabGuid(1305010703)
+
+  ProjectM.TechRequirementBuffer
+  ProjectM.TechItemRequirementBuffer
+   [0]
+    Guid: Item_Ingredient_Book_Structure_Storage_Jewels_T02 PrefabGuid(-1870194782)
+    Stacks: 1
+
+  ProjectM.UnlockedPassivesBuffer
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

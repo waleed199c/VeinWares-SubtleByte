@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Bear_Corrupted PrefabGuid(882344541)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 882344541
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

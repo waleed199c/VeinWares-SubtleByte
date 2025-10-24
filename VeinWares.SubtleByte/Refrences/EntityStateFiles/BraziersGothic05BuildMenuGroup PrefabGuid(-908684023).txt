@@ -1,0 +1,9 @@
+Prefab BraziersGothic05BuildMenuGroup PrefabGuid(-908684023)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -908684023
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

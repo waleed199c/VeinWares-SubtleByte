@@ -1,0 +1,8 @@
+Prefab AI_Gloomrot_Voltage_Stage2Projectile_Oscillating_Curve PrefabGuid(658349860)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 658349860
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

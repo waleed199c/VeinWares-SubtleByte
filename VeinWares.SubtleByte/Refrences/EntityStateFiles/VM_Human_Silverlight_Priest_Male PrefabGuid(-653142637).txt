@@ -1,0 +1,8 @@
+Prefab VM_Human_Silverlight_Priest_Male PrefabGuid(-653142637)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -653142637
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

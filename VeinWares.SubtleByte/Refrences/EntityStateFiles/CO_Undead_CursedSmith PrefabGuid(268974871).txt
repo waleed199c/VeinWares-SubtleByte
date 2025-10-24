@@ -1,0 +1,47 @@
+Prefab CO_Undead_CursedSmith PrefabGuid(268974871)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: 268974871
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_CursedSmith PrefabGuid(268974871) - Entity(62622:1)
+
+   [1]
+    Value: Entity(37893:4)
+
+   [2]
+    Value: Entity(2542:5)
+
+   [3]
+    Value: Entity(2543:5)
+
+   [4]
+    Value: Entity(2544:5)
+
+   [5]
+    Value: Entity(2545:5)
+
+   [6]
+    Value: Entity(2546:5)
+
+   [7]
+    Value: Entity(2547:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37893:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

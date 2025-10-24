@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Cultist PrefabGuid(-431379099)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -431379099
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

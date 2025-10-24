@@ -1,0 +1,44 @@
+Prefab CO_Poloma PrefabGuid(2047639378)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2047639378
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Poloma PrefabGuid(2047639378) - Entity(62574:1)
+
+   [1]
+    Value: Entity(37984:4)
+
+   [2]
+    Value: Entity(30199:6)
+
+   [3]
+    Value: Entity(30200:6)
+
+   [4]
+    Value: Entity(30201:6)
+
+   [5]
+    Value: Entity(30202:6)
+
+   [6]
+    Value: Entity(30203:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37984:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

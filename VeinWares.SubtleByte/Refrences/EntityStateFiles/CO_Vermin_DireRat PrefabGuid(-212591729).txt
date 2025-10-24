@@ -1,0 +1,38 @@
+Prefab CO_Vermin_DireRat PrefabGuid(-212591729)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: -212591729
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Vermin_DireRat PrefabGuid(-212591729) - Entity(62595:1)
+
+   [1]
+    Value: Entity(38048:4)
+
+   [2]
+    Value: Entity(2702:5)
+
+   [3]
+    Value: Entity(12030:5)
+
+   [4]
+    Value: Entity(12031:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38048:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

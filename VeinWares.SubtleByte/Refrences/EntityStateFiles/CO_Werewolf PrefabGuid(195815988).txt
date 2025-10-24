@@ -1,0 +1,35 @@
+Prefab CO_Werewolf PrefabGuid(195815988)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: 195815988
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Werewolf PrefabGuid(195815988) - Entity(62523:1)
+
+   [1]
+    Value: Entity(38035:4)
+
+   [2]
+    Value: Entity(36902:4)
+
+   [3]
+    Value: Entity(36903:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38035:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

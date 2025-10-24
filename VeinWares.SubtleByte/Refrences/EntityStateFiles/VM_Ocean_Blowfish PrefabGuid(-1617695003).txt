@@ -1,0 +1,8 @@
+Prefab VM_Ocean_Blowfish PrefabGuid(-1617695003)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1617695003
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

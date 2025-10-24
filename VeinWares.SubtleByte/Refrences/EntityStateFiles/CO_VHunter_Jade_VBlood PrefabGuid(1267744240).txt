@@ -1,0 +1,62 @@
+Prefab CO_VHunter_Jade_VBlood PrefabGuid(1267744240)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1267744240
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_VHunter_Jade_VBlood PrefabGuid(1267744240) - Entity(62695:1)
+
+   [1]
+    Value: Entity(38153:4)
+
+   [2]
+    Value: Entity(2656:5)
+
+   [3]
+    Value: Entity(2657:5)
+
+   [4]
+    Value: Entity(2658:5)
+
+   [5]
+    Value: Entity(2659:5)
+
+   [6]
+    Value: Entity(2660:5)
+
+   [7]
+    Value: Entity(2661:5)
+
+   [8]
+    Value: Entity(2662:5)
+
+   [9]
+    Value: Entity(2663:5)
+
+   [10]
+    Value: Entity(2408:5)
+
+   [11]
+    Value: Entity(2409:5)
+
+   [12]
+    Value: Entity(2410:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38153:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

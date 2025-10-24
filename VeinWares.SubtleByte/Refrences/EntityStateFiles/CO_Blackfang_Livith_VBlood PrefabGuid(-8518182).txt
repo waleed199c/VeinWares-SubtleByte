@@ -1,0 +1,67 @@
+Prefab CO_Blackfang_Livith_VBlood PrefabGuid(-8518182)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 35
+
+  Stunlock.Core.PrefabGUID
+    _Value: -8518182
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Blackfang_Livith_VBlood PrefabGuid(-8518182) - Entity(62653:1)
+
+   [1]
+    Value: Entity(38021:4)
+
+   [2]
+    Value: Entity(30383:6)
+
+   [3]
+    Value: Entity(30384:6)
+
+   [4]
+    Value: Entity(30385:6)
+
+   [5]
+    Value: Entity(30386:6)
+
+   [6]
+    Value: Entity(30387:6)
+
+   [7]
+    Value: Entity(38022:4)
+
+   [8]
+    Value: Entity(30388:6)
+
+   [9]
+    Value: Entity(38023:4)
+
+   [10]
+    Value: Entity(36868:4)
+
+   [11]
+    Value: Entity(36869:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38021:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Return
+    Entity: Entity(38022:4)
+
+   [2]
+    State: ProjectM.GenericEnemyState Idle, Follow
+    Entity: Entity(38023:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

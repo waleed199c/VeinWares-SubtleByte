@@ -1,0 +1,25 @@
+Prefab Journal_SubTask_Obtain_CoarseThread PrefabGuid(-2118994657)
+Components
+  ProjectM.AchievementSubTaskData
+    EntityCategory: ProjectM.EntityCategory ProjectM.EntityCategory
+    TaskTitle: 6ad0a07e-6783-451c-bc5a-e34d450de13c - Obtain <color=#82C9D9>Coarse Thread</color>
+    PrefabReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1562867444)
+    TechReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(0)
+    RequiredCompletedCount: 4
+    Condition: None
+    ProgressType: ProjectM.AchievementProgressType ObtainItem
+    ProgressLinkType: ProjectM.AchievementProgressLinkType Prefab
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2118994657
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

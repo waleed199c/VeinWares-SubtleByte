@@ -1,0 +1,32 @@
+Prefab Tech_Collection_VBlood_T07_CardinalPriest PrefabGuid(1270259509)
+Components
+  ProjectM.TechData
+    Entity: Prefab Tech_Collection_VBlood_T07_CardinalPriest PrefabGuid(1270259509) - Entity(21603:1)
+    Guid: Tech_Collection_VBlood_T07_CardinalPriest PrefabGuid(1270259509)
+    TechCategory: ProjectM.TechCategory Structure
+    CraftDuration: 5
+    HudSortingOrder: 0
+    NeverShowQuestionmarkResearch: True
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1270259509
+
+  ProjectM.ProgressionBookShapeshiftElement
+  ProjectM.ProgressionBookMusicTrackElement
+  ProjectM.TechUnlockRecipeBuffer
+   [0]
+    Guid: Recipe_Ingredient_GoldBar PrefabGuid(-882942445)
+
+  ProjectM.TechUnlockBlueprintBuffer
+  ProjectM.TechRequirementBuffer
+  ProjectM.TechItemRequirementBuffer
+  ProjectM.UnlockedPassivesBuffer
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

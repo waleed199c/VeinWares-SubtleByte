@@ -1,0 +1,8 @@
+Prefab OLD VM_Player_Male DONT USE PrefabGuid(-1308441114)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1308441114
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

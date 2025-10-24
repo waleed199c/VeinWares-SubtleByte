@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T04_Brute PrefabGuid(-1311909353)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1311909353
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

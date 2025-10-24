@@ -1,0 +1,32 @@
+Prefab CO_Winter_Moose PrefabGuid(1016377877)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 10
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1016377877
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Winter_Moose PrefabGuid(1016377877) - Entity(62699:1)
+
+   [1]
+    Value: Entity(38147:4)
+
+   [2]
+    Value: Entity(2647:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38147:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

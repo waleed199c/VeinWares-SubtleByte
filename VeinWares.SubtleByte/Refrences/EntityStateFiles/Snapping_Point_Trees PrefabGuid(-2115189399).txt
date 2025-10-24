@@ -1,0 +1,55 @@
+Prefab Snapping_Point_Trees PrefabGuid(-2115189399)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2115189399
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(386821666)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(308236778)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1362642773)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(851064037)
+
+   [4]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-683262945)
+
+   [5]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(148077443)
+
+   [6]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1072528933)
+
+   [7]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1218240817)
+
+   [8]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1646702119)
+
+   [9]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(75711340)
+
+   [10]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-355620152)
+
+   [11]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1523660086)
+
+   [12]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(500254158)
+
+   [13]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-315187808)
+
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(386821666)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

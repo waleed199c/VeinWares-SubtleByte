@@ -1,0 +1,66 @@
+Prefab Dynamic_SilverMines_StoneSymbol03 PrefabGuid(2140372796)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2140372796
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_SilverMines_StoneSymbol03 PrefabGuid(2140372796) - Entity(16950:2)
+
+   [1]
+    Value: Entity(37359:1)
+
+   [2]
+    Value: Entity(5495:2)
+
+   [3]
+    Value: Entity(5494:2)
+
+   [4]
+    Value: Entity(5306:2)
+
+   [5]
+    Value: Entity(5493:2)
+
+   [6]
+    Value: Entity(5305:2)
+
+   [7]
+    Value: Entity(5492:2)
+
+   [8]
+    Value: Entity(5304:2)
+
+   [9]
+    Value: Entity(5303:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

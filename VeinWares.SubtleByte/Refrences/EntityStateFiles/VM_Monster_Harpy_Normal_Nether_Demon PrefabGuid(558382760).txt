@@ -1,0 +1,8 @@
+Prefab VM_Monster_Harpy_Normal_Nether_Demon PrefabGuid(558382760)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 558382760
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

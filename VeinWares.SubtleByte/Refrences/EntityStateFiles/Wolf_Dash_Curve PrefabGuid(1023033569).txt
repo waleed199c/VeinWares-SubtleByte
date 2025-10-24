@@ -1,0 +1,8 @@
+Prefab Wolf_Dash_Curve PrefabGuid(1023033569)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1023033569
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab GentleLandingCurve PrefabGuid(2126701179)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2126701179
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

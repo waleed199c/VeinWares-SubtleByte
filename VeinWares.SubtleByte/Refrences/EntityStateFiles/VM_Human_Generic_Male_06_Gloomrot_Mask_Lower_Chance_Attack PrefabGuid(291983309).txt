@@ -1,0 +1,8 @@
+Prefab VM_Human_Generic_Male_06_Gloomrot_Mask_Lower_Chance_Attack PrefabGuid(291983309)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 291983309
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

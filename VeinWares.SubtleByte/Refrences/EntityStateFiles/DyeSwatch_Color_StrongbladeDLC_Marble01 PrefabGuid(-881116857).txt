@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Color_StrongbladeDLC_Marble01 PrefabGuid(-881116857)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -881116857
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

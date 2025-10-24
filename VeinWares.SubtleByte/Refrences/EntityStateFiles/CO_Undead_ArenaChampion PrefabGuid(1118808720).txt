@@ -1,0 +1,57 @@
+Prefab CO_Undead_ArenaChampion PrefabGuid(1118808720)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 60
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1118808720
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_ArenaChampion PrefabGuid(1118808720) - Entity(62766:1)
+
+   [1]
+    Value: Entity(37955:4)
+
+   [2]
+    Value: Entity(2318:5)
+
+   [3]
+    Value: Entity(2575:5)
+
+   [4]
+    Value: Entity(2576:5)
+
+   [5]
+    Value: Entity(2577:5)
+
+   [6]
+    Value: Entity(2578:5)
+
+   [7]
+    Value: Entity(2579:5)
+
+   [8]
+    Value: Entity(37956:4)
+
+   [9]
+    Value: Entity(2580:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37955:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37956:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

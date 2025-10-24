@@ -1,0 +1,14 @@
+Prefab BuffResistance_UberMobNoKnockbackOrGrab PrefabGuid(99200653)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 99200653
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 17717789075
+    ModifyDuration: False
+    DurationModifier: 0
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

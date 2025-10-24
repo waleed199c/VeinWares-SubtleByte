@@ -1,0 +1,63 @@
+Prefab Dynamics_VampireRemnantProps_CastleHeart01_SilverHills PrefabGuid(1266343309)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 6
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1266343309
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamics_VampireRemnantProps_CastleHeart01_SilverHills PrefabGuid(1266343309) - Entity(17398:2)
+
+   [1]
+    Value: Entity(28705:2)
+
+   [2]
+    Value: Entity(28704:2)
+
+   [3]
+    Value: Entity(28703:2)
+
+   [4]
+    Value: Entity(28702:2)
+
+   [5]
+    Value: Entity(28314:2)
+
+   [6]
+    Value: Entity(28701:2)
+
+   [7]
+    Value: Entity(28700:2)
+
+   [8]
+    Value: Entity(28699:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

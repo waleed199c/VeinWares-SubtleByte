@@ -1,0 +1,8 @@
+Prefab BloodQualityCurve_MutantAndCorrupted PrefabGuid(643334146)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 643334146
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

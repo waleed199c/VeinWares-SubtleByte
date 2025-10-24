@@ -1,0 +1,29 @@
+Prefab Item_Ingredient_Plant_Cotton PrefabGuid(362941759)
+Components
+  ProjectM.InventoryItem
+    ContainerEntity: Entity(0:0)
+
+  ProjectM.ItemData
+    SilverValue: 1
+    Entity: Entity(0:0)
+    ItemTypeGUID: Item_Ingredient_Plant_Cotton PrefabGuid(362941759)
+    DropItemPrefab: Resource_Drop_Cotton PrefabGuid(-584778120)
+    DropItemArc: GUID Not Found
+    MaxAmount: 500
+    ItemType: ProjectM.ItemType Stackable
+    ItemCategory: ProjectM.ItemCategory Flower, Herb
+    RemoveOnConsume: True
+    SortOrder: 14
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 362941759
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,38 @@
+Prefab CO_Bandit_StoneBreaker_VBlood PrefabGuid(-520625151)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: -520625151
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_StoneBreaker_VBlood PrefabGuid(-520625151) - Entity(62707:1)
+
+   [1]
+    Value: Entity(38135:4)
+
+   [2]
+    Value: Entity(2297:5)
+
+   [3]
+    Value: Entity(2298:5)
+
+   [4]
+    Value: Entity(2299:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38135:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

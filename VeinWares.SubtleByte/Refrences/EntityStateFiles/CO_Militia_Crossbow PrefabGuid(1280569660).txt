@@ -1,0 +1,32 @@
+Prefab CO_Militia_Crossbow PrefabGuid(1280569660)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 10
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1280569660
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Crossbow PrefabGuid(1280569660) - Entity(62641:1)
+
+   [1]
+    Value: Entity(38164:4)
+
+   [2]
+    Value: Entity(2430:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38164:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

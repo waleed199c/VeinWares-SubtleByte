@@ -1,0 +1,9 @@
+Prefab Workstation_Loom_BuildMenuGroup PrefabGuid(1431410886)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1431410886
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

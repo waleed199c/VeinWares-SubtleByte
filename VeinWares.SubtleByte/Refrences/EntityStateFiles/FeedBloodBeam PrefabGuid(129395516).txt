@@ -1,0 +1,8 @@
+Prefab FeedBloodBeam PrefabGuid(129395516)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 129395516
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

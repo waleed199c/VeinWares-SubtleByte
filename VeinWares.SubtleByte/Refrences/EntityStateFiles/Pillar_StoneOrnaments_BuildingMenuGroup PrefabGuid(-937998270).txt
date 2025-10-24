@@ -1,0 +1,9 @@
+Prefab Pillar_StoneOrnaments_BuildingMenuGroup PrefabGuid(-937998270)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -937998270
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,32 @@
+Prefab CO_Bandit_Trapper PrefabGuid(171535364)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 8
+
+  Stunlock.Core.PrefabGUID
+    _Value: 171535364
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Trapper PrefabGuid(171535364) - Entity(62594:1)
+
+   [1]
+    Value: Entity(38049:4)
+
+   [2]
+    Value: Entity(12032:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38049:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

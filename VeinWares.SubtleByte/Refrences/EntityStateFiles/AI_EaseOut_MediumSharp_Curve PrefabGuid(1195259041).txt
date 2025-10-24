@@ -1,0 +1,8 @@
+Prefab AI_EaseOut_MediumSharp_Curve PrefabGuid(1195259041)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1195259041
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

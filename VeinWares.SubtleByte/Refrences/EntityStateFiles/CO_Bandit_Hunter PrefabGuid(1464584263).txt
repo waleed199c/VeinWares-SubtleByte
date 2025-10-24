@@ -1,0 +1,42 @@
+Prefab CO_Bandit_Hunter PrefabGuid(1464584263)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1464584263
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Hunter PrefabGuid(1464584263) - Entity(62761:1)
+
+   [1]
+    Value: Entity(37964:4)
+
+   [2]
+    Value: Entity(2592:5)
+
+   [3]
+    Value: Entity(37965:4)
+
+   [4]
+    Value: Entity(2593:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37964:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37965:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

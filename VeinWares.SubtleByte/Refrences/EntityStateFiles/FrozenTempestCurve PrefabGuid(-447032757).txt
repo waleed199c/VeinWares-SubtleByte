@@ -1,0 +1,8 @@
+Prefab FrozenTempestCurve PrefabGuid(-447032757)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -447032757
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

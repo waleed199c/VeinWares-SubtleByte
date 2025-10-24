@@ -1,0 +1,8 @@
+Prefab VM_Monster_Harpy_Big PrefabGuid(1750457457)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1750457457
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

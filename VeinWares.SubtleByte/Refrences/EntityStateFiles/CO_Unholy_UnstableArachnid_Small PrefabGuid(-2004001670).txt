@@ -1,0 +1,45 @@
+Prefab CO_Unholy_UnstableArachnid_Small PrefabGuid(-2004001670)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2004001670
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Unholy_UnstableArachnid_Small PrefabGuid(-2004001670) - Entity(62742:1)
+
+   [1]
+    Value: Entity(38273:4)
+
+   [2]
+    Value: Entity(2634:5)
+
+   [3]
+    Value: Entity(2635:5)
+
+   [4]
+    Value: Entity(38274:4)
+
+   [5]
+    Value: Entity(2636:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38273:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38274:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

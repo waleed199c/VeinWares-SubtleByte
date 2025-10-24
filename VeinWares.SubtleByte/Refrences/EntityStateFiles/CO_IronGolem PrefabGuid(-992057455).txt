@@ -1,0 +1,45 @@
+Prefab CO_IronGolem PrefabGuid(-992057455)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 99
+
+  Stunlock.Core.PrefabGUID
+    _Value: -992057455
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_IronGolem PrefabGuid(-992057455) - Entity(62557:1)
+
+   [1]
+    Value: Entity(38109:4)
+
+   [2]
+    Value: Entity(30399:6)
+
+   [3]
+    Value: Entity(30400:6)
+
+   [4]
+    Value: Entity(38110:4)
+
+   [5]
+    Value: Entity(30401:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38109:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38110:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

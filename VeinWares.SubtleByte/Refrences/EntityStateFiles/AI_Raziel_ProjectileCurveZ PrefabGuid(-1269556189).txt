@@ -1,0 +1,8 @@
+Prefab AI_Raziel_ProjectileCurveZ PrefabGuid(-1269556189)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1269556189
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

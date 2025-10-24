@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Color_CastleFurnitureTints01_Fabric PrefabGuid(1311039488)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1311039488
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

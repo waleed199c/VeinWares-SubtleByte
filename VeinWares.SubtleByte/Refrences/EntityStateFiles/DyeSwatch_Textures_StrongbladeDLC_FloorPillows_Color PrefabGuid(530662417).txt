@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Textures_StrongbladeDLC_FloorPillows_Color PrefabGuid(530662417)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 530662417
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

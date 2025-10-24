@@ -1,0 +1,9 @@
+Prefab GardenCastleWall_Window_BuildMenuGroup01 PrefabGuid(927576837)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 927576837
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

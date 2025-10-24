@@ -1,0 +1,8 @@
+Prefab Throw_DownCurve PrefabGuid(1783011586)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1783011586
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

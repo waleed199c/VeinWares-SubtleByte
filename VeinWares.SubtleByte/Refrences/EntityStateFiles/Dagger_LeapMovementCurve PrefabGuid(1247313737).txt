@@ -1,0 +1,8 @@
+Prefab Dagger_LeapMovementCurve PrefabGuid(1247313737)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1247313737
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

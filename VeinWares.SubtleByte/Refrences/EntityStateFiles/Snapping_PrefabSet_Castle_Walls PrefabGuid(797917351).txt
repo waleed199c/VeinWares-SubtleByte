@@ -1,0 +1,64 @@
+Prefab Snapping_PrefabSet_Castle_Walls PrefabGuid(797917351)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 797917351
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(648486463)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-826211390)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1236321910)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1909288154)
+
+   [4]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1293632412)
+
+   [5]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1455390331)
+
+   [6]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1788250707)
+
+   [7]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(979674153)
+
+   [8]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(996421136)
+
+   [9]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-2018964383)
+
+   [10]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1960255814)
+
+   [11]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(728150320)
+
+   [12]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1987149974)
+
+   [13]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-764944520)
+
+   [14]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(776261229)
+
+   [15]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1451022870)
+
+   [16]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(792289367)
+
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(648486463)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

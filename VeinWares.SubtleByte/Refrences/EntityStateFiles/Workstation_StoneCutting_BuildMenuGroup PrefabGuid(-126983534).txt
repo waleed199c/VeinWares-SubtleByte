@@ -1,0 +1,9 @@
+Prefab Workstation_StoneCutting_BuildMenuGroup PrefabGuid(-126983534)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -126983534
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

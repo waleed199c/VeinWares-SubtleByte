@@ -1,0 +1,204 @@
+Prefab CreatureRatHorror_Ragdoll090_Prefab PrefabGuid(1824740400)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Scale
+    Value: 0.9
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(0.9f, 0f, 0f, 0f,  0f, 0.9f, 0f, 0f,  0f, 0f, 0.9f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 0.9
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1824740400
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CreatureRatHorror_Ragdoll090_Prefab PrefabGuid(1824740400) - Entity(11475:1)
+
+   [1]
+    Value: Entity(10171:1)
+
+   [2]
+    Value: Entity(10172:1)
+
+   [3]
+    Value: Entity(25432:1)
+
+   [4]
+    Value: Entity(25433:1)
+
+   [5]
+    Value: Entity(10173:1)
+
+   [6]
+    Value: Entity(25434:1)
+
+   [7]
+    Value: Entity(25435:1)
+
+   [8]
+    Value: Entity(10174:1)
+
+   [9]
+    Value: Entity(25436:1)
+
+   [10]
+    Value: Entity(25311:1)
+
+   [11]
+    Value: Entity(10175:1)
+
+   [12]
+    Value: Entity(25312:1)
+
+   [13]
+    Value: Entity(25313:1)
+
+   [14]
+    Value: Entity(10046:1)
+
+   [15]
+    Value: Entity(21260:1)
+
+   [16]
+    Value: Entity(10047:1)
+
+   [17]
+    Value: Entity(21261:1)
+
+   [18]
+    Value: Entity(10048:1)
+
+   [19]
+    Value: Entity(25314:1)
+
+   [20]
+    Value: Entity(25315:1)
+
+   [21]
+    Value: Entity(10049:1)
+
+   [22]
+    Value: Entity(21262:1)
+
+   [23]
+    Value: Entity(10050:1)
+
+   [24]
+    Value: Entity(21263:1)
+
+   [25]
+    Value: Entity(10051:1)
+
+   [26]
+    Value: Entity(25316:1)
+
+   [27]
+    Value: Entity(25317:1)
+
+   [28]
+    Value: Entity(10052:1)
+
+   [29]
+    Value: Entity(21264:1)
+
+   [30]
+    Value: Entity(10053:1)
+
+   [31]
+    Value: Entity(25318:1)
+
+   [32]
+    Value: Entity(25319:1)
+
+   [33]
+    Value: Entity(10054:1)
+
+   [34]
+    Value: Entity(21265:1)
+
+   [35]
+    Value: Entity(10055:1)
+
+   [36]
+    Value: Entity(25320:1)
+
+   [37]
+    Value: Entity(25321:1)
+
+   [38]
+    Value: Entity(10056:1)
+
+   [39]
+    Value: Entity(25322:1)
+
+   [40]
+    Value: Entity(25323:1)
+
+   [41]
+    Value: Entity(10057:1)
+
+   [42]
+    Value: Entity(25324:1)
+
+   [43]
+    Value: Entity(25325:1)
+
+   [44]
+    Value: Entity(10314:1)
+
+   [45]
+    Value: Entity(25326:1)
+
+   [46]
+    Value: Entity(25327:1)
+
+   [47]
+    Value: Entity(10315:1)
+
+   [48]
+    Value: Entity(25328:1)
+
+   [49]
+    Value: Entity(25329:1)
+
+   [50]
+    Value: Entity(10316:1)
+
+   [51]
+    Value: Entity(21266:1)
+
+   [52]
+    Value: Entity(10317:1)
+
+   [53]
+    Value: Entity(25330:1)
+
+   [54]
+    Value: Entity(25331:1)
+
+   [55]
+    Value: Entity(10318:1)
+
+   [56]
+    Value: Entity(21267:1)
+
+   57 total elements but only showing the first 36
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

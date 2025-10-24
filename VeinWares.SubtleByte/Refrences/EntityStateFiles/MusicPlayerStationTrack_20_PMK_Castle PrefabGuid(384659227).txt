@@ -1,0 +1,22 @@
+Prefab MusicPlayerStationTrack_20_PMK_Castle PrefabGuid(384659227)
+Components
+  ProjectM.MusicPlayerStationTrack_Shared
+    Name: 985926eb-a027-4415-9c29-5428896b92e5 - Bloody Tears - V Rising Adaptation
+    RequiresRegionExplored: ProjectM.Terrain.WorldRegionType None
+    RequiresTechUnlock: False
+
+  ProjectM.ProgressionUserContentDependency
+    Value: ProjectM.Shared.UserContentFlags DLC_ProjectK
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 384659227
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

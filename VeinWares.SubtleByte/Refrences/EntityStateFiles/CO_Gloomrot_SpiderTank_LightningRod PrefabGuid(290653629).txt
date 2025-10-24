@@ -1,0 +1,35 @@
+Prefab CO_Gloomrot_SpiderTank_LightningRod PrefabGuid(290653629)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 13
+
+  Stunlock.Core.PrefabGUID
+    _Value: 290653629
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_SpiderTank_LightningRod PrefabGuid(290653629) - Entity(62581:1)
+
+   [1]
+    Value: Entity(38070:4)
+
+   [2]
+    Value: Entity(11810:5)
+
+   [3]
+    Value: Entity(11811:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38070:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

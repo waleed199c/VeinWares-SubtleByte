@@ -1,0 +1,9 @@
+Prefab CastleRailings_BuildingMenuGroup PrefabGuid(-161148957)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -161148957
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

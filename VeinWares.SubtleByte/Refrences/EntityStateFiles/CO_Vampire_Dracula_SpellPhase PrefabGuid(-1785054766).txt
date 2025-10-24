@@ -1,0 +1,38 @@
+Prefab CO_Vampire_Dracula_SpellPhase PrefabGuid(-1785054766)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 50
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1785054766
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Vampire_Dracula_SpellPhase PrefabGuid(-1785054766) - Entity(62552:1)
+
+   [1]
+    Value: Entity(38115:4)
+
+   [2]
+    Value: Entity(30410:6)
+
+   [3]
+    Value: Entity(30411:6)
+
+   [4]
+    Value: Entity(30412:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38115:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

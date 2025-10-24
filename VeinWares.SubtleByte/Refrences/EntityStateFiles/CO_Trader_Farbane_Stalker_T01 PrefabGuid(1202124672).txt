@@ -1,0 +1,35 @@
+Prefab CO_Trader_Farbane_Stalker_T01 PrefabGuid(1202124672)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 3
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1202124672
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Trader_Farbane_Stalker_T01 PrefabGuid(1202124672) - Entity(62598:1)
+
+   [1]
+    Value: Entity(38041:4)
+
+   [2]
+    Value: Entity(11453:5)
+
+   [3]
+    Value: Entity(11454:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38041:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

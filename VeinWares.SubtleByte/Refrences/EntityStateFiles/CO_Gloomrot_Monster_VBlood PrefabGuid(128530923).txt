@@ -1,0 +1,47 @@
+Prefab CO_Gloomrot_Monster_VBlood PrefabGuid(128530923)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 35
+
+  Stunlock.Core.PrefabGUID
+    _Value: 128530923
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_Monster_VBlood PrefabGuid(128530923) - Entity(62716:1)
+
+   [1]
+    Value: Entity(38123:4)
+
+   [2]
+    Value: Entity(2513:5)
+
+   [3]
+    Value: Entity(2514:5)
+
+   [4]
+    Value: Entity(2515:5)
+
+   [5]
+    Value: Entity(2516:5)
+
+   [6]
+    Value: Entity(2517:5)
+
+   [7]
+    Value: Entity(2518:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38123:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

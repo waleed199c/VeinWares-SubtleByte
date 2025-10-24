@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Color_Default_Metal PrefabGuid(1502811106)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1502811106
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

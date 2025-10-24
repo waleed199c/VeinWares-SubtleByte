@@ -1,0 +1,8 @@
+Prefab LegendaryItem_SpellModTierSettings PrefabGuid(-1706838853)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1706838853
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

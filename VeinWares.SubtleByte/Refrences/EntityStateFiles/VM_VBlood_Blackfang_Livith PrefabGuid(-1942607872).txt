@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Blackfang_Livith PrefabGuid(-1942607872)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1942607872
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

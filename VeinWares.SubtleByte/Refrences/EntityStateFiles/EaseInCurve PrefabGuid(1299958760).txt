@@ -1,0 +1,8 @@
+Prefab EaseInCurve PrefabGuid(1299958760)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1299958760
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

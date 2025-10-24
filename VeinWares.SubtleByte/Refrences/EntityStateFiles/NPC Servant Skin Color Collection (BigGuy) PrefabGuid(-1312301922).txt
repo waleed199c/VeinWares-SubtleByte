@@ -1,0 +1,8 @@
+Prefab NPC Servant Skin Color Collection (BigGuy) PrefabGuid(-1312301922)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1312301922
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

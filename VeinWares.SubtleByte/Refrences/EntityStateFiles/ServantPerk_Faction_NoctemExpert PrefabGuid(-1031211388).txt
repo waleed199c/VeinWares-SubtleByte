@@ -1,0 +1,13 @@
+Prefab ServantPerk_Faction_NoctemExpert PrefabGuid(-1031211388)
+Components
+  ProjectM.PerkData
+    LootValue: 0.2
+    PrefabGUID: ServantPerk_Faction_NoctemExpert PrefabGuid(-1031211388)
+    PowerValue: 0
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1031211388
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

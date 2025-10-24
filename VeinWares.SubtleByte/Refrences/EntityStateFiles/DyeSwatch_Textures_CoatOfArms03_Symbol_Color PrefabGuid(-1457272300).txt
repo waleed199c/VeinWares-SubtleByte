@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Textures_CoatOfArms03_Symbol_Color PrefabGuid(-1457272300)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1457272300
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

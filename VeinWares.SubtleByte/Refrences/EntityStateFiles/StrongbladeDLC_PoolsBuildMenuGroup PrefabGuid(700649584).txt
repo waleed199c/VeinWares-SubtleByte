@@ -1,0 +1,9 @@
+Prefab StrongbladeDLC_PoolsBuildMenuGroup PrefabGuid(700649584)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 700649584
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

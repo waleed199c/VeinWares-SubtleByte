@@ -1,0 +1,206 @@
+[ProjectM.Attach]
+ - Parent Entity.Null
+ 
+[ProjectM.EntityOwner]
+ - Owner Entity.Null
+ 
+[ProjectM.EntityCreator]
+ - Creator 
+  - _Entity Entity.Null
+  - _WaitingForSync False
+ 
+[ProjectM.AbilityGroupState]
+ - Character 
+  - _Entity Entity.Null
+  - _WaitingForSync False
+ - GroupId 
+  - _Value 0
+ - SlotIndex -1
+ 
+[ProjectM.AbilityGroupResetComboState]
+ - ComboResetTime 0
+ - ComboResetDuration 2
+ 
+[ProjectM.DestroyData]
+ - DestroyReason 0
+ 
+[ProjectM.DestroyState]
+ - Value 0
+ 
+[ProjectM.AbilityGroupInfo]
+ - ReleaseCastQueueTime 0.3
+ - CastCondition (Null BLobAssetReference)
+ - HoverCondition (Null BLobAssetReference)
+ - MinRange 0
+ - MaxRange 900
+ - BehaviorType 5
+ - InputType 0
+ - Target 2
+ 
+[ProjectM.Network.Networked]
+ - CreateFrame 0
+ 
+[ProjectM.Network.UpToDateUserBitMask]
+ - Value 
+  - _Value int4(0, 0, 0, 0)
+ 
+[ProjectM.Network.SyncToUserBitMask]
+ - Value 
+  - _Value int4(0, 0, 0, 0)
+ 
+[ProjectM.Network.FrameChanged]
+ - Value -1
+ 
+[ProjectM.Network.NetworkSnapshot]
+ - Type 
+  - Value 84
+ 
+[ProjectM.Network.NetworkId]
+ - Normal_Index 0
+ - Normal_Generation 0
+ - MegaStatic_StaticTransformIndex 0
+ - MegaStatic_TerrainChunkX 0
+ - MegaStatic_TerrainChunkY 0
+ - MegaStatic_PrefabGUID 0
+ - Type 0
+ 
+[Stunlock.Core.PrefabGUID]
+ - _Value 341647784
+ 
+[ProjectM.AbilityStateBuffer]
+- Length 0
+ 
+[ProjectM.Network.SyncToUserBuffer]
+- Length 0
+ 
+[ProjectM.Network.Snapshot_AbilityStateBuffer]
+- Length 0
+ 
+[ProjectM.AbilityCastCondition]
+- Length 0
+ 
+[ProjectM.AbilityGroupStartAbilitiesBuffer]
+- Length 1
+- Element 0
+  - PrefabGUID 
+   - _Value 2063024278
+ 
+[ProjectM.Network.NetSnapshot]
+- Length 44
+- Element 0
+  - Value 168
+- Element 1
+  - Value 33
+- Element 2
+  - Value 93
+- Element 3
+  - Value 20
+- Element 4
+  - Value 84
+- Element 5
+  - Value 0
+- Element 6
+  - Value 0
+- Element 7
+  - Value 0
+- Element 8
+  - Value 0
+- Element 9
+  - Value 0
+- Element 10
+  - Value 0
+- Element 11
+  - Value 0
+- Element 12
+  - Value 0
+- Element 13
+  - Value 0
+- Element 14
+  - Value 0
+- Element 15
+  - Value 0
+- Element 16
+  - Value 0
+- Element 17
+  - Value 0
+- Element 18
+  - Value 0
+- Element 19
+  - Value 0
+- Element 20
+  - Value 0
+- Element 21
+  - Value 0
+- Element 22
+  - Value 0
+- Element 23
+  - Value 0
+- Element 24
+  - Value 255
+- Element 25
+  - Value 255
+- Element 26
+  - Value 255
+- Element 27
+  - Value 255
+- Element 28
+  - Value 0
+- Element 29
+  - Value 0
+- Element 30
+  - Value 0
+- Element 31
+  - Value 0
+- Element 32
+  - Value 0
+- Element 33
+  - Value 0
+- Element 34
+  - Value 0
+- Element 35
+  - Value 0
+- Element 36
+  - Value 0
+- Element 37
+  - Value 0
+- Element 38
+  - Value 0
+- Element 39
+  - Value 0
+- Element 40
+  - Value 0
+- Element 41
+  - Value 0
+- Element 42
+  - Value 0
+- Element 43
+  - Value 0
+ 
+[ProjectM.Network.SnapshotFrameChangedBuffer]
+- Length 7
+- Element 0
+  - Value -1
+- Element 1
+  - Value -1
+- Element 2
+  - Value -1
+- Element 3
+  - Value -1
+- Element 4
+  - Value -1
+- Element 5
+  - Value -1
+- Element 6
+  - Value -1
+ 
+[ProjectM.PreventDisableWhenNoPlayersInRange]
+[ProjectM.Network.OnlySyncToUsersTag]
+[Unity.Entities.SpawnTag]
+[Unity.Entities.Prefab]
+[Unity.Entities.Simulate]
+[Unity.Entities.BlobAssetOwner]
+- SharedComponent Types not yet supported
+ 
+[ProjectM.Network.NetworkSnapshotType]
+- SharedComponent Types not yet supported
+ 

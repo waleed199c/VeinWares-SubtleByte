@@ -1,0 +1,36 @@
+Prefab Tech_Storage_Woodworking_T01 PrefabGuid(-1972974567)
+Components
+  ProjectM.TechData
+    Entity: Prefab Tech_Storage_Woodworking_T01 PrefabGuid(-1972974567) - Entity(21695:1)
+    Guid: Tech_Storage_Woodworking_T01 PrefabGuid(-1972974567)
+    TechCategory: ProjectM.TechCategory Structure
+    CraftDuration: 180
+    HudSortingOrder: 0
+    NeverShowQuestionmarkResearch: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1972974567
+
+  ProjectM.ProgressionBookShapeshiftElement
+  ProjectM.ProgressionBookMusicTrackElement
+  ProjectM.TechUnlockRecipeBuffer
+  ProjectM.TechUnlockBlueprintBuffer
+   [0]
+    Guid: TM_Castle_Container_Specialized_Woodworking_T01 PrefabGuid(401757801)
+
+  ProjectM.TechRequirementBuffer
+  ProjectM.TechItemRequirementBuffer
+   [0]
+    Guid: Item_Ingredient_Book_Structure_Storage_Woodworking_T01 PrefabGuid(1040245278)
+    Stacks: 1
+
+  ProjectM.UnlockedPassivesBuffer
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

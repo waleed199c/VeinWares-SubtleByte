@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T0X_BlackfangSultan PrefabGuid(316093213)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 316093213
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

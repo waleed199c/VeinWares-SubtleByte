@@ -1,0 +1,72 @@
+Prefab Dynamic_Noctem_PillarRuin02_Destructable PrefabGuid(-46854891)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 5
+    DissolveDuration: 1.45
+    Sequence: SequenceGUID -893952716
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0.054f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0.054f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0.054f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -46854891
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Noctem_PillarRuin02_Destructable PrefabGuid(-46854891) - Entity(16652:2)
+
+   [1]
+    Value: Entity(27179:2)
+
+   [2]
+    Value: Entity(27178:2)
+
+   [3]
+    Value: Entity(27177:2)
+
+   [4]
+    Value: Entity(27176:2)
+
+   [5]
+    Value: Entity(5239:2)
+
+   [6]
+    Value: Entity(5238:2)
+
+   [7]
+    Value: Entity(5237:2)
+
+   [8]
+    Value: Entity(5108:2)
+
+   [9]
+    Value: Entity(5107:2)
+
+   [10]
+    Value: Entity(5106:2)
+
+   [11]
+    Value: Entity(6582:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

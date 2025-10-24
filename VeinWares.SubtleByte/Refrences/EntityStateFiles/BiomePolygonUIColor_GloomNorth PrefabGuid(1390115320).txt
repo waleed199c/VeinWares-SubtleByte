@@ -1,0 +1,8 @@
+Prefab BiomePolygonUIColor_GloomNorth PrefabGuid(1390115320)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1390115320
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

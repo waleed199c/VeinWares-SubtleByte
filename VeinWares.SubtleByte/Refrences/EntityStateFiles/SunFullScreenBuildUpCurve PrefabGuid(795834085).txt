@@ -1,0 +1,8 @@
+Prefab SunFullScreenBuildUpCurve PrefabGuid(795834085)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 795834085
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

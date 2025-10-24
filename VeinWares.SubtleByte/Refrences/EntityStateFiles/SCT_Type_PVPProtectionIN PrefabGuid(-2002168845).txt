@@ -1,0 +1,8 @@
+Prefab SCT_Type_PVPProtectionIN PrefabGuid(-2002168845)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2002168845
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

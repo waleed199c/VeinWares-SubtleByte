@@ -1,0 +1,9 @@
+Prefab Garden_Child_VasePlants_BuildMenuGroup PrefabGuid(-943888708)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -943888708
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

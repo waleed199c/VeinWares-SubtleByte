@@ -1,0 +1,8 @@
+Prefab Curve_MaterialParameter_Upward_QuickStartNEnd PrefabGuid(-595330675)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -595330675
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab MutantSpawnXCurve PrefabGuid(-1528489850)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1528489850
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

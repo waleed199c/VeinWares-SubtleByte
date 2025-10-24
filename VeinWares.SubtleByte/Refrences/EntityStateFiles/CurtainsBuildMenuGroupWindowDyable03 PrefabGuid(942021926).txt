@@ -1,0 +1,9 @@
+Prefab CurtainsBuildMenuGroupWindowDyable03 PrefabGuid(942021926)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 942021926
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

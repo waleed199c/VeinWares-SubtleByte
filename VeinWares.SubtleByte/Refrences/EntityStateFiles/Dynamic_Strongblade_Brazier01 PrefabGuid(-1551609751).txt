@@ -1,0 +1,72 @@
+Prefab Dynamic_Strongblade_Brazier01 PrefabGuid(-1551609751)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1551609751
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_Brazier01 PrefabGuid(-1551609751) - Entity(16612:2)
+
+   [1]
+    Value: Entity(35312:1)
+
+   [2]
+    Value: Entity(30135:3)
+
+   [3]
+    Value: Entity(35442:1)
+
+   [4]
+    Value: Entity(35441:1)
+
+   [5]
+    Value: Entity(30134:3)
+
+   [6]
+    Value: Entity(30133:3)
+
+   [7]
+    Value: Entity(35440:1)
+
+   [8]
+    Value: Entity(35439:1)
+
+   [9]
+    Value: Entity(35438:1)
+
+   [10]
+    Value: Entity(35437:1)
+
+   [11]
+    Value: Entity(35436:1)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_Shadow_VBlood_Keely PrefabGuid(1312085721)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1312085721
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

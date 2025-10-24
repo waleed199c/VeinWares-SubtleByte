@@ -1,0 +1,8 @@
+Prefab VM_Monster_Scarecrow PrefabGuid(-1841434104)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1841434104
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

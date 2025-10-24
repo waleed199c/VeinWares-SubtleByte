@@ -1,0 +1,72 @@
+Prefab Dynamics_VampirePlayerRuins_ShortWall01_GloomRot_South PrefabGuid(-738592740)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 6
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -738592740
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamics_VampirePlayerRuins_ShortWall01_GloomRot_South PrefabGuid(-738592740) - Entity(17644:2)
+
+   [1]
+    Value: Entity(3935:2)
+
+   [2]
+    Value: Entity(3865:2)
+
+   [3]
+    Value: Entity(3936:2)
+
+   [4]
+    Value: Entity(3937:2)
+
+   [5]
+    Value: Entity(3938:2)
+
+   [6]
+    Value: Entity(3939:2)
+
+   [7]
+    Value: Entity(3864:2)
+
+   [8]
+    Value: Entity(3863:2)
+
+   [9]
+    Value: Entity(3862:2)
+
+   [10]
+    Value: Entity(3861:2)
+
+   [11]
+    Value: Entity(3860:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

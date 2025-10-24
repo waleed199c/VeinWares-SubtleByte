@@ -1,0 +1,8 @@
+Prefab VM_Noctem_Legion_Nightmare PrefabGuid(575214743)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 575214743
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

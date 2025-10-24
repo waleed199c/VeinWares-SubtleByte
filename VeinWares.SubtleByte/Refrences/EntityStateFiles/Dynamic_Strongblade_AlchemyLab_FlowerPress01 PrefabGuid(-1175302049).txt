@@ -1,0 +1,96 @@
+Prefab Dynamic_Strongblade_AlchemyLab_FlowerPress01 PrefabGuid(-1175302049)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1175302049
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_AlchemyLab_FlowerPress01 PrefabGuid(-1175302049) - Entity(16801:2)
+
+   [1]
+    Value: Entity(29087:3)
+
+   [2]
+    Value: Entity(29086:3)
+
+   [3]
+    Value: Entity(29085:3)
+
+   [4]
+    Value: Entity(29099:3)
+
+   [5]
+    Value: Entity(29098:3)
+
+   [6]
+    Value: Entity(29097:3)
+
+   [7]
+    Value: Entity(31409:3)
+
+   [8]
+    Value: Entity(31408:3)
+
+   [9]
+    Value: Entity(31407:3)
+
+   [10]
+    Value: Entity(31406:3)
+
+   [11]
+    Value: Entity(31405:3)
+
+   [12]
+    Value: Entity(31404:3)
+
+   [13]
+    Value: Entity(31403:3)
+
+   [14]
+    Value: Entity(31402:3)
+
+   [15]
+    Value: Entity(31401:3)
+
+   [16]
+    Value: Entity(31400:3)
+
+   [17]
+    Value: Entity(31399:3)
+
+   [18]
+    Value: Entity(31398:3)
+
+   [19]
+    Value: Entity(6229:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

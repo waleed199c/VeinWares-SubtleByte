@@ -1,0 +1,41 @@
+Prefab CO_Bandit_Thief PrefabGuid(-2014475190)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 9
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2014475190
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Thief PrefabGuid(-2014475190) - Entity(62751:1)
+
+   [1]
+    Value: Entity(38261:4)
+
+   [2]
+    Value: Entity(2616:5)
+
+   [3]
+    Value: Entity(2617:5)
+
+   [4]
+    Value: Entity(2618:5)
+
+   [5]
+    Value: Entity(2619:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38261:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

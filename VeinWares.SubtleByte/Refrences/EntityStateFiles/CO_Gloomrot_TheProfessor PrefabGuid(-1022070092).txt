@@ -1,0 +1,41 @@
+Prefab CO_Gloomrot_TheProfessor PrefabGuid(-1022070092)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 25
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1022070092
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_TheProfessor PrefabGuid(-1022070092) - Entity(62650:1)
+
+   [1]
+    Value: Entity(38026:4)
+
+   [2]
+    Value: Entity(36876:4)
+
+   [3]
+    Value: Entity(36877:4)
+
+   [4]
+    Value: Entity(36878:4)
+
+   [5]
+    Value: Entity(36879:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38026:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab GenderCollection PrefabGuid(-738969776)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -738969776
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

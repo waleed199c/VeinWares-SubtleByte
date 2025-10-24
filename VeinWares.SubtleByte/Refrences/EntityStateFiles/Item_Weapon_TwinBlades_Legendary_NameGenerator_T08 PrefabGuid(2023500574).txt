@@ -1,0 +1,14 @@
+Prefab Item_Weapon_TwinBlades_Legendary_NameGenerator_T08 PrefabGuid(2023500574)
+Components
+  ProjectM.NamePostfixGenerator
+    Length: 9
+
+  ProjectM.NamePrefixGenerator
+    Length: 8
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2023500574
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

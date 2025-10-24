@@ -1,0 +1,9 @@
+Prefab PlantersLargeMegaBuildMenuGroup PrefabGuid(956790336)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 956790336
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

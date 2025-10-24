@@ -1,0 +1,25 @@
+Prefab Journal_SubTask_Obtain_Bones PrefabGuid(-1643854004)
+Components
+  ProjectM.AchievementSubTaskData
+    EntityCategory: ProjectM.EntityCategory ProjectM.EntityCategory
+    TaskTitle: 5f366a9e-21e0-49c0-a0e9-60fe008a57ed - Collect <color=#82C9D9>Bones</color>
+    PrefabReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1821405450)
+    TechReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(0)
+    RequiredCompletedCount: 30
+    Condition: None
+    ProgressType: ProjectM.AchievementProgressType PossessItem
+    ProgressLinkType: ProjectM.AchievementProgressLinkType Prefab
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1643854004
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

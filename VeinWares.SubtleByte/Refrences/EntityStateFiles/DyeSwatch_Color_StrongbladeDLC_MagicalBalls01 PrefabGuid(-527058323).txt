@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Color_StrongbladeDLC_MagicalBalls01 PrefabGuid(-527058323)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -527058323
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

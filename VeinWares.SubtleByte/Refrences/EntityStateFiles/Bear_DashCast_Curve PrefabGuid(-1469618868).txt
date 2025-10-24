@@ -1,0 +1,8 @@
+Prefab Bear_DashCast_Curve PrefabGuid(-1469618868)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1469618868
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

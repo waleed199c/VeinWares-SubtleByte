@@ -1,0 +1,35 @@
+Prefab CO_Gloomrot_Pyro PrefabGuid(1387745375)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1387745375
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Gloomrot_Pyro PrefabGuid(1387745375) - Entity(62736:1)
+
+   [1]
+    Value: Entity(38282:4)
+
+   [2]
+    Value: Entity(2393:5)
+
+   [3]
+    Value: Entity(2394:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38282:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

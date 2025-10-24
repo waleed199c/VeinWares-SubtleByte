@@ -1,0 +1,69 @@
+Prefab Dynamic_Noctem_IronMaiden02 PrefabGuid(-1592853695)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 5
+    DissolveDuration: 1.45
+    Sequence: SequenceGUID -893952716
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1592853695
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Noctem_IronMaiden02 PrefabGuid(-1592853695) - Entity(17281:2)
+
+   [1]
+    Value: Entity(27703:2)
+
+   [2]
+    Value: Entity(27702:2)
+
+   [3]
+    Value: Entity(28320:2)
+
+   [4]
+    Value: Entity(27701:2)
+
+   [5]
+    Value: Entity(28319:2)
+
+   [6]
+    Value: Entity(28318:2)
+
+   [7]
+    Value: Entity(28317:2)
+
+   [8]
+    Value: Entity(5302:2)
+
+   [9]
+    Value: Entity(5301:2)
+
+   [10]
+    Value: Entity(28316:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

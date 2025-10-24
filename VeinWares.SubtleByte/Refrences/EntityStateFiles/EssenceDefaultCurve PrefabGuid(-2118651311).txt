@@ -1,0 +1,8 @@
+Prefab EssenceDefaultCurve PrefabGuid(-2118651311)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2118651311
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Undead_General PrefabGuid(1636278096)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1636278096
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

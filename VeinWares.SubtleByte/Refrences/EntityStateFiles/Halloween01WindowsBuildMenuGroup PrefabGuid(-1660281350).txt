@@ -1,0 +1,9 @@
+Prefab Halloween01WindowsBuildMenuGroup PrefabGuid(-1660281350)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1660281350
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

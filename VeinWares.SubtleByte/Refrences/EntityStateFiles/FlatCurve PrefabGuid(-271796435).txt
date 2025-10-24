@@ -1,0 +1,8 @@
+Prefab FlatCurve PrefabGuid(-271796435)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -271796435
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

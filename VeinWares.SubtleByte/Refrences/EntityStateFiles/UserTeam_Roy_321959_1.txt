@@ -1,0 +1,19 @@
+Prefab PlayerTeam PrefabGuid(1128897469) - Entity(321959:1)
+Components
+  ProjectM.UserTeam
+    UserEntity: User Roy - Entity(332850:1)
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.TeamData
+    TeamValue: 11
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1128897469
+
+  ProjectM.TeamAllies
+  Unity.Entities.Simulate

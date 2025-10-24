@@ -1,0 +1,8 @@
+Prefab GenderCollection_CustomizationScreen PrefabGuid(-2022511197)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2022511197
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

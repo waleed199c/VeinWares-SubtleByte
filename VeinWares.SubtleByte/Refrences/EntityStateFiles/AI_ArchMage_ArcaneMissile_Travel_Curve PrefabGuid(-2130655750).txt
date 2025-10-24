@@ -1,0 +1,8 @@
+Prefab AI_ArchMage_ArcaneMissile_Travel_Curve PrefabGuid(-2130655750)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2130655750
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

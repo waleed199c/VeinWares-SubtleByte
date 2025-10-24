@@ -1,0 +1,8 @@
+Prefab CarrionSwarmCurve PrefabGuid(-1923722899)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1923722899
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

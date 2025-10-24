@@ -1,0 +1,9 @@
+Prefab CarpetsBuildMenuGroup02 PrefabGuid(768363843)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 768363843
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

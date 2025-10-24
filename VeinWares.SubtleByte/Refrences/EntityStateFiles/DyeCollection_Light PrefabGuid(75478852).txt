@@ -1,0 +1,8 @@
+Prefab DyeCollection_Light PrefabGuid(75478852)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 75478852
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

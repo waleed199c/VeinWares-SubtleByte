@@ -1,0 +1,8 @@
+Prefab SunRayAlpha PrefabGuid(-1286274685)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1286274685
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_Monster_Wormterror PrefabGuid(2050321122)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2050321122
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

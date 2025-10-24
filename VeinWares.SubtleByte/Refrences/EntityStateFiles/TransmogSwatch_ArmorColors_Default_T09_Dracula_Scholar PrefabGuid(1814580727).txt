@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T09_Dracula_Scholar PrefabGuid(1814580727)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1814580727
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

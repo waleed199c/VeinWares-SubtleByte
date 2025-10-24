@@ -1,0 +1,96 @@
+Prefab Dynamic_Gloomrot_Farm01 PrefabGuid(-805017052)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -805017052
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Gloomrot_Farm01 PrefabGuid(-805017052) - Entity(16994:2)
+
+   [1]
+    Value: Entity(5075:2)
+
+   [2]
+    Value: Entity(27154:2)
+
+   [3]
+    Value: Entity(27153:2)
+
+   [4]
+    Value: Entity(27152:2)
+
+   [5]
+    Value: Entity(5074:2)
+
+   [6]
+    Value: Entity(5073:2)
+
+   [7]
+    Value: Entity(27151:2)
+
+   [8]
+    Value: Entity(5072:2)
+
+   [9]
+    Value: Entity(27150:2)
+
+   [10]
+    Value: Entity(27405:2)
+
+   [11]
+    Value: Entity(5071:2)
+
+   [12]
+    Value: Entity(27404:2)
+
+   [13]
+    Value: Entity(5070:2)
+
+   [14]
+    Value: Entity(5069:2)
+
+   [15]
+    Value: Entity(5324:2)
+
+   [16]
+    Value: Entity(5323:2)
+
+   [17]
+    Value: Entity(5322:2)
+
+   [18]
+    Value: Entity(5321:2)
+
+   [19]
+    Value: Entity(5320:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

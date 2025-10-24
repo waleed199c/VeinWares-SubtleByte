@@ -1,0 +1,72 @@
+Prefab Dynamic_Laboratory_Chair_Leather_01 PrefabGuid(-1982053295)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1982053295
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Laboratory_Chair_Leather_01 PrefabGuid(-1982053295) - Entity(17380:2)
+
+   [1]
+    Value: Entity(6173:2)
+
+   [2]
+    Value: Entity(5481:2)
+
+   [3]
+    Value: Entity(5252:2)
+
+   [4]
+    Value: Entity(28351:2)
+
+   [5]
+    Value: Entity(28350:2)
+
+   [6]
+    Value: Entity(28506:2)
+
+   [7]
+    Value: Entity(6174:2)
+
+   [8]
+    Value: Entity(6175:2)
+
+   [9]
+    Value: Entity(28349:2)
+
+   [10]
+    Value: Entity(5251:2)
+
+   [11]
+    Value: Entity(5250:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

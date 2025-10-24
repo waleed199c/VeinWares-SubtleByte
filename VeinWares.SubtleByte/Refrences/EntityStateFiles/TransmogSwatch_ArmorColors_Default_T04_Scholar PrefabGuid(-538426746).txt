@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T04_Scholar PrefabGuid(-538426746)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -538426746
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,60 @@
+Prefab Statue_11_Shattered PrefabGuid(-540164461)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(-4.311171f, -2.158899f, 8.259706f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, -4.311171f,  0f, 1f, 0f, -2.158899f,  0f, 0f, 1f, 8.259706f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(-4.311171f, -2.158899f, 8.259706f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -540164461
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Statue_11_Shattered PrefabGuid(-540164461) - Entity(17017:2)
+
+   [1]
+    Value: Entity(28277:2)
+
+   [2]
+    Value: Entity(28276:2)
+
+   [3]
+    Value: Entity(28275:2)
+
+   [4]
+    Value: Entity(27403:2)
+
+   [5]
+    Value: Entity(28274:2)
+
+   [6]
+    Value: Entity(28273:2)
+
+   [7]
+    Value: Entity(28272:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

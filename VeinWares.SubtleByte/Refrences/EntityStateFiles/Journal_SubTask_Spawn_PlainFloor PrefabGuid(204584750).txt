@@ -1,0 +1,25 @@
+Prefab Journal_SubTask_Spawn_PlainFloor PrefabGuid(204584750)
+Components
+  ProjectM.AchievementSubTaskData
+    EntityCategory: ProjectM.EntityCategory ProjectM.EntityCategory
+    TaskTitle: 7f0a2e7a-5055-4daf-959d-f3c3d5a0333b - Expand your domain by placing <color=#82C9D9>Floors</color>
+    PrefabReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1356453147)
+    TechReference: Stunlock.Core.PrefabIdentifier PrefabIdentifier(0)
+    RequiredCompletedCount: 3
+    Condition: None
+    ProgressType: ProjectM.AchievementProgressType Spawn
+    ProgressLinkType: ProjectM.AchievementProgressLinkType Prefab
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 204584750
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

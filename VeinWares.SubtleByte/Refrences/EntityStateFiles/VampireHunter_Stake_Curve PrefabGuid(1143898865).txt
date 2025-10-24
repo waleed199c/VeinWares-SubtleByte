@@ -1,0 +1,8 @@
+Prefab VampireHunter_Stake_Curve PrefabGuid(1143898865)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1143898865
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,9 @@
+Prefab DoorTier02_DLC02_Gloomrot_BuildMenuGroup PrefabGuid(434369022)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 434369022
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

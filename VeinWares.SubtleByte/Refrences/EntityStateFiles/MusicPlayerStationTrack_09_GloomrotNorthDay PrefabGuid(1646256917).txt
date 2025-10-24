@@ -1,0 +1,19 @@
+Prefab MusicPlayerStationTrack_09_GloomrotNorthDay PrefabGuid(1646256917)
+Components
+  ProjectM.MusicPlayerStationTrack_Shared
+    Name: 35feaa4e-5ad8-413a-be0f-fb3c0851fd99 - Madness Unleashed
+    RequiresRegionExplored: ProjectM.Terrain.WorldRegionType Gloomrot_North
+    RequiresTechUnlock: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1646256917
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

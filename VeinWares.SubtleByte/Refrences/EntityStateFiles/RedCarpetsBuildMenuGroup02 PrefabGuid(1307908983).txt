@@ -1,0 +1,9 @@
+Prefab RedCarpetsBuildMenuGroup02 PrefabGuid(1307908983)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1307908983
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,9 @@
+Prefab CobblestonePathsBuildMenuGroup PrefabGuid(-1279203881)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1279203881
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

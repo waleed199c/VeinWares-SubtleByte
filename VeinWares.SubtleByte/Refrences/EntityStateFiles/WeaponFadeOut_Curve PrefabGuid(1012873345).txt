@@ -1,0 +1,8 @@
+Prefab WeaponFadeOut_Curve PrefabGuid(1012873345)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1012873345
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

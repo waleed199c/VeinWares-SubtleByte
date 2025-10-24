@@ -1,0 +1,8 @@
+Prefab Weapon_SwordTwoHand_Attack_Curve PrefabGuid(-549776925)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -549776925
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

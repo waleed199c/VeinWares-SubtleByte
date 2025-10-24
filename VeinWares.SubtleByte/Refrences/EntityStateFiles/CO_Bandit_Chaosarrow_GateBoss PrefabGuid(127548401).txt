@@ -1,0 +1,38 @@
+Prefab CO_Bandit_Chaosarrow_GateBoss PrefabGuid(127548401)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: 127548401
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Chaosarrow_GateBoss PrefabGuid(127548401) - Entity(62528:1)
+
+   [1]
+    Value: Entity(37975:4)
+
+   [2]
+    Value: Entity(2689:5)
+
+   [3]
+    Value: Entity(2690:5)
+
+   [4]
+    Value: Entity(2691:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37975:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

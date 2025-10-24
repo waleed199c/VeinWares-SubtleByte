@@ -1,0 +1,35 @@
+Prefab CO_Legion_BloodProphet PrefabGuid(673522035)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 16
+
+  Stunlock.Core.PrefabGUID
+    _Value: 673522035
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Legion_BloodProphet PrefabGuid(673522035) - Entity(62771:1)
+
+   [1]
+    Value: Entity(37974:4)
+
+   [2]
+    Value: Entity(2687:5)
+
+   [3]
+    Value: Entity(2688:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37974:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

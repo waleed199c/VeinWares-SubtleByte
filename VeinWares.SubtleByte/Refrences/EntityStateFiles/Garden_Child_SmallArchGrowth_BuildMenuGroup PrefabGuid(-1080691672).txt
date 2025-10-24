@@ -1,0 +1,9 @@
+Prefab Garden_Child_SmallArchGrowth_BuildMenuGroup PrefabGuid(-1080691672)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1080691672
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

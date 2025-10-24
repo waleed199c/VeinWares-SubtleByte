@@ -1,0 +1,35 @@
+Prefab CO_Undead_Leader PrefabGuid(-873917285)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: -873917285
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_Leader PrefabGuid(-873917285) - Entity(62730:1)
+
+   [1]
+    Value: Entity(38290:4)
+
+   [2]
+    Value: Entity(2738:5)
+
+   [3]
+    Value: Entity(2739:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38290:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

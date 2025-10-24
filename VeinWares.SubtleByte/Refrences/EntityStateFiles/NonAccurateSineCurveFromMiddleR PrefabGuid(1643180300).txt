@@ -1,0 +1,8 @@
+Prefab NonAccurateSineCurveFromMiddleR PrefabGuid(1643180300)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1643180300
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

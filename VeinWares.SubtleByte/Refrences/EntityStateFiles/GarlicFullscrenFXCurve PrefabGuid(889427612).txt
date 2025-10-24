@@ -1,0 +1,8 @@
+Prefab GarlicFullscrenFXCurve PrefabGuid(889427612)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 889427612
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

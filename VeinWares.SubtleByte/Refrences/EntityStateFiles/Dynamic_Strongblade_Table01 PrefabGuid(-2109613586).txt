@@ -1,0 +1,105 @@
+Prefab Dynamic_Strongblade_Table01 PrefabGuid(-2109613586)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2109613586
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_Table01 PrefabGuid(-2109613586) - Entity(17473:2)
+
+   [1]
+    Value: Entity(18808:3)
+
+   [2]
+    Value: Entity(18807:3)
+
+   [3]
+    Value: Entity(18806:3)
+
+   [4]
+    Value: Entity(18737:3)
+
+   [5]
+    Value: Entity(18736:3)
+
+   [6]
+    Value: Entity(18735:3)
+
+   [7]
+    Value: Entity(18734:3)
+
+   [8]
+    Value: Entity(21901:3)
+
+   [9]
+    Value: Entity(21900:3)
+
+   [10]
+    Value: Entity(18723:3)
+
+   [11]
+    Value: Entity(18722:3)
+
+   [12]
+    Value: Entity(18721:3)
+
+   [13]
+    Value: Entity(35460:1)
+
+   [14]
+    Value: Entity(35827:1)
+
+   [15]
+    Value: Entity(29693:3)
+
+   [16]
+    Value: Entity(29692:3)
+
+   [17]
+    Value: Entity(35896:1)
+
+   [18]
+    Value: Entity(35895:1)
+
+   [19]
+    Value: Entity(35894:1)
+
+   [20]
+    Value: Entity(35893:1)
+
+   [21]
+    Value: Entity(35892:1)
+
+   [22]
+    Value: Entity(29691:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,38 @@
+Prefab CO_Undead_Infiltrator_VBlood PrefabGuid(-311060437)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: -311060437
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_Infiltrator_VBlood PrefabGuid(-311060437) - Entity(62672:1)
+
+   [1]
+    Value: Entity(38089:4)
+
+   [2]
+    Value: Entity(11841:5)
+
+   [3]
+    Value: Entity(11842:5)
+
+   [4]
+    Value: Entity(11843:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38089:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

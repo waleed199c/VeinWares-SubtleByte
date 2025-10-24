@@ -1,0 +1,8 @@
+Prefab AI_Cardinal_LightWave_Curve PrefabGuid(503790095)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 503790095
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,42 @@
+Prefab CO_Bandit_Rascal PrefabGuid(601722628)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 1.5
+
+  Stunlock.Core.PrefabGUID
+    _Value: 601722628
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Bandit_Rascal PrefabGuid(601722628) - Entity(62529:1)
+
+   [1]
+    Value: Entity(37971:4)
+
+   [2]
+    Value: Entity(2682:5)
+
+   [3]
+    Value: Entity(37972:4)
+
+   [4]
+    Value: Entity(2683:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37971:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37972:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

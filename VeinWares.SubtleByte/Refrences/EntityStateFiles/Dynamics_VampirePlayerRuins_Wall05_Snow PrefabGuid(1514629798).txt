@@ -1,0 +1,87 @@
+Prefab Dynamics_VampirePlayerRuins_Wall05_Snow PrefabGuid(1514629798)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 6
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1514629798
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamics_VampirePlayerRuins_Wall05_Snow PrefabGuid(1514629798) - Entity(16675:2)
+
+   [1]
+    Value: Entity(4408:2)
+
+   [2]
+    Value: Entity(28257:2)
+
+   [3]
+    Value: Entity(28256:2)
+
+   [4]
+    Value: Entity(28255:2)
+
+   [5]
+    Value: Entity(28254:2)
+
+   [6]
+    Value: Entity(4409:2)
+
+   [7]
+    Value: Entity(28253:2)
+
+   [8]
+    Value: Entity(28252:2)
+
+   [9]
+    Value: Entity(28251:2)
+
+   [10]
+    Value: Entity(28250:2)
+
+   [11]
+    Value: Entity(28249:2)
+
+   [12]
+    Value: Entity(4410:2)
+
+   [13]
+    Value: Entity(28248:2)
+
+   [14]
+    Value: Entity(27370:2)
+
+   [15]
+    Value: Entity(28247:2)
+
+   [16]
+    Value: Entity(4411:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

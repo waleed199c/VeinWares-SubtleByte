@@ -1,0 +1,66 @@
+Prefab IronNode02_Broken_Small PrefabGuid(2007011209)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2007011209
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab IronNode02_Broken_Small PrefabGuid(2007011209) - Entity(16813:2)
+
+   [1]
+    Value: Entity(5433:2)
+
+   [2]
+    Value: Entity(5432:2)
+
+   [3]
+    Value: Entity(5781:2)
+
+   [4]
+    Value: Entity(5780:2)
+
+   [5]
+    Value: Entity(5779:2)
+
+   [6]
+    Value: Entity(5778:2)
+
+   [7]
+    Value: Entity(5777:2)
+
+   [8]
+    Value: Entity(5776:2)
+
+   [9]
+    Value: Entity(5775:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,45 @@
+Prefab CO_Treant_Corrupted PrefabGuid(1613164129)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1613164129
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Treant_Corrupted PrefabGuid(1613164129) - Entity(62634:1)
+
+   [1]
+    Value: Entity(37879:4)
+
+   [2]
+    Value: Entity(2444:5)
+
+   [3]
+    Value: Entity(2445:5)
+
+   [4]
+    Value: Entity(37880:4)
+
+   [5]
+    Value: Entity(2446:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37879:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37880:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Maja_The_Scribe PrefabGuid(-673613975)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -673613975
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

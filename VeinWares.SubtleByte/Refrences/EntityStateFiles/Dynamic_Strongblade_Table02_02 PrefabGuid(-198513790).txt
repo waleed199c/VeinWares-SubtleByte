@@ -1,0 +1,114 @@
+Prefab Dynamic_Strongblade_Table02_02 PrefabGuid(-198513790)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -198513790
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_Table02_02 PrefabGuid(-198513790) - Entity(17057:2)
+
+   [1]
+    Value: Entity(18939:3)
+
+   [2]
+    Value: Entity(18938:3)
+
+   [3]
+    Value: Entity(18937:3)
+
+   [4]
+    Value: Entity(18936:3)
+
+   [5]
+    Value: Entity(18935:3)
+
+   [6]
+    Value: Entity(18934:3)
+
+   [7]
+    Value: Entity(18933:3)
+
+   [8]
+    Value: Entity(18932:3)
+
+   [9]
+    Value: Entity(18931:3)
+
+   [10]
+    Value: Entity(18930:3)
+
+   [11]
+    Value: Entity(18929:3)
+
+   [12]
+    Value: Entity(18928:3)
+
+   [13]
+    Value: Entity(18927:3)
+
+   [14]
+    Value: Entity(18926:3)
+
+   [15]
+    Value: Entity(18925:3)
+
+   [16]
+    Value: Entity(18924:3)
+
+   [17]
+    Value: Entity(29234:3)
+
+   [18]
+    Value: Entity(35855:1)
+
+   [19]
+    Value: Entity(29615:3)
+
+   [20]
+    Value: Entity(35854:1)
+
+   [21]
+    Value: Entity(35853:1)
+
+   [22]
+    Value: Entity(35852:1)
+
+   [23]
+    Value: Entity(35851:1)
+
+   [24]
+    Value: Entity(29614:3)
+
+   [25]
+    Value: Entity(29613:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

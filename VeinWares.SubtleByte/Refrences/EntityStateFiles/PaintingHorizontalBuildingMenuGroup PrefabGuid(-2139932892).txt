@@ -1,0 +1,9 @@
+Prefab PaintingHorizontalBuildingMenuGroup PrefabGuid(-2139932892)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2139932892
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

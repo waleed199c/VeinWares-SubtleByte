@@ -1,0 +1,51 @@
+Prefab CO_Legion_Gargoyle_StyxVariant PrefabGuid(1275875964)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 25
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1275875964
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Legion_Gargoyle_StyxVariant PrefabGuid(1275875964) - Entity(62550:1)
+
+   [1]
+    Value: Entity(38117:4)
+
+   [2]
+    Value: Entity(30414:6)
+
+   [3]
+    Value: Entity(11863:5)
+
+   [4]
+    Value: Entity(11864:5)
+
+   [5]
+    Value: Entity(11865:5)
+
+   [6]
+    Value: Entity(38118:4)
+
+   [7]
+    Value: Entity(11866:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38117:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38118:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

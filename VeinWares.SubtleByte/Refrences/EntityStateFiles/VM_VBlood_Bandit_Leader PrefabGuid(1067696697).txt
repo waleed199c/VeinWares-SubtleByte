@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Bandit_Leader PrefabGuid(1067696697)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1067696697
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

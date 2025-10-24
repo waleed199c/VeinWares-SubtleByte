@@ -1,0 +1,8 @@
+Prefab VM_VBlood_Dracula_Boss PrefabGuid(1046850283)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1046850283
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

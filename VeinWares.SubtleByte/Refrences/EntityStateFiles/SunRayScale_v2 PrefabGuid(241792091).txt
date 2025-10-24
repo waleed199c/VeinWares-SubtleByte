@@ -1,0 +1,8 @@
+Prefab SunRayScale_v2 PrefabGuid(241792091)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 241792091
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

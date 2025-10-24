@@ -1,0 +1,38 @@
+Prefab CO_Legion_NightMaiden_Lesser PrefabGuid(-467026945)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: -467026945
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Legion_NightMaiden_Lesser PrefabGuid(-467026945) - Entity(62619:1)
+
+   [1]
+    Value: Entity(37896:4)
+
+   [2]
+    Value: Entity(2553:5)
+
+   [3]
+    Value: Entity(2554:5)
+
+   [4]
+    Value: Entity(2555:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37896:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

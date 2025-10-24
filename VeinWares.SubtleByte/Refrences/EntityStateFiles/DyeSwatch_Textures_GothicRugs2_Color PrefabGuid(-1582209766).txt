@@ -1,0 +1,8 @@
+Prefab DyeSwatch_Textures_GothicRugs2_Color PrefabGuid(-1582209766)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1582209766
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

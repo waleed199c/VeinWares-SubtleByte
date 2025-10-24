@@ -1,0 +1,8 @@
+Prefab BloodQualityCurve_Trash_Mid PrefabGuid(1710722644)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1710722644
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

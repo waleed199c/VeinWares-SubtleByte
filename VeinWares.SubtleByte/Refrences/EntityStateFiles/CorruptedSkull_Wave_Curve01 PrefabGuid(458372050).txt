@@ -1,0 +1,8 @@
+Prefab CorruptedSkull_Wave_Curve01 PrefabGuid(458372050)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 458372050
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

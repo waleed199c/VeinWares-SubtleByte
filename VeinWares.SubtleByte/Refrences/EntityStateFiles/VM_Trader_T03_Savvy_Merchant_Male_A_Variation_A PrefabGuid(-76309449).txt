@@ -1,0 +1,8 @@
+Prefab VM_Trader_T03_Savvy_Merchant_Male_A_Variation_A PrefabGuid(-76309449)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -76309449
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,4668 @@
+Player Roy - Entity(332849:1)
+Components
+  ProjectM.Residency
+    InsideBuff: AB_Interact_PickDisconnected_Owner_Buff PrefabGuid(-1930363607)
+    Resident: Entity(0:0)
+
+  ProjectM.CastleBuilding.CurrentTileModelEditing
+    TileModel: Entity(0:0)
+
+  ProjectM.AbilityBar_Server
+    HandledClientInterruptCounter: 0
+    HandledServerInterruptCounter: 384
+    ClientInterruptCounter: 0
+    ClientCastStartedCounter: 4845
+    ClientCastGroup: Entity(0:0)
+    SpellBlockDebuff: Entity(0:0)
+    SpellBlockResultBuffPrefab: GUID Not Found
+    SpellBlockTriggerSequence: SequenceGUID 0
+    SpellBlockResultBuffDuration: 0
+    IsSpellBlocked: False
+
+  ProjectM.AbilityBar_Shared
+    LimitAbilityPriority: 0
+    GlobalCooldown: 0
+    CastStartTime: 93668.01644765484
+    CastTime: 0
+    PostCastTime: 0.1
+    InterruptTypes: ProjectM.InterruptTypes ManualInterrupt
+    CooldownOnInterrupt: 0.5
+    FrameCompensation: 0
+    ServerInterruptCounter: 384
+    CastStartedCounter: 4493
+    CastCompletedCounter: 4493
+    ServerCastCounter: 4846
+    ForceCastGroup: GUID Not Found
+    CastGroup: NetworkedEntity(0:0)
+    ThisFrameState: ProjectM.AbilityCastingState Finished
+    CastAbility: NetworkedEntity(0:0)
+    CastGroupPrefabGuid: GUID Not Found
+    CastAbilityPrefabGuid: GUID Not Found
+    CooldownRecoveryRate: 100
+    PrimaryCooldownRecoveryRate: 0
+    TravelCooldownRecoveryRate: 0
+    FeedCooldownRecoveryRate: 0
+    WeaponCooldownRecoveryRate: 0
+    SpellCooldownRecoveryRate: 0
+    UltimateCooldownRecoveryRate: 0
+    AbilityAttackSpeed: 10
+    PrimaryAttackSpeed: 10
+    SyncedIsCasting: False
+    IsChargeUp: False
+    ChargeUpData: ProjectM.AbilityBar_Shared+ChargeUpState ProjectM.AbilityBar_Shared+ChargeUpState
+
+  ProjectM.Blood
+    MaxBlood: 100
+    LossPerSecond: 0
+    ReducedBloodDrain: 0.15
+    BloodDrainMultiplier: 0
+    Value: 100
+    ChangeBloodCounter: 1
+    Quality: 100
+    LowBloodSequenceStartFactor: 0.1
+    BloodType: BloodType_Creature PrefabGuid(524822543)
+    SecondaryBlood: ProjectM.Shared.SecondaryBloodData ProjectM.Shared.SecondaryBloodData
+    DefaultBloodType: BloodType_None PrefabGuid(447918373)
+    CorruptedBloodType: BloodType_Corruption PrefabGuid(-1382693416)
+    DebuffPrefab: Buff_NoBlood_Debuff PrefabGuid(-915894843)
+    DebuffEntity: Entity(0:0)
+    SCTType: SCT_Type_BloodTypeChange PrefabGuid(1154316853)
+    LowBloodSequenceGuid: SequenceGUID 1609706734
+    LowBloodSequenceInstance: SequenceState
+      Id: Entity(0:0)
+
+    NoBloodSequenceGuid: SequenceGUID 0
+    NoBloodSequenceInstance: SequenceState
+      Id: Entity(0:0)
+
+    ShowBloodHUD: False
+    IgnoreIdleDrain: True
+    BloodEfficiency: 0.2
+    StopDrainOnDisconnect: True
+
+  ProjectM.EntityOwner
+    Owner: Entity(0:0)
+
+  ProjectM.EntityCreator
+    Creator: NetworkedEntity(0:0)
+
+  ProjectM.Equipment
+    WeaponLevel: 100
+    ArmorLevel: 0
+    SpellLevel: 0
+    WeaponRunCycle: 0
+    ArmorHeadgearSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorChestSlot:
+      SlotEntity: Entity Item_Chest_T09_Dracula_Warrior PrefabGuid(1392314162) - NetworkedEntity(321966:1)
+      SlotId: Item_Chest_T09_Dracula_Warrior PrefabGuid(1392314162)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    WeaponSlot:
+      SlotEntity: Entity Item_Weapon_Axe_Unique_T08_Variation01 PrefabGuid(1239564213) - NetworkedEntity(321971:1)
+      SlotId: Item_Weapon_Axe_Unique_T08_Variation01 PrefabGuid(1239564213)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 255
+      HideEquipment: False
+      IsBroken: False
+
+    GrimoireSlot:
+      SlotEntity: Entity Item_MagicSource_General_T08_Frost PrefabGuid(1380368392) - NetworkedEntity(321972:1)
+      SlotId: Item_MagicSource_General_T08_Frost PrefabGuid(1380368392)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 255
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorFootgearSlot:
+      SlotEntity: Entity Item_Boots_T09_Dracula_Warrior PrefabGuid(-382349289) - NetworkedEntity(321963:1)
+      SlotId: Item_Boots_T09_Dracula_Warrior PrefabGuid(-382349289)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorLegsSlot:
+      SlotEntity: Entity Item_Legs_T09_Dracula_Warrior PrefabGuid(205207385) - NetworkedEntity(321965:1)
+      SlotId: Item_Legs_T09_Dracula_Warrior PrefabGuid(205207385)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    CloakSlot:
+      SlotEntity: Entity Item_Cloak_Main_T03_Phantom PrefabGuid(-227965303) - NetworkedEntity(321962:1)
+      SlotId: Item_Cloak_Main_T03_Phantom PrefabGuid(-227965303)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 255
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorGlovesSlot:
+      SlotEntity: Entity Item_Gloves_T09_Dracula_Warrior PrefabGuid(1982551454) - NetworkedEntity(321964:1)
+      SlotId: Item_Gloves_T09_Dracula_Warrior PrefabGuid(1982551454)
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    BagSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 255
+      HideEquipment: False
+      IsBroken: False
+
+    ChestCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    FootgearCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    LegsCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    CloakCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    GlovesCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    LevelDamageSettings: Entity(70860:2)
+    PlayerLevelDamageSettings: Entity(70858:2)
+    EquippedItemDestroyedSequenceGuid: SequenceGUID -1423518911
+    EquippedItemBrokenSequenceGuid: SequenceGUID -1885058107
+    UnarmedBuffPrefab: EquipBuff_Weapon_Unarmed_Start01 PrefabGuid(-2075546002)
+    UnarmedBuffInstance: Entity(0:0)
+
+  ProjectM.BuffResistances
+    SettingsEntity: Prefab BuffResistance_Vampire PrefabGuid(-1022163918) - ModifiableEntity(73755:2)
+    InitialSettingGuid: BuffResistance_Vampire PrefabGuid(-1022163918)
+
+  ProjectM.RespawnCharacter
+    TimeOfReady: 0
+    TimeOfDeath: 0
+    KillerPrefabGUID: GUID Not Found
+    KillerSpellPrefabGUID: GUID Not Found
+    KillerEntity: NetworkedEntity(0:0)
+    KillerSpell: NetworkedEntity(0:0)
+    MinTimeToRespawn: 3
+    TimeToSpawn: 0
+    SpawnPointIndex: -1
+    FadeEntity: Entity(0:0)
+    SpawnLocationIcon: ProjectM.Network.NetworkId (None)
+    IsReadyToRespawn: False
+    ChoiceHasBeenMade: False
+    IsRespawning: False
+
+  ProjectM.PlayerCharacter
+    Name: Unity.Collections.FixedString64Bytes Roy
+    SmartClanName: Unity.Collections.FixedString32Bytes 
+    UserEntity: User Roy - Entity(332850:1)
+
+  ProjectM.ReturnToNetherWaypoint
+    WaypointEntity: Entity(0:0)
+
+  ProjectM.BloodMoonBuffState
+    BuffInstance: Entity(0:0)
+
+  ProjectM.Mounter
+    MountEntity: Entity(0:0)
+    IsGalopping: False
+    CanDestroyOnCollision: False
+    Acceleration: 5
+    Deceleration: 10
+    WalkMaxSpeed: 4.9
+    GallopMaxSpeed: 9
+    MaxSpeedReverse: 3
+    DegallopSpeedThreshold: 4.9
+    DestroyOnCollisionSpeedThreshold: 9
+    TurnRate: 100
+    MaxAimAngle: 90
+    JumpFromCliffsMaxDot: 1
+    JumpFromCliffsMinVelocity: 1000
+    TurnRatePerSpeedCurve: ProjectM.CurveReference ProjectM.CurveReference
+    FrictionCurve: ProjectM.CurveReference ProjectM.CurveReference
+    ClientLastMountAngle: -1
+    GallopMaxSpeedMultiplier: 2.75
+
+  ProjectM.TakeDamageInSun
+    Debuff: SunDamageDebuff PrefabGuid(-1315531444)
+    ChargeValue: 0
+    CooldownValue: 0
+    SunDamageDisabled: True
+    SunChargeUpTime: 5
+    SunCooldownTime: 2.5
+    NextTickTime: 0
+    ChargeUpSequence: SequenceGUID 698259940
+    ChargeUpSunbeamSequence: SequenceGUID 1978724218
+    ChargeUpSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    ChargeUpSunbeamSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    CooldownSequence: SequenceGUID 473535352
+    CooldownSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    SunIntensity: 0
+    IsInSun: False
+
+  ProjectM.TakeDamageInSunDebuffState
+    DebuffInstance: Entity(0:0)
+
+  ProjectM.EntityInput
+    Movement: Unity.Mathematics.float2 float2(0f, 0f)
+    AimPosition: Unity.Mathematics.float3 float3(-1966.947f, 0f, -3125.176f)
+    AimPositionPlane: Unity.Mathematics.float3 float3(-1966.947f, 3.814697E-06f, -3125.176f)
+    AimDirection: Unity.Mathematics.float3 float3(0.2013229f, -2.404946E-06f, -0.979525f)
+    AimLength: 1.5861882
+    HoveredEntity: Player Roy - Entity(332849:1)
+    HoveredEntityNetworkId: ProjectM.Network.NetworkId (Normal 7981:1)
+    ProjectileAimType: ProjectM.AimDirectionType Planar
+    State: ProjectM.SyncedInputState ProjectM.SyncedInputState
+
+  ProjectM.ControlledBy
+    Controller: User Roy - Entity(332850:1)
+
+  ProjectM.Shared.BagHolder
+    BagInstance0: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance1: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance2: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance3: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagSlots: 4
+
+  ProjectM.Shared.Interactor
+    Radius: 1
+    MouseAimRadius: 2.5
+    TargetNetworkId: ProjectM.Network.NetworkId (Normal 15606:1)
+    Target: Entity Resource_Drop_Lumber PrefabGuid(-1086097069) - Entity(324015:1)
+    PreviousTarget: Entity(0:0)
+    InteractAbilityGuid: AB_Interact_Pickup_AbilityGroup PrefabGuid(-1732463804)
+    TargetSequenceGuid: SequenceGUID -1687938342
+    TargetSequence: SequenceState
+      Id: Entity(0:0)
+
+    ForceReleaseBeforeNextInteract: False
+
+  ProjectM.Shared.VampireAttributeCapModificationsSource
+    ModificationsEntity: Entity(71483:2)
+
+  ProjectM.Gameplay.Scripting.Script_CreateGameplayEventOnDamageDealtToEntityCategory_DataServer
+    TargetUnitCategory: ProjectM.UnitCategory PlayerVampire
+    TargetMainCategory: ProjectM.MainEntityCategory Unit
+    OnDamageDealtListener: ProjectM.Scripting.ListenerId ProjectM.Scripting.ListenerId
+    GameplayEventId: Local - -483053688
+    GameplayEventTarget: ProjectM.GameplayEventTarget Self
+    DamageType: ProjectM.MainDamageType Physical
+    TriggerOnSpecificPrefabType: GUID Not Found
+    FilterByUnitCategory: True
+    FilterByEntityCategory: True
+    FilterByDamageType: False
+    OnlyTriggerOnPrimaryAttack: False
+    TargetFilterCondition: None
+    RandomTriggerChance: 1
+    OnlyWhenNotInContesting: True
+    IgnoreDots: False
+
+  ProjectM.Gameplay.Scripting.Script_ApplyBuffUnderHealthThreshold_DataServer
+    HealthFactor: 1E-07
+    NewBuffEntity: Buff_General_Vampire_Wounded_Buff PrefabGuid(-1992158531)
+    TriggerSequence: SequenceGUID 0
+    OnDamageTakenListener: ProjectM.Scripting.ListenerId ProjectM.Scripting.ListenerId
+    ThresholdMet: False
+    DontTriggerOnDots: True
+    DontTriggerInFlight: True
+
+  ProjectM.CombatMusicListener_Shared
+    UnitPrefabGuid: GUID Not Found
+    PlayOutro: True
+
+  ProjectM.Crowdedness
+    Value: 0
+    Blob: Unity.Entities.BlobAssetReference`1[ProjectM.Crowdedness+BlobData] Unity.Entities.BlobAssetReference`1[ProjectM.Crowdedness+BlobData]
+
+  ProjectM.Interactable
+    CurrentTargetSequenceGuid: SequenceGUID 0
+    IgnoreLineOfSight: False
+    IgnoreBlockInteract: False
+    UseInteractAbilityName: True
+    Disabled: False
+
+  ProjectM.InteractedUpon
+    Interacting: False
+    BlockBuildingMovement: False
+    BlockBuildingDisassemble: False
+
+  ProjectM.TravelToTargetRadius
+    Radius: 1
+
+  ProjectM.DynamicCollision
+    AgainstUnits: ProjectM.DynamicCollisionSettings ProjectM.DynamicCollisionSettings
+    AgainstPlayers: ProjectM.DynamicCollisionSettings ProjectM.DynamicCollisionSettings
+    NetworkMultiplier: 1
+    NetworkDirection: Unity.Mathematics.float2 float2(0f, 0f)
+    Immobile: False
+
+  ProjectM.Height
+    LastPosition: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+    Value: 3.8146973E-06
+    ServerHeightLevel: 10
+
+  ProjectM.JumpFromCliffs
+    LastTranslation: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+    MaxDot: 0
+    JumpDownTravelBuffPrefabGuid: JumpFromCliffs_Travel PrefabGuid(691373616)
+    JumpUpBuffPrefabGuid: GUID Not Found
+    CheckAgainstMapFlags: ProjectM.Tiles.MapCollisionFlags CollideJumpFromCliff
+    AllowJump: False
+    BlockJump: False
+    IsInJump: False
+    CanJumpDown: False
+
+  ProjectM.WeaponCoatingChargeUpTimer
+    GlobalCooldown: 6
+    GlobalCooldownEnd: 0
+
+  ProjectM.CharacterVoiceActivity
+    TimeSinceUpdate: 0
+    LastTimeSpeaking: 0
+    IsSpeaking: False
+    VivoxUsername: 0
+
+  ProjectM.IsSpellControlled
+    MovementControlled: False
+    RotationControlled: False
+
+  ProjectM.Tiles.RestrictPlacementArea
+    Radius: 7.5
+    RestrictAllTypes: False
+    RestrictSpecificTypes: ProjectM.Tiles.PlacementTypeData [Floor, Wall, Object, Entrance, Door, WallDecoration, WallPillar, WallRubble, ResourceProp, FloorDecoration, ObjectGrounded, WorldBreakableNoCollision, WorldStatic, LightSource, Framework|]
+    RestrictOnlyPlayerBuilding: True
+    RestrictOnlyAgainstEnemies: True
+
+  ProjectM.LightningStorm.LightningAttractorGameplay
+    Data: ProjectM.LightningStorm.LightningAttractorData ProjectM.LightningStorm.LightningAttractorData
+
+  ProjectM.Network.NetworkInterpolated_Shared
+    LastClientCommandTime: 92592.14657291296
+    NextSimulationSyncTime: 0
+    NextSendTime: 92592.25012577596
+    ServerRotation: Unity.Mathematics.quaternion quaternion(0f, 0.9948794f, 0f, 0.1010698f)
+    ServerPosition: Unity.Mathematics.float2 float2(-1967.267f, -3123.623f)
+    ServerVelocity: Unity.Mathematics.float2 float2(0f, 0f)
+    Movement: Unity.Mathematics.float2 float2(0f, 0f)
+    ServerMoveVelocity: 0
+    Simulate: False
+    IsStopped: True
+    WasSpellControlled: False
+
+  ProjectM.AbilityBarInitializationState
+    AbilityGroupSlotsInitialized: True
+
+  ProjectM.Aggroable
+    DistanceFactor: 1
+    AggroFactor: 0.4
+    Value: False
+
+  ProjectM.FactionReference
+    FactionGuid: ModifiablePrefabGUID PrefabGuid(1106458752)
+
+  ProjectM.MinionMasterStats
+    MinionDamageModifier: 1
+
+  ProjectM.VBloodConsumeSource
+    Source: GUID Not Found
+    JournalCategory: ProjectM.JournalCategoryType None
+    QuestFlavorTextOverride: 00000000-0000-0000-0000-000000000000 - <Localization not found!>
+    TooltipGUID: GUID Not Found
+    SpellSchool: GUID Not Found
+    Tier: ProjectM.SpellSchoolProgressionTier Tier1
+    SpellSchoolPoints: 0
+    PassivePoints: 0
+
+  ProjectM.PlacementDestroyData
+    DestroyReason: ProjectM.CastleBuilding.Placement.TileModelDestroyReason None
+
+  ProjectM.CustomizationFeatures
+    GenderIndex: 1
+    SkintoneIndex: 159
+    FaceIndex: 14
+    EyeColorIndex: 1
+    HairStyleIndex: 17
+    HairColorIndex: 120
+    FeaturesIndex: 0
+    AccessoriesIndex: 7
+
+  ProjectM.DeathReason
+    PrefabGuid: GUID Not Found
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Buffable
+    KnockbackResistanceIndex: 12
+    UniqueBuffCategories: ProjectM.BuffCategoryFlag Travel, Shapeshift
+
+  ProjectM.GlobalCooldown
+    Value: 0.25
+
+  ProjectM.Hideable
+    IsHidden: False
+    Visibility: 1
+    AdditionalHideRangeSq: 0
+    IgnoreLoS: False
+
+  ProjectM.Stealthable
+    IsStealthed: False
+    AlwaysShowVFX: False
+    StealthBushId: -1
+    ModelInvisible: True
+
+  ProjectM.Health
+    MaxHealth: 100000
+    TimeOfDeath: 0
+    Value: 100000
+    MaxRecoveryHealth: 1082.5007
+    IsDead: False
+
+  ProjectM.HealthConstants
+    LowHealthFactor: 0.4
+    DestroyOnDeath: False
+    DestroyAfterDuration: 0
+    DisableDamageSCT: False
+
+  ProjectM.Immortal
+    IsImmortal: True
+
+  ProjectM.InventoryOwner
+    LastUpdateVersion: 48
+    HasItems: True
+
+  ProjectM.LastTranslation
+    Value: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+
+  ProjectM.Movement
+    ForcePositionData: ProjectM.ForcePositionData ProjectM.ForcePositionData
+    MoveStopAbilityData: ProjectM.MoveStopAbilityData ProjectM.MoveStopAbilityData
+    MoveInput: Unity.Mathematics.float2 float2(0f, 0f)
+    LastNonZeroMoveInput: Unity.Mathematics.float2 float2(0.2011046f, -0.9795698f)
+    Speed: 15
+    AbilityCastSpeedMultiplier: 1
+    HasMoveStopData: False
+
+  ProjectM.PavementBonus
+    MovementSpeed: 0
+    ModificationId: 116
+
+  ProjectM.CollisionRadius
+    Radius: 0.6
+
+  ProjectM.MapCollision
+    Radius: 0.4
+    CollidesAgainstMapFlags: ProjectM.Tiles.MapCollisionFlags CollideNormalMovement, CollideAirMovement, CollideStandardSpells
+    Result: ProjectM.MapCollisionResult ProjectM.MapCollisionResult
+
+  ProjectM.Velocity
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.PlayerLastValidPosition
+    LastValidPosition: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+
+  ProjectM.TargetDirection
+    ForcedDirection: float3(0f, 0f, 0f)
+    Direction: Unity.Mathematics.float3 float3(0.2013229f, 0f, -0.979525f)
+    AimDirection: Unity.Mathematics.float3 float3(0.2013229f, -2.404946E-06f, -0.979525f)
+    DefaultRotationSpeed: 600
+    RotationSpeed: 449.99988
+    RotateTowardsMouse: False
+    ForceRotateTowardsMovement: False
+    CurrentCanRotate: True
+    PlayerControlsRotation: True
+
+  ProjectM.Team
+    Value: 11
+    FactionIndex: 21
+
+  ProjectM.TileBounds
+    Value: ProjectM.BoundsMinMax [Min=int2(2449, 137), Max=int2(2481, 169)]
+
+  ProjectM.TileModelSpatialData
+    LastTilePosition: ProjectM.TilePosition Tile=int2(2464, 152), TileRotation=Clockwise_180, Height=3.814697E-06
+
+  ProjectM.TileData
+    Data: Unity.Entities.BlobAssetReference`1[ProjectM.TileBlob] Unity.Entities.BlobAssetReference`1[ProjectM.TileBlob]
+
+  ProjectM.VBloodAbilityOwnerData
+    VBloodAbilityBuff: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+  ProjectM.BloodMoonBuff
+    Buff: Buff_BloodMoon PrefabGuid(-560523291)
+
+  ProjectM.BuffableFlagState
+    Value: ProjectM.ModifiableLong ProjectM.ModifiableLong
+
+  ProjectM.CanFly
+    FlyingHeight: 30
+    HeightAboveObstacle: 7
+    ProximitySpeedModifier: ProjectM.CurveReference ProjectM.CurveReference
+    LastValidPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    LastTargetHeight: 0
+    VerticalSpeed: 20
+    VerticalAcceleration: 0
+
+  ProjectM.EntityCategory
+    MainCategoryInt: 0
+    UnitCategoryInt: 6
+    StructureCategoryInt: 0
+    MaterialCategoryInt: 0
+    ResourceLevel: 0
+
+  ProjectM.LifeLeech
+    PrimaryLeechFactor: 0
+    PhysicalLifeLeechFactor: 0
+    SpellLifeLeechFactor: 0
+    AffectRecovery: False
+
+  ProjectM.Vision
+    Range: 40
+
+  ProjectM.EntityAimData
+    AimPosition: Unity.Mathematics.float3 float3(-1966.947f, 0f, -3125.176f)
+    AimPositionPlane: Unity.Mathematics.float3 float3(-1966.947f, 3.814697E-06f, -3125.176f)
+    ProjectileAimPosition: Unity.Mathematics.float3 float3(-1966.947f, 3.814697E-06f, -3125.176f)
+
+  ProjectM.MoveVelocity
+    MoveVelocityMagnitude: 0
+    ReferenceWalkingCurve: ProjectM.CurveReference ProjectM.CurveReference
+
+  ProjectM.ResistanceData
+    SunResistance_IncreasedSunPiercingDuration: 0.015
+    GarlicResistance_DamageReductionPerRating: 0.005
+    GarlicResistance_IncreasedExposureFactorPerRating: 0.04
+    GarlicResistance_ReduceMaxStacksPerRating: 0.75
+    FireResistance_DamageReductionPerRating: 0.005
+    FireResistance_RedcuedIgiteChancePerRating: 0.005
+    SilverResistance_DamageReductionPerRating: 0.005
+    SilverResistance_CarryValueAbsorbedPerRating: 0.8
+    HolyResistance_DamageReductionPerRating: 0.005
+    HolyResistance_DamageAbsorbPerRating: 0.2
+    PvPResilience_DamageReductionPerRating: 0
+
+  ProjectM.UnitStats
+    PhysicalPower: 10099.636
+    SpellPower: 10096.874
+    ResourcePower: 10034
+    SiegePower: 10010
+    PhysicalResistance: 0
+    SpellResistance: 0
+    FireResistance: 39
+    PassiveHealthRegen: 0.0037000002
+    CCReduction: 0
+    HealthRecovery: 0.25
+    DamageReduction: 0
+    HealingReceived: 0
+    ReducedBloodDrain: 0
+    BloodDrainMultiplier: 1
+    CorruptionDamageReduction: 0
+
+  ProjectM.DamageCategoryStats
+    DamageVsUndeads: 1
+    DamageVsHumans: 1
+    DamageVsDemons: 1
+    DamageVsMechanical: 1
+    DamageVsBeasts: 1
+    DamageVsCastleObjects: 1
+    DamageVsVampires: 1
+    DamageVsWood: 1.25
+    DamageVsMineral: 1
+    DamageVsVegetation: 1
+    DamageVsLightArmor: 1
+    DamageVsVBloods: 1
+    DamageVsMagic: 1
+
+  ProjectM.ResistCategoryStats
+    ResistVsUndeads: 0
+    ResistVsHumans: 0
+    ResistVsDemons: 0
+    ResistVsMechanical: 0
+    ResistVsBeasts: 0
+    ResistVsVampires: 0
+
+  ProjectM.Sequencer.ImpactMaterial
+    IntType: 4
+    Offset: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    PlayOnSelf: False
+
+  ProjectM.Network.Networked
+    CreateFrame: 0
+
+  ProjectM.Network.NetworkedTimeout
+    LastTimeSynced: 0
+    TimeoutAfter: 3
+    Enabled: True
+
+  ProjectM.Network.UpToDateUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000001
+
+  ProjectM.Network.SyncToUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000001
+
+  ProjectM.Network.Latency
+    Value: 0.000114223345
+
+  ProjectM.Network.FrameChanged
+    Value: 2773453
+
+  ProjectM.Network.NetworkSnapshot
+    Type: ProjectM.Network.NetworkSnapshotType Snapshot_fjjjidkbf
+
+  ProjectM.Tiles.TileModel
+    DisabledTileTypesInt: 0
+
+  ProjectM.Hybrid.HybridModelSeed
+    Seed: 57433
+    HasSetSeed: True
+
+  ProjectM.Hybrid.DeathRagdollForce
+    Force: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.Shared.FreeCastData
+    FreeCastAvailableSpellText: Stunlock.Core.AssetGuid d52e44ec832240b198411fcb22b76bee
+    FreeCastAvailableWeaponText: Stunlock.Core.AssetGuid cff1614d8f4b4e2f9a4aa2a1156f9d1b
+    FreeCastTriggerSpellText: Stunlock.Core.AssetGuid faeabdcc8868498db12682d3f433a121
+    FreeCastTriggerWeaponText: Stunlock.Core.AssetGuid faeabdcc8868498db12682d3f433a121
+    FreeCastTriggerSpellSequence: SequenceGUID -1910520424
+    FreeCastAvailableSpellSequence: SequenceGUID 317192720
+    FreeCastTriggerWeaponSequence: SequenceGUID -1447755753
+    FreeCastAvailableWeaponSequence: SequenceGUID 317192720
+    Spell_FreeCastBuff: Buff_FreeCast_Spell PrefabGuid(-650272969)
+    Weapon_FreeCastBuff: Buff_FreeCast_Weapon PrefabGuid(651199070)
+
+  ProjectM.Shared.VampireSpecificAttributes
+    SilverCoinResistance: 0
+    PvPResilience: 0
+    HolyResistance: 39
+    SilverResistance: 39
+    GarlicResistance: 39
+    SunResistance: 39
+    PhysicalCriticalStrikeChance: 0.05
+    PhysicalCriticalStrikeDamage: 1.4
+    SpellCriticalStrikeChance: 0.05
+    SpellCriticalStrikeDamage: 1.4399999
+    BonusPhysicalPower: 1.2800001
+    BonusSpellPower: 1.2
+    BonusMaxHealth: 0
+    BonusMovementSpeed: 0.016
+    BonusShapeshiftMovementSpeed: 2.846
+    ResourceYieldModifier: 10
+    ReducedResourceDurabilityLoss: -1E+09
+    IncreasedShieldEfficiency: 0
+    UltimateEfficiency: 1
+    WeaponSkillPower: 1
+    SpellFreeCast: 0
+    WeaponFreeCast: 0
+    BloodMendHealEfficiency: 0.15
+    DemountProtection: 0
+    AdditionalInventorySlots: 0
+    BonusPhysicalPowerModId: 63
+    BonusSpellPowerModId: 66
+    BonusMaxHealthModId: 69
+    BonusMovementSpeedModId: 72
+    BonusShapeshiftMovementSpeedModId: 75
+    PvPProtected: False
+    PassiveSlots: 0
+
+  ProjectM.Shared.FallToHeight
+    Speed: 0
+    Gravity: 20
+    IsGrounded: True
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0.9948794f, 0f, 0.1010698f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+
+  Unity.Physics.PhysicsCollider
+    Value: Unity.Entities.BlobAssetReference`1[Unity.Physics.Collider] Unity.Entities.BlobAssetReference`1[Unity.Physics.Collider]
+
+  Unity.Physics.Systems.StaticPhysicsWorldBodyIndex
+    WorldBodyIndex: 285
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(-0.9795702f, 0f, 0.2011046f, -1967.267f,  0f, 1f, 0f, 3.814697E-06f,  -0.2011046f, 0f, -0.9795702f, -3123.623f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(-1967.267f, 3.814697E-06f, -3123.623f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0.9948794f, 0f, 0.1010698f)
+
+  ProjectM.TeamReference
+    Value: Entity PlayerTeam PrefabGuid(1128897469) - ModifiableEntity(321959:1)
+
+  ProjectM.TilePosition
+    Tile: Unity.Mathematics.int2 int2(2464, 152)
+    TileRotation: ProjectM.Tiles.TileRotation Clockwise_180
+    CompressedHeight: 25000
+
+  ProjectM.Network.NetworkId
+    Normal_Index: 7981
+    Normal_Generation: 1
+    MegaStatic_StaticTransformIndex: 7981
+    MegaStatic_TerrainChunkX: 0
+    MegaStatic_TerrainChunkY: 0
+    MegaStatic_PrefabGUID: 1
+    Type: ProjectM.Network.NetworkIdType Normal
+
+  Stunlock.Core.PrefabGUID
+    _Value: 38526109
+
+  ProjectM.AttachParentId
+    Index: 137
+
+  ProjectM.EquipmentSetBuff
+   [0]
+    BuffGUID: SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186)
+    BuffInstance: Entity SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186) - Entity(331702:1)
+
+   [1]
+    BuffGUID: SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251)
+    BuffInstance: Entity SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251) - Entity(331701:1)
+
+   [2]
+    BuffGUID: SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747)
+    BuffInstance: Entity SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747) - Entity(331700:1)
+
+  ProjectM.BloodQualityBuff
+   [0]
+    BloodQualityBuffPrefabGuid: AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875)
+    BloodQualityBuffEntity: Entity AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875) - Entity(331730:1)
+
+   [1]
+    BloodQualityBuffPrefabGuid: AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773)
+    BloodQualityBuffEntity: Entity AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773) - Entity(331729:1)
+
+   [2]
+    BloodQualityBuffPrefabGuid: AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373)
+    BloodQualityBuffEntity: Entity AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373) - Entity(331728:1)
+
+   [3]
+    BloodQualityBuffPrefabGuid: AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297)
+    BloodQualityBuffEntity: Entity AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297) - Entity(331732:1)
+
+   [4]
+    BloodQualityBuffPrefabGuid: AB_BloodBuff_General_Tier5 PrefabGuid(947312310)
+    BloodQualityBuffEntity: Entity AB_BloodBuff_General_Tier5 PrefabGuid(947312310) - Entity(331731:1)
+
+  ProjectM.InverseAggroBufferElement
+  ProjectM.FollowerBuffer
+  ProjectM.AttachedBuffer
+   [0]
+    PrefabGuid: MapIcon_Player PrefabGuid(-892362184)
+    Entity: Entity MapIcon_Player PrefabGuid(-892362184) - Entity(324550:1)
+
+   [1]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331575:1)
+
+   [2]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331574:1)
+
+   [3]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331573:1)
+
+   [4]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331572:1)
+
+   [5]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331571:1)
+
+   [6]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331570:1)
+
+   [7]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331569:1)
+
+   [8]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331568:1)
+
+   [9]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331567:1)
+
+   [10]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331566:1)
+
+   [11]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331565:1)
+
+   [12]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331564:1)
+
+   [13]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331563:1)
+
+   [14]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331562:1)
+
+   [15]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331561:1)
+
+   [16]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331560:1)
+
+   [17]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331559:1)
+
+   [18]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331558:1)
+
+   [19]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331557:1)
+
+   [20]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331556:1)
+
+   [21]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331555:1)
+
+   [22]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331554:1)
+
+   [23]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331553:1)
+
+   [24]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331552:1)
+
+   [25]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331551:1)
+
+   [26]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331550:1)
+
+   [27]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331549:1)
+
+   [28]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331548:1)
+
+   [29]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331547:1)
+
+   [30]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331546:1)
+
+   [31]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331545:1)
+
+   [32]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331544:1)
+
+   [33]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331543:1)
+
+   [34]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331542:1)
+
+   [35]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331541:1)
+
+   [36]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331540:1)
+
+   [37]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331539:1)
+
+   [38]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331538:1)
+
+   [39]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331537:1)
+
+   [40]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331536:1)
+
+   [41]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331535:1)
+
+   [42]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331534:1)
+
+   [43]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331533:1)
+
+   [44]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331532:1)
+
+   [45]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331531:1)
+
+   [46]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331530:1)
+
+   [47]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331529:1)
+
+   [48]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331528:1)
+
+   [49]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331527:1)
+
+   [50]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331526:1)
+
+   [51]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331525:1)
+
+   [52]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331524:1)
+
+   [53]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(331523:1)
+
+   [54]
+    PrefabGuid: AB_BatVampire_Whirlwind_Cast PrefabGuid(-659266870)
+    Entity: Entity AB_BatVampire_Whirlwind_Cast PrefabGuid(-659266870) - Entity(331576:1)
+
+   [55]
+    PrefabGuid: AB_Vampire_Reaper_Primary_MeleeAttack_Cast03 PrefabGuid(-131396040)
+    Entity: Entity AB_Vampire_Reaper_Primary_MeleeAttack_Cast03 PrefabGuid(-131396040) - Entity(331577:1)
+
+   [56]
+    PrefabGuid: AB_Vampire_Reaper_Primary_MeleeAttack_Cast01 PrefabGuid(1176579852)
+    Entity: Entity AB_Vampire_Reaper_Primary_MeleeAttack_Cast01 PrefabGuid(1176579852) - Entity(331578:1)
+
+   [57]
+    PrefabGuid: AB_Vampire_Reaper_Primary_MeleeAttack_Cast02 PrefabGuid(363287836)
+    Entity: Entity AB_Vampire_Reaper_Primary_MeleeAttack_Cast02 PrefabGuid(363287836) - Entity(331579:1)
+
+   [58]
+    PrefabGuid: AB_Vampire_Axe_Primary_MeleeAttack_Cast01 PrefabGuid(1215815401)
+    Entity: Entity AB_Vampire_Axe_Primary_MeleeAttack_Cast01 PrefabGuid(1215815401) - Entity(331580:1)
+
+   [59]
+    PrefabGuid: AB_Vampire_Axe_Primary_MeleeAttack_Cast02 PrefabGuid(1039072868)
+    Entity: Entity AB_Vampire_Axe_Primary_MeleeAttack_Cast02 PrefabGuid(1039072868) - Entity(331581:1)
+
+   [60]
+    PrefabGuid: AB_Vampire_Mace_Primary_MeleeAttack_Cast01 PrefabGuid(2094451872)
+    Entity: Entity AB_Vampire_Mace_Primary_MeleeAttack_Cast01 PrefabGuid(2094451872) - Entity(331582:1)
+
+   [61]
+    PrefabGuid: AB_Vampire_Mace_Primary_MeleeAttack_Cast03 PrefabGuid(1014770566)
+    Entity: Entity AB_Vampire_Mace_Primary_MeleeAttack_Cast03 PrefabGuid(1014770566) - Entity(331583:1)
+
+   [62]
+    PrefabGuid: AB_Vampire_Axe_Primary_MeleeAttack_Cast03 PrefabGuid(1822540594)
+    Entity: Entity AB_Vampire_Axe_Primary_MeleeAttack_Cast03 PrefabGuid(1822540594) - Entity(331584:1)
+
+   [63]
+    PrefabGuid: AB_Vampire_Sword_Primary_MeleeAttack_Cast01 PrefabGuid(-2110227527)
+    Entity: Entity AB_Vampire_Sword_Primary_MeleeAttack_Cast01 PrefabGuid(-2110227527) - Entity(331585:1)
+
+   [64]
+    PrefabGuid: AB_Vampire_Mace_Primary_MeleeAttack_Cast02 PrefabGuid(-492074341)
+    Entity: Entity AB_Vampire_Mace_Primary_MeleeAttack_Cast02 PrefabGuid(-492074341) - Entity(331586:1)
+
+   [65]
+    PrefabGuid: AB_Vampire_Unarmed_Primary_MeleeAttack_Cast01 PrefabGuid(-985639880)
+    Entity: Entity AB_Vampire_Unarmed_Primary_MeleeAttack_Cast01 PrefabGuid(-985639880) - Entity(331587:1)
+
+   [66]
+    PrefabGuid: AB_Vampire_Unarmed_Primary_MeleeAttack_Cast03 PrefabGuid(1497264832)
+    Entity: Entity AB_Vampire_Unarmed_Primary_MeleeAttack_Cast03 PrefabGuid(1497264832) - Entity(331588:1)
+
+   [67]
+    PrefabGuid: AB_Vampire_Sword_Primary_MeleeAttack_Cast03 PrefabGuid(-371304967)
+    Entity: Entity AB_Vampire_Sword_Primary_MeleeAttack_Cast03 PrefabGuid(-371304967) - Entity(331589:1)
+
+   [68]
+    PrefabGuid: AB_Vampire_Unarmed_Primary_MeleeAttack_Cast02 PrefabGuid(227980469)
+    Entity: Entity AB_Vampire_Unarmed_Primary_MeleeAttack_Cast02 PrefabGuid(227980469) - Entity(331590:1)
+
+   [69]
+    PrefabGuid: AB_Vampire_Sword_Primary_MeleeAttack_Cast02 PrefabGuid(1894476748)
+    Entity: Entity AB_Vampire_Sword_Primary_MeleeAttack_Cast02 PrefabGuid(1894476748) - Entity(331591:1)
+
+   [70]
+    PrefabGuid: AB_FeedRevive_02_Bite_Abort_AbilityGroup PrefabGuid(1586616867)
+    Entity: Entity AB_FeedRevive_02_Bite_Abort_AbilityGroup PrefabGuid(1586616867) - Entity(331592:1)
+
+   [71]
+    PrefabGuid: AB_Blood_Shadowbolt_Cast PrefabGuid(-1432574436)
+    Entity: Entity AB_Blood_Shadowbolt_Cast PrefabGuid(-1432574436) - Entity(331593:1)
+
+   [72]
+    PrefabGuid: AB_Vampire_VeilOfBlood_DashCast PrefabGuid(1541401917)
+    Entity: Entity AB_Vampire_VeilOfBlood_DashCast PrefabGuid(1541401917) - Entity(331594:1)
+
+   [73]
+    PrefabGuid: AB_Vampire_VeilOfShadow_DashCast PrefabGuid(1414033551)
+    Entity: Entity AB_Vampire_VeilOfShadow_DashCast PrefabGuid(1414033551) - Entity(331595:1)
+
+   [74]
+    PrefabGuid: AB_FeedRevive_01_Initiate_Cast PrefabGuid(1525766239)
+    Entity: Entity AB_FeedRevive_01_Initiate_Cast PrefabGuid(1525766239) - Entity(331596:1)
+
+   [75]
+    PrefabGuid: AB_FeedBoss_01_Initiate_Cast PrefabGuid(1851942548)
+    Entity: Entity AB_FeedBoss_01_Initiate_Cast PrefabGuid(1851942548) - Entity(331597:1)
+
+   [76]
+    PrefabGuid: AB_FeedBoss_03_Complete_Cast PrefabGuid(-1031870834)
+    Entity: Entity AB_FeedBoss_03_Complete_Cast PrefabGuid(-1031870834) - Entity(331598:1)
+
+   [77]
+    PrefabGuid: AB_FeedRevive_03_Complete_Cast PrefabGuid(-1354315272)
+    Entity: Entity AB_FeedRevive_03_Complete_Cast PrefabGuid(-1354315272) - Entity(331599:1)
+
+   [78]
+    PrefabGuid: AB_Interact_HealingOrb_Cast PrefabGuid(1025740289)
+    Entity: Entity AB_Interact_HealingOrb_Cast PrefabGuid(1025740289) - Entity(331600:1)
+
+   [79]
+    PrefabGuid: AB_Vampire_Mace_Primary_MeleeAttack_AbilityGroup PrefabGuid(722599012)
+    Entity: Entity AB_Vampire_Mace_Primary_MeleeAttack_AbilityGroup PrefabGuid(722599012) - Entity(331601:1)
+
+   [80]
+    PrefabGuid: AB_Vampire_Unarmed_Primary_MeleeAttack_AbilityGroup PrefabGuid(-1772111618)
+    Entity: Entity AB_Vampire_Unarmed_Primary_MeleeAttack_AbilityGroup PrefabGuid(-1772111618) - Entity(331602:1)
+
+   [81]
+    PrefabGuid: AB_Vampire_Sword_Primary_MeleeAttack_AbilityGroup PrefabGuid(-2097352908)
+    Entity: Entity AB_Vampire_Sword_Primary_MeleeAttack_AbilityGroup PrefabGuid(-2097352908) - Entity(331603:1)
+
+   [82]
+    PrefabGuid: AB_Vampire_Axe_Primary_MeleeAttack_AbilityGroup PrefabGuid(1691491221)
+    Entity: Entity AB_Vampire_Axe_Primary_MeleeAttack_AbilityGroup PrefabGuid(1691491221) - Entity(331604:1)
+
+   [83]
+    PrefabGuid: AB_Vampire_Reaper_Primary_MeleeAttack_AbilityGroup PrefabGuid(784360484)
+    Entity: Entity AB_Vampire_Reaper_Primary_MeleeAttack_AbilityGroup PrefabGuid(784360484) - Entity(331605:1)
+
+   [84]
+    PrefabGuid: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+    Entity: Entity AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738) - Entity(331606:1)
+
+   [85]
+    PrefabGuid: AB_Interact_Pickup_Cast PrefabGuid(1651771089)
+    Entity: Entity AB_Interact_Pickup_Cast PrefabGuid(1651771089) - Entity(331607:1)
+
+   [86]
+    PrefabGuid: AB_FeedBoss_01_Initiate_AbilityGroup PrefabGuid(-948311829)
+    Entity: Entity AB_FeedBoss_01_Initiate_AbilityGroup PrefabGuid(-948311829) - Entity(331608:1)
+
+   [87]
+    PrefabGuid: AB_FeedRevive_01_Initiate_AbilityGroup PrefabGuid(1754040702)
+    Entity: Entity AB_FeedRevive_01_Initiate_AbilityGroup PrefabGuid(1754040702) - Entity(331609:1)
+
+   [88]
+    PrefabGuid: AB_Feed_01_Initiate_AbilityGroup PrefabGuid(-376210658)
+    Entity: Entity AB_Feed_01_Initiate_AbilityGroup PrefabGuid(-376210658) - Entity(331610:1)
+
+   [89]
+    PrefabGuid: AB_Interact_Pickup_AbilityGroup PrefabGuid(-1732463804)
+    Entity: Entity AB_Interact_Pickup_AbilityGroup PrefabGuid(-1732463804) - Entity(331611:1)
+
+   [90]
+    PrefabGuid: AB_Feed_02_Bite_Abort_AbilityGroup PrefabGuid(-2068632541)
+    Entity: Entity AB_Feed_02_Bite_Abort_AbilityGroup PrefabGuid(-2068632541) - Entity(331612:1)
+
+   [91]
+    PrefabGuid: AB_FeedRevive_03_Complete_AbilityGroup PrefabGuid(2072201164)
+    Entity: Entity AB_FeedRevive_03_Complete_AbilityGroup PrefabGuid(2072201164) - Entity(331613:1)
+
+   [92]
+    PrefabGuid: AB_Interact_HealingOrb_AbilityGroup PrefabGuid(1214299173)
+    Entity: Entity AB_Interact_HealingOrb_AbilityGroup PrefabGuid(1214299173) - Entity(331614:1)
+
+   [93]
+    PrefabGuid: AB_FeedBoss_03_Complete_AbilityGroup PrefabGuid(-1347356700)
+    Entity: Entity AB_FeedBoss_03_Complete_AbilityGroup PrefabGuid(-1347356700) - Entity(331615:1)
+
+   [94]
+    PrefabGuid: AB_Blood_BloodRite_Cast PrefabGuid(863435029)
+    Entity: Entity AB_Blood_BloodRite_Cast PrefabGuid(863435029) - Entity(331616:1)
+
+   [95]
+    PrefabGuid: AB_Consumable_PrisonBloodPotion_AbilityGroup PrefabGuid(974235336)
+    Entity: Entity AB_Consumable_PrisonBloodPotion_AbilityGroup PrefabGuid(974235336) - Entity(331617:1)
+
+   [96]
+    PrefabGuid: AB_Interact_SelectStartGraveyard_Cast PrefabGuid(-1729326776)
+    Entity: Entity AB_Interact_SelectStartGraveyard_Cast PrefabGuid(-1729326776) - Entity(331618:1)
+
+   [97]
+    PrefabGuid: AB_Interact_UseEntryway_Exit_AbilityGroup PrefabGuid(592600719)
+    Entity: Entity AB_Interact_UseEntryway_Exit_AbilityGroup PrefabGuid(592600719) - Entity(331619:1)
+
+   [98]
+    PrefabGuid: AB_Interact_SelectStartGraveyard_AbilityGroup PrefabGuid(1687099904)
+    Entity: Entity AB_Interact_SelectStartGraveyard_AbilityGroup PrefabGuid(1687099904) - Entity(331620:1)
+
+   [99]
+    PrefabGuid: AB_Vampire_Sword_Whirlwind_Spin_Cast PrefabGuid(955988738)
+    Entity: Entity AB_Vampire_Sword_Whirlwind_Spin_Cast PrefabGuid(955988738) - Entity(331621:1)
+
+   [100]
+    PrefabGuid: AB_Emote_Vampire_Taunt_AbilityGroup PrefabGuid(-158502505)
+    Entity: Entity AB_Emote_Vampire_Taunt_AbilityGroup PrefabGuid(-158502505) - Entity(331622:1)
+
+   [101]
+    PrefabGuid: AB_Emote_Vampire_Clap_AbilityGroup PrefabGuid(-26826346)
+    Entity: Entity AB_Emote_Vampire_Clap_AbilityGroup PrefabGuid(-26826346) - Entity(331623:1)
+
+   [102]
+    PrefabGuid: AB_Emote_Vampire_Yes_AbilityGroup PrefabGuid(-1525577000)
+    Entity: Entity AB_Emote_Vampire_Yes_AbilityGroup PrefabGuid(-1525577000) - Entity(331624:1)
+
+   [103]
+    PrefabGuid: AB_Emote_Vampire_Bow_AbilityGroup PrefabGuid(-1462274656)
+    Entity: Entity AB_Emote_Vampire_Bow_AbilityGroup PrefabGuid(-1462274656) - Entity(331625:1)
+
+   [104]
+    PrefabGuid: AB_Emote_Vampire_Wave_AbilityGroup PrefabGuid(1177797340)
+    Entity: Entity AB_Emote_Vampire_Wave_AbilityGroup PrefabGuid(1177797340) - Entity(331626:1)
+
+   [105]
+    PrefabGuid: AB_Emote_Vampire_Surrender_AbilityGroup PrefabGuid(-1064533554)
+    Entity: Entity AB_Emote_Vampire_Surrender_AbilityGroup PrefabGuid(-1064533554) - Entity(331627:1)
+
+   [106]
+    PrefabGuid: AB_Emote_Vampire_No_AbilityGroup PrefabGuid(-53273186)
+    Entity: Entity AB_Emote_Vampire_No_AbilityGroup PrefabGuid(-53273186) - Entity(331628:1)
+
+   [107]
+    PrefabGuid: AB_Emote_Vampire_Shrug_AbilityGroup PrefabGuid(-578764388)
+    Entity: Entity AB_Emote_Vampire_Shrug_AbilityGroup PrefabGuid(-578764388) - Entity(331629:1)
+
+   [108]
+    PrefabGuid: AB_Emote_Vampire_Sit_AbilityGroup PrefabGuid(808904257)
+    Entity: Entity AB_Emote_Vampire_Sit_AbilityGroup PrefabGuid(808904257) - Entity(331630:1)
+
+   [109]
+    PrefabGuid: AB_Emote_Vampire_Salute_AbilityGroup PrefabGuid(-370061286)
+    Entity: Entity AB_Emote_Vampire_Salute_AbilityGroup PrefabGuid(-370061286) - Entity(331631:1)
+
+   [110]
+    PrefabGuid: AB_Vampire_Mace_CrushingBlow_Slam_Cast PrefabGuid(1650339556)
+    Entity: Entity AB_Vampire_Mace_CrushingBlow_Slam_Cast PrefabGuid(1650339556) - Entity(331632:1)
+
+   [111]
+    PrefabGuid: AB_Feed_01_Initiate_Cast PrefabGuid(1535667383)
+    Entity: Entity AB_Feed_01_Initiate_Cast PrefabGuid(1535667383) - Entity(331633:1)
+
+   [112]
+    PrefabGuid: AB_Blood_SanguineCoil_AbilityGroup PrefabGuid(189403977)
+    Entity: Entity AB_Blood_SanguineCoil_AbilityGroup PrefabGuid(189403977) - Entity(331634:1)
+
+   [113]
+    PrefabGuid: AB_Vampire_Axe_Frenzy_Dash_Cast PrefabGuid(1671733210)
+    Entity: Entity AB_Vampire_Axe_Frenzy_Dash_Cast PrefabGuid(1671733210) - Entity(331635:1)
+
+   [114]
+    PrefabGuid: AB_Blood_SanguineCoil_Cast02 PrefabGuid(1200039838)
+    Entity: Entity AB_Blood_SanguineCoil_Cast02 PrefabGuid(1200039838) - Entity(331636:1)
+
+   [115]
+    PrefabGuid: AB_Blood_SanguineCoil_Cast01 PrefabGuid(-443292115)
+    Entity: Entity AB_Blood_SanguineCoil_Cast01 PrefabGuid(-443292115) - Entity(331637:1)
+
+   [116]
+    PrefabGuid: AB_Blood_Shadowbolt_AbilityGroup PrefabGuid(-880131926)
+    Entity: Entity AB_Blood_Shadowbolt_AbilityGroup PrefabGuid(-880131926) - Entity(331638:1)
+
+   [117]
+    PrefabGuid: AB_Blood_BloodRite_AbilityGroup PrefabGuid(1191439206)
+    Entity: Entity AB_Blood_BloodRite_AbilityGroup PrefabGuid(1191439206) - Entity(331639:1)
+
+   [118]
+    PrefabGuid: AB_Vampire_Reaper_TendonSwing_Twist_Cast PrefabGuid(344610321)
+    Entity: Entity AB_Vampire_Reaper_TendonSwing_Twist_Cast PrefabGuid(344610321) - Entity(331640:1)
+
+   [119]
+    PrefabGuid: AB_Vampire_Sword_Shockwave_Main_Cast PrefabGuid(804759750)
+    Entity: Entity AB_Vampire_Sword_Shockwave_Main_Cast PrefabGuid(804759750) - Entity(331641:1)
+
+   [120]
+    PrefabGuid: AB_Vampire_Reaper_HowlingReaper_Cast PrefabGuid(-316825244)
+    Entity: Entity AB_Vampire_Reaper_HowlingReaper_Cast PrefabGuid(-316825244) - Entity(331642:1)
+
+   [121]
+    PrefabGuid: AB_Vampire_Axe_XStrike_Toss_Cast PrefabGuid(624673924)
+    Entity: Entity AB_Vampire_Axe_XStrike_Toss_Cast PrefabGuid(624673924) - Entity(331643:1)
+
+   [122]
+    PrefabGuid: AB_FeedRevive_02_Bite_Abort_Cast PrefabGuid(1508231357)
+    Entity: Entity AB_FeedRevive_02_Bite_Abort_Cast PrefabGuid(1508231357) - Entity(331644:1)
+
+   [123]
+    PrefabGuid: AB_Feed_02_Bite_Abort_Cast PrefabGuid(-1414476683)
+    Entity: Entity AB_Feed_02_Bite_Abort_Cast PrefabGuid(-1414476683) - Entity(331645:1)
+
+   [124]
+    PrefabGuid: AB_Vampire_Mace_Smack_Cast PrefabGuid(-856181990)
+    Entity: Entity AB_Vampire_Mace_Smack_Cast PrefabGuid(-856181990) - Entity(331646:1)
+
+   [125]
+    PrefabGuid: AB_BatVampire_Whirlwind_AbilityGroup PrefabGuid(-1698981316)
+    Entity: Entity AB_BatVampire_Whirlwind_AbilityGroup PrefabGuid(-1698981316) - Entity(331647:1)
+
+   [126]
+    PrefabGuid: AB_Interact_UseEntryway_Cast PrefabGuid(134201779)
+    Entity: Entity AB_Interact_UseEntryway_Cast PrefabGuid(134201779) - Entity(331648:1)
+
+   [127]
+    PrefabGuid: AB_Blood_CrimsonBeam_AbilityGroup PrefabGuid(375131842)
+    Entity: Entity AB_Blood_CrimsonBeam_AbilityGroup PrefabGuid(375131842) - Entity(331649:1)
+
+   [128]
+    PrefabGuid: AB_Emote_Vampire_No_Cast PrefabGuid(168757271)
+    Entity: Entity AB_Emote_Vampire_No_Cast PrefabGuid(168757271) - Entity(331650:1)
+
+   [129]
+    PrefabGuid: AB_Emote_Vampire_Taunt_Cast PrefabGuid(306992792)
+    Entity: Entity AB_Emote_Vampire_Taunt_Cast PrefabGuid(306992792) - Entity(331651:1)
+
+   [130]
+    PrefabGuid: AB_Emote_Vampire_Clap_Cast PrefabGuid(-1232216724)
+    Entity: Entity AB_Emote_Vampire_Clap_Cast PrefabGuid(-1232216724) - Entity(331652:1)
+
+   [131]
+    PrefabGuid: AB_Emote_Vampire_Salute_Cast PrefabGuid(346240125)
+    Entity: Entity AB_Emote_Vampire_Salute_Cast PrefabGuid(346240125) - Entity(331653:1)
+
+   [132]
+    PrefabGuid: AB_Emote_Vampire_Surrender_Cast PrefabGuid(145204275)
+    Entity: Entity AB_Emote_Vampire_Surrender_Cast PrefabGuid(145204275) - Entity(331654:1)
+
+   [133]
+    PrefabGuid: AB_Emote_Vampire_Yes_Cast PrefabGuid(-561656902)
+    Entity: Entity AB_Emote_Vampire_Yes_Cast PrefabGuid(-561656902) - Entity(331655:1)
+
+   [134]
+    PrefabGuid: AB_Emote_Vampire_Bow_Cast PrefabGuid(2105164651)
+    Entity: Entity AB_Emote_Vampire_Bow_Cast PrefabGuid(2105164651) - Entity(331656:1)
+
+   [135]
+    PrefabGuid: AB_Emote_Vampire_Sit_Cast PrefabGuid(-107106084)
+    Entity: Entity AB_Emote_Vampire_Sit_Cast PrefabGuid(-107106084) - Entity(331657:1)
+
+   [136]
+    PrefabGuid: AB_Emote_Vampire_Shrug_Cast PrefabGuid(-1861609629)
+    Entity: Entity AB_Emote_Vampire_Shrug_Cast PrefabGuid(-1861609629) - Entity(331658:1)
+
+   [137]
+    PrefabGuid: AB_Emote_Vampire_Wave_Cast PrefabGuid(682157248)
+    Entity: Entity AB_Emote_Vampire_Wave_Cast PrefabGuid(682157248) - Entity(331659:1)
+
+   [138]
+    PrefabGuid: AB_Blood_CrimsonBeam_Cast PrefabGuid(795788195)
+    Entity: Entity AB_Blood_CrimsonBeam_Cast PrefabGuid(795788195) - Entity(331660:1)
+
+   [139]
+    PrefabGuid: AB_Vampire_VeilOfBlood_Group PrefabGuid(305230608)
+    Entity: Entity AB_Vampire_VeilOfBlood_Group PrefabGuid(305230608) - Entity(331661:1)
+
+   [140]
+    PrefabGuid: AB_Vampire_Sword_Whirlwind_Spin_AbilityGroup PrefabGuid(-2029046970)
+    Entity: Entity AB_Vampire_Sword_Whirlwind_Spin_AbilityGroup PrefabGuid(-2029046970) - Entity(331662:1)
+
+   [141]
+    PrefabGuid: AB_Vampire_Axe_Frenzy_Dash_AbilityGroup PrefabGuid(-1968364229)
+    Entity: Entity AB_Vampire_Axe_Frenzy_Dash_AbilityGroup PrefabGuid(-1968364229) - Entity(331663:1)
+
+   [142]
+    PrefabGuid: AB_Vampire_Reaper_HowlingReaper_AbilityGroup PrefabGuid(1461754263)
+    Entity: Entity AB_Vampire_Reaper_HowlingReaper_AbilityGroup PrefabGuid(1461754263) - Entity(331664:1)
+
+   [143]
+    PrefabGuid: AB_Vampire_Axe_XStrike_Toss_AbilityGroup PrefabGuid(-898001858)
+    Entity: Entity AB_Vampire_Axe_XStrike_Toss_AbilityGroup PrefabGuid(-898001858) - Entity(331665:1)
+
+   [144]
+    PrefabGuid: AB_Vampire_Sword_Shockwave_Main_AbilityGroup PrefabGuid(1335008684)
+    Entity: Entity AB_Vampire_Sword_Shockwave_Main_AbilityGroup PrefabGuid(1335008684) - Entity(331666:1)
+
+   [145]
+    PrefabGuid: AB_Vampire_Reaper_TendonSwing_Twist_AbilityGroup PrefabGuid(-345652149)
+    Entity: Entity AB_Vampire_Reaper_TendonSwing_Twist_AbilityGroup PrefabGuid(-345652149) - Entity(331667:1)
+
+   [146]
+    PrefabGuid: AB_Vampire_Mace_CrushingBlow_Slam_AbilityGroup PrefabGuid(1262003451)
+    Entity: Entity AB_Vampire_Mace_CrushingBlow_Slam_AbilityGroup PrefabGuid(1262003451) - Entity(331668:1)
+
+   [147]
+    PrefabGuid: AB_Vampire_Mace_Smack_AbilityGroup PrefabGuid(1121958763)
+    Entity: Entity AB_Vampire_Mace_Smack_AbilityGroup PrefabGuid(1121958763) - Entity(331669:1)
+
+   [148]
+    PrefabGuid: AB_Consumable_PrisonBloodPotion_Cast PrefabGuid(-159878578)
+    Entity: Entity AB_Consumable_PrisonBloodPotion_Cast PrefabGuid(-159878578) - Entity(331670:1)
+
+   [149]
+    PrefabGuid: AB_Shapeshift_Bat_Group PrefabGuid(-104327922)
+    Entity: Entity AB_Shapeshift_Bat_Group PrefabGuid(-104327922) - Entity(331671:1)
+
+   [150]
+    PrefabGuid: AB_Shapeshift_NormalForm_Group PrefabGuid(1634335063)
+    Entity: Entity AB_Shapeshift_NormalForm_Group PrefabGuid(1634335063) - Entity(331672:1)
+
+   [151]
+    PrefabGuid: AB_Shapeshift_Bat_PreCast PrefabGuid(618866625)
+    Entity: Entity AB_Shapeshift_Bat_PreCast PrefabGuid(618866625) - Entity(331673:1)
+
+   [152]
+    PrefabGuid: AB_Shapeshift_NormalForm_Cast PrefabGuid(1528641670)
+    Entity: Entity AB_Shapeshift_NormalForm_Cast PrefabGuid(1528641670) - Entity(331674:1)
+
+   [153]
+    PrefabGuid: External_Inventory PrefabGuid(1183666186)
+    Entity: Entity External_Inventory PrefabGuid(1183666186) - Entity(331675:1)
+
+   [154]
+    PrefabGuid: GUID Not Found
+    Entity: Entity(331677:1)
+
+   [155]
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331682:1)
+
+   [156]
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331681:1)
+
+   [157]
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331680:1)
+
+   [158]
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331679:1)
+
+   [159]
+    PrefabGuid: SetBonus_AllLeech_T09 PrefabGuid(1774716596)
+    Entity: Entity SetBonus_AllLeech_T09 PrefabGuid(1774716596) - Entity(331686:1)
+
+   [160]
+    PrefabGuid: Buff_OutOfCombat PrefabGuid(897325455)
+    Entity: Entity Buff_OutOfCombat PrefabGuid(897325455) - Entity(331688:1)
+
+   [161]
+    PrefabGuid: EquipBuff_Cloak_Base PrefabGuid(1409441911)
+    Entity: Entity EquipBuff_Cloak_Base PrefabGuid(1409441911) - Entity(331695:1)
+
+   [162]
+    PrefabGuid: EquipBuff_Chest_Base PrefabGuid(1872694456)
+    Entity: Entity EquipBuff_Chest_Base PrefabGuid(1872694456) - Entity(331696:1)
+
+   [163]
+    PrefabGuid: EquipBuff_Boots_Base PrefabGuid(-1465458722)
+    Entity: Entity EquipBuff_Boots_Base PrefabGuid(-1465458722) - Entity(331697:1)
+
+   [164]
+    PrefabGuid: EquipBuff_Legs_Base PrefabGuid(1971020070)
+    Entity: Entity EquipBuff_Legs_Base PrefabGuid(1971020070) - Entity(331698:1)
+
+   [165]
+    PrefabGuid: EquipBuff_Gloves_Base PrefabGuid(541298575)
+    Entity: Entity EquipBuff_Gloves_Base PrefabGuid(541298575) - Entity(331699:1)
+
+   [166]
+    PrefabGuid: SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747)
+    Entity: Entity SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747) - Entity(331700:1)
+
+   [167]
+    PrefabGuid: SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251)
+    Entity: Entity SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251) - Entity(331701:1)
+
+   [168]
+    PrefabGuid: SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186)
+    Entity: Entity SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186) - Entity(331702:1)
+
+   [169]
+    PrefabGuid: AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498)
+    Entity: Entity AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498) - Entity(331703:1)
+
+   [170]
+    PrefabGuid: AB_BloodBuff_Dracula_Tier1 PrefabGuid(-488475343)
+    Entity: Entity AB_BloodBuff_Dracula_Tier1 PrefabGuid(-488475343) - Entity(331704:1)
+
+   [171]
+    PrefabGuid: AB_BloodBuff_Worker_Tier3 PrefabGuid(1359282533)
+    Entity: Entity AB_BloodBuff_Worker_Tier3 PrefabGuid(1359282533) - Entity(331705:1)
+
+   [172]
+    PrefabGuid: AB_BloodBuff_Worker_Tier1 PrefabGuid(-773025435)
+    Entity: Entity AB_BloodBuff_Worker_Tier1 PrefabGuid(-773025435) - Entity(331706:1)
+
+   [173]
+    PrefabGuid: Buff_Contest_Victory PrefabGuid(1516078366)
+    Entity: Entity Buff_Contest_Victory PrefabGuid(1516078366) - Entity(331712:1)
+
+   [174]
+    PrefabGuid: AB_BloodBuff_Scholar_Tier2 PrefabGuid(-993492354)
+    Entity: Entity AB_BloodBuff_Scholar_Tier2 PrefabGuid(-993492354) - Entity(331714:1)
+
+   [175]
+    PrefabGuid: AB_BloodBuff_Rogue_Tier3 PrefabGuid(-536284884)
+    Entity: Entity AB_BloodBuff_Rogue_Tier3 PrefabGuid(-536284884) - Entity(331715:1)
+
+   [176]
+    PrefabGuid: AB_BloodBuff_Scholar_Tier3 PrefabGuid(-901503997)
+    Entity: Entity AB_BloodBuff_Scholar_Tier3 PrefabGuid(-901503997) - Entity(331718:1)
+
+   [177]
+    PrefabGuid: EquipBuff_Weapon_Axe_Ability03 PrefabGuid(1164259129)
+    Entity: Entity EquipBuff_Weapon_Axe_Ability03 PrefabGuid(1164259129) - Entity(331719:1)
+
+   [178]
+    PrefabGuid: AB_Blood_BloodRite_Immaterial PrefabGuid(-259674366)
+    Entity: Entity AB_Blood_BloodRite_Immaterial PrefabGuid(-259674366) - Entity(331720:1)
+
+   [179]
+    PrefabGuid: Buff_General_Build_Spawn_Buff_WeakStructure PrefabGuid(237078863)
+    Entity: Entity Buff_General_Build_Spawn_Buff_WeakStructure PrefabGuid(237078863) - Entity(331722:1)
+
+   [180]
+    PrefabGuid: Buff_General_Build_Spawn_Buff_WeakStructure_Wall PrefabGuid(740689171)
+    Entity: Entity Buff_General_Build_Spawn_Buff_WeakStructure_Wall PrefabGuid(740689171) - Entity(331724:1)
+
+   [181]
+    PrefabGuid: EquipBuff_ShroudOfTheForest PrefabGuid(1504279833)
+    Entity: Entity EquipBuff_ShroudOfTheForest PrefabGuid(1504279833) - Entity(331726:1)
+
+   [182]
+    PrefabGuid: AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373)
+    Entity: Entity AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373) - Entity(331728:1)
+
+   [183]
+    PrefabGuid: AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773)
+    Entity: Entity AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773) - Entity(331729:1)
+
+   [184]
+    PrefabGuid: AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875)
+    Entity: Entity AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875) - Entity(331730:1)
+
+   [185]
+    PrefabGuid: AB_BloodBuff_General_Tier5 PrefabGuid(947312310)
+    Entity: Entity AB_BloodBuff_General_Tier5 PrefabGuid(947312310) - Entity(331731:1)
+
+   [186]
+    PrefabGuid: AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297)
+    Entity: Entity AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297) - Entity(331732:1)
+
+   [187]
+    PrefabGuid: GUID Not Found
+    Entity: Entity(331755:1)
+
+   [188]
+    PrefabGuid: GUID Not Found
+    Entity: Entity(331756:1)
+
+   [189]
+    PrefabGuid: GUID Not Found
+    Entity: Entity(331757:1)
+
+   [190]
+    PrefabGuid: Item_EquipBuff_MagicSource_T08_Frost PrefabGuid(537568578)
+    Entity: Entity Item_EquipBuff_MagicSource_T08_Frost PrefabGuid(537568578) - Entity(332836:1)
+
+   [191]
+    PrefabGuid: AB_Shapeshift_BloodHunger_BloodSight_Group PrefabGuid(-1863241708)
+    Entity: Entity AB_Shapeshift_BloodHunger_BloodSight_Group PrefabGuid(-1863241708) - Entity(329788:24)
+
+   [192]
+    PrefabGuid: AB_Shapeshift_BloodHunger_BloodSight_Cast PrefabGuid(1141075594)
+    Entity: Entity AB_Shapeshift_BloodHunger_BloodSight_Cast PrefabGuid(1141075594) - Entity(329784:63)
+
+   [193]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329795:5)
+
+   [194]
+    PrefabGuid: AB_Shapeshift_DominatingPresence_PsychicForm_Group PrefabGuid(-1908054166)
+    Entity: Entity AB_Shapeshift_DominatingPresence_PsychicForm_Group PrefabGuid(-1908054166) - Entity(329798:10)
+
+   [195]
+    PrefabGuid: AB_Shapeshift_DominatingPresence_PsychicForm_Cast PrefabGuid(19187526)
+    Entity: Entity AB_Shapeshift_DominatingPresence_PsychicForm_Cast PrefabGuid(19187526) - Entity(329791:8)
+
+   [196]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329800:11)
+
+   [197]
+    PrefabGuid: AB_Charm_AbilityGroup PrefabGuid(-107743040)
+    Entity: Entity AB_Charm_AbilityGroup PrefabGuid(-107743040) - Entity(329794:15)
+
+   [198]
+    PrefabGuid: AB_Charm_Cast PrefabGuid(-1696574816)
+    Entity: Entity AB_Charm_Cast PrefabGuid(-1696574816) - Entity(329790:18)
+
+   [199]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329801:6)
+
+   [200]
+    PrefabGuid: AB_Shapeshift_ShareBlood_ExposeVein_Group PrefabGuid(-1648128560)
+    Entity: Entity AB_Shapeshift_ShareBlood_ExposeVein_Group PrefabGuid(-1648128560) - Entity(329789:38)
+
+   [201]
+    PrefabGuid: AB_Shapeshift_ShareBlood_ExposeVein_Cast PrefabGuid(1686380967)
+    Entity: Entity AB_Shapeshift_ShareBlood_ExposeVein_Cast PrefabGuid(1686380967) - Entity(329807:7)
+
+   [202]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329802:9)
+
+   [203]
+    PrefabGuid: AB_Shapeshift_CommandingPresence_Group PrefabGuid(589136658)
+    Entity: Entity AB_Shapeshift_CommandingPresence_Group PrefabGuid(589136658) - Entity(329799:9)
+
+   [204]
+    PrefabGuid: AB_Shapeshift_CommandingPresence_Cast PrefabGuid(-1718455019)
+    Entity: Entity AB_Shapeshift_CommandingPresence_Cast PrefabGuid(-1718455019) - Entity(329806:9)
+
+   [205]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329797:11)
+
+   [206]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327526:3)
+
+   [207]
+    PrefabGuid: AB_Subdue_AbilityGroup PrefabGuid(965421878)
+    Entity: Entity AB_Subdue_AbilityGroup PrefabGuid(965421878) - Entity(327528:3)
+
+   [208]
+    PrefabGuid: AB_Subdue_Cast PrefabGuid(2122566349)
+    Entity: Entity AB_Subdue_Cast PrefabGuid(2122566349) - Entity(327527:3)
+
+   [209]
+    PrefabGuid: AB_Shapeshift_Spider_Group PrefabGuid(180580857)
+    Entity: Entity AB_Shapeshift_Spider_Group PrefabGuid(180580857) - Entity(329783:87)
+
+   [210]
+    PrefabGuid: AB_Shapeshift_Spider_Cast PrefabGuid(-677779816)
+    Entity: Entity AB_Shapeshift_Spider_Cast PrefabGuid(-677779816) - Entity(329782:69)
+
+   [211]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327520:11)
+
+   [212]
+    PrefabGuid: AB_Shapeshift_Spider_Burrow_AbilityGroup PrefabGuid(1089139335)
+    Entity: Entity AB_Shapeshift_Spider_Burrow_AbilityGroup PrefabGuid(1089139335) - Entity(329808:15)
+
+   [213]
+    PrefabGuid: AB_Shapeshift_Spider_Burrow_Cast PrefabGuid(647509692)
+    Entity: Entity AB_Shapeshift_Spider_Burrow_Cast PrefabGuid(647509692) - Entity(327524:9)
+
+   [214]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327517:4)
+
+   [215]
+    PrefabGuid: AB_Shapeshift_Human_PMK_Skin02_Group PrefabGuid(1937597415)
+    Entity: Entity AB_Shapeshift_Human_PMK_Skin02_Group PrefabGuid(1937597415) - Entity(327506:7)
+
+   [216]
+    PrefabGuid: AB_Shapeshift_Human_PMK_Skin02_Cast PrefabGuid(-2084233337)
+    Entity: Entity AB_Shapeshift_Human_PMK_Skin02_Cast PrefabGuid(-2084233337) - Entity(327519:8)
+
+   [217]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327507:8)
+
+   [218]
+    PrefabGuid: AB_Shapeshift_Wolf_PMK_Skin02_Group PrefabGuid(-1739260908)
+    Entity: Entity AB_Shapeshift_Wolf_PMK_Skin02_Group PrefabGuid(-1739260908) - Entity(327518:13)
+
+   [219]
+    PrefabGuid: AB_Shapeshift_Wolf_PMK_Skin02_Cast PrefabGuid(-41080879)
+    Entity: Entity AB_Shapeshift_Wolf_PMK_Skin02_Cast PrefabGuid(-41080879) - Entity(329796:40)
+
+   [220]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327521:16)
+
+   [221]
+    PrefabGuid: AB_Shapeshift_Wolf_Leap_Travel_AbilityGroup PrefabGuid(-781549505)
+    Entity: Entity AB_Shapeshift_Wolf_Leap_Travel_AbilityGroup PrefabGuid(-781549505) - Entity(329792:44)
+
+   [222]
+    PrefabGuid: AB_Shapeshift_Wolf_Leap_Travel_Cast PrefabGuid(2108303474)
+    Entity: Entity AB_Shapeshift_Wolf_Leap_Travel_Cast PrefabGuid(2108303474) - Entity(329809:32)
+
+   [223]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(329793:26)
+
+   [224]
+    PrefabGuid: AbilityGroupSlot PrefabGuid(-633717863)
+    Entity: Entity AbilityGroupSlot PrefabGuid(-633717863) - Entity(327532:3)
+
+   [225]
+    PrefabGuid: AB_Shapeshift_Wolf_Howl_AbilityGroup PrefabGuid(875909348)
+    Entity: Entity AB_Shapeshift_Wolf_Howl_AbilityGroup PrefabGuid(875909348) - Entity(327505:4)
+
+   [226]
+    PrefabGuid: AB_Shapeshift_Wolf_Howl_Cast PrefabGuid(-1717706027)
+    Entity: Entity AB_Shapeshift_Wolf_Howl_Cast PrefabGuid(-1717706027) - Entity(327533:3)
+
+   227 total elements but only showing the first 36
+  ProjectM.AbilityGroupSlotBuffer
+   [0]
+    BaseAbilityGroupOnSlot: AB_Vampire_Unarmed_Primary_MeleeAttack_AbilityGroup PrefabGuid(-1772111618)
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331530:1)
+
+   [1]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331529:1)
+
+   [2]
+    BaseAbilityGroupOnSlot: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331528:1)
+
+   [3]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331527:1)
+
+   [4]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331526:1)
+
+   [5]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331525:1)
+
+   [6]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331524:1)
+
+   [7]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331523:1)
+
+   [8]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331538:1)
+
+   [9]
+    BaseAbilityGroupOnSlot: AB_Vampire_Unarmed_Primary_MeleeAttack_AbilityGroup PrefabGuid(-1772111618)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331549:1)
+
+   [10]
+    BaseAbilityGroupOnSlot: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331539:1)
+
+   [11]
+    BaseAbilityGroupOnSlot: AB_Blood_Shadowbolt_AbilityGroup PrefabGuid(-880131926)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331537:1)
+
+   [12]
+    BaseAbilityGroupOnSlot: AB_Blood_BloodRite_AbilityGroup PrefabGuid(1191439206)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331536:1)
+
+   [13]
+    BaseAbilityGroupOnSlot: AB_Vampire_Sword_Primary_MeleeAttack_AbilityGroup PrefabGuid(-2097352908)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331544:1)
+
+   [14]
+    BaseAbilityGroupOnSlot: AB_Vampire_Sword_Whirlwind_Spin_AbilityGroup PrefabGuid(-2029046970)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331545:1)
+
+   [15]
+    BaseAbilityGroupOnSlot: AB_Vampire_Sword_Shockwave_Main_AbilityGroup PrefabGuid(1335008684)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331535:1)
+
+   [16]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Yes_AbilityGroup PrefabGuid(-1525577000)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331552:1)
+
+   [17]
+    BaseAbilityGroupOnSlot: AB_Vampire_VeilOfBlood_Group PrefabGuid(305230608)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331546:1)
+
+   [18]
+    BaseAbilityGroupOnSlot: AB_Blood_CrimsonBeam_AbilityGroup PrefabGuid(375131842)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331547:1)
+
+   [19]
+    BaseAbilityGroupOnSlot: AB_Blood_SanguineCoil_AbilityGroup PrefabGuid(189403977)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331543:1)
+
+   [20]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Wave_AbilityGroup PrefabGuid(1177797340)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331542:1)
+
+   [21]
+    BaseAbilityGroupOnSlot: AB_BatVampire_Whirlwind_AbilityGroup PrefabGuid(-1698981316)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331550:1)
+
+   [22]
+    BaseAbilityGroupOnSlot: AB_Vampire_Axe_Primary_MeleeAttack_AbilityGroup PrefabGuid(1691491221)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331556:1)
+
+   [23]
+    BaseAbilityGroupOnSlot: AB_Vampire_Axe_Frenzy_Dash_AbilityGroup PrefabGuid(-1968364229)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331555:1)
+
+   [24]
+    BaseAbilityGroupOnSlot: AB_Vampire_Axe_XStrike_Toss_AbilityGroup PrefabGuid(-898001858)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331548:1)
+
+   [25]
+    BaseAbilityGroupOnSlot: AB_Vampire_Mace_Primary_MeleeAttack_AbilityGroup PrefabGuid(722599012)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331557:1)
+
+   [26]
+    BaseAbilityGroupOnSlot: AB_Vampire_Mace_CrushingBlow_Slam_AbilityGroup PrefabGuid(1262003451)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331553:1)
+
+   [27]
+    BaseAbilityGroupOnSlot: AB_Vampire_Mace_Smack_AbilityGroup PrefabGuid(1121958763)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331551:1)
+
+   [28]
+    BaseAbilityGroupOnSlot: AB_FeedBoss_01_Initiate_AbilityGroup PrefabGuid(-948311829)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331541:1)
+
+   [29]
+    BaseAbilityGroupOnSlot: AB_Interact_HealingOrb_AbilityGroup PrefabGuid(1214299173)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331540:1)
+
+   [30]
+    BaseAbilityGroupOnSlot: AB_FeedBoss_03_Complete_AbilityGroup PrefabGuid(-1347356700)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331534:1)
+
+   [31]
+    BaseAbilityGroupOnSlot: AB_Vampire_Reaper_Primary_MeleeAttack_AbilityGroup PrefabGuid(784360484)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331574:1)
+
+   [32]
+    BaseAbilityGroupOnSlot: AB_Vampire_Reaper_TendonSwing_Twist_AbilityGroup PrefabGuid(-345652149)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331563:1)
+
+   [33]
+    BaseAbilityGroupOnSlot: AB_Vampire_Reaper_HowlingReaper_AbilityGroup PrefabGuid(1461754263)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331564:1)
+
+   [34]
+    BaseAbilityGroupOnSlot: AB_Interact_Pickup_AbilityGroup PrefabGuid(-1732463804)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331561:1)
+
+   [35]
+    BaseAbilityGroupOnSlot: AB_Feed_01_Initiate_AbilityGroup PrefabGuid(-376210658)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331562:1)
+
+   [36]
+    BaseAbilityGroupOnSlot: AB_Feed_02_Bite_Abort_AbilityGroup PrefabGuid(-2068632541)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331554:1)
+
+   [37]
+    BaseAbilityGroupOnSlot: AB_Interact_UseEntryway_Exit_AbilityGroup PrefabGuid(592600719)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331531:1)
+
+   [38]
+    BaseAbilityGroupOnSlot: AB_Interact_SelectStartGraveyard_AbilityGroup PrefabGuid(1687099904)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331532:1)
+
+   [39]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Sit_AbilityGroup PrefabGuid(808904257)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331533:1)
+
+   [40]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Clap_AbilityGroup PrefabGuid(-26826346)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331573:1)
+
+   [41]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Taunt_AbilityGroup PrefabGuid(-158502505)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331570:1)
+
+   [42]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Surrender_AbilityGroup PrefabGuid(-1064533554)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331566:1)
+
+   [43]
+    BaseAbilityGroupOnSlot: AB_FeedRevive_01_Initiate_AbilityGroup PrefabGuid(1754040702)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331575:1)
+
+   [44]
+    BaseAbilityGroupOnSlot: AB_FeedRevive_02_Bite_Abort_AbilityGroup PrefabGuid(1586616867)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331565:1)
+
+   [45]
+    BaseAbilityGroupOnSlot: AB_FeedRevive_03_Complete_AbilityGroup PrefabGuid(2072201164)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331572:1)
+
+   [46]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Shrug_AbilityGroup PrefabGuid(-578764388)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331558:1)
+
+   [47]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Salute_AbilityGroup PrefabGuid(-370061286)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331571:1)
+
+   [48]
+    BaseAbilityGroupOnSlot: AB_Consumable_PrisonBloodPotion_AbilityGroup PrefabGuid(974235336)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331560:1)
+
+   [49]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Bat_Group PrefabGuid(-104327922)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331559:1)
+
+   [50]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_Bow_AbilityGroup PrefabGuid(-1462274656)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331567:1)
+
+   [51]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_NormalForm_Group PrefabGuid(1634335063)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331568:1)
+
+   [52]
+    BaseAbilityGroupOnSlot: AB_Emote_Vampire_No_AbilityGroup PrefabGuid(-53273186)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(331569:1)
+
+   [53]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_BloodHunger_BloodSight_Group PrefabGuid(-1863241708)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329795:5)
+
+   [54]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_DominatingPresence_PsychicForm_Group PrefabGuid(-1908054166)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329800:11)
+
+   [55]
+    BaseAbilityGroupOnSlot: AB_Charm_AbilityGroup PrefabGuid(-107743040)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329801:6)
+
+   [56]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_ShareBlood_ExposeVein_Group PrefabGuid(-1648128560)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329802:9)
+
+   [57]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_CommandingPresence_Group PrefabGuid(589136658)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329797:11)
+
+   [58]
+    BaseAbilityGroupOnSlot: AB_Subdue_AbilityGroup PrefabGuid(965421878)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327526:3)
+
+   [59]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Spider_Group PrefabGuid(180580857)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327520:11)
+
+   [60]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Spider_Burrow_AbilityGroup PrefabGuid(1089139335)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327517:4)
+
+   [61]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Human_PMK_Skin02_Group PrefabGuid(1937597415)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327507:8)
+
+   [62]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Wolf_PMK_Skin02_Group PrefabGuid(-1739260908)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327521:16)
+
+   [63]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Wolf_Leap_Travel_AbilityGroup PrefabGuid(-781549505)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(329793:26)
+
+   [64]
+    BaseAbilityGroupOnSlot: AB_Shapeshift_Wolf_Howl_AbilityGroup PrefabGuid(875909348)
+    ShowOnBar: False
+    GroupSlotEntity: Entity AbilityGroupSlot PrefabGuid(-633717863) - NetworkedEntity(327532:3)
+
+   65 total elements but only showing the first 36
+  ProjectM.BuffBuffer
+   [0]
+    Entity: Entity AB_BloodBuff_Scholar_Tier3 PrefabGuid(-901503997) - Entity(331718:1)
+    PrefabGuid: AB_BloodBuff_Scholar_Tier3 PrefabGuid(-901503997)
+
+   [1]
+    Entity: Entity SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747) - Entity(331700:1)
+    PrefabGuid: SetBonus_Veil_BonusDamage_T09 PrefabGuid(-564979747)
+
+   [2]
+    Entity: Entity AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773) - Entity(331729:1)
+    PrefabGuid: AB_BloodBuff_Creature_Tier2 PrefabGuid(475045773)
+
+   [3]
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331679:1)
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+   [4]
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331680:1)
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+   [5]
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331681:1)
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+   [6]
+    Entity: Entity SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251) - Entity(331701:1)
+    PrefabGuid: SetBonus_WeaponCooldownRecovery_T09 PrefabGuid(46345251)
+
+   [7]
+    Entity: Entity SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186) - Entity(331702:1)
+    PrefabGuid: SetBonus_WeaponSkillPower_T09 PrefabGuid(-1449839186)
+
+   [8]
+    Entity: Entity EquipBuff_Chest_Base PrefabGuid(1872694456) - Entity(331696:1)
+    PrefabGuid: EquipBuff_Chest_Base PrefabGuid(1872694456)
+
+   [9]
+    Entity: Entity EquipBuff_Weapon_Axe_Ability03 PrefabGuid(1164259129) - Entity(331719:1)
+    PrefabGuid: EquipBuff_Weapon_Axe_Ability03 PrefabGuid(1164259129)
+
+   [10]
+    Entity: Entity Item_EquipBuff_MagicSource_T08_Frost PrefabGuid(537568578) - Entity(332836:1)
+    PrefabGuid: Item_EquipBuff_MagicSource_T08_Frost PrefabGuid(537568578)
+
+   [11]
+    Entity: Entity EquipBuff_Boots_Base PrefabGuid(-1465458722) - Entity(331697:1)
+    PrefabGuid: EquipBuff_Boots_Base PrefabGuid(-1465458722)
+
+   [12]
+    Entity: Entity EquipBuff_Legs_Base PrefabGuid(1971020070) - Entity(331698:1)
+    PrefabGuid: EquipBuff_Legs_Base PrefabGuid(1971020070)
+
+   [13]
+    Entity: Entity EquipBuff_Cloak_Base PrefabGuid(1409441911) - Entity(331695:1)
+    PrefabGuid: EquipBuff_Cloak_Base PrefabGuid(1409441911)
+
+   [14]
+    Entity: Entity EquipBuff_Gloves_Base PrefabGuid(541298575) - Entity(331699:1)
+    PrefabGuid: EquipBuff_Gloves_Base PrefabGuid(541298575)
+
+   [15]
+    Entity: Entity EquipBuff_ShroudOfTheForest PrefabGuid(1504279833) - Entity(331726:1)
+    PrefabGuid: EquipBuff_ShroudOfTheForest PrefabGuid(1504279833)
+
+   [16]
+    Entity: Entity AB_BloodBuff_Rogue_Tier3 PrefabGuid(-536284884) - Entity(331715:1)
+    PrefabGuid: AB_BloodBuff_Rogue_Tier3 PrefabGuid(-536284884)
+
+   [17]
+    Entity: Entity AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498) - Entity(331703:1)
+    PrefabGuid: AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498)
+
+   [18]
+    Entity: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331682:1)
+    PrefabGuid: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+   [19]
+    Entity: Entity Buff_Contest_Victory PrefabGuid(1516078366) - Entity(331712:1)
+    PrefabGuid: Buff_Contest_Victory PrefabGuid(1516078366)
+
+   [20]
+    Entity: Entity AB_BloodBuff_Dracula_Tier1 PrefabGuid(-488475343) - Entity(331704:1)
+    PrefabGuid: AB_BloodBuff_Dracula_Tier1 PrefabGuid(-488475343)
+
+   [21]
+    Entity: Entity AB_BloodBuff_Worker_Tier1 PrefabGuid(-773025435) - Entity(331706:1)
+    PrefabGuid: AB_BloodBuff_Worker_Tier1 PrefabGuid(-773025435)
+
+   [22]
+    Entity: Entity AB_BloodBuff_Worker_Tier3 PrefabGuid(1359282533) - Entity(331705:1)
+    PrefabGuid: AB_BloodBuff_Worker_Tier3 PrefabGuid(1359282533)
+
+   [23]
+    Entity: Entity AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297) - Entity(331732:1)
+    PrefabGuid: AB_BloodBuff_Creature_Tier4 PrefabGuid(1643157297)
+
+   [24]
+    Entity: Entity AB_BloodBuff_General_Tier5 PrefabGuid(947312310) - Entity(331731:1)
+    PrefabGuid: AB_BloodBuff_General_Tier5 PrefabGuid(947312310)
+
+   [25]
+    Entity: Entity AB_BloodBuff_Scholar_Tier2 PrefabGuid(-993492354) - Entity(331714:1)
+    PrefabGuid: AB_BloodBuff_Scholar_Tier2 PrefabGuid(-993492354)
+
+   [26]
+    Entity: Entity SetBonus_AllLeech_T09 PrefabGuid(1774716596) - Entity(331686:1)
+    PrefabGuid: SetBonus_AllLeech_T09 PrefabGuid(1774716596)
+
+   [27]
+    Entity: Entity Buff_General_Build_Spawn_Buff_WeakStructure PrefabGuid(237078863) - Entity(331722:1)
+    PrefabGuid: Buff_General_Build_Spawn_Buff_WeakStructure PrefabGuid(237078863)
+
+   [28]
+    Entity: Entity AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373) - Entity(331728:1)
+    PrefabGuid: AB_BloodBuff_Creature_Tier3 PrefabGuid(-1055766373)
+
+   [29]
+    Entity: Entity AB_Blood_BloodRite_Immaterial PrefabGuid(-259674366) - Entity(331720:1)
+    PrefabGuid: AB_Blood_BloodRite_Immaterial PrefabGuid(-259674366)
+
+   [30]
+    Entity: Entity Buff_General_Build_Spawn_Buff_WeakStructure_Wall PrefabGuid(740689171) - Entity(331724:1)
+    PrefabGuid: Buff_General_Build_Spawn_Buff_WeakStructure_Wall PrefabGuid(740689171)
+
+   [31]
+    Entity: Entity AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875) - Entity(331730:1)
+    PrefabGuid: AB_BloodBuff_Creature_Tier1 PrefabGuid(894725875)
+
+   [32]
+    Entity: Entity Buff_OutOfCombat PrefabGuid(897325455) - Entity(331688:1)
+    PrefabGuid: Buff_OutOfCombat PrefabGuid(897325455)
+
+  ProjectM.InventoryInstanceElement
+   [0]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Main
+    Slots: 35
+    MaxSlots: 53
+    ExternalInventoryEntityPrefabGuid: GUID Not Found
+    ExternalInventoryEntity: Entity External_Inventory PrefabGuid(1183666186) - NetworkedEntity(331675:1)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+  ProjectM.MinionBuffer
+  ProjectM.ActivePassivesBuffer
+   [0]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [1]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [2]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [3]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [4]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [5]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [6]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [7]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+  ProjectM.VBloodAbilityBuffEntry
+   [0]
+    SlotId: 5
+    ActiveBuff: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331679:1)
+    ActiveAbility: AB_Blood_Shadowbolt_AbilityGroup PrefabGuid(-880131926)
+
+   [1]
+    SlotId: 6
+    ActiveBuff: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331680:1)
+    ActiveAbility: AB_Blood_BloodRite_AbilityGroup PrefabGuid(1191439206)
+
+   [2]
+    SlotId: 2
+    ActiveBuff: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331681:1)
+    ActiveAbility: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+
+   [3]
+    SlotId: 3
+    ActiveBuff: Entity Buff_VBlood_Ability_Replace PrefabGuid(1171608023) - Entity(331682:1)
+    ActiveAbility: AB_Blood_SanguineCoil_AbilityGroup PrefabGuid(189403977)
+
+  ProjectM.EntitiesInView_Server
+  ProjectM.Network.SyncToUserBuffer
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Player Roy - Entity(332849:1)
+
+   [1]
+    Value: Entity(70860:2)
+
+   [2]
+    Value: Entity(70858:2)
+
+  ProjectM.CrowdednessPlayerBufferElement
+  ProjectM.BuffByItemCategoryCount
+   [0]
+    ItemCategory: ProjectM.ItemCategory Silver
+    BuffGuid: Buff_General_Silver_Sickness_Burn_Debuff PrefabGuid(853298599)
+
+  ProjectM.BuffOnConnectionStatusElement
+   [0]
+    BuffPrefabGuid: Buff_General_Disconnected PrefabGuid(1769215014)
+    OnConnect: False
+
+  ProjectM.InteractAbilityBuffer
+   [0]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab ��yY            
+      Component                      
+     ConditionalElements
+    Ability: AB_FeedFriendly_01_Initiate_AbilityGroup PrefabGuid(1501158829)
+    Importance: 3
+    HideInteractHUDWhileCasting: False
+
+   [1]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab                 
+      Component                      
+     ConditionalElements
+    Ability: AB_Interact_VampirePull_AbilityGroup PrefabGuid(4267150)
+    Importance: 3
+    HideInteractHUDWhileCasting: False
+
+   [2]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab x���j  �QM�j  
+      Component        �SN�j  ��r�j
+     ConditionalElements
+    Ability: AB_FeedRevive_01_Initiate_AbilityGroup PrefabGuid(1754040702)
+    Importance: 1
+    HideInteractHUDWhileCasting: False
+
+   [3]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab         p��k  
+      Component �\            ���j
+     ConditionalElements
+    Ability: AB_FeedEnemyVampire_01_Initiate_AbilityGroup PrefabGuid(391943159)
+    Importance: 1
+    HideInteractHUDWhileCasting: False
+
+  ProjectM.CreateGameplayEventsOnAbilityTrigger
+   [0]
+    EventId: Local - -1182650535
+    Type: ProjectM.AbilityTriggerEventType Use
+    Target: ProjectM.GameplayEventTarget BuffTarget
+    Condition: None
+    AbilityTypes: ProjectM.AbilityTypeFlag AbilityKit
+    AbilityButton: ProjectM.AbilityButtonInputAction None
+    AbilityTypeEnum: ProjectM.AbilityTypeEnum None
+    NumOfPrefabTargets: 0
+    PrefabTargetStartIndex: 0
+
+  ProjectM.CreateGameplayEventOnDamageTaken
+   [0]
+    EventId: Local - -2015634130
+    Condition: None
+    Source: ProjectM.DamageTakenTarget Self
+    IncludeDoTs: False
+    IgnoreWhenInContest: False
+
+   [1]
+    EventId: Local - 171675861
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab                 
+      Component                                          
+     ConditionalElements
+    Source: ProjectM.DamageTakenTarget Self
+    IncludeDoTs: False
+    IgnoreWhenInContest: True
+
+  ProjectM.CreateGameplayEventsOnSpawn
+   [0]
+    EventId: Local - 1093251345
+    Target: ProjectM.GameplayEventTarget Self
+
+  ProjectM.ApplyBuffOnGameplayEvent
+   [0]
+    BuffTarget: ProjectM.ApplyBuffTarget Self
+    SpellTarget: ProjectM.SetSpellTarget Default
+    EntityOwner: ProjectM.SetEntityOwner Default
+    OverrideDuration: Il2CppSystem.Nullable_Unboxed`1[System.Single] 
+    Stacks: 1
+    Buff0: Buff_CombatStance PrefabGuid(-952067173)
+    Buff1: GUID Not Found
+    Buff2: GUID Not Found
+    Buff3: GUID Not Found
+    EventOnConsume: Local - 0
+    ConsumeIfAlreadyExists: False
+    ConsumeConditional: None
+    CustomAbilitySpellModsSource: GUID Not Found
+
+   [1]
+    BuffTarget: ProjectM.ApplyBuffTarget EventTarget
+    SpellTarget: ProjectM.SetSpellTarget Default
+    EntityOwner: ProjectM.SetEntityOwner Default
+    OverrideDuration: Il2CppSystem.Nullable_Unboxed`1[System.Single] 
+    Stacks: 1
+    Buff0: Buff_OutOfCombat PrefabGuid(897325455)
+    Buff1: GUID Not Found
+    Buff2: GUID Not Found
+    Buff3: GUID Not Found
+    EventOnConsume: Local - 0
+    ConsumeIfAlreadyExists: False
+    ConsumeConditional: None
+    CustomAbilitySpellModsSource: GUID Not Found
+
+  ProjectM.GameplayEventIdMapping
+   [0]
+    NextTriggerTime: 93309.42146589133
+    TriggerCooldown: 0
+    GameplayEventId: Local - -1182650535
+    MaxTriggers: 0
+    CurrentTriggers: 4136
+    TriggerMultipleTimes: True
+
+   [1]
+    NextTriggerTime: 48.80837289127521
+    TriggerCooldown: 0
+    GameplayEventId: Local - 1093251345
+    MaxTriggers: 0
+    CurrentTriggers: 1
+    TriggerMultipleTimes: False
+
+  ProjectM.Network.Snapshot_ActivePassivesBuffer
+   [0]
+    Value: 8
+
+   [1]
+    Value: 0
+
+   [2]
+    Value: 0
+
+   [3]
+    Value: 0
+
+   [4]
+    Value: 0
+
+   [5]
+    Value: 0
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 0
+
+   [11]
+    Value: 0
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 0
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 0
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 0
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 0
+
+   [49]
+    Value: 0
+
+   [50]
+    Value: 0
+
+   [51]
+    Value: 0
+
+   [52]
+    Value: 0
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   [56]
+    Value: 0
+
+   [57]
+    Value: 0
+
+   [58]
+    Value: 0
+
+   [59]
+    Value: 0
+
+   [60]
+    Value: 0
+
+   [61]
+    Value: 0
+
+   [62]
+    Value: 0
+
+   [63]
+    Value: 0
+
+   [64]
+    Value: 0
+
+   [65]
+    Value: 0
+
+   [66]
+    Value: 0
+
+   [67]
+    Value: 0
+
+   [68]
+    Value: 0
+
+   [69]
+    Value: 0
+
+   [70]
+    Value: 0
+
+   [71]
+    Value: 0
+
+   72 total elements but only showing the first 36
+  ProjectM.Network.Snapshot_FollowerBuffer
+  ProjectM.Network.Snapshot_InventoryInstanceElement
+   [0]
+    Value: 1
+
+   [1]
+    Value: 0
+
+   [2]
+    Value: 0
+
+   [3]
+    Value: 0
+
+   [4]
+    Value: 250
+
+   [5]
+    Value: 245
+
+   [6]
+    Value: 41
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 250
+
+   [9]
+    Value: 245
+
+   [10]
+    Value: 41
+
+   [11]
+    Value: 0
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 55
+
+   [17]
+    Value: 31
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 1
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 1
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 53
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 35
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 0
+
+   [49]
+    Value: 0
+
+   [50]
+    Value: 0
+
+   [51]
+    Value: 0
+
+   52 total elements but only showing the first 36
+  ProjectM.AttachMapIconsToEntity
+   [0]
+    Prefab: MapIcon_Player PrefabGuid(-892362184)
+
+  ProjectM.UnlockedPassivesBuffer
+   [0]
+    PrefabGuid: SpellPassive_Blood_T01_BloodSpray PrefabGuid(-1027845865)
+
+   [1]
+    PrefabGuid: SpellPassive_Unholy_T02_SoulDrinker PrefabGuid(-1612317745)
+
+   [2]
+    PrefabGuid: SpellPassive_Illusion_T02_FlowingSorcery PrefabGuid(-1979168975)
+
+   [3]
+    PrefabGuid: SpellPassive_Chaos_T04_RavenousStrikes PrefabGuid(-1251152602)
+
+   [4]
+    PrefabGuid: SpellPassive_Chaos_T03_Overpower PrefabGuid(1250779598)
+
+   [5]
+    PrefabGuid: SpellPassive_Illusion_T03_FeralHaste PrefabGuid(-2136476823)
+
+   [6]
+    PrefabGuid: SpellPassive_Unholy_T04_EmbraceMayhem PrefabGuid(422612021)
+
+   [7]
+    PrefabGuid: SpellPassive_Blood_T03_VBloodSlayer PrefabGuid(896859617)
+
+   [8]
+    PrefabGuid: SpellPassive_Unholy_T01_ArcaneAnimator PrefabGuid(-539962543)
+
+   [9]
+    PrefabGuid: SpellPassive_Frost_T02_ChillWeave PrefabGuid(-492383335)
+
+   [10]
+    PrefabGuid: SpellPassive_Storm_T02_EnhancedConductivity PrefabGuid(-395364978)
+
+   [11]
+    PrefabGuid: SpellPassive_Storm_T03_HungerForPower PrefabGuid(594395982)
+
+   [12]
+    PrefabGuid: SpellPassive_Frost_T04_DarkEnchantment PrefabGuid(1865004925)
+
+   [13]
+    PrefabGuid: SpellPassive_Chaos_T01_ChaosKindling PrefabGuid(1088642354)
+
+   [14]
+    PrefabGuid: SpellPassive_Storm_T01_LightningFastStrikes PrefabGuid(-1042692472)
+
+   [15]
+    PrefabGuid: SpellPassive_Frost_T03_Bastion PrefabGuid(1023033912)
+
+   [16]
+    PrefabGuid: SpellPassive_Illusion_T04_WickedPower PrefabGuid(21458851)
+
+   [17]
+    PrefabGuid: SpellPassive_Storm_T04_TurbulentVelocity PrefabGuid(-1148833103)
+
+   [18]
+    PrefabGuid: SpellPassive_Blood_T04_Rampage PrefabGuid(596456522)
+
+   [19]
+    PrefabGuid: SpellPassive_Chaos_T02_RenewingFlames PrefabGuid(2088195977)
+
+   [20]
+    PrefabGuid: SpellPassive_Illusion_T01_SpiritualInfusion PrefabGuid(-204224143)
+
+   [21]
+    PrefabGuid: SpellPassive_Unholy_T03_LethalStrikes PrefabGuid(-2124258403)
+
+   [22]
+    PrefabGuid: SpellPassive_Blood_T02_BloodTypeEfficiency PrefabGuid(-441009092)
+
+   [23]
+    PrefabGuid: SpellPassive_Frost_T01_ColdSoul PrefabGuid(1855867703)
+
+  ProjectM.GameplayEventListeners
+   [0]
+    EventIdIndex: 0
+    EventIndexOfType: 0
+    ConditionBlob: None
+    GameplayEventType: ProjectM.GameplayEventTypeEnum ApplyBuff
+    GameplayEventId: Local - -1182650535
+
+   [1]
+    EventIdIndex: 1
+    EventIndexOfType: 1
+    ConditionBlob: None
+    GameplayEventType: ProjectM.GameplayEventTypeEnum ApplyBuff
+    GameplayEventId: Local - 1093251345
+
+  ProjectM.Network.NetSnapshot
+   [0]
+    Value: 157
+
+   [1]
+    Value: 220
+
+   [2]
+    Value: 75
+
+   [3]
+    Value: 2
+
+   [4]
+    Value: 90
+
+   [5]
+    Value: 1
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 32
+
+   [11]
+    Value: 65
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 0
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 0
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 186
+
+   [45]
+    Value: 157
+
+   [46]
+    Value: 94
+
+   [47]
+    Value: 67
+
+   [48]
+    Value: 64
+
+   [49]
+    Value: 222
+
+   [50]
+    Value: 246
+
+   [51]
+    Value: 64
+
+   [52]
+    Value: 0
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   [56]
+    Value: 0
+
+   [57]
+    Value: 0
+
+   [58]
+    Value: 200
+
+   [59]
+    Value: 66
+
+   [60]
+    Value: 0
+
+   [61]
+    Value: 0
+
+   [62]
+    Value: 0
+
+   [63]
+    Value: 0
+
+   [64]
+    Value: 0
+
+   [65]
+    Value: 0
+
+   [66]
+    Value: 0
+
+   [67]
+    Value: 0
+
+   [68]
+    Value: 1
+
+   [69]
+    Value: 0
+
+   [70]
+    Value: 0
+
+   [71]
+    Value: 0
+
+   [72]
+    Value: 0
+
+   [73]
+    Value: 0
+
+   [74]
+    Value: 0
+
+   [75]
+    Value: 0
+
+   [76]
+    Value: 205
+
+   [77]
+    Value: 204
+
+   [78]
+    Value: 204
+
+   [79]
+    Value: 61
+
+   [80]
+    Value: 0
+
+   [81]
+    Value: 0
+
+   [82]
+    Value: 32
+
+   [83]
+    Value: 65
+
+   [84]
+    Value: 0
+
+   [85]
+    Value: 0
+
+   [86]
+    Value: 0
+
+   [87]
+    Value: 0
+
+   [88]
+    Value: 238
+
+   [89]
+    Value: 18
+
+   [90]
+    Value: 0
+
+   [91]
+    Value: 0
+
+   [92]
+    Value: 128
+
+   [93]
+    Value: 1
+
+   [94]
+    Value: 0
+
+   [95]
+    Value: 0
+
+   [96]
+    Value: 0
+
+   [97]
+    Value: 0
+
+   [98]
+    Value: 0
+
+   [99]
+    Value: 0
+
+   [100]
+    Value: 0
+
+   [101]
+    Value: 0
+
+   [102]
+    Value: 0
+
+   [103]
+    Value: 0
+
+   [104]
+    Value: 0
+
+   [105]
+    Value: 0
+
+   [106]
+    Value: 0
+
+   [107]
+    Value: 0
+
+   [108]
+    Value: 0
+
+   [109]
+    Value: 0
+
+   [110]
+    Value: 0
+
+   [111]
+    Value: 0
+
+   [112]
+    Value: 0
+
+   [113]
+    Value: 0
+
+   [114]
+    Value: 0
+
+   [115]
+    Value: 0
+
+   [116]
+    Value: 0
+
+   [117]
+    Value: 0
+
+   [118]
+    Value: 0
+
+   [119]
+    Value: 0
+
+   [120]
+    Value: 0
+
+   [121]
+    Value: 0
+
+   [122]
+    Value: 0
+
+   [123]
+    Value: 0
+
+   [124]
+    Value: 0
+
+   [125]
+    Value: 1
+
+   [126]
+    Value: 0
+
+   [127]
+    Value: 0
+
+   [128]
+    Value: 0
+
+   [129]
+    Value: 0
+
+   [130]
+    Value: 0
+
+   [131]
+    Value: 0
+
+   [132]
+    Value: 0
+
+   [133]
+    Value: 0
+
+   [134]
+    Value: 0
+
+   [135]
+    Value: 0
+
+   [136]
+    Value: 0
+
+   [137]
+    Value: 0
+
+   [138]
+    Value: 0
+
+   [139]
+    Value: 0
+
+   [140]
+    Value: 0
+
+   [141]
+    Value: 2
+
+   [142]
+    Value: 0
+
+   [143]
+    Value: 0
+
+   [144]
+    Value: 0
+
+   [145]
+    Value: 0
+
+   [146]
+    Value: 0
+
+   [147]
+    Value: 0
+
+   [148]
+    Value: 0
+
+   [149]
+    Value: 0
+
+   [150]
+    Value: 0
+
+   [151]
+    Value: 0
+
+   [152]
+    Value: 0
+
+   [153]
+    Value: 0
+
+   [154]
+    Value: 0
+
+   [155]
+    Value: 0
+
+   [156]
+    Value: 0
+
+   [157]
+    Value: 3
+
+   [158]
+    Value: 0
+
+   [159]
+    Value: 0
+
+   [160]
+    Value: 0
+
+   [161]
+    Value: 0
+
+   [162]
+    Value: 0
+
+   [163]
+    Value: 0
+
+   [164]
+    Value: 0
+
+   [165]
+    Value: 0
+
+   [166]
+    Value: 0
+
+   [167]
+    Value: 0
+
+   [168]
+    Value: 0
+
+   [169]
+    Value: 0
+
+   [170]
+    Value: 0
+
+   [171]
+    Value: 0
+
+   [172]
+    Value: 0
+
+   [173]
+    Value: 4
+
+   [174]
+    Value: 0
+
+   [175]
+    Value: 0
+
+   [176]
+    Value: 0
+
+   [177]
+    Value: 4
+
+   [178]
+    Value: 0
+
+   [179]
+    Value: 0
+
+   [180]
+    Value: 0
+
+   [181]
+    Value: 0
+
+   [182]
+    Value: 0
+
+   [183]
+    Value: 0
+
+   [184]
+    Value: 0
+
+   [185]
+    Value: 205
+
+   [186]
+    Value: 204
+
+   [187]
+    Value: 76
+
+   [188]
+    Value: 62
+
+   [189]
+    Value: 15
+
+   [190]
+    Value: 40
+
+   [191]
+    Value: 72
+
+   [192]
+    Value: 31
+
+   [193]
+    Value: 1
+
+   [194]
+    Value: 0
+
+   [195]
+    Value: 0
+
+   [196]
+    Value: 0
+
+   [197]
+    Value: 0
+
+   [198]
+    Value: 0
+
+   [199]
+    Value: 200
+
+   [200]
+    Value: 66
+
+   [201]
+    Value: 0
+
+   [202]
+    Value: 0
+
+   [203]
+    Value: 200
+
+   [204]
+    Value: 66
+
+   [205]
+    Value: 154
+
+   [206]
+    Value: 153
+
+   [207]
+    Value: 25
+
+   [208]
+    Value: 62
+
+   [209]
+    Value: 0
+
+   [210]
+    Value: 0
+
+   [211]
+    Value: 0
+
+   [212]
+    Value: 0
+
+   [213]
+    Value: 0
+
+   [214]
+    Value: 0
+
+   [215]
+    Value: 0
+
+   [216]
+    Value: 0
+
+   [217]
+    Value: 0
+
+   [218]
+    Value: 0
+
+   [219]
+    Value: 0
+
+   [220]
+    Value: 0
+
+   [221]
+    Value: 200
+
+   [222]
+    Value: 66
+
+   [223]
+    Value: 14
+
+   [224]
+    Value: 10
+
+   [225]
+    Value: 0
+
+   [226]
+    Value: 0
+
+   [227]
+    Value: 128
+
+   [228]
+    Value: 2
+
+   [229]
+    Value: 0
+
+   [230]
+    Value: 0
+
+   [231]
+    Value: 0
+
+   [232]
+    Value: 0
+
+   [233]
+    Value: 240
+
+   [234]
+    Value: 65
+
+   [235]
+    Value: 0
+
+   [236]
+    Value: 0
+
+   [237]
+    Value: 224
+
+   [238]
+    Value: 64
+
+   [239]
+    Value: 0
+
+   [240]
+    Value: 0
+
+   [241]
+    Value: 0
+
+   [242]
+    Value: 0
+
+   [243]
+    Value: 0
+
+   [244]
+    Value: 1
+
+   [245]
+    Value: 0
+
+   [246]
+    Value: 0
+
+   [247]
+    Value: 0
+
+   [248]
+    Value: 0
+
+   [249]
+    Value: 7
+
+   [250]
+    Value: 1
+
+   [251]
+    Value: 14
+
+   [252]
+    Value: 0
+
+   [253]
+    Value: 1
+
+   [254]
+    Value: 120
+
+   [255]
+    Value: 17
+
+   [256]
+    Value: 159
+
+   [257]
+    Value: 0
+
+   [258]
+    Value: 0
+
+   [259]
+    Value: 0
+
+   [260]
+    Value: 0
+
+   [261]
+    Value: 0
+
+   [262]
+    Value: 0
+
+   [263]
+    Value: 0
+
+   [264]
+    Value: 0
+
+   [265]
+    Value: 0
+
+   [266]
+    Value: 0
+
+   [267]
+    Value: 0
+
+   [268]
+    Value: 0
+
+   [269]
+    Value: 0
+
+   [270]
+    Value: 0
+
+   [271]
+    Value: 0
+
+   [272]
+    Value: 0
+
+   [273]
+    Value: 0
+
+   [274]
+    Value: 0
+
+   [275]
+    Value: 128
+
+   [276]
+    Value: 62
+
+   [277]
+    Value: 0
+
+   [278]
+    Value: 0
+
+   [279]
+    Value: 32
+
+   [280]
+    Value: 64
+
+   [281]
+    Value: 0
+
+   [282]
+    Value: 0
+
+   [283]
+    Value: 128
+
+   [284]
+    Value: 63
+
+   [285]
+    Value: 0
+
+   [286]
+    Value: 0
+
+   [287]
+    Value: 128
+
+   [288]
+    Value: 62
+
+   [289]
+    Value: 0
+
+   [290]
+    Value: 0
+
+   [291]
+    Value: 0
+
+   [292]
+    Value: 63
+
+   [293]
+    Value: 205
+
+   [294]
+    Value: 204
+
+   [295]
+    Value: 76
+
+   [296]
+    Value: 62
+
+   [297]
+    Value: 0
+
+   [298]
+    Value: 0
+
+   [299]
+    Value: 0
+
+   1112 total elements but only showing the first 36
+  ProjectM.Network.SnapshotFrameChangedBuffer
+   [0]
+    Value: 2773334
+
+   [1]
+    Value: -1
+
+   [2]
+    Value: 2760906
+
+   [3]
+    Value: 2762260
+
+   [4]
+    Value: -1
+
+   [5]
+    Value: -1
+
+   [6]
+    Value: 2749946
+
+   [7]
+    Value: 2749946
+
+   [8]
+    Value: -1
+
+   [9]
+    Value: -1
+
+   [10]
+    Value: -1
+
+   [11]
+    Value: 2749946
+
+   [12]
+    Value: -1
+
+   [13]
+    Value: 2749946
+
+   [14]
+    Value: 2749946
+
+   [15]
+    Value: 2749946
+
+   [16]
+    Value: -1
+
+   [17]
+    Value: -1
+
+   [18]
+    Value: 2749946
+
+   [19]
+    Value: -1
+
+   [20]
+    Value: -1
+
+   [21]
+    Value: -1
+
+   [22]
+    Value: 2749946
+
+   [23]
+    Value: 2749946
+
+   [24]
+    Value: 2773453
+
+   [25]
+    Value: 2749946
+
+   [26]
+    Value: -1
+
+   [27]
+    Value: -1
+
+   [28]
+    Value: 2749946
+
+   [29]
+    Value: 2773325
+
+   [30]
+    Value: 2761859
+
+   [31]
+    Value: -1
+
+   [32]
+    Value: -1
+
+   [33]
+    Value: 2749946
+
+   [34]
+    Value: 2749946
+
+   [35]
+    Value: -1
+
+   [36]
+    Value: -1
+
+   [37]
+    Value: -1
+
+   [38]
+    Value: -1
+
+   [39]
+    Value: 2749946
+
+   [40]
+    Value: 2749946
+
+   [41]
+    Value: 2773331
+
+   [42]
+    Value: 2773331
+
+   [43]
+    Value: 2773331
+
+   [44]
+    Value: 2773331
+
+   [45]
+    Value: 2773328
+
+   [46]
+    Value: 2773328
+
+   [47]
+    Value: 2749946
+
+   [48]
+    Value: -1
+
+   [49]
+    Value: 2773334
+
+   [50]
+    Value: 2762483
+
+   [51]
+    Value: -1
+
+   [52]
+    Value: 2762483
+
+   [53]
+    Value: 2749946
+
+   [54]
+    Value: -1
+
+   [55]
+    Value: 2773328
+
+   [56]
+    Value: 2761214
+
+   [57]
+    Value: -1
+
+   [58]
+    Value: 2773329
+
+   [59]
+    Value: -1
+
+   [60]
+    Value: -1
+
+   [61]
+    Value: -1
+
+   [62]
+    Value: -1
+
+   [63]
+    Value: -1
+
+   [64]
+    Value: -1
+
+   [65]
+    Value: -1
+
+   [66]
+    Value: -1
+
+   [67]
+    Value: -1
+
+   [68]
+    Value: -1
+
+   [69]
+    Value: -1
+
+   [70]
+    Value: -1
+
+   [71]
+    Value: -1
+
+   [72]
+    Value: 2749946
+
+   [73]
+    Value: 2749946
+
+   [74]
+    Value: 2749946
+
+   [75]
+    Value: -1
+
+   [76]
+    Value: 2749946
+
+   [77]
+    Value: 2749946
+
+   [78]
+    Value: -1
+
+   [79]
+    Value: -1
+
+   [80]
+    Value: -1
+
+   [81]
+    Value: 2760906
+
+   [82]
+    Value: 2749946
+
+   [83]
+    Value: 2762260
+
+   [84]
+    Value: -1
+
+   [85]
+    Value: -1
+
+   [86]
+    Value: -1
+
+   [87]
+    Value: -1
+
+   [88]
+    Value: 2749946
+
+   [89]
+    Value: -1
+
+   [90]
+    Value: 2749946
+
+   [91]
+    Value: 2749946
+
+   [92]
+    Value: 2749946
+
+   [93]
+    Value: -1
+
+   [94]
+    Value: 2749946
+
+   [95]
+    Value: 2749946
+
+   [96]
+    Value: 2749946
+
+   [97]
+    Value: 2749946
+
+   [98]
+    Value: -1
+
+   [99]
+    Value: -1
+
+   [100]
+    Value: -1
+
+   [101]
+    Value: -1
+
+   [102]
+    Value: -1
+
+   [103]
+    Value: -1
+
+   [104]
+    Value: -1
+
+   [105]
+    Value: -1
+
+   [106]
+    Value: -1
+
+   [107]
+    Value: -1
+
+   [108]
+    Value: -1
+
+   [109]
+    Value: 2749946
+
+   [110]
+    Value: 2749946
+
+   [111]
+    Value: -1
+
+   [112]
+    Value: 2749946
+
+   [113]
+    Value: -1
+
+   [114]
+    Value: -1
+
+   [115]
+    Value: -1
+
+   [116]
+    Value: 2749946
+
+   [117]
+    Value: 2749946
+
+   [118]
+    Value: -1
+
+   [119]
+    Value: 2749946
+
+   [120]
+    Value: -1
+
+   [121]
+    Value: -1
+
+   [122]
+    Value: -1
+
+   [123]
+    Value: 2749946
+
+   [124]
+    Value: 2749946
+
+   [125]
+    Value: -1
+
+   [126]
+    Value: 2749946
+
+   [127]
+    Value: -1
+
+   [128]
+    Value: -1
+
+   [129]
+    Value: -1
+
+   [130]
+    Value: -1
+
+   [131]
+    Value: -1
+
+   [132]
+    Value: 2749946
+
+   [133]
+    Value: 2749946
+
+   [134]
+    Value: -1
+
+   [135]
+    Value: 2749946
+
+   [136]
+    Value: -1
+
+   [137]
+    Value: -1
+
+   [138]
+    Value: -1
+
+   [139]
+    Value: -1
+
+   [140]
+    Value: -1
+
+   [141]
+    Value: -1
+
+   [142]
+    Value: -1
+
+   [143]
+    Value: -1
+
+   [144]
+    Value: -1
+
+   [145]
+    Value: -1
+
+   [146]
+    Value: -1
+
+   [147]
+    Value: -1
+
+   [148]
+    Value: -1
+
+   [149]
+    Value: -1
+
+   [150]
+    Value: -1
+
+   [151]
+    Value: -1
+
+   [152]
+    Value: -1
+
+   [153]
+    Value: -1
+
+   [154]
+    Value: 2749946
+
+   [155]
+    Value: 2749946
+
+   [156]
+    Value: 2749946
+
+   [157]
+    Value: -1
+
+   [158]
+    Value: -1
+
+   [159]
+    Value: -1
+
+   [160]
+    Value: -1
+
+   [161]
+    Value: -1
+
+   [162]
+    Value: -1
+
+   [163]
+    Value: -1
+
+   [164]
+    Value: -1
+
+   [165]
+    Value: -1
+
+   [166]
+    Value: -1
+
+   [167]
+    Value: -1
+
+   [168]
+    Value: -1
+
+   [169]
+    Value: -1
+
+   [170]
+    Value: -1
+
+   [171]
+    Value: -1
+
+   [172]
+    Value: 2749946
+
+   [173]
+    Value: 2749946
+
+   [174]
+    Value: -1
+
+   [175]
+    Value: -1
+
+   [176]
+    Value: -1
+
+   [177]
+    Value: -1
+
+   [178]
+    Value: -1
+
+   [179]
+    Value: -1
+
+   [180]
+    Value: -1
+
+   [181]
+    Value: 2749946
+
+   [182]
+    Value: -1
+
+   [183]
+    Value: 2749946
+
+   [184]
+    Value: 2749946
+
+   [185]
+    Value: -1
+
+   [186]
+    Value: -1
+
+   [187]
+    Value: 2749946
+
+   [188]
+    Value: 2749946
+
+   [189]
+    Value: -1
+
+   [190]
+    Value: 2749946
+
+   [191]
+    Value: 2749946
+
+   [192]
+    Value: 2749946
+
+   [193]
+    Value: -1
+
+   [194]
+    Value: -1
+
+   [195]
+    Value: 2749946
+
+   [196]
+    Value: -1
+
+   [197]
+    Value: -1
+
+   [198]
+    Value: -1
+
+   [199]
+    Value: -1
+
+   [200]
+    Value: -1
+
+   [201]
+    Value: -1
+
+   [202]
+    Value: -1
+
+   [203]
+    Value: -1
+
+   [204]
+    Value: -1
+
+   [205]
+    Value: 2749946
+
+   [206]
+    Value: -1
+
+   [207]
+    Value: -1
+
+   [208]
+    Value: 2749946
+
+   [209]
+    Value: 2773436
+
+   [210]
+    Value: 2773453
+
+   [211]
+    Value: 2772076
+
+   [212]
+    Value: 2772076
+
+   [213]
+    Value: 2772076
+
+   [214]
+    Value: 2773434
+
+   [215]
+    Value: 2772076
+
+   [216]
+    Value: -1
+
+   [217]
+    Value: 2749946
+
+   [218]
+    Value: -1
+
+   [219]
+    Value: -1
+
+   [220]
+    Value: -1
+
+   [221]
+    Value: -1
+
+   [222]
+    Value: -1
+
+   [223]
+    Value: -1
+
+   [224]
+    Value: -1
+
+   [225]
+    Value: -1
+
+   [226]
+    Value: -1
+
+   [227]
+    Value: -1
+
+   [228]
+    Value: -1
+
+   [229]
+    Value: 2749946
+
+   [230]
+    Value: 2773325
+
+   [231]
+    Value: -1
+
+   [232]
+    Value: 2773325
+
+   [233]
+    Value: -1
+
+   [234]
+    Value: 2762733
+
+   [235]
+    Value: 2761859
+
+   [236]
+    Value: 2749946
+
+   [237]
+    Value: -1
+
+   [238]
+    Value: -1
+
+   [239]
+    Value: -1
+
+   [240]
+    Value: -1
+
+   [241]
+    Value: -1
+
+   [242]
+    Value: -1
+
+   [243]
+    Value: 2749946
+
+   [244]
+    Value: -1
+
+   [245]
+    Value: -1
+
+   [246]
+    Value: 2749946
+
+   [247]
+    Value: 2749946
+
+   [248]
+    Value: -1
+
+   [249]
+    Value: -1
+
+   [250]
+    Value: 2749946
+
+   [251]
+    Value: 2749946
+
+   [252]
+    Value: 2749946
+
+   [253]
+    Value: -1
+
+   [254]
+    Value: -1
+
+   [255]
+    Value: 2749946
+
+   [256]
+    Value: -1
+
+   [257]
+    Value: 2749946
+
+   [258]
+    Value: 2749946
+
+   [259]
+    Value: 2749946
+
+   [260]
+    Value: 2749946
+
+   [261]
+    Value: -1
+
+   [262]
+    Value: 2749946
+
+   [263]
+    Value: 2749946
+
+   [264]
+    Value: -1
+
+   [265]
+    Value: -1
+
+   [266]
+    Value: 2749946
+
+   [267]
+    Value: 2749946
+
+   [268]
+    Value: -1
+
+   [269]
+    Value: -1
+
+   [270]
+    Value: 2749946
+
+   [271]
+    Value: 2749946
+
+   [272]
+    Value: -1
+
+   [273]
+    Value: 2749946
+
+   [274]
+    Value: 2749946
+
+   [275]
+    Value: 2749946
+
+   [276]
+    Value: -1
+
+   [277]
+    Value: 2749946
+
+   [278]
+    Value: -1
+
+   [279]
+    Value: -1
+
+   [280]
+    Value: -1
+
+   [281]
+    Value: -1
+
+   [282]
+    Value: -1
+
+   283 total elements but only showing the first 36
+  ProjectM.MoveStopTrigger
+  ProjectM.HideOutsideVision
+  ProjectM.VampireTag
+  ProjectM.CastleBuilding.CanBuildTileModels
+  ProjectM.Contest.ContestTerminatorTag
+  ProjectM.TilePlacementTag
+  ProjectM.TileRestrictionAreaTag
+  ProjectM.RadialDamageTarget
+  ProjectM.DisableWhenNoPlayersInRange
+  ProjectM.Scripting.ScriptSpawn
+  ProjectM.Network.OnlySyncToUsersTag
+  Unity.Entities.Simulate
+  ProjectM.Network.IsConnected
+  Unity.Entities.BlobAssetOwner
+  ProjectM.TileModelRegistrationState
+  ProjectM.Network.NetworkSnapshotType
+  ProjectM.Tiles.TileModelLayer
+  Unity.Physics.PhysicsWorldIndex

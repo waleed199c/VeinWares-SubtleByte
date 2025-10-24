@@ -1,0 +1,8 @@
+Prefab Weapon_Spear_Secondary_Curve PrefabGuid(-207774647)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -207774647
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab CarverBoss_WhirlwindSlowDown_Curve PrefabGuid(696336935)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 696336935
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

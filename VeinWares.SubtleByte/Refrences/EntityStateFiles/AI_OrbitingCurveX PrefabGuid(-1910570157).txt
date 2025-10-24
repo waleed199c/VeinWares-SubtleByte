@@ -1,0 +1,8 @@
+Prefab AI_OrbitingCurveX PrefabGuid(-1910570157)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1910570157
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab ServantInjury_VampireHunter PrefabGuid(1092922249)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1092922249
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

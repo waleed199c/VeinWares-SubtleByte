@@ -1,0 +1,8 @@
+Prefab AI_Manticore_TurnSwipe_Movement_Curve PrefabGuid(1289957217)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1289957217
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

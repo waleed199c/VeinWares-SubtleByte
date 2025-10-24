@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Mosquito PrefabGuid(473394882)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 473394882
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

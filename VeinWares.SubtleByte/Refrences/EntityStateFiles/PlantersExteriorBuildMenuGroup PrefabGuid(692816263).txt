@@ -1,0 +1,9 @@
+Prefab PlantersExteriorBuildMenuGroup PrefabGuid(692816263)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 692816263
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

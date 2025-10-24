@@ -1,0 +1,12 @@
+Prefab Faction_Traders_T01 PrefabGuid(30052367)
+Components
+  ProjectM.Faction
+    Data: Unity.Entities.BlobAssetReference`1[ProjectM.FactionBlobAsset] Unity.Entities.BlobAssetReference`1[ProjectM.FactionBlobAsset]
+
+  Stunlock.Core.PrefabGUID
+    _Value: 30052367
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

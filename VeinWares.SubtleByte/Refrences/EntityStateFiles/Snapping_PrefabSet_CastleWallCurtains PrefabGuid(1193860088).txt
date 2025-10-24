@@ -1,0 +1,79 @@
+Prefab Snapping_PrefabSet_CastleWallCurtains PrefabGuid(1193860088)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1193860088
+
+  ProjectM.PrefabSetBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-975467150)
+
+   [1]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-298809060)
+
+   [2]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-567222601)
+
+   [3]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1957340591)
+
+   [4]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(271242862)
+
+   [5]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1867773052)
+
+   [6]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-984791408)
+
+   [7]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1606211486)
+
+   [8]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1229482665)
+
+   [9]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(12749038)
+
+   [10]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-173804790)
+
+   [11]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(231309079)
+
+   [12]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1177431120)
+
+   [13]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1864414502)
+
+   [14]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1203605086)
+
+   [15]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-780805196)
+
+   [16]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1501439420)
+
+   [17]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-1969049484)
+
+   [18]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(1959531938)
+
+   [19]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-422405678)
+
+   [20]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(2083352962)
+
+   [21]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(990866755)
+
+  ProjectM.PrefabSetSourceObjectBuffer
+   [0]
+    PrefabId: Stunlock.Core.PrefabIdentifier PrefabIdentifier(-975467150)
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

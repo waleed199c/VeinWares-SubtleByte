@@ -1,0 +1,8 @@
+Prefab Weapon_Scythe_Secondary_Curve PrefabGuid(-1919866133)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1919866133
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

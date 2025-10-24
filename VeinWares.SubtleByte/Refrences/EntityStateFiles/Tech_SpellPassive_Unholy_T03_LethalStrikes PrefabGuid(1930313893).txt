@@ -1,0 +1,36 @@
+Prefab Tech_SpellPassive_Unholy_T03_LethalStrikes PrefabGuid(1930313893)
+Components
+  ProjectM.TechData
+    Entity: Prefab Tech_SpellPassive_Unholy_T03_LethalStrikes PrefabGuid(1930313893) - Entity(21594:1)
+    Guid: Tech_SpellPassive_Unholy_T03_LethalStrikes PrefabGuid(1930313893)
+    TechCategory: ProjectM.TechCategory VampireAwakenings
+    CraftDuration: 30
+    HudSortingOrder: 0
+    NeverShowQuestionmarkResearch: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1930313893
+
+  ProjectM.ProgressionBookShapeshiftElement
+  ProjectM.ProgressionBookMusicTrackElement
+  ProjectM.TechUnlockRecipeBuffer
+  ProjectM.TechUnlockBlueprintBuffer
+  ProjectM.TechRequirementBuffer
+  ProjectM.TechItemRequirementBuffer
+   [0]
+    Guid: Item_Ingredient_Passive_T02_LethalStrikes PrefabGuid(765693103)
+    Stacks: 1
+
+  ProjectM.UnlockedPassivesBuffer
+   [0]
+    PrefabGuid: SpellPassive_Unholy_T03_LethalStrikes PrefabGuid(-2124258403)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

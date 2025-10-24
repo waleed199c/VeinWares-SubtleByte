@@ -1,0 +1,32 @@
+Prefab CO_SeaSerpent PrefabGuid(204893615)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 25
+
+  Stunlock.Core.PrefabGUID
+    _Value: 204893615
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_SeaSerpent PrefabGuid(204893615) - Entity(62694:1)
+
+   [1]
+    Value: Entity(38155:4)
+
+   [2]
+    Value: Entity(2413:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38155:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

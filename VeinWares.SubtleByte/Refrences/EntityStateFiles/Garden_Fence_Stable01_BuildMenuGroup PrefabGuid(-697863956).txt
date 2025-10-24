@@ -1,0 +1,9 @@
+Prefab Garden_Fence_Stable01_BuildMenuGroup PrefabGuid(-697863956)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -697863956
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

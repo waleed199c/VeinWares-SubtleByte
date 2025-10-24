@@ -1,0 +1,9 @@
+Prefab GreenCarpetsBuildMenuGroup01 PrefabGuid(-1717736046)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1717736046
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

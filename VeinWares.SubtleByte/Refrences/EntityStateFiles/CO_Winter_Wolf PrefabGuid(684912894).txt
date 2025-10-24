@@ -1,0 +1,35 @@
+Prefab CO_Winter_Wolf PrefabGuid(684912894)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 10
+
+  Stunlock.Core.PrefabGUID
+    _Value: 684912894
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Winter_Wolf PrefabGuid(684912894) - Entity(62506:1)
+
+   [1]
+    Value: Entity(38105:4)
+
+   [2]
+    Value: Entity(30393:6)
+
+   [3]
+    Value: Entity(30394:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38105:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,9 @@
+Prefab Garden_HedgeMazeSculptures01_BuildMenuGroup PrefabGuid(1856162195)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1856162195
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

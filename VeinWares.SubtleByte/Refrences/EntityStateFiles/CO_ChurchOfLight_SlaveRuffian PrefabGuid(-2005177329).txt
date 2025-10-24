@@ -1,0 +1,52 @@
+Prefab CO_ChurchOfLight_SlaveRuffian PrefabGuid(-2005177329)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 2.8
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2005177329
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_ChurchOfLight_SlaveRuffian PrefabGuid(-2005177329) - Entity(62548:1)
+
+   [1]
+    Value: Entity(6702:5)
+
+   [2]
+    Value: Entity(11869:5)
+
+   [3]
+    Value: Entity(6703:5)
+
+   [4]
+    Value: Entity(11870:5)
+
+   [5]
+    Value: Entity(6704:5)
+
+   [6]
+    Value: Entity(11871:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6702:5)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(6703:5)
+
+   [2]
+    State: ProjectM.GenericEnemyState Follow
+    Entity: Entity(6704:5)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

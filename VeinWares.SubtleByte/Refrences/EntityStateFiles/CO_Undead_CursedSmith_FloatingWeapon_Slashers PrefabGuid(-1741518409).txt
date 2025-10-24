@@ -1,0 +1,32 @@
+Prefab CO_Undead_CursedSmith_FloatingWeapon_Slashers PrefabGuid(-1741518409)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 7
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1741518409
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_CursedSmith_FloatingWeapon_Slashers PrefabGuid(-1741518409) - Entity(62673:1)
+
+   [1]
+    Value: Entity(38088:4)
+
+   [2]
+    Value: Entity(11840:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38088:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

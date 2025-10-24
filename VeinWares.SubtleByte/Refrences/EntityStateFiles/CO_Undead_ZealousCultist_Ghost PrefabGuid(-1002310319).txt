@@ -1,0 +1,35 @@
+Prefab CO_Undead_ZealousCultist_Ghost PrefabGuid(-1002310319)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 18
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1002310319
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_ZealousCultist_Ghost PrefabGuid(-1002310319) - Entity(62626:1)
+
+   [1]
+    Value: Entity(37889:4)
+
+   [2]
+    Value: Entity(2726:5)
+
+   [3]
+    Value: Entity(2727:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37889:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

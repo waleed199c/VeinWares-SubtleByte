@@ -1,0 +1,29 @@
+Prefab CO_Militia_Undead_Infiltrator PrefabGuid(192644255)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 0
+
+  Stunlock.Core.PrefabGUID
+    _Value: 192644255
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Undead_Infiltrator PrefabGuid(192644255) - Entity(62778:1)
+
+   [1]
+    Value: Entity(37899:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37899:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

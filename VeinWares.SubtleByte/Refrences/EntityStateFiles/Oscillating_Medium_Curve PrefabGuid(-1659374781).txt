@@ -1,0 +1,8 @@
+Prefab Oscillating_Medium_Curve PrefabGuid(-1659374781)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1659374781
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

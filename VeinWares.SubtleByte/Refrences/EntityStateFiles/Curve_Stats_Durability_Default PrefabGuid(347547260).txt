@@ -1,0 +1,8 @@
+Prefab Curve_Stats_Durability_Default PrefabGuid(347547260)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 347547260
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

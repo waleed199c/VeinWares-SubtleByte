@@ -1,0 +1,9 @@
+Prefab TorchesBuildMenuGroup PrefabGuid(1055694726)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1055694726
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

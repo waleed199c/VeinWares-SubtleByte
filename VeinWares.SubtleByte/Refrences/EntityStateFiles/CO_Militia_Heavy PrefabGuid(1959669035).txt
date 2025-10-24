@@ -1,0 +1,38 @@
+Prefab CO_Militia_Heavy PrefabGuid(1959669035)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 8
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1959669035
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_Heavy PrefabGuid(1959669035) - Entity(62648:1)
+
+   [1]
+    Value: Entity(38029:4)
+
+   [2]
+    Value: Entity(36887:4)
+
+   [3]
+    Value: Entity(36888:4)
+
+   [4]
+    Value: Entity(36889:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38029:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

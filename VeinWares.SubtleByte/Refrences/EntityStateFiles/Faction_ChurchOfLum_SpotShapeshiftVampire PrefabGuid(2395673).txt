@@ -1,0 +1,12 @@
+Prefab Faction_ChurchOfLum_SpotShapeshiftVampire PrefabGuid(2395673)
+Components
+  ProjectM.Faction
+    Data: Unity.Entities.BlobAssetReference`1[ProjectM.FactionBlobAsset] Unity.Entities.BlobAssetReference`1[ProjectM.FactionBlobAsset]
+
+  Stunlock.Core.PrefabGUID
+    _Value: 2395673
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

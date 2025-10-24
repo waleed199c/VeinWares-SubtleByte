@@ -1,0 +1,32 @@
+Prefab CO_Dracula_BloodSoul PrefabGuid(665364376)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 3
+
+  Stunlock.Core.PrefabGUID
+    _Value: 665364376
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Dracula_BloodSoul PrefabGuid(665364376) - Entity(62772:1)
+
+   [1]
+    Value: Entity(38010:4)
+
+   [2]
+    Value: Entity(30248:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38010:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

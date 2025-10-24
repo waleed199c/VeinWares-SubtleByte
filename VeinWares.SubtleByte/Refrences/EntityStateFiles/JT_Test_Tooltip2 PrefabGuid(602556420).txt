@@ -1,0 +1,8 @@
+Prefab JT_Test_Tooltip2 PrefabGuid(602556420)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 602556420
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

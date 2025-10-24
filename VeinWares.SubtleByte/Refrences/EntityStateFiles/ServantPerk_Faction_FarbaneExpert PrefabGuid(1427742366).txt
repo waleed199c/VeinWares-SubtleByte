@@ -1,0 +1,13 @@
+Prefab ServantPerk_Faction_FarbaneExpert PrefabGuid(1427742366)
+Components
+  ProjectM.PerkData
+    LootValue: 0.2
+    PrefabGUID: ServantPerk_Faction_FarbaneExpert PrefabGuid(1427742366)
+    PowerValue: 0
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1427742366
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

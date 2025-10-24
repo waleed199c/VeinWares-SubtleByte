@@ -1,0 +1,38 @@
+Prefab CO_ChurchOfLight_Lightweaver PrefabGuid(-2147038016)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: -2147038016
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_ChurchOfLight_Lightweaver PrefabGuid(-2147038016) - Entity(62687:1)
+
+   [1]
+    Value: Entity(38072:4)
+
+   [2]
+    Value: Entity(11813:5)
+
+   [3]
+    Value: Entity(11814:5)
+
+   [4]
+    Value: Entity(11815:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38072:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

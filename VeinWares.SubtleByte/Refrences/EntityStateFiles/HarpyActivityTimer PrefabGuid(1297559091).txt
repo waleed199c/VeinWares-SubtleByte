@@ -1,0 +1,17 @@
+Prefab HarpyActivityTimer PrefabGuid(1297559091)
+Components
+  ProjectM.UnitUptimeSetting
+    ActiveTimeSpace: ProjectM.TimeSpace RealTime
+    ActiveHoursDuration: 0.2
+    ActivePercentage: 0.5
+    RespawnVariancePercentage: 0.5
+    AllowedSpawnTimes: ProjectM.DayTimeSpan ProjectM.DayTimeSpan
+    SpawnTimeBlob: ProjectM.DayTimeSpanBlob ProjectM.DayTimeSpanBlob
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1297559091
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

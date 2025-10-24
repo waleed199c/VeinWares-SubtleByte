@@ -1,0 +1,23 @@
+Prefab Journal_CompleteARoom PrefabGuid(334973636)
+Components
+  ProjectM.AchievementData
+    Level: 30
+    Reward: Journal_Reward_Tech_Waypoint PrefabGuid(1733405785)
+    Dependency: GUID Not Found
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: 334973636
+
+  ProjectM.AchievementSubTaskEntry
+   [0]
+    PrefabGuid: Journal_SubTask_CompleteARoom PrefabGuid(-1280890101)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

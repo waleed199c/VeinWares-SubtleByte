@@ -1,0 +1,321 @@
+Prefab CreatureHarpy_Ragdoll090_Prefab PrefabGuid(245249554)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Scale
+    Value: 0.9
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(0.9f, 0f, 0f, 0f,  0f, 0.9f, 0f, 0f,  0f, 0f, 0.9f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 0.9
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 245249554
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CreatureHarpy_Ragdoll090_Prefab PrefabGuid(245249554) - Entity(11517:1)
+
+   [1]
+    Value: Entity(8905:1)
+
+   [2]
+    Value: Entity(9422:1)
+
+   [3]
+    Value: Entity(24289:1)
+
+   [4]
+    Value: Entity(24290:1)
+
+   [5]
+    Value: Entity(9423:1)
+
+   [6]
+    Value: Entity(20769:1)
+
+   [7]
+    Value: Entity(9424:1)
+
+   [8]
+    Value: Entity(20770:1)
+
+   [9]
+    Value: Entity(9425:1)
+
+   [10]
+    Value: Entity(24291:1)
+
+   [11]
+    Value: Entity(24292:1)
+
+   [12]
+    Value: Entity(9426:1)
+
+   [13]
+    Value: Entity(20771:1)
+
+   [14]
+    Value: Entity(9427:1)
+
+   [15]
+    Value: Entity(20772:1)
+
+   [16]
+    Value: Entity(9428:1)
+
+   [17]
+    Value: Entity(24293:1)
+
+   [18]
+    Value: Entity(24294:1)
+
+   [19]
+    Value: Entity(9429:1)
+
+   [20]
+    Value: Entity(24295:1)
+
+   [21]
+    Value: Entity(24296:1)
+
+   [22]
+    Value: Entity(9430:1)
+
+   [23]
+    Value: Entity(24297:1)
+
+   [24]
+    Value: Entity(24298:1)
+
+   [25]
+    Value: Entity(9431:1)
+
+   [26]
+    Value: Entity(24299:1)
+
+   [27]
+    Value: Entity(24300:1)
+
+   [28]
+    Value: Entity(9432:1)
+
+   [29]
+    Value: Entity(24301:1)
+
+   [30]
+    Value: Entity(24302:1)
+
+   [31]
+    Value: Entity(9433:1)
+
+   [32]
+    Value: Entity(20773:1)
+
+   [33]
+    Value: Entity(9434:1)
+
+   [34]
+    Value: Entity(20774:1)
+
+   [35]
+    Value: Entity(9435:1)
+
+   [36]
+    Value: Entity(24303:1)
+
+   [37]
+    Value: Entity(24304:1)
+
+   [38]
+    Value: Entity(9436:1)
+
+   [39]
+    Value: Entity(24305:1)
+
+   [40]
+    Value: Entity(24173:1)
+
+   [41]
+    Value: Entity(9437:1)
+
+   [42]
+    Value: Entity(24174:1)
+
+   [43]
+    Value: Entity(24175:1)
+
+   [44]
+    Value: Entity(9438:1)
+
+   [45]
+    Value: Entity(24176:1)
+
+   [46]
+    Value: Entity(24177:1)
+
+   [47]
+    Value: Entity(9439:1)
+
+   [48]
+    Value: Entity(24178:1)
+
+   [49]
+    Value: Entity(24179:1)
+
+   [50]
+    Value: Entity(9440:1)
+
+   [51]
+    Value: Entity(24180:1)
+
+   [52]
+    Value: Entity(24181:1)
+
+   [53]
+    Value: Entity(9441:1)
+
+   [54]
+    Value: Entity(24182:1)
+
+   [55]
+    Value: Entity(24183:1)
+
+   [56]
+    Value: Entity(9442:1)
+
+   [57]
+    Value: Entity(24184:1)
+
+   [58]
+    Value: Entity(24185:1)
+
+   [59]
+    Value: Entity(9443:1)
+
+   [60]
+    Value: Entity(24186:1)
+
+   [61]
+    Value: Entity(24187:1)
+
+   [62]
+    Value: Entity(9444:1)
+
+   [63]
+    Value: Entity(24188:1)
+
+   [64]
+    Value: Entity(24189:1)
+
+   [65]
+    Value: Entity(9445:1)
+
+   [66]
+    Value: Entity(20775:1)
+
+   [67]
+    Value: Entity(9446:1)
+
+   [68]
+    Value: Entity(24190:1)
+
+   [69]
+    Value: Entity(24191:1)
+
+   [70]
+    Value: Entity(9447:1)
+
+   [71]
+    Value: Entity(24192:1)
+
+   [72]
+    Value: Entity(24193:1)
+
+   [73]
+    Value: Entity(9448:1)
+
+   [74]
+    Value: Entity(24194:1)
+
+   [75]
+    Value: Entity(24195:1)
+
+   [76]
+    Value: Entity(9449:1)
+
+   [77]
+    Value: Entity(24196:1)
+
+   [78]
+    Value: Entity(24071:1)
+
+   [79]
+    Value: Entity(9450:1)
+
+   [80]
+    Value: Entity(24072:1)
+
+   [81]
+    Value: Entity(24073:1)
+
+   [82]
+    Value: Entity(9451:1)
+
+   [83]
+    Value: Entity(24074:1)
+
+   [84]
+    Value: Entity(24075:1)
+
+   [85]
+    Value: Entity(9452:1)
+
+   [86]
+    Value: Entity(24076:1)
+
+   [87]
+    Value: Entity(24077:1)
+
+   [88]
+    Value: Entity(9453:1)
+
+   [89]
+    Value: Entity(24078:1)
+
+   [90]
+    Value: Entity(24079:1)
+
+   [91]
+    Value: Entity(9454:1)
+
+   [92]
+    Value: Entity(24080:1)
+
+   [93]
+    Value: Entity(24081:1)
+
+   [94]
+    Value: Entity(9455:1)
+
+   [95]
+    Value: Entity(20776:1)
+
+   96 total elements but only showing the first 36
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

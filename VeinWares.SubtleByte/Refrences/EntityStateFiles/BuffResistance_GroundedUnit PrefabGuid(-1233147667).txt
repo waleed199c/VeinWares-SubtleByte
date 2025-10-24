@@ -1,0 +1,14 @@
+Prefab BuffResistance_GroundedUnit PrefabGuid(-1233147667)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1233147667
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 17716740096
+    ModifyDuration: False
+    DurationModifier: 1
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

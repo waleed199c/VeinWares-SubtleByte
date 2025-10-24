@@ -1,0 +1,20 @@
+Prefab RagdollSource_Melee PrefabGuid(1455784769)
+Components
+  ProjectM.RagdollSourceSetting
+    ManualDirection: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Force: 50
+    ManualDirectionWeight: 1
+    InheritDirectionWeight: 1
+    AwayFromSourceWeight: 1
+    TowardsSourceWeight: 1
+    InheritDirection: True
+    AwayFromSource: False
+    TowardsSource: False
+    UseManualDirection: False
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1455784769
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

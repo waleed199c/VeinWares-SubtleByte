@@ -1,0 +1,8 @@
+Prefab Projectile_Dual_Axes_Curve_Z PrefabGuid(1080306806)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1080306806
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

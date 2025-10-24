@@ -1,0 +1,35 @@
+Prefab CO_Undead_GhostGuardian PrefabGuid(-1574119893)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1574119893
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_GhostGuardian PrefabGuid(-1574119893) - Entity(62549:1)
+
+   [1]
+    Value: Entity(38119:4)
+
+   [2]
+    Value: Entity(11867:5)
+
+   [3]
+    Value: Entity(11868:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38119:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

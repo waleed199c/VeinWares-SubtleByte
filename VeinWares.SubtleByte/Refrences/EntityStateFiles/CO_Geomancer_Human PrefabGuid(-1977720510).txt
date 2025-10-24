@@ -1,0 +1,35 @@
+Prefab CO_Geomancer_Human PrefabGuid(-1977720510)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1977720510
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Geomancer_Human PrefabGuid(-1977720510) - Entity(62717:1)
+
+   [1]
+    Value: Entity(38120:4)
+
+   [2]
+    Value: Entity(2764:5)
+
+   [3]
+    Value: Entity(2765:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38120:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

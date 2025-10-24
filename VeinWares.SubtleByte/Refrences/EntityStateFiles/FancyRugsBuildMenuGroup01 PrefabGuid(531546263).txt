@@ -1,0 +1,9 @@
+Prefab FancyRugsBuildMenuGroup01 PrefabGuid(531546263)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 531546263
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

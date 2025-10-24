@@ -1,0 +1,8 @@
+Prefab FireBombCurve PrefabGuid(1387640155)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1387640155
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

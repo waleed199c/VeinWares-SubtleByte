@@ -1,0 +1,8 @@
+Prefab VM_Human_Generic_Male_05 PrefabGuid(-661601043)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -661601043
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

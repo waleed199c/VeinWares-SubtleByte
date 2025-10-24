@@ -1,0 +1,3778 @@
+Prefab ProgressionCollection PrefabGuid(259325625) - Entity(324542:1)
+Components
+  ProjectM.Attach
+    Parent: User Roy - Entity(332850:1)
+
+  ProjectM.VBloodProgressionUnlockData
+    UnlockSequence: SequenceGUID 1234337071
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Network.Networked
+    CreateFrame: 0
+
+  ProjectM.Network.UpToDateUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000001
+
+  ProjectM.Network.SyncToUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000001
+
+  ProjectM.Network.FrameChanged
+    Value: 2749946
+
+  ProjectM.Network.NetworkSnapshot
+    Type: ProjectM.Network.NetworkSnapshotType Snapshot_agidgbieec
+
+  ProjectM.Network.NetworkId
+    Normal_Index: 7964
+    Normal_Generation: 1
+    MegaStatic_StaticTransformIndex: 7964
+    MegaStatic_TerrainChunkX: 0
+    MegaStatic_TerrainChunkY: 0
+    MegaStatic_PrefabGUID: 1
+    Type: ProjectM.Network.NetworkIdType Normal
+
+  Stunlock.Core.PrefabGUID
+    _Value: 259325625
+
+  ProjectM.Attached
+    Parent: User Roy - Entity(332850:1)
+    AttachParentIndex: 134
+
+  ProjectM.UnlockedSpellPointPassives
+   [0]
+    SpellSchoolTier: ProjectM.SpellSchoolTier ProjectM.SpellSchoolTier
+    Entity: Entity AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498) - Entity(331703:1)
+    Prefab: AscendancyPassive_Blood_T01_BloodMend PrefabGuid(254413498)
+
+  ProjectM.Network.SyncToUserBuffer
+   [0]
+    UserEntity: User Roy - Entity(332850:1)
+
+  ProjectM.UnlockedShapeshiftElement
+   [0]
+    UnlockedShapeshift: AB_Shapeshift_BloodMend_Group PrefabGuid(-1996241419)
+    UserHasRequiredContentFlags: True
+
+   [1]
+    UnlockedShapeshift: AB_Shapeshift_ShareBlood_ExposeVein_Group PrefabGuid(-1648128560)
+    UserHasRequiredContentFlags: True
+
+   [2]
+    UnlockedShapeshift: AB_Shapeshift_DominatingPresence_PsychicForm_Group PrefabGuid(-1908054166)
+    UserHasRequiredContentFlags: True
+
+   [3]
+    UnlockedShapeshift: AB_Shapeshift_CommandingPresence_Group PrefabGuid(589136658)
+    UserHasRequiredContentFlags: True
+
+   [4]
+    UnlockedShapeshift: AB_Shapeshift_Rat_Group PrefabGuid(784029872)
+    UserHasRequiredContentFlags: True
+
+   [5]
+    UnlockedShapeshift: AB_Shapeshift_Toad_Group PrefabGuid(-499389517)
+    UserHasRequiredContentFlags: True
+
+   [6]
+    UnlockedShapeshift: AB_Shapeshift_BloodHunger_BloodSight_Group PrefabGuid(-1863241708)
+    UserHasRequiredContentFlags: True
+
+   [7]
+    UnlockedShapeshift: AB_Shapeshift_Spider_Group PrefabGuid(180580857)
+    UserHasRequiredContentFlags: True
+
+   [8]
+    UnlockedShapeshift: AB_Shapeshift_Wolf_Group PrefabGuid(900707394)
+    UserHasRequiredContentFlags: True
+
+   [9]
+    UnlockedShapeshift: AB_Shapeshift_Bear_Group PrefabGuid(341866865)
+    UserHasRequiredContentFlags: True
+
+   [10]
+    UnlockedShapeshift: AB_Shapeshift_Bat_Group PrefabGuid(-104327922)
+    UserHasRequiredContentFlags: True
+
+   [11]
+    UnlockedShapeshift: AB_Shapeshift_Human_Group PrefabGuid(-980532804)
+    UserHasRequiredContentFlags: True
+
+   [12]
+    UnlockedShapeshift: AB_Shapeshift_Human_PMK_Skin02_Group PrefabGuid(1937597415)
+    UserHasRequiredContentFlags: True
+
+   [13]
+    UnlockedShapeshift: AB_Shapeshift_Human_Grandma_Skin01_Group PrefabGuid(1167119356)
+    UserHasRequiredContentFlags: False
+
+   [14]
+    UnlockedShapeshift: AB_Shapeshift_Bear_Skin01_Group PrefabGuid(-631049507)
+    UserHasRequiredContentFlags: False
+
+   [15]
+    UnlockedShapeshift: AB_Shapeshift_Wolf_Blackfang_Skin03_Group PrefabGuid(430979240)
+    UserHasRequiredContentFlags: False
+
+   [16]
+    UnlockedShapeshift: AB_Shapeshift_Wolf_PMK_Skin02_Group PrefabGuid(-1739260908)
+    UserHasRequiredContentFlags: True
+
+   [17]
+    UnlockedShapeshift: AB_Shapeshift_Wolf_Skin01_Group PrefabGuid(1798913199)
+    UserHasRequiredContentFlags: False
+
+   [18]
+    UnlockedShapeshift: AB_Shapeshift_Toad_PMK_Skin01_Group PrefabGuid(-34533844)
+    UserHasRequiredContentFlags: True
+
+  ProjectM.UnlockedRecipeElement
+   [0]
+    UnlockedRecipe: Recipe_Weapon_Sword_T01_Bone PrefabGuid(-2125590443)
+    UserHasRequiredContentFlags: True
+
+   [1]
+    UnlockedRecipe: Recipe_MagicSource_General_T01_BoneRing PrefabGuid(2112434273)
+    UserHasRequiredContentFlags: True
+
+   [2]
+    UnlockedRecipe: Recipe_Armor_Gloves_T01_Bone PrefabGuid(1301724296)
+    UserHasRequiredContentFlags: True
+
+   [3]
+    UnlockedRecipe: Recipe_Armor_Boots_T01_Bone PrefabGuid(-61202530)
+    UserHasRequiredContentFlags: True
+
+   [4]
+    UnlockedRecipe: Recipe_Armor_Chest_T01_Bone PrefabGuid(1961555084)
+    UserHasRequiredContentFlags: True
+
+   [5]
+    UnlockedRecipe: Recipe_Armor_Legs_T01_Bone PrefabGuid(-1690725169)
+    UserHasRequiredContentFlags: True
+
+   [6]
+    UnlockedRecipe: Recipe_Weapon_Axe_T01_Bone PrefabGuid(-837028877)
+    UserHasRequiredContentFlags: True
+
+   [7]
+    UnlockedRecipe: Recipe_Weapon_Mace_T01_Bone PrefabGuid(-1064109772)
+    UserHasRequiredContentFlags: True
+
+   [8]
+    UnlockedRecipe: Recipe_Consumable_Salve_Vermin PrefabGuid(2119570180)
+    UserHasRequiredContentFlags: True
+
+   [9]
+    UnlockedRecipe: Recipe_Weapon_Spear_T01_Bone PrefabGuid(1394854694)
+    UserHasRequiredContentFlags: True
+
+   [10]
+    UnlockedRecipe: Recipe_Fake_DO_NOT_ADD_BloodTracking PrefabGuid(-726644851)
+    UserHasRequiredContentFlags: True
+
+   [11]
+    UnlockedRecipe: Recipe_Saddle_Basic_T01 PrefabGuid(367529732)
+    UserHasRequiredContentFlags: True
+
+   [12]
+    UnlockedRecipe: Recipe_Fake_DO_NOT_ADD_ShardBearerTracking PrefabGuid(-1431813390)
+    UserHasRequiredContentFlags: True
+
+   [13]
+    UnlockedRecipe: Recipe_Elixir_Blasphemous_T01 PrefabGuid(654360877)
+    UserHasRequiredContentFlags: True
+
+   [14]
+    UnlockedRecipe: Recipe_Weapon_Whip_T05_Iron PrefabGuid(688528978)
+    UserHasRequiredContentFlags: True
+
+   [15]
+    UnlockedRecipe: Recipe_Weapon_Whip_T07_DarkSilver PrefabGuid(1507781061)
+    UserHasRequiredContentFlags: True
+
+   [16]
+    UnlockedRecipe: Recipe_Cloak_Main_T02 PrefabGuid(1004984938)
+    UserHasRequiredContentFlags: True
+
+   [17]
+    UnlockedRecipe: Recipe_Ingredient_Cloth01 PrefabGuid(-535699316)
+    UserHasRequiredContentFlags: True
+
+   [18]
+    UnlockedRecipe: Recipe_Ingredient_CottonYarn PrefabGuid(-1463059104)
+    UserHasRequiredContentFlags: True
+
+   [19]
+    UnlockedRecipe: Recipe_MagicSource_General_T09_Manticore PrefabGuid(-111826090)
+    UserHasRequiredContentFlags: True
+
+   [20]
+    UnlockedRecipe: Recipe_Armor_Gloves_T09_Dracula_Warrior PrefabGuid(1103938523)
+    UserHasRequiredContentFlags: True
+
+   [21]
+    UnlockedRecipe: Recipe_Armor_Gloves_T09_Dracula_Brute PrefabGuid(-1622946659)
+    UserHasRequiredContentFlags: True
+
+   [22]
+    UnlockedRecipe: Recipe_Armor_Gloves_T09_Dracula_Rogue PrefabGuid(-338932204)
+    UserHasRequiredContentFlags: True
+
+   [23]
+    UnlockedRecipe: Recipe_Armor_Gloves_T09_Dracula_Scholar PrefabGuid(-1548502696)
+    UserHasRequiredContentFlags: True
+
+   [24]
+    UnlockedRecipe: Recipe_MagicSource_General_T09_Solarus PrefabGuid(-958598508)
+    UserHasRequiredContentFlags: True
+
+   [25]
+    UnlockedRecipe: Recipe_Armor_Boots_T09_Dracula_Warrior PrefabGuid(-1023773403)
+    UserHasRequiredContentFlags: True
+
+   [26]
+    UnlockedRecipe: Recipe_Armor_Boots_T09_Dracula_Brute PrefabGuid(240689181)
+    UserHasRequiredContentFlags: True
+
+   [27]
+    UnlockedRecipe: Recipe_Armor_Boots_T09_Dracula_Rogue PrefabGuid(-850978565)
+    UserHasRequiredContentFlags: True
+
+   [28]
+    UnlockedRecipe: Recipe_Armor_Boots_T09_Dracula_Scholar PrefabGuid(-2040897849)
+    UserHasRequiredContentFlags: True
+
+   [29]
+    UnlockedRecipe: Recipe_Armor_Chest_T07_Silk PrefabGuid(590293987)
+    UserHasRequiredContentFlags: True
+
+   [30]
+    UnlockedRecipe: Recipe_Armor_Legs_T07_Silk PrefabGuid(-1310297862)
+    UserHasRequiredContentFlags: True
+
+   [31]
+    UnlockedRecipe: Recipe_Armor_Gloves_T07_Silk PrefabGuid(-1221068660)
+    UserHasRequiredContentFlags: True
+
+   [32]
+    UnlockedRecipe: Recipe_Armor_Boots_T07_Silk PrefabGuid(-18516146)
+    UserHasRequiredContentFlags: True
+
+   [33]
+    UnlockedRecipe: Recipe_UnitSpawn_Mutant PrefabGuid(-591009330)
+    UserHasRequiredContentFlags: True
+
+   [34]
+    UnlockedRecipe: Recipe_Consumable_Explosives_Major_T02 PrefabGuid(-1848951671)
+    UserHasRequiredContentFlags: True
+
+   [35]
+    UnlockedRecipe: Recipe_Consumable_IrradiantGruel PrefabGuid(-1031042460)
+    UserHasRequiredContentFlags: True
+
+   [36]
+    UnlockedRecipe: Recipe_Misc_FeedPrisoner_IrradiantGruel PrefabGuid(-279936313)
+    UserHasRequiredContentFlags: True
+
+   [37]
+    UnlockedRecipe: Recipe_Ingredient_Canister PrefabGuid(-1219663401)
+    UserHasRequiredContentFlags: True
+
+   [38]
+    UnlockedRecipe: Recipe_Ingredient_RadiumAlloy PrefabGuid(1802509122)
+    UserHasRequiredContentFlags: True
+
+   [39]
+    UnlockedRecipe: Recipe_MagicSource_General_T09_Monster PrefabGuid(1791150988)
+    UserHasRequiredContentFlags: True
+
+   [40]
+    UnlockedRecipe: Recipe_Armor_Chest_T09_Dracula_Warrior PrefabGuid(-510627751)
+    UserHasRequiredContentFlags: True
+
+   [41]
+    UnlockedRecipe: Recipe_Armor_Chest_T09_Dracula_Brute PrefabGuid(1130263669)
+    UserHasRequiredContentFlags: True
+
+   [42]
+    UnlockedRecipe: Recipe_Armor_Chest_T09_Dracula_Rogue PrefabGuid(-640317541)
+    UserHasRequiredContentFlags: True
+
+   [43]
+    UnlockedRecipe: Recipe_Armor_Chest_T09_Dracula_Scholar PrefabGuid(-1905495055)
+    UserHasRequiredContentFlags: True
+
+   [44]
+    UnlockedRecipe: Recipe_Ingredient_GhostYarn PrefabGuid(-312139320)
+    UserHasRequiredContentFlags: True
+
+   [45]
+    UnlockedRecipe: Recipe_UnitSpawn_Mosquito PrefabGuid(-614781206)
+    UserHasRequiredContentFlags: True
+
+   [46]
+    UnlockedRecipe: Recipe_Weapon_Whip_T08_Sanguine PrefabGuid(-1968497565)
+    UserHasRequiredContentFlags: True
+
+   [47]
+    UnlockedRecipe: Recipe_MagicSource_General_T09_Dracula PrefabGuid(-414358988)
+    UserHasRequiredContentFlags: True
+
+   [48]
+    UnlockedRecipe: Recipe_MagicSource_General_T09_Morgana PrefabGuid(1129993300)
+    UserHasRequiredContentFlags: True
+
+   [49]
+    UnlockedRecipe: Recipe_Armor_Legs_T09_Dracula_Warrior PrefabGuid(-1621263742)
+    UserHasRequiredContentFlags: True
+
+   [50]
+    UnlockedRecipe: Recipe_Armor_Legs_T09_Dracula_Brute PrefabGuid(39790654)
+    UserHasRequiredContentFlags: True
+
+   [51]
+    UnlockedRecipe: Recipe_Armor_Legs_T09_Dracula_Rogue PrefabGuid(1779568881)
+    UserHasRequiredContentFlags: True
+
+   [52]
+    UnlockedRecipe: Recipe_Armor_Legs_T09_Dracula_Scholar PrefabGuid(-195466783)
+    UserHasRequiredContentFlags: True
+
+   [53]
+    UnlockedRecipe: Recipe_Ingredient_ThickLeather PrefabGuid(1265153742)
+    UserHasRequiredContentFlags: True
+
+   [54]
+    UnlockedRecipe: Recipe_Bag_New_T04 PrefabGuid(898844948)
+    UserHasRequiredContentFlags: True
+
+   [55]
+    UnlockedRecipe: Recipe_Elixir_Beast_T01 PrefabGuid(-663811339)
+    UserHasRequiredContentFlags: True
+
+   [56]
+    UnlockedRecipe: Recipe_Weapon_Claws_T05_Iron PrefabGuid(-1520452495)
+    UserHasRequiredContentFlags: True
+
+   [57]
+    UnlockedRecipe: Recipe_Weapon_Claws_T07_DarkSilver PrefabGuid(1020521578)
+    UserHasRequiredContentFlags: True
+
+   [58]
+    UnlockedRecipe: Recipe_Ingredient_ShadowWeave PrefabGuid(-279454572)
+    UserHasRequiredContentFlags: True
+
+   [59]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_BloodFountain PrefabGuid(-1647468496)
+    UserHasRequiredContentFlags: True
+
+   [60]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_BloodRage PrefabGuid(1616468375)
+    UserHasRequiredContentFlags: True
+
+   [61]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_BloodRite PrefabGuid(1349479077)
+    UserHasRequiredContentFlags: True
+
+   [62]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_SanguineCoil PrefabGuid(-1824834918)
+    UserHasRequiredContentFlags: True
+
+   [63]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_Shadowbolt PrefabGuid(-1124531408)
+    UserHasRequiredContentFlags: True
+
+   [64]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_CarrionSwarm PrefabGuid(1394410783)
+    UserHasRequiredContentFlags: True
+
+   [65]
+    UnlockedRecipe: Recipe_Jewel_Blood_T04_VeilOfBlood PrefabGuid(-389291045)
+    UserHasRequiredContentFlags: True
+
+   [66]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_Aftershock PrefabGuid(-1432868001)
+    UserHasRequiredContentFlags: True
+
+   [67]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_ChaosBarrier PrefabGuid(249492436)
+    UserHasRequiredContentFlags: True
+
+   [68]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_ChaosVolley PrefabGuid(-1862071851)
+    UserHasRequiredContentFlags: True
+
+   [69]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_PowerSurge PrefabGuid(-1231616717)
+    UserHasRequiredContentFlags: True
+
+   [70]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_RainOfChaos PrefabGuid(-255313331)
+    UserHasRequiredContentFlags: True
+
+   [71]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_VeilOfChaos PrefabGuid(-273088264)
+    UserHasRequiredContentFlags: True
+
+   [72]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T04_Void PrefabGuid(1628679944)
+    UserHasRequiredContentFlags: True
+
+   [73]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_CrystalLance PrefabGuid(-366508312)
+    UserHasRequiredContentFlags: True
+
+   [74]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_FrostBarrier PrefabGuid(-1916181867)
+    UserHasRequiredContentFlags: True
+
+   [75]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_FrostBat PrefabGuid(1669439853)
+    UserHasRequiredContentFlags: True
+
+   [76]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_ColdSnap PrefabGuid(1548333309)
+    UserHasRequiredContentFlags: True
+
+   [77]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_IceNova PrefabGuid(2058110132)
+    UserHasRequiredContentFlags: True
+
+   [78]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_FrostCone PrefabGuid(-586089909)
+    UserHasRequiredContentFlags: True
+
+   [79]
+    UnlockedRecipe: Recipe_Jewel_Frost_T04_VeilOfFrost PrefabGuid(-1413146031)
+    UserHasRequiredContentFlags: True
+
+   [80]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_MistTrance PrefabGuid(113014730)
+    UserHasRequiredContentFlags: True
+
+   [81]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_Mosquito PrefabGuid(817310228)
+    UserHasRequiredContentFlags: True
+
+   [82]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_PhantomAegis PrefabGuid(-32531606)
+    UserHasRequiredContentFlags: True
+
+   [83]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_SpectralWolf PrefabGuid(253232005)
+    UserHasRequiredContentFlags: True
+
+   [84]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_VeilOfIllusion PrefabGuid(941258392)
+    UserHasRequiredContentFlags: True
+
+   [85]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_WraithSpear PrefabGuid(1099730006)
+    UserHasRequiredContentFlags: True
+
+   [86]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T04_Curse PrefabGuid(-1255084741)
+    UserHasRequiredContentFlags: True
+
+   [87]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_BallLightning PrefabGuid(891968939)
+    UserHasRequiredContentFlags: True
+
+   [88]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_Cyclone PrefabGuid(-794779743)
+    UserHasRequiredContentFlags: True
+
+   [89]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_Discharge PrefabGuid(1385565480)
+    UserHasRequiredContentFlags: True
+
+   [90]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_LightningWall PrefabGuid(199150725)
+    UserHasRequiredContentFlags: True
+
+   [91]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_PolarityShift PrefabGuid(-636221299)
+    UserHasRequiredContentFlags: True
+
+   [92]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_LightningTendrils PrefabGuid(-38691585)
+    UserHasRequiredContentFlags: True
+
+   [93]
+    UnlockedRecipe: Recipe_Jewel_Storm_T04_VeilOfStorm PrefabGuid(185593335)
+    UserHasRequiredContentFlags: True
+
+   [94]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_CorpseExplosion PrefabGuid(-263798740)
+    UserHasRequiredContentFlags: True
+
+   [95]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_CorruptedSkull PrefabGuid(-299276760)
+    UserHasRequiredContentFlags: True
+
+   [96]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_DeathKnight PrefabGuid(-624069541)
+    UserHasRequiredContentFlags: True
+
+   [97]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_Soulburn PrefabGuid(-530631333)
+    UserHasRequiredContentFlags: True
+
+   [98]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_VeilOfBones PrefabGuid(-1669971047)
+    UserHasRequiredContentFlags: True
+
+   [99]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_WardOfTheDamned PrefabGuid(-1026108429)
+    UserHasRequiredContentFlags: True
+
+   [100]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T04_ChainsOfDeath PrefabGuid(495345726)
+    UserHasRequiredContentFlags: True
+
+   [101]
+    UnlockedRecipe: Recipe_Ingredient_Coin_Copper PrefabGuid(1611921852)
+    UserHasRequiredContentFlags: True
+
+   [102]
+    UnlockedRecipe: Recipe_Ingredient_Coin_Silver PrefabGuid(1987529758)
+    UserHasRequiredContentFlags: True
+
+   [103]
+    UnlockedRecipe: Recipe_Ingredient_Coin_Royal PrefabGuid(1679369423)
+    UserHasRequiredContentFlags: True
+
+   [104]
+    UnlockedRecipe: Recipe_Consumable_SilverResistancePotion_T02 PrefabGuid(-878651797)
+    UserHasRequiredContentFlags: True
+
+   [105]
+    UnlockedRecipe: Recipe_Bag_New_T05 PrefabGuid(-828703620)
+    UserHasRequiredContentFlags: True
+
+   [106]
+    UnlockedRecipe: Recipe_Elixir_Werewolf_T01 PrefabGuid(198966224)
+    UserHasRequiredContentFlags: True
+
+   [107]
+    UnlockedRecipe: Recipe_Consumable_BarrelDisguise01 PrefabGuid(-108869773)
+    UserHasRequiredContentFlags: True
+
+   [108]
+    UnlockedRecipe: Recipe_Consumable_PrisonPotion_Bloodwine PrefabGuid(1930190516)
+    UserHasRequiredContentFlags: True
+
+   [109]
+    UnlockedRecipe: Recipe_MagicSource_General_T07_BloodwineAmulet PrefabGuid(307631810)
+    UserHasRequiredContentFlags: True
+
+   [110]
+    UnlockedRecipe: Recipe_Consumable_Siege_StoneGolem_T02 PrefabGuid(-2012301598)
+    UserHasRequiredContentFlags: True
+
+   [111]
+    UnlockedRecipe: Recipe_Gem_Ruby_T02 PrefabGuid(1058500365)
+    UserHasRequiredContentFlags: True
+
+   [112]
+    UnlockedRecipe: Recipe_Gem_Sapphire_T02 PrefabGuid(1944880503)
+    UserHasRequiredContentFlags: True
+
+   [113]
+    UnlockedRecipe: Recipe_Gem_Emerald_T02 PrefabGuid(301294529)
+    UserHasRequiredContentFlags: True
+
+   [114]
+    UnlockedRecipe: Recipe_Gem_Topaz_T02 PrefabGuid(-1954352551)
+    UserHasRequiredContentFlags: True
+
+   [115]
+    UnlockedRecipe: Recipe_Gem_MistStone_T02 PrefabGuid(1692364442)
+    UserHasRequiredContentFlags: True
+
+   [116]
+    UnlockedRecipe: Recipe_Gem_Amethyst_T02 PrefabGuid(-439001894)
+    UserHasRequiredContentFlags: True
+
+   [117]
+    UnlockedRecipe: Recipe_Ingredient_Fake_Gems_T02 PrefabGuid(1333711523)
+    UserHasRequiredContentFlags: True
+
+   [118]
+    UnlockedRecipe: Recipe_Ingredient_Obsidian_RadiumAlloy PrefabGuid(-755040396)
+    UserHasRequiredContentFlags: True
+
+   [119]
+    UnlockedRecipe: Recipe_Ingredient_Obsidian_NetherShards PrefabGuid(-1046062818)
+    UserHasRequiredContentFlags: True
+
+   [120]
+    UnlockedRecipe: Recipe_Gem_Ruby_T03 PrefabGuid(640226225)
+    UserHasRequiredContentFlags: True
+
+   [121]
+    UnlockedRecipe: Recipe_Gem_Sapphire_T03 PrefabGuid(1627234060)
+    UserHasRequiredContentFlags: True
+
+   [122]
+    UnlockedRecipe: Recipe_Gem_Emerald_T03 PrefabGuid(349993374)
+    UserHasRequiredContentFlags: True
+
+   [123]
+    UnlockedRecipe: Recipe_Gem_Topaz_T03 PrefabGuid(-755095440)
+    UserHasRequiredContentFlags: True
+
+   [124]
+    UnlockedRecipe: Recipe_Gem_MistStone_T03 PrefabGuid(-1932461468)
+    UserHasRequiredContentFlags: True
+
+   [125]
+    UnlockedRecipe: Recipe_Gem_Amethyst_T03 PrefabGuid(1447381920)
+    UserHasRequiredContentFlags: True
+
+   [126]
+    UnlockedRecipe: Recipe_Ingredient_Fake_Gems_T03 PrefabGuid(1197952732)
+    UserHasRequiredContentFlags: True
+
+   [127]
+    UnlockedRecipe: Recipe_Ingredient_IronBar PrefabGuid(182584043)
+    UserHasRequiredContentFlags: True
+
+   [128]
+    UnlockedRecipe: Recipe_Armor_Chest_T05_Cotton PrefabGuid(724016990)
+    UserHasRequiredContentFlags: True
+
+   [129]
+    UnlockedRecipe: Recipe_Armor_Legs_T05_Cotton PrefabGuid(321376258)
+    UserHasRequiredContentFlags: True
+
+   [130]
+    UnlockedRecipe: Recipe_Armor_Gloves_T05_Cotton PrefabGuid(1314134803)
+    UserHasRequiredContentFlags: True
+
+   [131]
+    UnlockedRecipe: Recipe_Armor_Boots_T05_Cotton PrefabGuid(1859811298)
+    UserHasRequiredContentFlags: True
+
+   [132]
+    UnlockedRecipe: Recipe_MagicSource_General_T05_Relic PrefabGuid(464548553)
+    UserHasRequiredContentFlags: True
+
+   [133]
+    UnlockedRecipe: Recipe_Ingredient_Scourgestone PrefabGuid(667958797)
+    UserHasRequiredContentFlags: True
+
+   [134]
+    UnlockedRecipe: Recipe_Consumable_DuskCaller PrefabGuid(232213040)
+    UserHasRequiredContentFlags: True
+
+   [135]
+    UnlockedRecipe: Recipe_Elixir_Raven_T01 PrefabGuid(-109469679)
+    UserHasRequiredContentFlags: True
+
+   [136]
+    UnlockedRecipe: Recipe_BloodEssence_Upgrade_T02 PrefabGuid(335190592)
+    UserHasRequiredContentFlags: True
+
+   [137]
+    UnlockedRecipe: Recipe_Weapon_GreatSword_T05_Iron PrefabGuid(1731901666)
+    UserHasRequiredContentFlags: True
+
+   [138]
+    UnlockedRecipe: Recipe_Weapon_GreatSword_T07_DarkSilver PrefabGuid(-2116357114)
+    UserHasRequiredContentFlags: True
+
+   [139]
+    UnlockedRecipe: Recipe_BloodEssence_Upgrade_T03 PrefabGuid(-2050480946)
+    UserHasRequiredContentFlags: True
+
+   [140]
+    UnlockedRecipe: Recipe_Elixir_Crow_T01 PrefabGuid(155374920)
+    UserHasRequiredContentFlags: True
+
+   [141]
+    UnlockedRecipe: Recipe_Weapon_Pistols_T05_Iron PrefabGuid(1314793960)
+    UserHasRequiredContentFlags: True
+
+   [142]
+    UnlockedRecipe: Recipe_Weapon_Pistols_T07_DarkSilver PrefabGuid(-296690999)
+    UserHasRequiredContentFlags: True
+
+   [143]
+    UnlockedRecipe: Recipe_MagicSource_General_T03_GravediggerRing PrefabGuid(-84929462)
+    UserHasRequiredContentFlags: True
+
+   [144]
+    UnlockedRecipe: Recipe_Ingredient_Gravedust PrefabGuid(-621968576)
+    UserHasRequiredContentFlags: True
+
+   [145]
+    UnlockedRecipe: Recipe_UnitSpawn_Skeleton PrefabGuid(365601143)
+    UserHasRequiredContentFlags: True
+
+   [146]
+    UnlockedRecipe: Recipe_UnitSpawn_Ghoul PrefabGuid(1470479508)
+    UserHasRequiredContentFlags: True
+
+   [147]
+    UnlockedRecipe: Recipe_Ingredient_Leather PrefabGuid(1299251205)
+    UserHasRequiredContentFlags: True
+
+   [148]
+    UnlockedRecipe: Recipe_Cloak_Main_T01 PrefabGuid(-1602222491)
+    UserHasRequiredContentFlags: True
+
+   [149]
+    UnlockedRecipe: Recipe_Consumable_Waterskin_Leather_Crafting PrefabGuid(-1609862569)
+    UserHasRequiredContentFlags: True
+
+   [150]
+    UnlockedRecipe: Recipe_Consumable_Waterskin_Leather_Refinement PrefabGuid(37553703)
+    UserHasRequiredContentFlags: True
+
+   [151]
+    UnlockedRecipe: Recipe_Consumable_Waterskin_ThickLeather_Crafting PrefabGuid(-457097974)
+    UserHasRequiredContentFlags: True
+
+   [152]
+    UnlockedRecipe: Recipe_Consumable_Waterskin_ThickLeather_Refinement PrefabGuid(882503740)
+    UserHasRequiredContentFlags: True
+
+   [153]
+    UnlockedRecipe: Recipe_Ingredient_GoldBar PrefabGuid(-882942445)
+    UserHasRequiredContentFlags: True
+
+   [154]
+    UnlockedRecipe: Recipe_Ingredient_Scroll PrefabGuid(-1639279845)
+    UserHasRequiredContentFlags: True
+
+   [155]
+    UnlockedRecipe: Recipe_Armor_Chest_T0X_Cosmetic_Dress01 PrefabGuid(-790370630)
+    UserHasRequiredContentFlags: True
+
+   [156]
+    UnlockedRecipe: Recipe_Armor_Chest_T0X_Cosmetic_Suit01 PrefabGuid(115376160)
+    UserHasRequiredContentFlags: True
+
+   [157]
+    UnlockedRecipe: Recipe_Armor_Legs_T0X_Cosmetic_Suit01 PrefabGuid(-1197884715)
+    UserHasRequiredContentFlags: True
+
+   [158]
+    UnlockedRecipe: Recipe_Bag_New_T02 PrefabGuid(-316487143)
+    UserHasRequiredContentFlags: True
+
+   [159]
+    UnlockedRecipe: Recipe_Weapon_Longbow_T03_Copper PrefabGuid(-514405267)
+    UserHasRequiredContentFlags: True
+
+   [160]
+    UnlockedRecipe: Recipe_Weapon_Longbow_T05_Iron PrefabGuid(-80393444)
+    UserHasRequiredContentFlags: True
+
+   [161]
+    UnlockedRecipe: Recipe_Weapon_Longbow_T07_DarkSilver PrefabGuid(-1063439615)
+    UserHasRequiredContentFlags: True
+
+   [162]
+    UnlockedRecipe: Recipe_Ingredient_ReinforcedPlank PrefabGuid(-1038174753)
+    UserHasRequiredContentFlags: True
+
+   [163]
+    UnlockedRecipe: Recipe_Consumable_Explosives_Minor_T01 PrefabGuid(-854411210)
+    UserHasRequiredContentFlags: True
+
+   [164]
+    UnlockedRecipe: Recipe_Ingredient_Schematic PrefabGuid(1665157021)
+    UserHasRequiredContentFlags: True
+
+   [165]
+    UnlockedRecipe: Recipe_Weapon_TwinBlades_T05_Iron PrefabGuid(-496801516)
+    UserHasRequiredContentFlags: True
+
+   [166]
+    UnlockedRecipe: Recipe_Weapon_TwinBlades_T07_DarkSilver PrefabGuid(895579931)
+    UserHasRequiredContentFlags: True
+
+   [167]
+    UnlockedRecipe: Recipe_Ingredient_Silk PrefabGuid(-1803829778)
+    UserHasRequiredContentFlags: True
+
+   [168]
+    UnlockedRecipe: Recipe_UnitSpawn_Spiderling PrefabGuid(1172635875)
+    UserHasRequiredContentFlags: True
+
+   [169]
+    UnlockedRecipe: Recipe_Ingredient_BatLeather PrefabGuid(878778315)
+    UserHasRequiredContentFlags: True
+
+   [170]
+    UnlockedRecipe: Recipe_Bag_New_T06 PrefabGuid(219921994)
+    UserHasRequiredContentFlags: True
+
+   [171]
+    UnlockedRecipe: Recipe_WeaponCoating_Blood PrefabGuid(-1487423952)
+    UserHasRequiredContentFlags: True
+
+   [172]
+    UnlockedRecipe: Recipe_WeaponCoating_Chaos PrefabGuid(-338717708)
+    UserHasRequiredContentFlags: True
+
+   [173]
+    UnlockedRecipe: Recipe_WeaponCoating_Unholy PrefabGuid(216972181)
+    UserHasRequiredContentFlags: True
+
+   [174]
+    UnlockedRecipe: Recipe_WeaponCoating_Illusion PrefabGuid(405829513)
+    UserHasRequiredContentFlags: True
+
+   [175]
+    UnlockedRecipe: Recipe_WeaponCoating_Frost PrefabGuid(-789668816)
+    UserHasRequiredContentFlags: True
+
+   [176]
+    UnlockedRecipe: Recipe_WeaponCoating_Storm PrefabGuid(-2034775483)
+    UserHasRequiredContentFlags: True
+
+   [177]
+    UnlockedRecipe: Recipe_DuelFlag PrefabGuid(-728009045)
+    UserHasRequiredContentFlags: True
+
+   [178]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T01_Bone PrefabGuid(-1384817143)
+    UserHasRequiredContentFlags: True
+
+   [179]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T02_Bone_Reinforced PrefabGuid(-1421664082)
+    UserHasRequiredContentFlags: True
+
+   [180]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T03_Copper PrefabGuid(841082368)
+    UserHasRequiredContentFlags: True
+
+   [181]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T05_Iron PrefabGuid(1268051742)
+    UserHasRequiredContentFlags: True
+
+   [182]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T07_DarkSilver PrefabGuid(-971743976)
+    UserHasRequiredContentFlags: True
+
+   [183]
+    UnlockedRecipe: Recipe_Weapon_FishingPole_T01 PrefabGuid(319663209)
+    UserHasRequiredContentFlags: True
+
+   [184]
+    UnlockedRecipe: Recipe_Ingredient_Emberglass PrefabGuid(1907177885)
+    UserHasRequiredContentFlags: True
+
+   [185]
+    UnlockedRecipe: Recipe_Ingredient_OnyxTear PrefabGuid(-1624699880)
+    UserHasRequiredContentFlags: True
+
+   [186]
+    UnlockedRecipe: Recipe_MagicSource_BloodKey_T01 PrefabGuid(152004500)
+    UserHasRequiredContentFlags: True
+
+   [187]
+    UnlockedRecipe: Recipe_Ingredient_PowerCore PrefabGuid(1399845400)
+    UserHasRequiredContentFlags: True
+
+   [188]
+    UnlockedRecipe: Recipe_Consumable_EMP_T01 PrefabGuid(164757222)
+    UserHasRequiredContentFlags: True
+
+   [189]
+    UnlockedRecipe: Recipe_Consumable_HolyResistancePotion_T01 PrefabGuid(2121527776)
+    UserHasRequiredContentFlags: True
+
+   [190]
+    UnlockedRecipe: Recipe_Elixir_Prowler_T01 PrefabGuid(79253993)
+    UserHasRequiredContentFlags: True
+
+   [191]
+    UnlockedRecipe: Recipe_Elixir_Twisted_T01 PrefabGuid(-2138549072)
+    UserHasRequiredContentFlags: True
+
+   [192]
+    UnlockedRecipe: Recipe_Weapon_Slashers_T05_Iron PrefabGuid(-808348493)
+    UserHasRequiredContentFlags: True
+
+   [193]
+    UnlockedRecipe: Recipe_Weapon_Slashers_T07_DarkSilver PrefabGuid(-1919160227)
+    UserHasRequiredContentFlags: True
+
+   [194]
+    UnlockedRecipe: Recipe_Weapon_Reaper_T05_Iron PrefabGuid(1109951557)
+    UserHasRequiredContentFlags: True
+
+   [195]
+    UnlockedRecipe: Recipe_Weapon_Reaper_T07_DarkSilver PrefabGuid(-1112081437)
+    UserHasRequiredContentFlags: True
+
+   [196]
+    UnlockedRecipe: Recipe_UnitSpawn_SkeletonPriest PrefabGuid(-2114825141)
+    UserHasRequiredContentFlags: True
+
+   [197]
+    UnlockedRecipe: Recipe_Consumable_GarlicResistancePotion_T01 PrefabGuid(1602635578)
+    UserHasRequiredContentFlags: True
+
+   [198]
+    UnlockedRecipe: Recipe_Elixir_Bat_T01 PrefabGuid(-1617853548)
+    UserHasRequiredContentFlags: True
+
+   [199]
+    UnlockedRecipe: Recipe_Cloak_Main_T03 PrefabGuid(544114772)
+    UserHasRequiredContentFlags: True
+
+   [200]
+    UnlockedRecipe: Recipe_Ingredient_IronBar PrefabGuid(182584043)
+    UserHasRequiredContentFlags: True
+
+   [201]
+    UnlockedRecipe: Recipe_Armor_Chest_T05_Cotton PrefabGuid(724016990)
+    UserHasRequiredContentFlags: True
+
+   [202]
+    UnlockedRecipe: Recipe_Armor_Legs_T05_Cotton PrefabGuid(321376258)
+    UserHasRequiredContentFlags: True
+
+   [203]
+    UnlockedRecipe: Recipe_Armor_Gloves_T05_Cotton PrefabGuid(1314134803)
+    UserHasRequiredContentFlags: True
+
+   [204]
+    UnlockedRecipe: Recipe_Armor_Boots_T05_Cotton PrefabGuid(1859811298)
+    UserHasRequiredContentFlags: True
+
+   [205]
+    UnlockedRecipe: Recipe_Ingredient_DarkSilverBar PrefabGuid(1763037087)
+    UserHasRequiredContentFlags: True
+
+   [206]
+    UnlockedRecipe: Recipe_Consumable_HolyResistancePotion_T02 PrefabGuid(-1672850870)
+    UserHasRequiredContentFlags: True
+
+   [207]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_BloodFountain PrefabGuid(1536138304)
+    UserHasRequiredContentFlags: True
+
+   [208]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_BloodRage PrefabGuid(-117709259)
+    UserHasRequiredContentFlags: True
+
+   [209]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_BloodRite PrefabGuid(1332879261)
+    UserHasRequiredContentFlags: True
+
+   [210]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_SanguineCoil PrefabGuid(-998540356)
+    UserHasRequiredContentFlags: True
+
+   [211]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_Shadowbolt PrefabGuid(-132912845)
+    UserHasRequiredContentFlags: True
+
+   [212]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_CarrionSwarm PrefabGuid(265064568)
+    UserHasRequiredContentFlags: True
+
+   [213]
+    UnlockedRecipe: Recipe_Jewel_Blood_T03_VeilOfBlood PrefabGuid(-1280075933)
+    UserHasRequiredContentFlags: True
+
+   [214]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_Aftershock PrefabGuid(19321091)
+    UserHasRequiredContentFlags: True
+
+   [215]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_ChaosBarrier PrefabGuid(-1390850741)
+    UserHasRequiredContentFlags: True
+
+   [216]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_ChaosVolley PrefabGuid(1013687480)
+    UserHasRequiredContentFlags: True
+
+   [217]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_PowerSurge PrefabGuid(-621123461)
+    UserHasRequiredContentFlags: True
+
+   [218]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_RainOfChaos PrefabGuid(-620902396)
+    UserHasRequiredContentFlags: True
+
+   [219]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_VeilOfChaos PrefabGuid(-871123559)
+    UserHasRequiredContentFlags: True
+
+   [220]
+    UnlockedRecipe: Recipe_Jewel_Chaos_T03_Void PrefabGuid(-1993706550)
+    UserHasRequiredContentFlags: True
+
+   [221]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_CrystalLance PrefabGuid(-1334648733)
+    UserHasRequiredContentFlags: True
+
+   [222]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_FrostBarrier PrefabGuid(513866428)
+    UserHasRequiredContentFlags: True
+
+   [223]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_FrostBat PrefabGuid(1589453917)
+    UserHasRequiredContentFlags: True
+
+   [224]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_ColdSnap PrefabGuid(-1863610651)
+    UserHasRequiredContentFlags: True
+
+   [225]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_IceNova PrefabGuid(995009212)
+    UserHasRequiredContentFlags: True
+
+   [226]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_FrostCone PrefabGuid(-1217040138)
+    UserHasRequiredContentFlags: True
+
+   [227]
+    UnlockedRecipe: Recipe_Jewel_Frost_T03_VeilOfFrost PrefabGuid(-245144906)
+    UserHasRequiredContentFlags: True
+
+   [228]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_MistTrance PrefabGuid(593821386)
+    UserHasRequiredContentFlags: True
+
+   [229]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_Mosquito PrefabGuid(1949752494)
+    UserHasRequiredContentFlags: True
+
+   [230]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_PhantomAegis PrefabGuid(-244123374)
+    UserHasRequiredContentFlags: True
+
+   [231]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_SpectralWolf PrefabGuid(1192126839)
+    UserHasRequiredContentFlags: True
+
+   [232]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_VeilOfIllusion PrefabGuid(832118211)
+    UserHasRequiredContentFlags: True
+
+   [233]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_WraithSpear PrefabGuid(-970138509)
+    UserHasRequiredContentFlags: True
+
+   [234]
+    UnlockedRecipe: Recipe_Jewel_Illusion_T03_Curse PrefabGuid(1646432213)
+    UserHasRequiredContentFlags: True
+
+   [235]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_BallLightning PrefabGuid(595324174)
+    UserHasRequiredContentFlags: True
+
+   [236]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_Cyclone PrefabGuid(-57395936)
+    UserHasRequiredContentFlags: True
+
+   [237]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_Discharge PrefabGuid(20833766)
+    UserHasRequiredContentFlags: True
+
+   [238]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_LightningWall PrefabGuid(-12176904)
+    UserHasRequiredContentFlags: True
+
+   [239]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_PolarityShift PrefabGuid(-697842923)
+    UserHasRequiredContentFlags: True
+
+   [240]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_LightningTendrils PrefabGuid(1717016346)
+    UserHasRequiredContentFlags: True
+
+   [241]
+    UnlockedRecipe: Recipe_Jewel_Storm_T03_VeilOfStorm PrefabGuid(-1164864103)
+    UserHasRequiredContentFlags: True
+
+   [242]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_CorpseExplosion PrefabGuid(-476269715)
+    UserHasRequiredContentFlags: True
+
+   [243]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_CorruptedSkull PrefabGuid(625989230)
+    UserHasRequiredContentFlags: True
+
+   [244]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_DeathKnight PrefabGuid(-145359715)
+    UserHasRequiredContentFlags: True
+
+   [245]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_Soulburn PrefabGuid(-1836185186)
+    UserHasRequiredContentFlags: True
+
+   [246]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_VeilOfBones PrefabGuid(-1660160596)
+    UserHasRequiredContentFlags: True
+
+   [247]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_WardOfTheDamned PrefabGuid(405933740)
+    UserHasRequiredContentFlags: True
+
+   [248]
+    UnlockedRecipe: Recipe_Jewel_Unholy_T03_ChainsOfDeath PrefabGuid(912357966)
+    UserHasRequiredContentFlags: True
+
+   [249]
+    UnlockedRecipe: Recipe_Ingredient_Spectraldust PrefabGuid(-329288568)
+    UserHasRequiredContentFlags: True
+
+   [250]
+    UnlockedRecipe: Recipe_UnitSpawn_Banshee PrefabGuid(1065325546)
+    UserHasRequiredContentFlags: True
+
+   [251]
+    UnlockedRecipe: Recipe_Weapon_Daggers_T05_Iron PrefabGuid(908837210)
+    UserHasRequiredContentFlags: True
+
+   [252]
+    UnlockedRecipe: Recipe_Weapon_Daggers_T07_DarkSilver PrefabGuid(847424089)
+    UserHasRequiredContentFlags: True
+
+   [253]
+    UnlockedRecipe: Recipe_Ingredient_Whetstone PrefabGuid(-1490920585)
+    UserHasRequiredContentFlags: True
+
+   [254]
+    UnlockedRecipe: Recipe_Ingredient_Glass PrefabGuid(-1035277730)
+    UserHasRequiredContentFlags: True
+
+   [255]
+    UnlockedRecipe: Recipe_Consumable_HealingPotion_T02 PrefabGuid(-1715555190)
+    UserHasRequiredContentFlags: True
+
+   [256]
+    UnlockedRecipe: Recipe_Ingredient_WoolThread PrefabGuid(-387502181)
+    UserHasRequiredContentFlags: True
+
+   [257]
+    UnlockedRecipe: Recipe_Bag_New_T03 PrefabGuid(-1025651560)
+    UserHasRequiredContentFlags: True
+
+   [258]
+    UnlockedRecipe: Recipe_Ingredient_PristineLeather PrefabGuid(3903463)
+    UserHasRequiredContentFlags: True
+
+   [259]
+    UnlockedRecipe: Recipe_Cloak_ShroudOfTheForest PrefabGuid(-1118059274)
+    UserHasRequiredContentFlags: True
+
+   [260]
+    UnlockedRecipe: Recipe_Armor_Chest_T04_Copper_Rogue PrefabGuid(-235084625)
+    UserHasRequiredContentFlags: True
+
+   [261]
+    UnlockedRecipe: Recipe_Armor_Legs_T04_Copper_Rogue PrefabGuid(-1585906930)
+    UserHasRequiredContentFlags: True
+
+   [262]
+    UnlockedRecipe: Recipe_Armor_Gloves_T04_Copper_Rogue PrefabGuid(-1109520881)
+    UserHasRequiredContentFlags: True
+
+   [263]
+    UnlockedRecipe: Recipe_Armor_Boots_T04_Copper_Rogue PrefabGuid(30410046)
+    UserHasRequiredContentFlags: True
+
+   [264]
+    UnlockedRecipe: Recipe_Armor_Chest_T04_Copper_Brute PrefabGuid(-42975513)
+    UserHasRequiredContentFlags: True
+
+   [265]
+    UnlockedRecipe: Recipe_Armor_Legs_T04_Copper_Brute PrefabGuid(-1149764556)
+    UserHasRequiredContentFlags: True
+
+   [266]
+    UnlockedRecipe: Recipe_Armor_Gloves_T04_Copper_Brute PrefabGuid(928177888)
+    UserHasRequiredContentFlags: True
+
+   [267]
+    UnlockedRecipe: Recipe_Armor_Boots_T04_Copper_Brute PrefabGuid(-211066785)
+    UserHasRequiredContentFlags: True
+
+   [268]
+    UnlockedRecipe: Recipe_Armor_Chest_T04_Copper_Warrior PrefabGuid(-850288860)
+    UserHasRequiredContentFlags: True
+
+   [269]
+    UnlockedRecipe: Recipe_Armor_Legs_T04_Copper_Warrior PrefabGuid(-1228356397)
+    UserHasRequiredContentFlags: True
+
+   [270]
+    UnlockedRecipe: Recipe_Armor_Gloves_T04_Copper_Warrior PrefabGuid(872441116)
+    UserHasRequiredContentFlags: True
+
+   [271]
+    UnlockedRecipe: Recipe_Armor_Boots_T04_Copper_Warrior PrefabGuid(-1573355501)
+    UserHasRequiredContentFlags: True
+
+   [272]
+    UnlockedRecipe: Recipe_Armor_Chest_T04_Copper_Scholar PrefabGuid(1490955797)
+    UserHasRequiredContentFlags: True
+
+   [273]
+    UnlockedRecipe: Recipe_Armor_Legs_T04_Copper_Scholar PrefabGuid(1891096609)
+    UserHasRequiredContentFlags: True
+
+   [274]
+    UnlockedRecipe: Recipe_Armor_Gloves_T04_Copper_Scholar PrefabGuid(1404998399)
+    UserHasRequiredContentFlags: True
+
+   [275]
+    UnlockedRecipe: Recipe_Armor_Boots_T04_Copper_Scholar PrefabGuid(1241016364)
+    UserHasRequiredContentFlags: True
+
+   [276]
+    UnlockedRecipe: Recipe_Weapon_Sword_T04_Copper_Reinforced PrefabGuid(774557022)
+    UserHasRequiredContentFlags: True
+
+   [277]
+    UnlockedRecipe: Recipe_Weapon_Axe_T04_Copper_Reinforced PrefabGuid(-411123427)
+    UserHasRequiredContentFlags: True
+
+   [278]
+    UnlockedRecipe: Recipe_Weapon_Mace_T04_Copper_Reinforced PrefabGuid(897446828)
+    UserHasRequiredContentFlags: True
+
+   [279]
+    UnlockedRecipe: Recipe_Weapon_Spear_T04_Copper_Reinforced PrefabGuid(-118222260)
+    UserHasRequiredContentFlags: True
+
+   [280]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T04_Copper_Reinforced PrefabGuid(-283375796)
+    UserHasRequiredContentFlags: True
+
+   [281]
+    UnlockedRecipe: Recipe_Weapon_Longbow_T04_Copper_Reinforced PrefabGuid(777859879)
+    UserHasRequiredContentFlags: True
+
+   [282]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_KnightRing PrefabGuid(134822591)
+    UserHasRequiredContentFlags: True
+
+   [283]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_SorcererRing PrefabGuid(-1954484110)
+    UserHasRequiredContentFlags: True
+
+   [284]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_EmberChain PrefabGuid(606793986)
+    UserHasRequiredContentFlags: True
+
+   [285]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_MistSignet PrefabGuid(-1643108625)
+    UserHasRequiredContentFlags: True
+
+   [286]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_FrozenEye PrefabGuid(-1252143324)
+    UserHasRequiredContentFlags: True
+
+   [287]
+    UnlockedRecipe: Recipe_MagicSource_General_T04_Duskwatcher PrefabGuid(-1392969895)
+    UserHasRequiredContentFlags: True
+
+   [288]
+    UnlockedRecipe: Recipe_Consumable_PhysicalPowerPotion_T01 PrefabGuid(2007269714)
+    UserHasRequiredContentFlags: True
+
+   [289]
+    UnlockedRecipe: Recipe_Consumable_SpellPowerPotion_T01 PrefabGuid(1292082146)
+    UserHasRequiredContentFlags: True
+
+   [290]
+    UnlockedRecipe: Recipe_Consumable_HealingPotion_T01 PrefabGuid(223228069)
+    UserHasRequiredContentFlags: True
+
+   [291]
+    UnlockedRecipe: Recipe_Consumable_SunResistancePotion_T01 PrefabGuid(-339125757)
+    UserHasRequiredContentFlags: True
+
+   [292]
+    UnlockedRecipe: Recipe_Consumable_SilverResistancePotion_T01 PrefabGuid(-1391967609)
+    UserHasRequiredContentFlags: True
+
+   [293]
+    UnlockedRecipe: Recipe_Weapon_Sword_T06_Iron_Reinforced PrefabGuid(-1052674868)
+    UserHasRequiredContentFlags: True
+
+   [294]
+    UnlockedRecipe: Recipe_Weapon_Axe_T06_Iron_Reinforced PrefabGuid(690858507)
+    UserHasRequiredContentFlags: True
+
+   [295]
+    UnlockedRecipe: Recipe_Weapon_Mace_T06_Iron_Reinforced PrefabGuid(-1538728965)
+    UserHasRequiredContentFlags: True
+
+   [296]
+    UnlockedRecipe: Recipe_Weapon_Spear_T06_Iron_Reinforced PrefabGuid(-499925914)
+    UserHasRequiredContentFlags: True
+
+   [297]
+    UnlockedRecipe: Recipe_Weapon_Reaper_T06_Iron_Reinforced PrefabGuid(537685806)
+    UserHasRequiredContentFlags: True
+
+   [298]
+    UnlockedRecipe: Recipe_Weapon_Crossbow_T06_Iron_Reinforced PrefabGuid(1341382268)
+    UserHasRequiredContentFlags: True
+
+   [299]
+    UnlockedRecipe: Recipe_Weapon_Longbow_T06_Iron_Reinforced PrefabGuid(-149592989)
+    UserHasRequiredContentFlags: True
+
+   381 total elements but only showing the first 36
+  ProjectM.UnlockedBlueprintElement
+   [0]
+    UnlockedBlueprint: TM_BloodFountain_CastleHeart PrefabGuid(-485210554)
+    UserHasRequiredContentFlags: True
+
+   [1]
+    UnlockedBlueprint: TM_Castle_Floor_Outdoor_Plain01 PrefabGuid(1356453147)
+    UserHasRequiredContentFlags: True
+
+   [2]
+    UnlockedBlueprint: BP_Castle_Wall_Tier01_Wood_Plain PrefabGuid(-1571980899)
+    UserHasRequiredContentFlags: True
+
+   [3]
+    UnlockedBlueprint: BP_Castle_Wall_Tier01_Wood_Entrance PrefabGuid(106693260)
+    UserHasRequiredContentFlags: True
+
+   [4]
+    UnlockedBlueprint: TM_Castle_Wall_Tier01_Wood_Pillar PrefabGuid(1639432090)
+    UserHasRequiredContentFlags: True
+
+   [5]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Palisade_Tier01 PrefabGuid(-1259825508)
+    UserHasRequiredContentFlags: True
+
+   [6]
+    UnlockedBlueprint: TM_SpecialStation_WoodenCoffin PrefabGuid(1523835471)
+    UserHasRequiredContentFlags: True
+
+   [7]
+    UnlockedBlueprint: TM_Stash_Chest_Wood_General PrefabGuid(-251472465)
+    UserHasRequiredContentFlags: True
+
+   [8]
+    UnlockedBlueprint: TM_Stash_Chest_SafetyBox PrefabGuid(1842080060)
+    UserHasRequiredContentFlags: True
+
+   [9]
+    UnlockedBlueprint: TM_Castle_MistBrazier PrefabGuid(1756900697)
+    UserHasRequiredContentFlags: True
+
+   [10]
+    UnlockedBlueprint: TM_CraftingStation_SimpleCraftingBench PrefabGuid(-1107784271)
+    UserHasRequiredContentFlags: True
+
+   [11]
+    UnlockedBlueprint: TM_RefinementStation_Sawmill_Small PrefabGuid(1094077710)
+    UserHasRequiredContentFlags: True
+
+   [12]
+    UnlockedBlueprint: TM_RefinementStation_Furnace_Small PrefabGuid(-1150411622)
+    UserHasRequiredContentFlags: True
+
+   [13]
+    UnlockedBlueprint: TM_RefinementStation_BloodPress_Small PrefabGuid(-300823465)
+    UserHasRequiredContentFlags: True
+
+   [14]
+    UnlockedBlueprint: TM_UnitStation_VerminNest PrefabGuid(150776081)
+    UserHasRequiredContentFlags: True
+
+   [15]
+    UnlockedBlueprint: TM_RefinementStation_StonecuttingTable_Small PrefabGuid(-600683642)
+    UserHasRequiredContentFlags: True
+
+   [16]
+    UnlockedBlueprint: TM_Castle_SeedPlanter_1x_NoUnitBlock_OutdoorDirt PrefabGuid(-1620680520)
+    UserHasRequiredContentFlags: True
+
+   [17]
+    UnlockedBlueprint: TM_Castle_SeedPlanter_3x_NoUnitBlock_OutdoorDirt PrefabGuid(-1777622178)
+    UserHasRequiredContentFlags: True
+
+   [18]
+    UnlockedBlueprint: TM_Castle_SeedPlanter_5x_NoUnitBlock_OutdoorDirt PrefabGuid(-634052640)
+    UserHasRequiredContentFlags: True
+
+   [19]
+    UnlockedBlueprint: TM_BloodAltar_T01 PrefabGuid(1819321433)
+    UserHasRequiredContentFlags: True
+
+   [20]
+    UnlockedBlueprint: TM_Castle_PillarDecor_Gothic_Torch01_Orange PrefabGuid(-1998196357)
+    UserHasRequiredContentFlags: True
+
+   [21]
+    UnlockedBlueprint: TM_Customization_Mirror_Gothic_01 PrefabGuid(-1400505344)
+    UserHasRequiredContentFlags: True
+
+   [22]
+    UnlockedBlueprint: TM_Customization_Mirror_Cabal_01 PrefabGuid(1711288798)
+    UserHasRequiredContentFlags: True
+
+   [23]
+    UnlockedBlueprint: TM_Customization_Mirror_Halloween_01 PrefabGuid(-1633556205)
+    UserHasRequiredContentFlags: True
+
+   [24]
+    UnlockedBlueprint: TM_ResearchStation_T01 PrefabGuid(-495424062)
+    UserHasRequiredContentFlags: True
+
+   [25]
+    UnlockedBlueprint: TM_BloodFountain_CastleHeart_Rebuilding PrefabGuid(-600018251)
+    UserHasRequiredContentFlags: True
+
+   [26]
+    UnlockedBlueprint: TM_Castle_Floor_Foundation_Stone01 PrefabGuid(-2108338233)
+    UserHasRequiredContentFlags: True
+
+   [27]
+    UnlockedBlueprint: TM_Castle_Floor_Foundation_Stone02 PrefabGuid(296786024)
+    UserHasRequiredContentFlags: True
+
+   [28]
+    UnlockedBlueprint: TM_Castle_Floor_Foundation_Stone04 PrefabGuid(2092503115)
+    UserHasRequiredContentFlags: True
+
+   [29]
+    UnlockedBlueprint: BP_Castle_Wall_Tier02_Stone_Plain PrefabGuid(1388232656)
+    UserHasRequiredContentFlags: True
+
+   [30]
+    UnlockedBlueprint: BP_Castle_Wall_Tier02_Stone_Window PrefabGuid(244714081)
+    UserHasRequiredContentFlags: True
+
+   [31]
+    UnlockedBlueprint: BP_Castle_Wall_Tier02_Stone_Entrance PrefabGuid(-281098336)
+    UserHasRequiredContentFlags: True
+
+   [32]
+    UnlockedBlueprint: TM_Castle_Wall_Tier02_Stone_Pillar PrefabGuid(1506730526)
+    UserHasRequiredContentFlags: True
+
+   [33]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_Standard PrefabGuid(-1462717684)
+    UserHasRequiredContentFlags: True
+
+   [34]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_ServantLock PrefabGuid(1325579315)
+    UserHasRequiredContentFlags: True
+
+   [35]
+    UnlockedBlueprint: TM_Castle_Window_Hatches_Gothic01 PrefabGuid(-1771014048)
+    UserHasRequiredContentFlags: True
+
+   [36]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window_Bars01 PrefabGuid(1169104268)
+    UserHasRequiredContentFlags: True
+
+   [37]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Brazier04_Orange_DLC PrefabGuid(1965581787)
+    UserHasRequiredContentFlags: False
+
+   [38]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Default PrefabGuid(2077581638)
+    UserHasRequiredContentFlags: True
+
+   [39]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Default_Pillar PrefabGuid(-1939815127)
+    UserHasRequiredContentFlags: True
+
+   [40]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_Stone01 PrefabGuid(-541385494)
+    UserHasRequiredContentFlags: True
+
+   [41]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CW_Stone01 PrefabGuid(-628212401)
+    UserHasRequiredContentFlags: True
+
+   [42]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CCW_Stone01 PrefabGuid(-1323146211)
+    UserHasRequiredContentFlags: True
+
+   [43]
+    UnlockedBlueprint: BP_Castle_Stairs_Double_Stone01 PrefabGuid(77571580)
+    UserHasRequiredContentFlags: True
+
+   [44]
+    UnlockedBlueprint: TM_Castle_Floor_InvisibleRoofBlocker PrefabGuid(350417170)
+    UserHasRequiredContentFlags: True
+
+   [45]
+    UnlockedBlueprint: TM_Castle_Floor_Foundation_Stone03 PrefabGuid(679413487)
+    UserHasRequiredContentFlags: True
+
+   [46]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCRoyal01_Wall01 PrefabGuid(-1148467159)
+    UserHasRequiredContentFlags: False
+
+   [47]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCRoyal01_Pillar PrefabGuid(223872087)
+    UserHasRequiredContentFlags: False
+
+   [48]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCRoyal02_Wall01 PrefabGuid(-1375591798)
+    UserHasRequiredContentFlags: False
+
+   [49]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCRoyal02_Pillar PrefabGuid(2027991438)
+    UserHasRequiredContentFlags: False
+
+   [50]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle01 PrefabGuid(1398111223)
+    UserHasRequiredContentFlags: False
+
+   [51]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle02 PrefabGuid(1952451618)
+    UserHasRequiredContentFlags: False
+
+   [52]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle03 PrefabGuid(-1591965530)
+    UserHasRequiredContentFlags: False
+
+   [53]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle04 PrefabGuid(171778355)
+    UserHasRequiredContentFlags: False
+
+   [54]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle05 PrefabGuid(318475524)
+    UserHasRequiredContentFlags: False
+
+   [55]
+    UnlockedBlueprint: TM_Castle_PillarDecor_HangingGargoyle06 PrefabGuid(-432509803)
+    UserHasRequiredContentFlags: False
+
+   [56]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_RoyalDLC01 PrefabGuid(-1167127551)
+    UserHasRequiredContentFlags: False
+
+   [57]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_RoyalDLC02 PrefabGuid(-194316523)
+    UserHasRequiredContentFlags: False
+
+   [58]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetDLC01_T-Section PrefabGuid(-1664644149)
+    UserHasRequiredContentFlags: False
+
+   [59]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetDLC01_Straight PrefabGuid(534774102)
+    UserHasRequiredContentFlags: False
+
+   [60]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetDLC01_End PrefabGuid(1855507356)
+    UserHasRequiredContentFlags: False
+
+   [61]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetDLC01_Cross-Section PrefabGuid(-181524704)
+    UserHasRequiredContentFlags: False
+
+   [62]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetDLC01_Corner PrefabGuid(1103606275)
+    UserHasRequiredContentFlags: False
+
+   [63]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Brazier04_Orange_DLC PrefabGuid(1965581787)
+    UserHasRequiredContentFlags: False
+
+   [64]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_DLC01Variant_Standard PrefabGuid(1690783957)
+    UserHasRequiredContentFlags: False
+
+   [65]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_DLC01Variant_ServantLock PrefabGuid(2063389605)
+    UserHasRequiredContentFlags: False
+
+   [66]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Halloween01_01 PrefabGuid(-971200685)
+    UserHasRequiredContentFlags: True
+
+   [67]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Halloween01_02 PrefabGuid(1031586093)
+    UserHasRequiredContentFlags: True
+
+   [68]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetHalloween01_Corner PrefabGuid(908557664)
+    UserHasRequiredContentFlags: True
+
+   [69]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetHalloween01_Cross-Section PrefabGuid(-1588047588)
+    UserHasRequiredContentFlags: True
+
+   [70]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetHalloween01_End PrefabGuid(2097305970)
+    UserHasRequiredContentFlags: True
+
+   [71]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetHalloween01_Straight PrefabGuid(832684882)
+    UserHasRequiredContentFlags: True
+
+   [72]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetHalloween01_T-Section PrefabGuid(-633127683)
+    UserHasRequiredContentFlags: True
+
+   [73]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_FlyingChandelier_Halloween01 PrefabGuid(-2113113839)
+    UserHasRequiredContentFlags: True
+
+   [74]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Halloween01_Brazier01_Orange PrefabGuid(-1296321304)
+    UserHasRequiredContentFlags: True
+
+   [75]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Halloween01_Brazier02_Orange PrefabGuid(561843274)
+    UserHasRequiredContentFlags: True
+
+   [76]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Halloween01_Brazier03_Orange PrefabGuid(-86884256)
+    UserHasRequiredContentFlags: True
+
+   [77]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Halloween01_Brazier04_Orange PrefabGuid(444000363)
+    UserHasRequiredContentFlags: True
+
+   [78]
+    UnlockedBlueprint: TM_Castle_PillarDecor_Gothic_HalloweenLantern01_Orange PrefabGuid(-721714254)
+    UserHasRequiredContentFlags: True
+
+   [79]
+    UnlockedBlueprint: TM_Castle_PillarDecor_Halloween01 PrefabGuid(229389372)
+    UserHasRequiredContentFlags: True
+
+   [80]
+    UnlockedBlueprint: TM_Castle_WallDecor_WindowCurtains_Halloween01 PrefabGuid(-1073349521)
+    UserHasRequiredContentFlags: True
+
+   [81]
+    UnlockedBlueprint: TM_Castle_WallDecor_WallCurtain_Halloween01 PrefabGuid(271242862)
+    UserHasRequiredContentFlags: True
+
+   [82]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_Halloween01 PrefabGuid(1887813312)
+    UserHasRequiredContentFlags: True
+
+   [83]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCGloomrot_01 PrefabGuid(-1119089472)
+    UserHasRequiredContentFlags: False
+
+   [84]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCGloomrot_02 PrefabGuid(-534388394)
+    UserHasRequiredContentFlags: False
+
+   [85]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_DLCGloomrot_Pillar PrefabGuid(-1601728225)
+    UserHasRequiredContentFlags: False
+
+   [86]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_GloomrotDLC01 PrefabGuid(-1218750780)
+    UserHasRequiredContentFlags: False
+
+   [87]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gloomrot01_Brazier01_Green PrefabGuid(-618554922)
+    UserHasRequiredContentFlags: False
+
+   [88]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetGloomrot01_T-Section PrefabGuid(1037297955)
+    UserHasRequiredContentFlags: False
+
+   [89]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetGloomrot01_Straight PrefabGuid(1012471326)
+    UserHasRequiredContentFlags: False
+
+   [90]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetGloomrot01_End PrefabGuid(-1761526212)
+    UserHasRequiredContentFlags: False
+
+   [91]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetGloomrot01_Cross-Section PrefabGuid(1416970934)
+    UserHasRequiredContentFlags: False
+
+   [92]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetGloomrot01_Corner PrefabGuid(1630742707)
+    UserHasRequiredContentFlags: False
+
+   [93]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_DLC02Variant_Standard PrefabGuid(-1872077746)
+    UserHasRequiredContentFlags: False
+
+   [94]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_DLC02Variant_ServantLock PrefabGuid(214726352)
+    UserHasRequiredContentFlags: False
+
+   [95]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLCGloomrot_Vat01 PrefabGuid(-154100892)
+    UserHasRequiredContentFlags: False
+
+   [96]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLCGloomrot_Vat02 PrefabGuid(-567491057)
+    UserHasRequiredContentFlags: False
+
+   [97]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLCGloomrot_Vat03 PrefabGuid(-751931539)
+    UserHasRequiredContentFlags: False
+
+   [98]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLCGloomrot_Male PrefabGuid(1853226864)
+    UserHasRequiredContentFlags: False
+
+   [99]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLCGloomrot_Female PrefabGuid(-1509963504)
+    UserHasRequiredContentFlags: False
+
+   [100]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_DLC_Gloomrot01 PrefabGuid(-1808336362)
+    UserHasRequiredContentFlags: False
+
+   [101]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CW_DLC_Gloomrot01 PrefabGuid(-671167268)
+    UserHasRequiredContentFlags: False
+
+   [102]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CCW_DLC_Gloomrot01 PrefabGuid(249484894)
+    UserHasRequiredContentFlags: False
+
+   [103]
+    UnlockedBlueprint: BP_Castle_Stairs_Double_DLC_Gloomrot01 PrefabGuid(-1940654627)
+    UserHasRequiredContentFlags: False
+
+   [104]
+    UnlockedBlueprint: TM_Castle_PillarDecor_Gothic_GloomrotLantern01_Green PrefabGuid(-19009133)
+    UserHasRequiredContentFlags: False
+
+   [105]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Clean PrefabGuid(-1268733747)
+    UserHasRequiredContentFlags: True
+
+   [106]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Corners PrefabGuid(1327946026)
+    UserHasRequiredContentFlags: True
+
+   [107]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Left PrefabGuid(1199070093)
+    UserHasRequiredContentFlags: True
+
+   [108]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Middle PrefabGuid(1105868982)
+    UserHasRequiredContentFlags: True
+
+   [109]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Right PrefabGuid(523616828)
+    UserHasRequiredContentFlags: True
+
+   [110]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Clean_Pillar PrefabGuid(1363241567)
+    UserHasRequiredContentFlags: True
+
+   [111]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_ProjectK01Variant_Standard PrefabGuid(-1725918454)
+    UserHasRequiredContentFlags: True
+
+   [112]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_ProjectK01Variant_ServantLock PrefabGuid(423018316)
+    UserHasRequiredContentFlags: True
+
+   [113]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_ProjectK01 PrefabGuid(-1805858799)
+    UserHasRequiredContentFlags: True
+
+   [114]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_ProjectK02 PrefabGuid(-1938065854)
+    UserHasRequiredContentFlags: True
+
+   [115]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetProjectK01_Corner PrefabGuid(1271352880)
+    UserHasRequiredContentFlags: True
+
+   [116]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetProjectK01_End PrefabGuid(990139966)
+    UserHasRequiredContentFlags: True
+
+   [117]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetProjectK01_Straight PrefabGuid(-1507536062)
+    UserHasRequiredContentFlags: True
+
+   [118]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetProjectK01_T-Section PrefabGuid(1128182070)
+    UserHasRequiredContentFlags: True
+
+   [119]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetProjectK01_Cross-Section PrefabGuid(-24431530)
+    UserHasRequiredContentFlags: True
+
+   [120]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_DLC_ProjectK01 PrefabGuid(-601630508)
+    UserHasRequiredContentFlags: True
+
+   [121]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CW_DLC_ProjectK01 PrefabGuid(-2111252824)
+    UserHasRequiredContentFlags: True
+
+   [122]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CCW_DLC_ProjectK01 PrefabGuid(787873859)
+    UserHasRequiredContentFlags: True
+
+   [123]
+    UnlockedBlueprint: BP_Castle_Stairs_Double_DLC_ProjectK01 PrefabGuid(384472583)
+    UserHasRequiredContentFlags: True
+
+   [124]
+    UnlockedBlueprint: TM_Castle_PillarDecor_DLC_ProjectK_Torch01_Dyable PrefabGuid(1969574504)
+    UserHasRequiredContentFlags: True
+
+   [125]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_GardenFountain_ProjectK01 PrefabGuid(1178389093)
+    UserHasRequiredContentFlags: True
+
+   [126]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_FemaleStatue01 PrefabGuid(1924883160)
+    UserHasRequiredContentFlags: True
+
+   [127]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_MaleStatue01 PrefabGuid(1735150840)
+    UserHasRequiredContentFlags: True
+
+   [128]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_GargoyleStatue01 PrefabGuid(1837038558)
+    UserHasRequiredContentFlags: True
+
+   [129]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_BonePillarStatue01 PrefabGuid(858552228)
+    UserHasRequiredContentFlags: True
+
+   [130]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_AngelStatue01 PrefabGuid(-1777182058)
+    UserHasRequiredContentFlags: True
+
+   [131]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_01 PrefabGuid(1549709004)
+    UserHasRequiredContentFlags: True
+
+   [132]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_02 PrefabGuid(-1105873872)
+    UserHasRequiredContentFlags: True
+
+   [133]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_MaleStatue02 PrefabGuid(-2122532810)
+    UserHasRequiredContentFlags: True
+
+   [134]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_GargoyleStatue02 PrefabGuid(-1121713940)
+    UserHasRequiredContentFlags: True
+
+   [135]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_ProjectK_FemaleStatue02 PrefabGuid(57934274)
+    UserHasRequiredContentFlags: True
+
+   [136]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_03 PrefabGuid(1235438962)
+    UserHasRequiredContentFlags: True
+
+   [137]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_04 PrefabGuid(-2073893355)
+    UserHasRequiredContentFlags: True
+
+   [138]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_05 PrefabGuid(620046867)
+    UserHasRequiredContentFlags: True
+
+   [139]
+    UnlockedBlueprint: TM_Castle_WallDecor_ProjectK_Painting_06 PrefabGuid(209794964)
+    UserHasRequiredContentFlags: True
+
+   [140]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_ProjectK03 PrefabGuid(886525362)
+    UserHasRequiredContentFlags: True
+
+   [141]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Expansion PrefabGuid(-739519538)
+    UserHasRequiredContentFlags: True
+
+   [142]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_ProjectK_Expansion_Pillar PrefabGuid(1259530332)
+    UserHasRequiredContentFlags: True
+
+   [143]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_ProjectK02Variant_Standard PrefabGuid(1362023808)
+    UserHasRequiredContentFlags: True
+
+   [144]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_ProjectK02Variant_ServantLock PrefabGuid(1523490679)
+    UserHasRequiredContentFlags: True
+
+   [145]
+    UnlockedBlueprint: TM_Castle_Fence_ProjectK01 PrefabGuid(519452653)
+    UserHasRequiredContentFlags: True
+
+   [146]
+    UnlockedBlueprint: TM_Castle_Fence_ProjectK01_Gate PrefabGuid(155733373)
+    UserHasRequiredContentFlags: True
+
+   [147]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_StrongbladeDLC01_Wall01 PrefabGuid(-1813563573)
+    UserHasRequiredContentFlags: False
+
+   [148]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_StrongbladeDLC01_Wall02 PrefabGuid(880930151)
+    UserHasRequiredContentFlags: False
+
+   [149]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_StrongbladeDLC01_Wall03 PrefabGuid(961341537)
+    UserHasRequiredContentFlags: False
+
+   [150]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_StrongbladeDLC01_Pillar PrefabGuid(-1860752815)
+    UserHasRequiredContentFlags: False
+
+   [151]
+    UnlockedBlueprint: TM_Castle_FloorDecor_StrongbladeDLC_Carpet01_Dyable PrefabGuid(-690616247)
+    UserHasRequiredContentFlags: False
+
+   [152]
+    UnlockedBlueprint: TM_Castle_FloorDecor_StrongbladeDLC_Carpet02_Dyable PrefabGuid(892642237)
+    UserHasRequiredContentFlags: False
+
+   [153]
+    UnlockedBlueprint: TM_Castle_FloorDecor_StrongbladeDLC_Carpet03_Dyable PrefabGuid(1433503658)
+    UserHasRequiredContentFlags: False
+
+   [154]
+    UnlockedBlueprint: TM_Castle_FloorDecor_StrongbladeDLC_Carpet04_Dyable PrefabGuid(-2003925881)
+    UserHasRequiredContentFlags: False
+
+   [155]
+    UnlockedBlueprint: TM_Castle_FloorDecor_StrongbladeDLC_Carpet05_Dyable PrefabGuid(575413764)
+    UserHasRequiredContentFlags: False
+
+   [156]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Chair_StrongbladeDLC01 PrefabGuid(930898512)
+    UserHasRequiredContentFlags: False
+
+   [157]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Chair_StrongbladeDLC02 PrefabGuid(-162599930)
+    UserHasRequiredContentFlags: False
+
+   [158]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Chair_StrongbladeDLC03 PrefabGuid(1865135472)
+    UserHasRequiredContentFlags: False
+
+   [159]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Chair_StrongbladeDLC04 PrefabGuid(-706081177)
+    UserHasRequiredContentFlags: False
+
+   [160]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_StrongbladeDLC_StandingLamp01_Dyable PrefabGuid(606753096)
+    UserHasRequiredContentFlags: False
+
+   [161]
+    UnlockedBlueprint: TM_Castle_PillarDecor_StrongbladeDLC_Lantern01_Dyable PrefabGuid(-1303979929)
+    UserHasRequiredContentFlags: False
+
+   [162]
+    UnlockedBlueprint: TM_Castle_PillarDecor_StrongbladeDLC_Lantern02_Dyable PrefabGuid(-558665859)
+    UserHasRequiredContentFlags: False
+
+   [163]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_WalkableFurnishing_StrongbladeDLC_Pillows01 PrefabGuid(886692114)
+    UserHasRequiredContentFlags: False
+
+   [164]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_WalkableFurnishing_StrongbladeDLC_Pillows02 PrefabGuid(95608669)
+    UserHasRequiredContentFlags: False
+
+   [165]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_WalkableFurnishing_StrongbladeDLC_Pillows03 PrefabGuid(1123292049)
+    UserHasRequiredContentFlags: False
+
+   [166]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetStrongbladeDLC_Corner PrefabGuid(-57770233)
+    UserHasRequiredContentFlags: False
+
+   [167]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetStrongbladeDLC_Cross-Section PrefabGuid(-787655845)
+    UserHasRequiredContentFlags: False
+
+   [168]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetStrongbladeDLC_End PrefabGuid(1784663116)
+    UserHasRequiredContentFlags: False
+
+   [169]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetStrongbladeDLC_Straight PrefabGuid(-164197545)
+    UserHasRequiredContentFlags: False
+
+   [170]
+    UnlockedBlueprint: TM_Castle_FloorDecor_CarpetStrongbladeDLC_T-Section PrefabGuid(-2084701667)
+    UserHasRequiredContentFlags: False
+
+   [171]
+    UnlockedBlueprint: TM_Castle_Module_Parent_RectangularTable_3x6_StrongbladeDLC_01 PrefabGuid(-1829611282)
+    UserHasRequiredContentFlags: False
+
+   [172]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_3x6_StrongbladeDLC01 PrefabGuid(110079461)
+    UserHasRequiredContentFlags: False
+
+   [173]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_3x6_StrongbladeDLC02 PrefabGuid(846591851)
+    UserHasRequiredContentFlags: False
+
+   [174]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_3x6_StrongbladeDLC03 PrefabGuid(-910610447)
+    UserHasRequiredContentFlags: False
+
+   [175]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_10x6_StrongbladeDLC01 PrefabGuid(1747478659)
+    UserHasRequiredContentFlags: False
+
+   [176]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_10x6_StrongbladeDLC02 PrefabGuid(-982682474)
+    UserHasRequiredContentFlags: False
+
+   [177]
+    UnlockedBlueprint: TM_Castle_Module_Child_RectangularTable_10x6_StrongbladeDLC03 PrefabGuid(1274339627)
+    UserHasRequiredContentFlags: False
+
+   [178]
+    UnlockedBlueprint: TM_Castle_Module_Parent_RoundTable_3x3_StrongbladeDLC_01 PrefabGuid(1068226341)
+    UserHasRequiredContentFlags: False
+
+   [179]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_3x3_StrongbladeDLC01 PrefabGuid(-207510343)
+    UserHasRequiredContentFlags: False
+
+   [180]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_3x3_StrongbladeDLC02 PrefabGuid(-70745613)
+    UserHasRequiredContentFlags: False
+
+   [181]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_3x3_StrongbladeDLC03 PrefabGuid(-784399817)
+    UserHasRequiredContentFlags: False
+
+   [182]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_3x3_StrongbladeDLC04 PrefabGuid(965422057)
+    UserHasRequiredContentFlags: False
+
+   [183]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_3x3_StrongbladeDLC05 PrefabGuid(-1331727612)
+    UserHasRequiredContentFlags: False
+
+   [184]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_6x6_StrongbladeDLC01 PrefabGuid(-1595018806)
+    UserHasRequiredContentFlags: False
+
+   [185]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_6x6_StrongbladeDLC02 PrefabGuid(-1525424692)
+    UserHasRequiredContentFlags: False
+
+   [186]
+    UnlockedBlueprint: TM_Castle_Module_Child_RoundTable_6x6_StrongbladeDLC03 PrefabGuid(1592427758)
+    UserHasRequiredContentFlags: False
+
+   [187]
+    UnlockedBlueprint: TM_Castle_Module_Parent_RectangularTable_10x6_StrongbladeDLC_01 PrefabGuid(1119097203)
+    UserHasRequiredContentFlags: False
+
+   [188]
+    UnlockedBlueprint: TM_Castle_Module_Parent_RectangularTable_10x6_StrongbladeDLC_02 PrefabGuid(-1097732927)
+    UserHasRequiredContentFlags: False
+
+   [189]
+    UnlockedBlueprint: TM_Castle_Module_Parent_RoundTable_6x6_StrongbladeDLC_01 PrefabGuid(-46629157)
+    UserHasRequiredContentFlags: False
+
+   [190]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Pool_StrongbladeDLC01 PrefabGuid(558668025)
+    UserHasRequiredContentFlags: False
+
+   [191]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Pool_StrongbladeDLC02 PrefabGuid(-1963794511)
+    UserHasRequiredContentFlags: False
+
+   [192]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Sofa_StrongbladeDLC01 PrefabGuid(397717192)
+    UserHasRequiredContentFlags: False
+
+   [193]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Sofa_StrongbladeDLC02 PrefabGuid(-269507805)
+    UserHasRequiredContentFlags: False
+
+   [194]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_StrongbladeDLC_Female01 PrefabGuid(-1212536125)
+    UserHasRequiredContentFlags: False
+
+   [195]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_StrongbladeDLC_Female02 PrefabGuid(-2006858566)
+    UserHasRequiredContentFlags: False
+
+   [196]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Statue_StrongbladeDLC_Male01 PrefabGuid(-1071569211)
+    UserHasRequiredContentFlags: False
+
+   [197]
+    UnlockedBlueprint: TM_Castle_WallDecor_Gothic_Window01_StrongbladeDLC01 PrefabGuid(1524360644)
+    UserHasRequiredContentFlags: False
+
+   [198]
+    UnlockedBlueprint: TM_Castle_WallDecor_Misc_StrongbladeDLC_WallFountain01 PrefabGuid(-2080018629)
+    UserHasRequiredContentFlags: False
+
+   [199]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_01 PrefabGuid(2032410610)
+    UserHasRequiredContentFlags: False
+
+   [200]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_02 PrefabGuid(-1458092673)
+    UserHasRequiredContentFlags: False
+
+   [201]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_03 PrefabGuid(2080830789)
+    UserHasRequiredContentFlags: False
+
+   [202]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_04 PrefabGuid(792422254)
+    UserHasRequiredContentFlags: False
+
+   [203]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_05 PrefabGuid(1286490723)
+    UserHasRequiredContentFlags: False
+
+   [204]
+    UnlockedBlueprint: TM_Castle_WallDecor_StrongbladeDLC01_Painting_06 PrefabGuid(142999579)
+    UserHasRequiredContentFlags: False
+
+   [205]
+    UnlockedBlueprint: TM_Castle_WallDecor_WallCurtain_StrongbladeDLC01 PrefabGuid(1959531938)
+    UserHasRequiredContentFlags: False
+
+   [206]
+    UnlockedBlueprint: TM_Castle_WallDecor_WindowCurtains_StrongbladeDLC01 PrefabGuid(-1320180911)
+    UserHasRequiredContentFlags: False
+
+   [207]
+    UnlockedBlueprint: TM_Castle_WallDecor_WindowCurtains_StrongbladeDLC02 PrefabGuid(1802534145)
+    UserHasRequiredContentFlags: False
+
+   [208]
+    UnlockedBlueprint: TM_Castle_WallDecor_WindowCurtains_StrongbladeDLC03 PrefabGuid(-513302771)
+    UserHasRequiredContentFlags: False
+
+   [209]
+    UnlockedBlueprint: BP_Castle_Stairs_Double_DLC_StrongbladeDLC01 PrefabGuid(-2042297302)
+    UserHasRequiredContentFlags: False
+
+   [210]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CCW_DLC_StrongbladeDLC01 PrefabGuid(1748214728)
+    UserHasRequiredContentFlags: False
+
+   [211]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_CW_DLC_StrongbladeDLC01 PrefabGuid(54801101)
+    UserHasRequiredContentFlags: False
+
+   [212]
+    UnlockedBlueprint: BP_Castle_Stairs_Single_DLC_StrongbladeDLC01 PrefabGuid(1831814293)
+    UserHasRequiredContentFlags: False
+
+   [213]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_StrongbladeDLC01Variant_Standard PrefabGuid(-1441209695)
+    UserHasRequiredContentFlags: False
+
+   [214]
+    UnlockedBlueprint: TM_Castle_Wall_Door_Wood_Tier02_StrongbladeDLC01Variant_ServantLock PrefabGuid(1394627606)
+    UserHasRequiredContentFlags: False
+
+   [215]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01DuoGargoyle01 PrefabGuid(-593905838)
+    UserHasRequiredContentFlags: False
+
+   [216]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle01 PrefabGuid(1326445798)
+    UserHasRequiredContentFlags: False
+
+   [217]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle02 PrefabGuid(2123129022)
+    UserHasRequiredContentFlags: False
+
+   [218]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle03 PrefabGuid(725766266)
+    UserHasRequiredContentFlags: False
+
+   [219]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle04 PrefabGuid(-1985503763)
+    UserHasRequiredContentFlags: False
+
+   [220]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle05 PrefabGuid(-411374179)
+    UserHasRequiredContentFlags: False
+
+   [221]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle06 PrefabGuid(581940747)
+    UserHasRequiredContentFlags: False
+
+   [222]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle07 PrefabGuid(-1986302834)
+    UserHasRequiredContentFlags: False
+
+   [223]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_DLC01Gargoyle08 PrefabGuid(1245961354)
+    UserHasRequiredContentFlags: False
+
+   [224]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_Gargoyle01 PrefabGuid(-1870409563)
+    UserHasRequiredContentFlags: True
+
+   [225]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01DuoGargoyle01 PrefabGuid(-596981388)
+    UserHasRequiredContentFlags: False
+
+   [226]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle01 PrefabGuid(34149911)
+    UserHasRequiredContentFlags: False
+
+   [227]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle02 PrefabGuid(-444096842)
+    UserHasRequiredContentFlags: False
+
+   [228]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle03 PrefabGuid(22771948)
+    UserHasRequiredContentFlags: False
+
+   [229]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle04 PrefabGuid(210845918)
+    UserHasRequiredContentFlags: False
+
+   [230]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle05 PrefabGuid(1065525459)
+    UserHasRequiredContentFlags: False
+
+   [231]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle06 PrefabGuid(-374509611)
+    UserHasRequiredContentFlags: False
+
+   [232]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle07 PrefabGuid(-1086525411)
+    UserHasRequiredContentFlags: False
+
+   [233]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_DLC01Gargoyle08 PrefabGuid(-96779386)
+    UserHasRequiredContentFlags: False
+
+   [234]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_Gargoyle01 PrefabGuid(1902853849)
+    UserHasRequiredContentFlags: True
+
+   [235]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01DuoGargoyle01 PrefabGuid(2093267606)
+    UserHasRequiredContentFlags: False
+
+   [236]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle01 PrefabGuid(-1145446161)
+    UserHasRequiredContentFlags: False
+
+   [237]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle02 PrefabGuid(-1017411502)
+    UserHasRequiredContentFlags: False
+
+   [238]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle03 PrefabGuid(1951605041)
+    UserHasRequiredContentFlags: False
+
+   [239]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle04 PrefabGuid(781996044)
+    UserHasRequiredContentFlags: False
+
+   [240]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle05 PrefabGuid(1405941468)
+    UserHasRequiredContentFlags: False
+
+   [241]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle06 PrefabGuid(518448448)
+    UserHasRequiredContentFlags: False
+
+   [242]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle07 PrefabGuid(-1141919540)
+    UserHasRequiredContentFlags: False
+
+   [243]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_DLC01Gargoyle08 PrefabGuid(1663229398)
+    UserHasRequiredContentFlags: False
+
+   [244]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_Gargoyle01 PrefabGuid(-883197188)
+    UserHasRequiredContentFlags: True
+
+   [245]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_Female01 PrefabGuid(2071819023)
+    UserHasRequiredContentFlags: True
+
+   [246]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_Statue_Male01 PrefabGuid(-1866338269)
+    UserHasRequiredContentFlags: True
+
+   [247]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_Female01 PrefabGuid(-84369225)
+    UserHasRequiredContentFlags: True
+
+   [248]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_Statue_Male01 PrefabGuid(-1198796948)
+    UserHasRequiredContentFlags: True
+
+   [249]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_Male01 PrefabGuid(-1248717894)
+    UserHasRequiredContentFlags: True
+
+   [250]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_Statue_Female01 PrefabGuid(1302388238)
+    UserHasRequiredContentFlags: True
+
+   [251]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_BustStatue_Female01 PrefabGuid(1005770867)
+    UserHasRequiredContentFlags: True
+
+   [252]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Gothic_BustStatue_Male01 PrefabGuid(-1463516461)
+    UserHasRequiredContentFlags: True
+
+   [253]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_BustStatue_Female01 PrefabGuid(-420564298)
+    UserHasRequiredContentFlags: True
+
+   [254]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Lavish_BustStatue_Male01 PrefabGuid(-1841799555)
+    UserHasRequiredContentFlags: True
+
+   [255]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_BustStatue_Female01 PrefabGuid(2003546745)
+    UserHasRequiredContentFlags: True
+
+   [256]
+    UnlockedBlueprint: TM_Castle_ObjectDecor_Simple_BustStatue_Male01 PrefabGuid(-83822172)
+    UserHasRequiredContentFlags: True
+
+   [257]
+    UnlockedBlueprint: TM_Workstation_Waypoint_Castle PrefabGuid(-1348294483)
+    UserHasRequiredContentFlags: True
+
+   [258]
+    UnlockedBlueprint: TM_SpecialStation_StoneCoffin PrefabGuid(-1939721641)
+    UserHasRequiredContentFlags: True
+
+   [259]
+    UnlockedBlueprint: TM_SpecialStation_ServantCoffin PrefabGuid(723455393)
+    UserHasRequiredContentFlags: True
+
+   [260]
+    UnlockedBlueprint: TM_Castle_Throne_01 PrefabGuid(-1944735586)
+    UserHasRequiredContentFlags: True
+
+   [261]
+    UnlockedBlueprint: TM_Castle_Floor_Crypt01 PrefabGuid(-685318965)
+    UserHasRequiredContentFlags: True
+
+   [262]
+    UnlockedBlueprint: TM_Castle_Floor_Crypt02 PrefabGuid(572228191)
+    UserHasRequiredContentFlags: True
+
+   [263]
+    UnlockedBlueprint: TM_Castle_Floor_Crypt03 PrefabGuid(304985570)
+    UserHasRequiredContentFlags: True
+
+   [264]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Tailoring_T01 PrefabGuid(1619086271)
+    UserHasRequiredContentFlags: True
+
+   [265]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Consumable_T01 PrefabGuid(1417685635)
+    UserHasRequiredContentFlags: True
+
+   [266]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Alchemy_T01 PrefabGuid(2078423943)
+    UserHasRequiredContentFlags: True
+
+   [267]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Herbs_T01 PrefabGuid(789484399)
+    UserHasRequiredContentFlags: True
+
+   [268]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Knowledge_T01 PrefabGuid(421909879)
+    UserHasRequiredContentFlags: True
+
+   [269]
+    UnlockedBlueprint: TM_SpecialStation_MusicPlayer PrefabGuid(1278389141)
+    UserHasRequiredContentFlags: True
+
+   [270]
+    UnlockedBlueprint: TM_Castle_Floor_Prison01 PrefabGuid(-1632933767)
+    UserHasRequiredContentFlags: True
+
+   [271]
+    UnlockedBlueprint: TM_Castle_Floor_Prison02 PrefabGuid(-1431268048)
+    UserHasRequiredContentFlags: True
+
+   [272]
+    UnlockedBlueprint: TM_Castle_Floor_Prison03 PrefabGuid(1559900574)
+    UserHasRequiredContentFlags: True
+
+   [273]
+    UnlockedBlueprint: TM_Castle_Noctem_Radar_Eye PrefabGuid(1383395802)
+    UserHasRequiredContentFlags: True
+
+   [274]
+    UnlockedBlueprint: TM_Castle_Floor_Jewelcrafting01 PrefabGuid(-1984599765)
+    UserHasRequiredContentFlags: True
+
+   [275]
+    UnlockedBlueprint: TM_Castle_Floor_Jewelcrafting02 PrefabGuid(-1838091713)
+    UserHasRequiredContentFlags: True
+
+   [276]
+    UnlockedBlueprint: TM_Castle_Floor_Jewelcrafting03 PrefabGuid(-4617437)
+    UserHasRequiredContentFlags: True
+
+   [277]
+    UnlockedBlueprint: TM_Castle_Relic_Radar_Eye PrefabGuid(-622002417)
+    UserHasRequiredContentFlags: True
+
+   [278]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Imperious01_Clean PrefabGuid(1407127248)
+    UserHasRequiredContentFlags: True
+
+   [279]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Imperious01_FullWallpaper01 PrefabGuid(-1053577725)
+    UserHasRequiredContentFlags: True
+
+   [280]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Imperious01_HalfWallpaper01 PrefabGuid(-1035617074)
+    UserHasRequiredContentFlags: True
+
+   [281]
+    UnlockedBlueprint: BP_Tier02_WallpaperSet_Imperious01_Pillar PrefabGuid(-1880912080)
+    UserHasRequiredContentFlags: True
+
+   [282]
+    UnlockedBlueprint: TM_Castle_Throne_01_Dracula PrefabGuid(-633207199)
+    UserHasRequiredContentFlags: True
+
+   [283]
+    UnlockedBlueprint: TM_RefinementStation_StonecuttingTable_Large PrefabGuid(-178579946)
+    UserHasRequiredContentFlags: True
+
+   [284]
+    UnlockedBlueprint: TM_Castle_LocalTeleporter_Red PrefabGuid(1326023321)
+    UserHasRequiredContentFlags: True
+
+   [285]
+    UnlockedBlueprint: TM_RefinementStation_Loom_Small PrefabGuid(-16328955)
+    UserHasRequiredContentFlags: True
+
+   [286]
+    UnlockedBlueprint: TM_Castle_WallDecor_WallCurtain_Dyable01 PrefabGuid(-1177431120)
+    UserHasRequiredContentFlags: True
+
+   [287]
+    UnlockedBlueprint: TM_Castle_WallDecor_WindowCurtains_Dyable01 PrefabGuid(1067847850)
+    UserHasRequiredContentFlags: True
+
+   [288]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Soulshards_Manticore PrefabGuid(653759442)
+    UserHasRequiredContentFlags: True
+
+   [289]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Soulshards_Solarus PrefabGuid(-824445631)
+    UserHasRequiredContentFlags: True
+
+   [290]
+    UnlockedBlueprint: TM_RefinementStation_Fabricator PrefabGuid(-465055967)
+    UserHasRequiredContentFlags: True
+
+   [291]
+    UnlockedBlueprint: TM_Castle_LocalTeleporter_Yellow PrefabGuid(1579702125)
+    UserHasRequiredContentFlags: True
+
+   [292]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Soulshards_Monster PrefabGuid(-1996942061)
+    UserHasRequiredContentFlags: True
+
+   [293]
+    UnlockedBlueprint: TM_RefinementStation_Loom_Large PrefabGuid(1299929048)
+    UserHasRequiredContentFlags: True
+
+   [294]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Soulshards_Dracula PrefabGuid(1495743889)
+    UserHasRequiredContentFlags: True
+
+   [295]
+    UnlockedBlueprint: TM_Castle_Container_Specialized_Soulshards_Morgana PrefabGuid(1724128982)
+    UserHasRequiredContentFlags: True
+
+   [296]
+    UnlockedBlueprint: TM_RefinementStation_Tannery_Large PrefabGuid(-1422196107)
+    UserHasRequiredContentFlags: True
+
+   [297]
+    UnlockedBlueprint: TM_Castle_WallDecor_Misc_CoatOfArms_Symbol01 PrefabGuid(464203925)
+    UserHasRequiredContentFlags: True
+
+   [298]
+    UnlockedBlueprint: TM_Castle_WallDecor_Misc_CoatOfArms_WallBanner01 PrefabGuid(1731550316)
+    UserHasRequiredContentFlags: True
+
+   [299]
+    UnlockedBlueprint: TM_Castle_PillarDecor_CoafOfArms01_Banner01 PrefabGuid(-760358969)
+    UserHasRequiredContentFlags: True
+
+   944 total elements but only showing the first 36
+  ProjectM.UnlockedMusicTrackElement
+   [0]
+    UnlockedMusicTrack: MusicPlayerStationTrack_20_DraculaCombat PrefabGuid(1915110023)
+    UserHasRequiredContentFlags: True
+
+   [1]
+    UnlockedMusicTrack: MusicPlayerStationTrack_20_PMK_Castle PrefabGuid(384659227)
+    UserHasRequiredContentFlags: True
+
+   [2]
+    UnlockedMusicTrack: MusicPlayerStationTrack_21_PMK_Boss PrefabGuid(1058220499)
+    UserHasRequiredContentFlags: True
+
+   [3]
+    UnlockedMusicTrack: MusicPlayerStationTrack_19_VBloodCombat PrefabGuid(-1612574516)
+    UserHasRequiredContentFlags: True
+
+   [4]
+    UnlockedMusicTrack: MusicPlayerStationTrack_00_DefaultCastle PrefabGuid(1713994656)
+    UserHasRequiredContentFlags: True
+
+   [5]
+    UnlockedMusicTrack: MusicPlayerStationTrack_02_FarbaneNight PrefabGuid(-440279150)
+    UserHasRequiredContentFlags: True
+
+   [6]
+    UnlockedMusicTrack: MusicPlayerStationTrack_01_FarbaneDay PrefabGuid(1970325094)
+    UserHasRequiredContentFlags: True
+
+   [7]
+    UnlockedMusicTrack: MusicPlayerStationTrack_13_SilverlightHillsDay PrefabGuid(-328690897)
+    UserHasRequiredContentFlags: True
+
+   [8]
+    UnlockedMusicTrack: MusicPlayerStationTrack_14_SilverlighHillsNight PrefabGuid(-1542356669)
+    UserHasRequiredContentFlags: True
+
+   [9]
+    UnlockedMusicTrack: MusicPlayerStationTrack_09_GloomrotNorthDay PrefabGuid(1646256917)
+    UserHasRequiredContentFlags: True
+
+   [10]
+    UnlockedMusicTrack: MusicPlayerStationTrack_10_GloomrotNorthNight PrefabGuid(2053439039)
+    UserHasRequiredContentFlags: True
+
+   [11]
+    UnlockedMusicTrack: MusicPlayerStationTrack_07_GloomrotSouthDay PrefabGuid(1268223145)
+    UserHasRequiredContentFlags: True
+
+   [12]
+    UnlockedMusicTrack: MusicPlayerStationTrack_08_GloomrotSouthNight PrefabGuid(-1752143846)
+    UserHasRequiredContentFlags: True
+
+   [13]
+    UnlockedMusicTrack: MusicPlayerStationTrack_16_RuinsOfMortiumNight PrefabGuid(-477374689)
+    UserHasRequiredContentFlags: True
+
+   [14]
+    UnlockedMusicTrack: MusicPlayerStationTrack_15_RuinsOfMortiumDay PrefabGuid(-1295363061)
+    UserHasRequiredContentFlags: True
+
+   [15]
+    UnlockedMusicTrack: MusicPlayerStationTrack_03_DunleyDay PrefabGuid(1446110644)
+    UserHasRequiredContentFlags: True
+
+   [16]
+    UnlockedMusicTrack: MusicPlayerStationTrack_04_DunleyNight PrefabGuid(1137068605)
+    UserHasRequiredContentFlags: True
+
+  ProjectM.UnlockedSpellBookAbility
+   [0]
+    Ability: AB_Blood_Shadowbolt_AbilityGroup PrefabGuid(-880131926)
+    Tier: ProjectM.SpellSchoolProgressionTier Tier1
+
+   [1]
+    Ability: AB_Blood_BloodRite_AbilityGroup PrefabGuid(1191439206)
+    Tier: ProjectM.SpellSchoolProgressionTier Tier1
+
+   [2]
+    Ability: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+    Tier: ProjectM.SpellSchoolProgressionTier Tier1
+
+   [3]
+    Ability: AB_Vampire_VeilOfBlood_Group PrefabGuid(305230608)
+    Tier: ProjectM.SpellSchoolProgressionTier Tier4
+
+  ProjectM.UnlockedVBlood
+   [0]
+    VBlood: CHAR_Forest_Wolf_VBlood PrefabGuid(-1905691330)
+
+   [1]
+    VBlood: CHAR_Villager_Tailor_VBlood PrefabGuid(-1942352521)
+
+   [2]
+    VBlood: CHAR_BatVampire_VBlood PrefabGuid(1112948824)
+
+   [3]
+    VBlood: CHAR_Blackfang_Morgana_VBlood PrefabGuid(591725925)
+
+   [4]
+    VBlood: CHAR_Manticore_VBlood PrefabGuid(-393555055)
+
+   [5]
+    VBlood: CHAR_Bandit_Frostarrow_VBlood PrefabGuid(1124739990)
+
+  ProjectM.Network.Snapshot_UnlockedSpellBookAbility
+   [0]
+    Value: 4
+
+   [1]
+    Value: 0
+
+   [2]
+    Value: 0
+
+   [3]
+    Value: 0
+
+   [4]
+    Value: 250
+
+   [5]
+    Value: 245
+
+   [6]
+    Value: 41
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 0
+
+   [11]
+    Value: 0
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 250
+
+   [21]
+    Value: 245
+
+   [22]
+    Value: 41
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 170
+
+   [25]
+    Value: 64
+
+   [26]
+    Value: 138
+
+   [27]
+    Value: 203
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 102
+
+   [33]
+    Value: 235
+
+   [34]
+    Value: 3
+
+   [35]
+    Value: 71
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 254
+
+   [41]
+    Value: 209
+
+   [42]
+    Value: 45
+
+   [43]
+    Value: 230
+
+   [44]
+    Value: 0
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 16
+
+   [49]
+    Value: 115
+
+   [50]
+    Value: 49
+
+   [51]
+    Value: 18
+
+   [52]
+    Value: 3
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   56 total elements but only showing the first 36
+  ProjectM.UnlockedProgressionElement
+   [0]
+    UnlockedPrefab: DefaultUnlockedProgression PrefabGuid(970543511)
+
+   [1]
+    UnlockedPrefab: Journal_Reward_Tech_BoneSwordAndBoneRing PrefabGuid(-18170500)
+
+   [2]
+    UnlockedPrefab: Journal_Reward_Tech_BoneArmor PrefabGuid(1595560597)
+
+   [3]
+    UnlockedPrefab: Tech_Collection_Armor_T01_BoneAll PrefabGuid(-347160774)
+
+   [4]
+    UnlockedPrefab: Journal_Reward_Tech_BoneAxeAndBoneMace PrefabGuid(-460319097)
+
+   [5]
+    UnlockedPrefab: Journal_Reward_Tech_Salve PrefabGuid(-2040627193)
+
+   [6]
+    UnlockedPrefab: Tech_Collection_Salve PrefabGuid(-1279942095)
+
+   [7]
+    UnlockedPrefab: Journal_Reward_Tech_CastleHeart PrefabGuid(-1498219974)
+
+   [8]
+    UnlockedPrefab: Tech_Collection_Framework_CastleHeart PrefabGuid(-1377692981)
+
+   [9]
+    UnlockedPrefab: Journal_Reward_Tech_Framework_Wood_Foundation PrefabGuid(1119342674)
+
+   [10]
+    UnlockedPrefab: Tech_Collection_Framework_T01_Wood_Foundation PrefabGuid(-219528846)
+
+   [11]
+    UnlockedPrefab: Journal_Reward_Tech_Framework_Wood_Structures PrefabGuid(-1315800811)
+
+   [12]
+    UnlockedPrefab: Tech_Collection_Framework_T01_Wood_Structures PrefabGuid(-1010843571)
+
+   [13]
+    UnlockedPrefab: Journal_Reward_Tech_StructuresT01 PrefabGuid(-1950144618)
+
+   [14]
+    UnlockedPrefab: Tech_Collection_Structures_T01 PrefabGuid(-998624122)
+
+   [15]
+    UnlockedPrefab: Journal_Reward_Tech_BloodTracking PrefabGuid(-1959133159)
+
+   [16]
+    UnlockedPrefab: Tech_Collection_BloodTracking PrefabGuid(1396665832)
+
+   [17]
+    UnlockedPrefab: Journal_Reward_Tech_Mirrors PrefabGuid(-477512582)
+
+   [18]
+    UnlockedPrefab: Tech_Collection_Mirrors PrefabGuid(437493175)
+
+   [19]
+    UnlockedPrefab: Tech_Collection_Mirrors_Halloween2022 PrefabGuid(153177445)
+
+   [20]
+    UnlockedPrefab: Journal_Reward_Tech_ResearchStation PrefabGuid(1296847090)
+
+   [21]
+    UnlockedPrefab: Journal_Reward_Tech_RelocationBeacon PrefabGuid(320271611)
+
+   [22]
+    UnlockedPrefab: Journal_Reward_Tech_Framework_Stone PrefabGuid(-823914122)
+
+   [23]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone PrefabGuid(1908774048)
+
+   [24]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone_DLC_Dracula PrefabGuid(-447888984)
+
+   [25]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone_Halloween2022 PrefabGuid(-729522822)
+
+   [26]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone_DLC_Gloomrot PrefabGuid(-1485413430)
+
+   [27]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone_DLC_ProjectK PrefabGuid(763319653)
+
+   [28]
+    UnlockedPrefab: Tech_Collection_Framework_T02_Stone_DLC_Strongblade PrefabGuid(-2146477131)
+
+   [29]
+    UnlockedPrefab: Tech_Collection_Framework_Gargoyles_and_DLC PrefabGuid(-2118176472)
+
+   [30]
+    UnlockedPrefab: Tech_Collection_Statues_Vampire PrefabGuid(192335890)
+
+   [31]
+    UnlockedPrefab: Tech_Collection_BustStatues_Vampire PrefabGuid(-1045980026)
+
+   [32]
+    UnlockedPrefab: Journal_Reward_Tech_Waypoint PrefabGuid(1733405785)
+
+   [33]
+    UnlockedPrefab: Tech_Collection_Waypoint PrefabGuid(-1380817858)
+
+   [34]
+    UnlockedPrefab: Journal_Reward_Tech_StoneCoffin PrefabGuid(1397633835)
+
+   [35]
+    UnlockedPrefab: Journal_Reward_Tech_ServantCoffin PrefabGuid(-217048074)
+
+   [36]
+    UnlockedPrefab: Journal_Reward_Tech_PsychicForm PrefabGuid(1901315238)
+
+   [37]
+    UnlockedPrefab: Tech_Ability_PsychicForm PrefabGuid(-647200166)
+
+   [38]
+    UnlockedPrefab: Journal_Reward_Tech_BatThrone PrefabGuid(1107902126)
+
+   [39]
+    UnlockedPrefab: Journal_Reward_Tech_CryptFloor PrefabGuid(1738745841)
+
+   [40]
+    UnlockedPrefab: Tech_Floor_Crypt PrefabGuid(308890669)
+
+   [41]
+    UnlockedPrefab: Journal_Reward_Tech_SpecialStorage PrefabGuid(1436743006)
+
+   [42]
+    UnlockedPrefab: Journal_Reward_Tech_MusicPlayer PrefabGuid(-765236681)
+
+   [43]
+    UnlockedPrefab: Journal_Reward_Tech_PrisonFloor PrefabGuid(687369718)
+
+   [44]
+    UnlockedPrefab: Tech_Floor_Prison PrefabGuid(-876687572)
+
+   [45]
+    UnlockedPrefab: Journal_Reward_Tech_NoctemRadar PrefabGuid(347964688)
+
+   [46]
+    UnlockedPrefab: Journal_Reward_Tech_JewelCraftingFloor PrefabGuid(140759426)
+
+   [47]
+    UnlockedPrefab: Tech_Floor_Jewelcrafting PrefabGuid(414215710)
+
+   [48]
+    UnlockedPrefab: Journal_Reward_Tech_CommandingForm PrefabGuid(-1941680956)
+
+   [49]
+    UnlockedPrefab: Tech_Ability_CommandingForm PrefabGuid(-1301155150)
+
+   [50]
+    UnlockedPrefab: Journal_Reward_Tech_Saddle PrefabGuid(-262116336)
+
+   [51]
+    UnlockedPrefab: Journal_Reward_Tech_RelicRadar PrefabGuid(-1887126093)
+
+   [52]
+    UnlockedPrefab: Journal_Reward_Tech_WallpaperImperious PrefabGuid(-485239202)
+
+   [53]
+    UnlockedPrefab: Tech_Collection_Wallpapers_Imperious01 PrefabGuid(302835542)
+
+   [54]
+    UnlockedPrefab: Journal_Reward_Tech_DraculaThrone PrefabGuid(-1462758332)
+
+   [55]
+    UnlockedPrefab: GateBossComponentsTemplate_Major PrefabGuid(-1695577577)
+
+   [56]
+    UnlockedPrefab: GateBossComponentsTemplate_Minor PrefabGuid(-222706317)
+
+   [57]
+    UnlockedPrefab: CHAR_Gloomrot_Voltage_VBlood PrefabGuid(-1101874342)
+
+   [58]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Voltage PrefabGuid(228678537)
+
+   [59]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Whip PrefabGuid(142799020)
+
+   [60]
+    UnlockedPrefab: CHAR_Villager_Tailor_VBlood PrefabGuid(-1942352521)
+
+   [61]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Tailor PrefabGuid(1748243393)
+
+   [62]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Tailor_Curtains PrefabGuid(-1291119657)
+
+   [63]
+    UnlockedPrefab: CHAR_Vermin_DireRat_VBlood PrefabGuid(-2039908510)
+
+   [64]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_PutridRat PrefabGuid(-482440851)
+
+   [65]
+    UnlockedPrefab: CHAR_Manticore_VBlood PrefabGuid(-393555055)
+
+   [66]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Manticore PrefabGuid(28013331)
+
+   [67]
+    UnlockedPrefab: Tech_Collection_Dracula_Armor_Gloves PrefabGuid(1518908715)
+
+   [68]
+    UnlockedPrefab: CHAR_ChurchOfLight_Paladin_VBlood PrefabGuid(-740796338)
+
+   [69]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Paladin PrefabGuid(-1627795309)
+
+   [70]
+    UnlockedPrefab: Tech_Collection_Dracula_Armor_Boots PrefabGuid(-1000381969)
+
+   [71]
+    UnlockedPrefab: CHAR_Gloomrot_Voltage_VBlood_GateBoss_Major PrefabGuid(-427888732)
+
+   [72]
+    UnlockedPrefab: CHAR_Gloomrot_Purifier_VBlood PrefabGuid(106480588)
+
+   [73]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Armor_Silk PrefabGuid(574648849)
+
+   [74]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Purifier PrefabGuid(-794945828)
+
+   [75]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Purifier_Gruel PrefabGuid(-513542593)
+
+   [76]
+    UnlockedPrefab: CHAR_Gloomrot_Iva_VBlood PrefabGuid(172235178)
+
+   [77]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Iva PrefabGuid(-1168862239)
+
+   [78]
+    UnlockedPrefab: CHAR_Gloomrot_Monster_VBlood PrefabGuid(1233988687)
+
+   [79]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Monster PrefabGuid(-1579828449)
+
+   [80]
+    UnlockedPrefab: Tech_Collection_Dracula_Armor_Chest PrefabGuid(-784761022)
+
+   [81]
+    UnlockedPrefab: CHAR_Cursed_Witch_VBlood PrefabGuid(-910296704)
+
+   [82]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Witch PrefabGuid(739063686)
+
+   [83]
+    UnlockedPrefab: CHAR_VHunter_CastleMan PrefabGuid(336560131)
+
+   [84]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Castleman_SanguineWhip PrefabGuid(499979034)
+
+   [85]
+    UnlockedPrefab: CHAR_Vampire_Dracula_VBlood PrefabGuid(-327335305)
+
+   [86]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Dracula PrefabGuid(956657660)
+
+   [87]
+    UnlockedPrefab: CHAR_Militia_HoundMaster_VBlood PrefabGuid(-784265984)
+
+   [88]
+    UnlockedPrefab: CHAR_Blackfang_Morgana_VBlood PrefabGuid(591725925)
+
+   [89]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Morgana PrefabGuid(-1902462638)
+
+   [90]
+    UnlockedPrefab: Tech_Collection_Dracula_Armor_Legs PrefabGuid(-997181076)
+
+   [91]
+    UnlockedPrefab: CHAR_Wendigo_VBlood PrefabGuid(24378719)
+
+   [92]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Wendigo PrefabGuid(43505638)
+
+   [93]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Wendigo_Claws PrefabGuid(803940486)
+
+   [94]
+    UnlockedPrefab: CHAR_Winter_Yeti_VBlood PrefabGuid(-1347412392)
+
+   [95]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Yeti PrefabGuid(-1435750586)
+
+   [96]
+    UnlockedPrefab: CHAR_Vampire_BloodKnight_VBlood PrefabGuid(495971434)
+
+   [97]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_BloodKnight PrefabGuid(90328407)
+
+   [98]
+    UnlockedPrefab: Tech_Collection_VBlood_JewelsT04 PrefabGuid(514472877)
+
+   [99]
+    UnlockedPrefab: Tech_Collection_CoatOfArms PrefabGuid(-1637580865)
+
+   [100]
+    UnlockedPrefab: CHAR_Cursed_ToadKing_VBlood PrefabGuid(-203043163)
+
+   [101]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_ToadKing PrefabGuid(1846992402)
+
+   [102]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_ToadKing_Coins PrefabGuid(-837551957)
+
+   [103]
+    UnlockedPrefab: CHAR_Wendigo_GateBoss_Major PrefabGuid(468179469)
+
+   [104]
+    UnlockedPrefab: CHAR_Winter_Yeti_VBlood_GateBoss_Major PrefabGuid(666177656)
+
+   [105]
+    UnlockedPrefab: CHAR_WerewolfChieftain_Human PrefabGuid(-1505705712)
+
+   [106]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Werewolf PrefabGuid(-330347291)
+
+   [107]
+    UnlockedPrefab: Tech_Collection_Clocks PrefabGuid(-1847627135)
+
+   [108]
+    UnlockedPrefab: CHAR_WerewolfChieftain_ShadowClone PrefabGuid(-1699898875)
+
+   [109]
+    UnlockedPrefab: CHAR_ChurchOfLight_Sommelier_VBlood PrefabGuid(192051202)
+
+   [110]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Sommelier PrefabGuid(2086705669)
+
+   [111]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Sommelier_Bloodwine PrefabGuid(-797717364)
+
+   [112]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Sommelier_MagicSource PrefabGuid(134700304)
+
+   [113]
+    UnlockedPrefab: Tech_Collection_Fence_Rural PrefabGuid(1194397556)
+
+   [114]
+    UnlockedPrefab: CHAR_Gloomrot_Purifier_VBlood_GateBoss_Major PrefabGuid(-440174408)
+
+   [115]
+    UnlockedPrefab: CHAR_Militia_Fabian_VBlood PrefabGuid(619948378)
+
+   [116]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Fabian PrefabGuid(-1659396939)
+
+   [117]
+    UnlockedPrefab: Tech_Collection_Stables_Furnishing PrefabGuid(2128476081)
+
+   [118]
+    UnlockedPrefab: CHAR_Geomancer_Human_VBlood PrefabGuid(-1065970933)
+
+   [119]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Golem PrefabGuid(292267578)
+
+   [120]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_GolemGems PrefabGuid(-1074691879)
+
+   [121]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_GolemObsidian PrefabGuid(-318857592)
+
+   [122]
+    UnlockedPrefab: CHAR_Harpy_Matriarch_VBlood PrefabGuid(685266977)
+
+   [123]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Harpy PrefabGuid(56158045)
+
+   [124]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_HarpyGems PrefabGuid(-477566763)
+
+   [125]
+    UnlockedPrefab: CHAR_Villager_CursedWanderer_VBlood_GateBoss_Major PrefabGuid(-1160778038)
+
+   [126]
+    UnlockedPrefab: CHAR_Militia_Hound_VBlood PrefabGuid(-1373413273)
+
+   [127]
+    UnlockedPrefab: CHAR_Undead_BishopOfShadows_VBlood_GateBoss_Major PrefabGuid(-1805216630)
+
+   [128]
+    UnlockedPrefab: CHAR_VHunter_Jade_VBlood_GateBoss_Major PrefabGuid(282791819)
+
+   [129]
+    UnlockedPrefab: CHAR_WerewolfChieftain_VBlood_GateBoss_Major PrefabGuid(2079933370)
+
+   [130]
+    UnlockedPrefab: CHAR_VHunter_Leader_GateBoss_Minor PrefabGuid(2009018555)
+
+   [131]
+    UnlockedPrefab: CHAR_Undead_BishopOfDeath_VBlood_GateBoss_Minor PrefabGuid(-1822337177)
+
+   [132]
+    UnlockedPrefab: CHAR_Bandit_Chaosarrow_GateBoss_Minor PrefabGuid(1854211210)
+
+   [133]
+    UnlockedPrefab: CHAR_Frostarrow_GateBoss_Minor PrefabGuid(1318855899)
+
+   [134]
+    UnlockedPrefab: CHAR_Militia_Guard_VBlood_GateBoss_Minor PrefabGuid(1494126678)
+
+   [135]
+    UnlockedPrefab: CHAR_Bandit_Leader_VBlood_UNUSED PrefabGuid(-175381832)
+
+   [136]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey PrefabGuid(798280158)
+
+   [137]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey_CottonArmor PrefabGuid(981172472)
+
+   [138]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey_IronWeapons PrefabGuid(1452185822)
+
+   [139]
+    UnlockedPrefab: CHAR_Undead_BishopOfShadows_VBlood PrefabGuid(939467639)
+
+   [140]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_BishopOfShadow PrefabGuid(1795449585)
+
+   [141]
+    UnlockedPrefab: CHAR_Vampire_IceRanger_VBlood PrefabGuid(795262842)
+
+   [142]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_IceRanger PrefabGuid(-1286478056)
+
+   [143]
+    UnlockedPrefab: Tech_Collection_Carpet_Stately PrefabGuid(-1363487077)
+
+   [144]
+    UnlockedPrefab: CHAR_VHunter_Leader_VBlood PrefabGuid(-1449631170)
+
+   [145]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_VampireHunter PrefabGuid(1812666586)
+
+   [146]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_VampireHunter_GreatSword PrefabGuid(2076894288)
+
+   [147]
+    UnlockedPrefab: CHAR_VHunter_Jade_VBlood PrefabGuid(-1968372384)
+
+   [148]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Jade PrefabGuid(-1809787416)
+
+   [149]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Jade_Pistols PrefabGuid(-1329550886)
+
+   [150]
+    UnlockedPrefab: CHAR_Undead_BishopOfDeath_VBlood PrefabGuid(577478542)
+
+   [151]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Goreswine_MagicSource PrefabGuid(-934771037)
+
+   [152]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Goreswine PrefabGuid(503108272)
+
+   [153]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Goreswine_Units PrefabGuid(1226331752)
+
+   [154]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_GoreswineFence PrefabGuid(-1852229711)
+
+   [155]
+    UnlockedPrefab: CHAR_Bandit_Frostarrow_VBlood PrefabGuid(1124739990)
+
+   [156]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_KeelyFrostArrow PrefabGuid(792292662)
+
+   [157]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_KeelyFrostArrow_Canteen PrefabGuid(1500994622)
+
+   [158]
+    UnlockedPrefab: CHAR_ChurchOfLight_Cardinal_VBlood PrefabGuid(114912615)
+
+   [159]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_CardinalPriest PrefabGuid(1270259509)
+
+   [160]
+    UnlockedPrefab: Tech_Collection_Carpet_Ostenstatious PrefabGuid(377882346)
+
+   [161]
+    UnlockedPrefab: CHAR_Militia_Scribe_VBlood PrefabGuid(1945956671)
+
+   [162]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Scribe PrefabGuid(1096972300)
+
+   [163]
+    UnlockedPrefab: Tech_Collection_Fence_Verdant PrefabGuid(-4950312)
+
+   [164]
+    UnlockedPrefab: Tech_Collection_WallHangingShelves_T02 PrefabGuid(1738542265)
+
+   [165]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Ball_Cosmetic PrefabGuid(-1140095741)
+
+   [166]
+    UnlockedPrefab: CHAR_Bandit_Chaosarrow_VBlood PrefabGuid(763273073)
+
+   [167]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_LidiaChaosArrow PrefabGuid(873587326)
+
+   [168]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_LidiaChaosArrow_Longbow PrefabGuid(-272307342)
+
+   [169]
+    UnlockedPrefab: CHAR_Militia_Guard_VBlood PrefabGuid(-29797003)
+
+   [170]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_FrostGuard PrefabGuid(627388312)
+
+   [171]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_FrostGuard_PrisonFramework PrefabGuid(1286356808)
+
+   [172]
+    UnlockedPrefab: CHAR_Undead_Leader_Vblood_GateBoss_Minor PrefabGuid(-989493184)
+
+   [173]
+    UnlockedPrefab: CHAR_Bandit_Tourok_GateBoss_Minor PrefabGuid(478580792)
+
+   [174]
+    UnlockedPrefab: CHAR_Bandit_StoneBreaker_VBlood_GateBoss_Minor PrefabGuid(-1420322422)
+
+   [175]
+    UnlockedPrefab: CHAR_Poloma_VBlood_GateBoss_Minor PrefabGuid(-1381375644)
+
+   [176]
+    UnlockedPrefab: CHAR_Bandit_Foreman_VBlood_GateBoss_Minor PrefabGuid(17609984)
+
+   [177]
+    UnlockedPrefab: CHAR_Bandit_Bomber_VBlood PrefabGuid(1896428751)
+
+   [178]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_CliveTheFirestarter PrefabGuid(1165734787)
+
+   [179]
+    UnlockedPrefab: CHAR_Gloomrot_TheProfessor_VBlood PrefabGuid(814083983)
+
+   [180]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Professor PrefabGuid(-1199699442)
+
+   [181]
+    UnlockedPrefab: CHAR_Undead_ArenaChampion_VBlood PrefabGuid(-753453016)
+
+   [182]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_ArenaChampion PrefabGuid(-2144827499)
+
+   [183]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_ArenaChampion_TwinBlades PrefabGuid(1469248266)
+
+   [184]
+    UnlockedPrefab: Tech_Collection_VBlood_ArenaDecorations PrefabGuid(959981888)
+
+   [185]
+    UnlockedPrefab: CHAR_Spider_Queen_VBlood PrefabGuid(-548489519)
+
+   [186]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_SpiderQueen PrefabGuid(693361325)
+
+   [187]
+    UnlockedPrefab: CHAR_Cursed_MountainBeast_VBlood PrefabGuid(-1936575244)
+
+   [188]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_Behemoth PrefabGuid(-2059047777)
+
+   [189]
+    UnlockedPrefab: CHAR_Forest_Wolf_VBlood PrefabGuid(-1905691330)
+
+   [190]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_AlphaWolf PrefabGuid(-1031733757)
+
+   [191]
+    UnlockedPrefab: CHAR_Spider_Queen_VBlood_GateBoss_Major PrefabGuid(-943858353)
+
+   [192]
+    UnlockedPrefab: CHAR_Forest_Bear_Dire_Vblood PrefabGuid(-1391546313)
+
+   [193]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_FerociousBear PrefabGuid(1481816999)
+
+   [194]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_FerociousBear_Rugs PrefabGuid(-979296135)
+
+   [195]
+    UnlockedPrefab: CHAR_Blackfang_CarverBoss_VBlood PrefabGuid(-1669199769)
+
+   [196]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Carver PrefabGuid(1092543000)
+
+   [197]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Carver_Coating PrefabGuid(-1318816407)
+
+   [198]
+    UnlockedPrefab: CHAR_Bandit_Foreman_VBlood PrefabGuid(2122229952)
+
+   [199]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_RufusForeman PrefabGuid(-1375294270)
+
+   [200]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_RufusForeman_Crossbow PrefabGuid(1080245850)
+
+   [201]
+    UnlockedPrefab: Tech_Collection_Furniture_Simple_T01 PrefabGuid(1549360318)
+
+   [202]
+    UnlockedPrefab: CHAR_Bandit_Fisherman_VBlood PrefabGuid(-2122682556)
+
+   [203]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Fisherman PrefabGuid(-1955769660)
+
+   [204]
+    UnlockedPrefab: CHAR_Blackfang_Valyr_VBlood PrefabGuid(173259239)
+
+   [205]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Valyr PrefabGuid(-1224541374)
+
+   [206]
+    UnlockedPrefab: CHAR_BatVampire_VBlood PrefabGuid(1112948824)
+
+   [207]
+    UnlockedPrefab: Tech_Collection_VBlood_T08_BatVampire PrefabGuid(644170529)
+
+   [208]
+    UnlockedPrefab: CHAR_Gloomrot_RailgunSergeant_VBlood PrefabGuid(2054432370)
+
+   [209]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_RailgunSergeant PrefabGuid(-1166562965)
+
+   [210]
+    UnlockedPrefab: CHAR_Militia_Leader_VBlood_GateBoss_Major PrefabGuid(1990744594)
+
+   [211]
+    UnlockedPrefab: CHAR_Undead_Infiltrator_VBlood_GateBoss_Major PrefabGuid(-982850914)
+
+   [212]
+    UnlockedPrefab: CHAR_Undead_ZealousCultist_VBlood_GateBoss_Major PrefabGuid(-1189707552)
+
+   [213]
+    UnlockedPrefab: CHAR_Militia_Longbowman_LightArrow_Vblood PrefabGuid(850622034)
+
+   [214]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Meredith PrefabGuid(-124171135)
+
+   [215]
+    UnlockedPrefab: CHAR_Blackfang_Livith_VBlood PrefabGuid(-1383529374)
+
+   [216]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Livith PrefabGuid(1851932061)
+
+   [217]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Livith_Slashers PrefabGuid(1262310143)
+
+   [218]
+    UnlockedPrefab: CHAR_Undead_Leader_Vblood PrefabGuid(-1365931036)
+
+   [219]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_UndeadLeader_Reaper PrefabGuid(-1631949089)
+
+   [220]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_UndeadLeader PrefabGuid(684401761)
+
+   [221]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_UndeadLeader_Bells PrefabGuid(-1062774694)
+
+   [222]
+    UnlockedPrefab: CHAR_Poloma_VBlood PrefabGuid(-484556888)
+
+   [223]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Poloma PrefabGuid(-1138769053)
+
+   [224]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_PolomaGardenFloors PrefabGuid(196684992)
+
+   [225]
+    UnlockedPrefab: Tech_Collection_Garden_Hedges_T02 PrefabGuid(1158190765)
+
+   [226]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_PolomaPlantersExterior PrefabGuid(35536792)
+
+   [227]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_PolomaPlantersInterior PrefabGuid(6233001)
+
+   [228]
+    UnlockedPrefab: CHAR_Vampire_HighLord_VBlood PrefabGuid(-496360395)
+
+   [229]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_HighLord PrefabGuid(2003830913)
+
+   [230]
+    UnlockedPrefab: CHAR_Militia_Leader_VBlood PrefabGuid(1688478381)
+
+   [231]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_MilitiaCommander PrefabGuid(-1747434949)
+
+   [232]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_MilitiaCommander_WideGate PrefabGuid(2053355293)
+
+   [233]
+    UnlockedPrefab: Tech_Storage_Pack_Equipment_T02 PrefabGuid(-1605857820)
+
+   [234]
+    UnlockedPrefab: CHAR_ChurchOfLight_Overseer_VBlood PrefabGuid(-26105228)
+
+   [235]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Overseer PrefabGuid(-1652178969)
+
+   [236]
+    UnlockedPrefab: Tech_Storage_Pack_T02 PrefabGuid(-612322185)
+
+   [237]
+    UnlockedPrefab: CHAR_Bandit_StoneBreaker_VBlood PrefabGuid(-2025101517)
+
+   [238]
+    UnlockedPrefab: Tech_Collection_VBlood_T02_StoneBreaker PrefabGuid(-1230635663)
+
+   [239]
+    UnlockedPrefab: Tech_Storage_Pack_T01_A PrefabGuid(134968992)
+
+   [240]
+    UnlockedPrefab: Tech_Collection_Brazier_01 PrefabGuid(1789166952)
+
+   [241]
+    UnlockedPrefab: CHAR_Undead_Priest_VBlood PrefabGuid(153390636)
+
+   [242]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_NicholausTheFallen PrefabGuid(656825307)
+
+   [243]
+    UnlockedPrefab: Tech_Collection_CandleStands_T01 PrefabGuid(-1032220214)
+
+   [244]
+    UnlockedPrefab: Tech_Collection_FrayedDecor PrefabGuid(524373519)
+
+   [245]
+    UnlockedPrefab: Tech_Floor_Treasury PrefabGuid(833988507)
+
+   [246]
+    UnlockedPrefab: CHAR_Blackfang_Lucie_VBlood PrefabGuid(1295855316)
+
+   [247]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Lucie PrefabGuid(-1642797098)
+
+   [248]
+    UnlockedPrefab: CHAR_Bandit_Tourok_VBlood PrefabGuid(-1659822956)
+
+   [249]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey PrefabGuid(798280158)
+
+   [250]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey_CottonArmor PrefabGuid(981172472)
+
+   [251]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey_IronWeapons PrefabGuid(1452185822)
+
+   [252]
+    UnlockedPrefab: Tech_Collection_VBlood_T04_Quincey_Decoration PrefabGuid(-1204804925)
+
+   [253]
+    UnlockedPrefab: CHAR_Undead_CursedSmith_VBlood PrefabGuid(326378955)
+
+   [254]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_CursedSmith PrefabGuid(-1633289177)
+
+   [255]
+    UnlockedPrefab: CHAR_ArchMage_VBlood PrefabGuid(-2013903325)
+
+   [256]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Archmage PrefabGuid(26064539)
+
+   [257]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_Archmage_JewelsT03 PrefabGuid(-942401074)
+
+   [258]
+    UnlockedPrefab: Tech_Collection_VBlood_CrystalLamp PrefabGuid(1120119195)
+
+   [259]
+    UnlockedPrefab: CHAR_Militia_BishopOfDunley_VBlood PrefabGuid(-680831417)
+
+   [260]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Raziel PrefabGuid(177893377)
+
+   [261]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_Raziel_Decoration PrefabGuid(961368319)
+
+   [262]
+    UnlockedPrefab: CHAR_Undead_ZealousCultist_VBlood PrefabGuid(-1208888966)
+
+   [263]
+    UnlockedPrefab: Tech_Collection_VBlood_T07_ZealousCultist PrefabGuid(-242619336)
+
+   [264]
+    UnlockedPrefab: CHAR_Undead_Infiltrator_VBlood PrefabGuid(613251918)
+
+   [265]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Infiltrator PrefabGuid(1499385606)
+
+   [266]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_Infiltrator_Daggers PrefabGuid(1521034384)
+
+   [267]
+    UnlockedPrefab: CHAR_Bandit_Stalker_VBlood PrefabGuid(1106149033)
+
+   [268]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Grayson PrefabGuid(-819263071)
+
+   [269]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Grayson_Floors PrefabGuid(613260763)
+
+   [270]
+    UnlockedPrefab: Tech_Collection_VBlood_T03_Grayson_TargetDummies PrefabGuid(-1484059874)
+
+   [271]
+    UnlockedPrefab: CHAR_Militia_Glassblower_VBlood PrefabGuid(910988233)
+
+   [272]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_GlassBlower PrefabGuid(836932829)
+
+   [273]
+    UnlockedPrefab: Tech_Collection_WallHangingMirrors_T02 PrefabGuid(-505308287)
+
+   [274]
+    UnlockedPrefab: CHAR_Militia_Nun_VBlood PrefabGuid(-99012450)
+
+   [275]
+    UnlockedPrefab: Tech_Collection_VBlood_T05_HolyNun PrefabGuid(1509833074)
+
+   [276]
+    UnlockedPrefab: Tech_Collection_Candles_T02 PrefabGuid(1982396745)
+
+   [277]
+    UnlockedPrefab: CHAR_Villager_CursedWanderer_VBlood PrefabGuid(109969450)
+
+   [278]
+    UnlockedPrefab: Tech_Collection_VBlood_T06_CursedWanderer PrefabGuid(-608704270)
+
+   [279]
+    UnlockedPrefab: SpellPassive_Blood_T01_BloodSpray PrefabGuid(-1027845865)
+
+   [280]
+    UnlockedPrefab: SpellPassive_Unholy_T02_SoulDrinker PrefabGuid(-1612317745)
+
+   [281]
+    UnlockedPrefab: SpellPassive_Illusion_T02_FlowingSorcery PrefabGuid(-1979168975)
+
+   [282]
+    UnlockedPrefab: SpellPassive_Chaos_T04_RavenousStrikes PrefabGuid(-1251152602)
+
+   [283]
+    UnlockedPrefab: SpellPassive_Chaos_T03_Overpower PrefabGuid(1250779598)
+
+   [284]
+    UnlockedPrefab: SpellPassive_Illusion_T03_FeralHaste PrefabGuid(-2136476823)
+
+   [285]
+    UnlockedPrefab: SpellPassive_Unholy_T04_EmbraceMayhem PrefabGuid(422612021)
+
+   [286]
+    UnlockedPrefab: SpellPassive_Blood_T03_VBloodSlayer PrefabGuid(896859617)
+
+   [287]
+    UnlockedPrefab: SpellPassive_Unholy_T01_ArcaneAnimator PrefabGuid(-539962543)
+
+   [288]
+    UnlockedPrefab: SpellPassive_Frost_T02_ChillWeave PrefabGuid(-492383335)
+
+   [289]
+    UnlockedPrefab: SpellPassive_Storm_T02_EnhancedConductivity PrefabGuid(-395364978)
+
+   [290]
+    UnlockedPrefab: SpellPassive_Storm_T03_HungerForPower PrefabGuid(594395982)
+
+   [291]
+    UnlockedPrefab: SpellPassive_Frost_T04_DarkEnchantment PrefabGuid(1865004925)
+
+   [292]
+    UnlockedPrefab: SpellPassive_Chaos_T01_ChaosKindling PrefabGuid(1088642354)
+
+   [293]
+    UnlockedPrefab: SpellPassive_Storm_T01_LightningFastStrikes PrefabGuid(-1042692472)
+
+   [294]
+    UnlockedPrefab: SpellPassive_Frost_T03_Bastion PrefabGuid(1023033912)
+
+   [295]
+    UnlockedPrefab: SpellPassive_Illusion_T04_WickedPower PrefabGuid(21458851)
+
+   [296]
+    UnlockedPrefab: SpellPassive_Storm_T04_TurbulentVelocity PrefabGuid(-1148833103)
+
+   [297]
+    UnlockedPrefab: SpellPassive_Blood_T04_Rampage PrefabGuid(596456522)
+
+   [298]
+    UnlockedPrefab: SpellPassive_Chaos_T02_RenewingFlames PrefabGuid(2088195977)
+
+   [299]
+    UnlockedPrefab: SpellPassive_Illusion_T01_SpiritualInfusion PrefabGuid(-204224143)
+
+   471 total elements but only showing the first 36
+  ProjectM.Network.NetSnapshot
+   [0]
+    Value: 185
+
+   [1]
+    Value: 254
+
+   [2]
+    Value: 116
+
+   [3]
+    Value: 15
+
+   [4]
+    Value: 160
+
+   [5]
+    Value: 0
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+  ProjectM.Network.SnapshotFrameChangedBuffer
+   [0]
+    Value: 2749946
+
+  ProjectM.Network.DiscoveredMapZoneElement
+   [0]
+    ZoneId: MapZoneID(ZoneId: 2, ZoneIndex: 1, Chunk: (14, 8))
+
+   [1]
+    ZoneId: MapZoneID(ZoneId: 3, ZoneIndex: 2, Chunk: (14, 8))
+
+   [2]
+    ZoneId: MapZoneID(ZoneId: 4, ZoneIndex: 3, Chunk: (14, 8))
+
+   [3]
+    ZoneId: MapZoneID(ZoneId: 1, ZoneIndex: 0, Chunk: (5, 15))
+
+   [4]
+    ZoneId: MapZoneID(ZoneId: 1, ZoneIndex: 0, Chunk: (8, 21))
+
+   [5]
+    ZoneId: MapZoneID(ZoneId: 1, ZoneIndex: 0, Chunk: (8, 20))
+
+   [6]
+    ZoneId: MapZoneID(ZoneId: 1, ZoneIndex: 0, Chunk: (16, 15))
+
+   [7]
+    ZoneId: MapZoneID(ZoneId: 1, ZoneIndex: 0, Chunk: (15, 11))
+
+  ProjectM.Network.AlwaysNetworked
+  ProjectM.Network.OnlySyncToUsersTag
+  Unity.Entities.Simulate
+  ProjectM.AttachedDepth
+  ProjectM.Network.NetworkSnapshotType

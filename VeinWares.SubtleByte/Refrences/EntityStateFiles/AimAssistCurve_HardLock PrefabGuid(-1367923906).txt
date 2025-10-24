@@ -1,0 +1,8 @@
+Prefab AimAssistCurve_HardLock PrefabGuid(-1367923906)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1367923906
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

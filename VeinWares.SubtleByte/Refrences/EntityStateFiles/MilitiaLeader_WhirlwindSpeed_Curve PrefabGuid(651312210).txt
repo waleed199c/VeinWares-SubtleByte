@@ -1,0 +1,8 @@
+Prefab MilitiaLeader_WhirlwindSpeed_Curve PrefabGuid(651312210)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 651312210
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

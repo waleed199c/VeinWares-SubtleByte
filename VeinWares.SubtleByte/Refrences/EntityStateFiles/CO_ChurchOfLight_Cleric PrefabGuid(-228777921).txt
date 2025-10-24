@@ -1,0 +1,32 @@
+Prefab CO_ChurchOfLight_Cleric PrefabGuid(-228777921)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 19
+
+  Stunlock.Core.PrefabGUID
+    _Value: -228777921
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_ChurchOfLight_Cleric PrefabGuid(-228777921) - Entity(62543:1)
+
+   [1]
+    Value: Entity(6771:5)
+
+   [2]
+    Value: Entity(11883:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6771:5)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

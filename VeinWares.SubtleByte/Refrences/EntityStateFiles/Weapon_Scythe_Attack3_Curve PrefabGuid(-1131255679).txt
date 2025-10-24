@@ -1,0 +1,8 @@
+Prefab Weapon_Scythe_Attack3_Curve PrefabGuid(-1131255679)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1131255679
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab DyeCollection_SilverGoldWood PrefabGuid(-92813615)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -92813615
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,12 @@
+Prefab CastleGenerationPrefabsCollection PrefabGuid(1785107561)
+Components
+  ProjectM.CastleBuilding.GenerateCastlePrefabs
+    Blob: Unity.Entities.BlobAssetReference`1[ProjectM.CastleBuilding.GenerateCastleBlob] Unity.Entities.BlobAssetReference`1[ProjectM.CastleBuilding.GenerateCastleBlob]
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1785107561
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner

@@ -1,0 +1,52 @@
+Prefab CO_Cursed_MonsterToad PrefabGuid(-1325001695)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1325001695
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Cursed_MonsterToad PrefabGuid(-1325001695) - Entity(62534:1)
+
+   [1]
+    Value: Entity(6783:5)
+
+   [2]
+    Value: Entity(2670:5)
+
+   [3]
+    Value: Entity(6784:5)
+
+   [4]
+    Value: Entity(2671:5)
+
+   [5]
+    Value: Entity(37966:4)
+
+   [6]
+    Value: Entity(2672:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6783:5)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(6784:5)
+
+   [2]
+    State: ProjectM.GenericEnemyState Follow
+    Entity: Entity(37966:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

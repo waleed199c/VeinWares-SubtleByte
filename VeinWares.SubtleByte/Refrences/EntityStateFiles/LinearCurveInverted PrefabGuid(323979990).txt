@@ -1,0 +1,8 @@
+Prefab LinearCurveInverted PrefabGuid(323979990)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 323979990
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

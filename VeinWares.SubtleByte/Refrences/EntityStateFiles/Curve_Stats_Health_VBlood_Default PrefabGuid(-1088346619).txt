@@ -1,0 +1,8 @@
+Prefab Curve_Stats_Health_VBlood_Default PrefabGuid(-1088346619)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1088346619
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

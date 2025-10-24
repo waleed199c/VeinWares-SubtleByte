@@ -1,0 +1,9 @@
+Prefab PaintingProjectKBuildMenuGroup PrefabGuid(-2003430006)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2003430006
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

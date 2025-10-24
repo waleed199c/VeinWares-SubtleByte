@@ -1,0 +1,41 @@
+Prefab CO_Blackfang_Lucie_VBlood PrefabGuid(90523416)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 50
+
+  Stunlock.Core.PrefabGUID
+    _Value: 90523416
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Blackfang_Lucie_VBlood PrefabGuid(90523416) - Entity(62570:1)
+
+   [1]
+    Value: Entity(37988:4)
+
+   [2]
+    Value: Entity(30210:6)
+
+   [3]
+    Value: Entity(30211:6)
+
+   [4]
+    Value: Entity(30212:6)
+
+   [5]
+    Value: Entity(30213:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37988:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

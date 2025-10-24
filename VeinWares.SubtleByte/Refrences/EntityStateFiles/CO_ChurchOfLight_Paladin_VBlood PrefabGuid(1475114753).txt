@@ -1,0 +1,41 @@
+Prefab CO_ChurchOfLight_Paladin_VBlood PrefabGuid(1475114753)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 30
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1475114753
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_ChurchOfLight_Paladin_VBlood PrefabGuid(1475114753) - Entity(62513:1)
+
+   [1]
+    Value: Entity(38094:4)
+
+   [2]
+    Value: Entity(11850:5)
+
+   [3]
+    Value: Entity(11851:5)
+
+   [4]
+    Value: Entity(11852:5)
+
+   [5]
+    Value: Entity(11853:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38094:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

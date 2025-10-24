@@ -1,0 +1,8 @@
+Prefab VM_Noctem_Legion_Gargoyle PrefabGuid(-485166094)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -485166094
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

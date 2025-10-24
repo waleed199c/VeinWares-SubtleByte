@@ -1,0 +1,14 @@
+Prefab BuffResistance_GolemRockElemental PrefabGuid(1413952432)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1413952432
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 9126805889
+    ModifyDuration: False
+    DurationModifier: 0.8
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

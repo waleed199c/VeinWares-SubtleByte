@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Moose PrefabGuid(-13422453)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -13422453
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

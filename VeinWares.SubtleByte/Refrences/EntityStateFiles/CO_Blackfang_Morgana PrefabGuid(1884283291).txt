@@ -1,0 +1,47 @@
+Prefab CO_Blackfang_Morgana PrefabGuid(1884283291)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 55
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1884283291
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Blackfang_Morgana PrefabGuid(1884283291) - Entity(62631:1)
+
+   [1]
+    Value: Entity(37883:4)
+
+   [2]
+    Value: Entity(2711:5)
+
+   [3]
+    Value: Entity(2712:5)
+
+   [4]
+    Value: Entity(2713:5)
+
+   [5]
+    Value: Entity(2714:5)
+
+   [6]
+    Value: Entity(2715:5)
+
+   [7]
+    Value: Entity(2716:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37883:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

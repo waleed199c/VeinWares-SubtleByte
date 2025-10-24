@@ -1,0 +1,32 @@
+Prefab CO_Undead_SkeletonSoldier_Withered PrefabGuid(-974864084)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 1.8
+
+  Stunlock.Core.PrefabGUID
+    _Value: -974864084
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_SkeletonSoldier_Withered PrefabGuid(-974864084) - Entity(62516:1)
+
+   [1]
+    Value: Entity(37854:4)
+
+   [2]
+    Value: Entity(36931:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37854:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

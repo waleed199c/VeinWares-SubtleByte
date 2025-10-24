@@ -1,0 +1,78 @@
+Prefab Dynamic_Village_MarketBarrel02 PrefabGuid(-1754267186)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1754267186
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Village_MarketBarrel02 PrefabGuid(-1754267186) - Entity(17249:2)
+
+   [1]
+    Value: Entity(22145:3)
+
+   [2]
+    Value: Entity(22144:3)
+
+   [3]
+    Value: Entity(22143:3)
+
+   [4]
+    Value: Entity(22165:3)
+
+   [5]
+    Value: Entity(22164:3)
+
+   [6]
+    Value: Entity(6347:2)
+
+   [7]
+    Value: Entity(22163:3)
+
+   [8]
+    Value: Entity(22162:3)
+
+   [9]
+    Value: Entity(22161:3)
+
+   [10]
+    Value: Entity(22160:3)
+
+   [11]
+    Value: Entity(22159:3)
+
+   [12]
+    Value: Entity(22158:3)
+
+   [13]
+    Value: Entity(22157:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

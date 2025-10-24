@@ -1,0 +1,8 @@
+Prefab Weapon_SwordOneHand_SecondaryAttack02 PrefabGuid(1459081001)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1459081001
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

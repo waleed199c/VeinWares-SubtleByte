@@ -1,0 +1,8 @@
+Prefab AI_SpiderTank_Suspension_Curve PrefabGuid(-72826230)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -72826230
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

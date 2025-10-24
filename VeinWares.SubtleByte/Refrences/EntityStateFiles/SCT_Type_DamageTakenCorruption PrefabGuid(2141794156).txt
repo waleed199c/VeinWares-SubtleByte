@@ -1,0 +1,8 @@
+Prefab SCT_Type_DamageTakenCorruption PrefabGuid(2141794156)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2141794156
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

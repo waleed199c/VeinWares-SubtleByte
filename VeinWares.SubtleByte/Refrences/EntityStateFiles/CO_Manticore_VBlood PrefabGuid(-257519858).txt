@@ -1,0 +1,66 @@
+Prefab CO_Manticore_VBlood PrefabGuid(-257519858)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 100
+
+  Stunlock.Core.PrefabGUID
+    _Value: -257519858
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Manticore_VBlood PrefabGuid(-257519858) - Entity(62731:1)
+
+   [1]
+    Value: Entity(38288:4)
+
+   [2]
+    Value: Entity(7654:5)
+
+   [3]
+    Value: Entity(2729:5)
+
+   [4]
+    Value: Entity(2730:5)
+
+   [5]
+    Value: Entity(2731:5)
+
+   [6]
+    Value: Entity(2732:5)
+
+   [7]
+    Value: Entity(2733:5)
+
+   [8]
+    Value: Entity(2734:5)
+
+   [9]
+    Value: Entity(2735:5)
+
+   [10]
+    Value: Entity(2736:5)
+
+   [11]
+    Value: Entity(38289:4)
+
+   [12]
+    Value: Entity(2737:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38288:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38289:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

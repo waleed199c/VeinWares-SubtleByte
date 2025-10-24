@@ -1,0 +1,8 @@
+Prefab VM_Human_Slave_Ruffian_A PrefabGuid(82857080)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 82857080
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Rock_Elemental_Nether_Demon PrefabGuid(-681735888)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -681735888
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

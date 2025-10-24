@@ -1,0 +1,8 @@
+Prefab SunRayColorRed PrefabGuid(-617668592)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -617668592
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

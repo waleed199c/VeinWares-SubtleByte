@@ -1,0 +1,35 @@
+Prefab CO_Corrupted_Wolf PrefabGuid(-1059253804)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1059253804
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Corrupted_Wolf PrefabGuid(-1059253804) - Entity(62539:1)
+
+   [1]
+    Value: Entity(6777:5)
+
+   [2]
+    Value: Entity(11896:5)
+
+   [3]
+    Value: Entity(11897:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(6777:5)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

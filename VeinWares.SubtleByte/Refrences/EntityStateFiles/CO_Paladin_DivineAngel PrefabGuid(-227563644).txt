@@ -1,0 +1,35 @@
+Prefab CO_Paladin_DivineAngel PrefabGuid(-227563644)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 17
+
+  Stunlock.Core.PrefabGUID
+    _Value: -227563644
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Paladin_DivineAngel PrefabGuid(-227563644) - Entity(62660:1)
+
+   [1]
+    Value: Entity(38008:4)
+
+   [2]
+    Value: Entity(30245:6)
+
+   [3]
+    Value: Entity(30246:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38008:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

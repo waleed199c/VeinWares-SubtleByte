@@ -1,0 +1,8 @@
+Prefab VM_Shadow_VBlood_Raymond PrefabGuid(-1639965031)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1639965031
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

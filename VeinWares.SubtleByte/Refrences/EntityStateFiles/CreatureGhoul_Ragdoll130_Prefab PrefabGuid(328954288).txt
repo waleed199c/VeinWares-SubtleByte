@@ -1,0 +1,165 @@
+Prefab CreatureGhoul_Ragdoll130_Prefab PrefabGuid(328954288)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Scale
+    Value: 1.3
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1.3f, 0f, 0f, 0f,  0f, 1.3f, 0f, 0f,  0f, 0f, 1.3f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1.3
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 328954288
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CreatureGhoul_Ragdoll130_Prefab PrefabGuid(328954288) - Entity(11462:1)
+
+   [1]
+    Value: Entity(10714:1)
+
+   [2]
+    Value: Entity(10715:1)
+
+   [3]
+    Value: Entity(25917:1)
+
+   [4]
+    Value: Entity(25918:1)
+
+   [5]
+    Value: Entity(10716:1)
+
+   [6]
+    Value: Entity(21282:1)
+
+   [7]
+    Value: Entity(10717:1)
+
+   [8]
+    Value: Entity(21283:1)
+
+   [9]
+    Value: Entity(10718:1)
+
+   [10]
+    Value: Entity(25919:1)
+
+   [11]
+    Value: Entity(25920:1)
+
+   [12]
+    Value: Entity(10719:1)
+
+   [13]
+    Value: Entity(21284:1)
+
+   [14]
+    Value: Entity(10720:1)
+
+   [15]
+    Value: Entity(21285:1)
+
+   [16]
+    Value: Entity(10721:1)
+
+   [17]
+    Value: Entity(25921:1)
+
+   [18]
+    Value: Entity(25799:1)
+
+   [19]
+    Value: Entity(10722:1)
+
+   [20]
+    Value: Entity(25800:1)
+
+   [21]
+    Value: Entity(25801:1)
+
+   [22]
+    Value: Entity(10723:1)
+
+   [23]
+    Value: Entity(25802:1)
+
+   [24]
+    Value: Entity(25803:1)
+
+   [25]
+    Value: Entity(10724:1)
+
+   [26]
+    Value: Entity(25804:1)
+
+   [27]
+    Value: Entity(25805:1)
+
+   [28]
+    Value: Entity(10725:1)
+
+   [29]
+    Value: Entity(25806:1)
+
+   [30]
+    Value: Entity(25807:1)
+
+   [31]
+    Value: Entity(10726:1)
+
+   [32]
+    Value: Entity(21166:1)
+
+   [33]
+    Value: Entity(10727:1)
+
+   [34]
+    Value: Entity(21167:1)
+
+   [35]
+    Value: Entity(10728:1)
+
+   [36]
+    Value: Entity(10729:1)
+
+   [37]
+    Value: Entity(25808:1)
+
+   [38]
+    Value: Entity(25809:1)
+
+   [39]
+    Value: Entity(10730:1)
+
+   [40]
+    Value: Entity(21168:1)
+
+   [41]
+    Value: Entity(10731:1)
+
+   [42]
+    Value: Entity(21169:1)
+
+   [43]
+    Value: Entity(10732:1)
+
+   44 total elements but only showing the first 36
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

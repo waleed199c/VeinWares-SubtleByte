@@ -1,0 +1,9 @@
+Prefab Candle04BuildMenuGroup PrefabGuid(48379112)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 48379112
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

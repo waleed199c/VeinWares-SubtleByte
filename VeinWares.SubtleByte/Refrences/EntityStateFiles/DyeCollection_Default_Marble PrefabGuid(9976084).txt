@@ -1,0 +1,8 @@
+Prefab DyeCollection_Default_Marble PrefabGuid(9976084)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 9976084
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

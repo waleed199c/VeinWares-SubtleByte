@@ -1,0 +1,8 @@
+Prefab ArcticLeapMovementCurve PrefabGuid(-466420168)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -466420168
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

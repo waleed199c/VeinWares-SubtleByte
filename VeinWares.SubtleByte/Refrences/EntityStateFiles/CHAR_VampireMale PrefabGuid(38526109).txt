@@ -1,0 +1,3786 @@
+Player  - Entity(7631:5)
+Components
+  ProjectM.Residency
+    InsideBuff: AB_Interact_PickDisconnected_Owner_Buff PrefabGuid(-1930363607)
+    Resident: Entity(0:0)
+
+  ProjectM.CastleBuilding.CurrentTileModelEditing
+    TileModel: Entity(0:0)
+
+  ProjectM.AbilityBar_Server
+    HandledClientInterruptCounter: 0
+    HandledServerInterruptCounter: 0
+    ClientInterruptCounter: 0
+    ClientCastStartedCounter: 0
+    ClientCastGroup: Entity(0:0)
+    SpellBlockDebuff: Entity(0:0)
+    SpellBlockResultBuffPrefab: GUID Not Found
+    SpellBlockTriggerSequence: SequenceGUID 0
+    SpellBlockResultBuffDuration: 0
+    IsSpellBlocked: False
+
+  ProjectM.AbilityBar_Shared
+    LimitAbilityPriority: 0
+    GlobalCooldown: 0
+    CastStartTime: 0
+    CastTime: 0
+    PostCastTime: 0
+    InterruptTypes: ProjectM.InterruptTypes None
+    CooldownOnInterrupt: 0
+    FrameCompensation: 0
+    ServerInterruptCounter: 0
+    CastStartedCounter: 0
+    CastCompletedCounter: 0
+    ServerCastCounter: 0
+    ForceCastGroup: GUID Not Found
+    CastGroup: NetworkedEntity(0:0)
+    ThisFrameState: ProjectM.AbilityCastingState None
+    CastAbility: NetworkedEntity(0:0)
+    CastGroupPrefabGuid: GUID Not Found
+    CastAbilityPrefabGuid: GUID Not Found
+    CooldownRecoveryRate: 0
+    PrimaryCooldownRecoveryRate: 0
+    TravelCooldownRecoveryRate: 0
+    FeedCooldownRecoveryRate: 0
+    WeaponCooldownRecoveryRate: 0
+    SpellCooldownRecoveryRate: 0
+    UltimateCooldownRecoveryRate: 0
+    AbilityAttackSpeed: 1
+    PrimaryAttackSpeed: 1
+    SyncedIsCasting: False
+    IsChargeUp: False
+    ChargeUpData: ProjectM.AbilityBar_Shared+ChargeUpState ProjectM.AbilityBar_Shared+ChargeUpState
+
+  ProjectM.Blood
+    MaxBlood: 100
+    LossPerSecond: 0.02
+    ReducedBloodDrain: 0
+    BloodDrainMultiplier: 0
+    Value: 75
+    ChangeBloodCounter: 0
+    Quality: 0
+    LowBloodSequenceStartFactor: 0.1
+    BloodType: BloodType_None PrefabGuid(447918373)
+    SecondaryBlood: ProjectM.Shared.SecondaryBloodData ProjectM.Shared.SecondaryBloodData
+    DefaultBloodType: BloodType_None PrefabGuid(447918373)
+    CorruptedBloodType: BloodType_Corruption PrefabGuid(-1382693416)
+    DebuffPrefab: Buff_NoBlood_Debuff PrefabGuid(-915894843)
+    DebuffEntity: Entity(0:0)
+    SCTType: SCT_Type_BloodTypeChange PrefabGuid(1154316853)
+    LowBloodSequenceGuid: SequenceGUID 1609706734
+    LowBloodSequenceInstance: SequenceState
+      Id: Entity(0:0)
+
+    NoBloodSequenceGuid: SequenceGUID 0
+    NoBloodSequenceInstance: SequenceState
+      Id: Entity(0:0)
+
+    ShowBloodHUD: False
+    IgnoreIdleDrain: False
+    BloodEfficiency: 0
+    StopDrainOnDisconnect: True
+
+  ProjectM.EntityOwner
+    Owner: Entity(0:0)
+
+  ProjectM.EntityCreator
+    Creator: NetworkedEntity(0:0)
+
+  ProjectM.Equipment
+    WeaponLevel: 0
+    ArmorLevel: 0
+    SpellLevel: 0
+    WeaponRunCycle: 0
+    ArmorHeadgearSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorChestSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    WeaponSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    GrimoireSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorFootgearSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorLegsSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    CloakSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ArmorGlovesSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    BagSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    ChestCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    FootgearCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    LegsCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    CloakCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    GlovesCosmeticSlot:
+      SlotEntity: NetworkedEntity(0:0)
+      SlotId: GUID Not Found
+      TransmogKey: ProjectM.Transmog.TransmogEquipmentKey ProjectM.Transmog.TransmogEquipmentKey
+      TransmogIndex: 0
+      HideEquipment: False
+      IsBroken: False
+
+    LevelDamageSettings: Entity(7500:5)
+    PlayerLevelDamageSettings: Entity(7452:5)
+    EquippedItemDestroyedSequenceGuid: SequenceGUID -1423518911
+    EquippedItemBrokenSequenceGuid: SequenceGUID -1885058107
+    UnarmedBuffPrefab: EquipBuff_Weapon_Unarmed_Start01 PrefabGuid(-2075546002)
+    UnarmedBuffInstance: Entity(0:0)
+
+  ProjectM.BuffResistances
+    SettingsEntity: ModifiableEntity(0:0)
+    InitialSettingGuid: BuffResistance_Vampire PrefabGuid(-1022163918)
+
+  ProjectM.RespawnCharacter
+    TimeOfReady: 0
+    TimeOfDeath: 0
+    KillerPrefabGUID: GUID Not Found
+    KillerSpellPrefabGUID: GUID Not Found
+    KillerEntity: NetworkedEntity(0:0)
+    KillerSpell: NetworkedEntity(0:0)
+    MinTimeToRespawn: 3
+    TimeToSpawn: 0
+    SpawnPointIndex: -1
+    FadeEntity: Entity(0:0)
+    SpawnLocationIcon: ProjectM.Network.NetworkId (None)
+    IsReadyToRespawn: False
+    ChoiceHasBeenMade: False
+    IsRespawning: False
+
+  ProjectM.PlayerCharacter
+    Name: Unity.Collections.FixedString64Bytes 
+    SmartClanName: Unity.Collections.FixedString32Bytes 
+    UserEntity: Entity(0:0)
+
+  ProjectM.ReturnToNetherWaypoint
+    WaypointEntity: Entity(0:0)
+
+  ProjectM.BloodMoonBuffState
+    BuffInstance: Entity(0:0)
+
+  ProjectM.Mounter
+    MountEntity: Entity(0:0)
+    IsGalopping: False
+    CanDestroyOnCollision: False
+    Acceleration: 5
+    Deceleration: 10
+    WalkMaxSpeed: 4.9
+    GallopMaxSpeed: 9
+    MaxSpeedReverse: 3
+    DegallopSpeedThreshold: 4.9
+    DestroyOnCollisionSpeedThreshold: 9
+    TurnRate: 100
+    MaxAimAngle: 90
+    JumpFromCliffsMaxDot: 1
+    JumpFromCliffsMinVelocity: 1000
+    TurnRatePerSpeedCurve: ProjectM.CurveReference ProjectM.CurveReference
+    FrictionCurve: ProjectM.CurveReference ProjectM.CurveReference
+    ClientLastMountAngle: -1
+    GallopMaxSpeedMultiplier: 0
+
+  ProjectM.TakeDamageInSun
+    Debuff: SunDamageDebuff PrefabGuid(-1315531444)
+    ChargeValue: 0
+    CooldownValue: 0
+    SunDamageDisabled: False
+    SunChargeUpTime: 5
+    SunCooldownTime: 2.5
+    NextTickTime: 0
+    ChargeUpSequence: SequenceGUID 698259940
+    ChargeUpSunbeamSequence: SequenceGUID 1978724218
+    ChargeUpSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    ChargeUpSunbeamSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    CooldownSequence: SequenceGUID 473535352
+    CooldownSequenceState: SequenceState
+      Id: Entity(0:0)
+
+    SunIntensity: 0
+    IsInSun: False
+
+  ProjectM.TakeDamageInSunDebuffState
+    DebuffInstance: Entity(0:0)
+
+  ProjectM.EntityInput
+    Movement: Unity.Mathematics.float2 float2(0f, 0f)
+    AimPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    AimPositionPlane: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    AimDirection: Unity.Mathematics.float3 float3(0f, 0f, 1f)
+    AimLength: 0
+    HoveredEntity: Entity(0:0)
+    HoveredEntityNetworkId: ProjectM.Network.NetworkId (None)
+    ProjectileAimType: ProjectM.AimDirectionType Planar
+    State: ProjectM.SyncedInputState ProjectM.SyncedInputState
+
+  ProjectM.Shared.BagHolder
+    BagInstance0: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance1: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance2: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagInstance3: ProjectM.Shared.BagInstance ProjectM.Shared.BagInstance
+    BagSlots: 4
+
+  ProjectM.Shared.Interactor
+    Radius: 1
+    MouseAimRadius: 2.5
+    TargetNetworkId: ProjectM.Network.NetworkId (None)
+    Target: Entity(0:0)
+    PreviousTarget: Entity(0:0)
+    InteractAbilityGuid: GUID Not Found
+    TargetSequenceGuid: SequenceGUID -1687938342
+    TargetSequence: SequenceState
+      Id: Entity(0:0)
+
+    ForceReleaseBeforeNextInteract: False
+
+  ProjectM.Shared.VampireAttributeCapModificationsSource
+    ModificationsEntity: Entity(0:0)
+
+  ProjectM.Gameplay.Scripting.Script_CreateGameplayEventOnDamageDealtToEntityCategory_DataServer
+    TargetUnitCategory: ProjectM.UnitCategory PlayerVampire
+    TargetMainCategory: ProjectM.MainEntityCategory Unit
+    OnDamageDealtListener: ProjectM.Scripting.ListenerId ProjectM.Scripting.ListenerId
+    GameplayEventId: Local - -483053688
+    GameplayEventTarget: ProjectM.GameplayEventTarget Self
+    DamageType: ProjectM.MainDamageType Physical
+    TriggerOnSpecificPrefabType: GUID Not Found
+    FilterByUnitCategory: True
+    FilterByEntityCategory: True
+    FilterByDamageType: False
+    OnlyTriggerOnPrimaryAttack: False
+    TargetFilterCondition: None
+    RandomTriggerChance: 1
+    OnlyWhenNotInContesting: True
+    IgnoreDots: False
+
+  ProjectM.Gameplay.Scripting.Script_ApplyBuffUnderHealthThreshold_DataServer
+    HealthFactor: 1E-07
+    NewBuffEntity: Buff_General_Vampire_Wounded_Buff PrefabGuid(-1992158531)
+    TriggerSequence: SequenceGUID 0
+    OnDamageTakenListener: ProjectM.Scripting.ListenerId ProjectM.Scripting.ListenerId
+    ThresholdMet: False
+    DontTriggerOnDots: True
+    DontTriggerInFlight: True
+
+  ProjectM.CombatMusicListener_Shared
+    UnitPrefabGuid: GUID Not Found
+    PlayOutro: False
+
+  ProjectM.Crowdedness
+    Value: 0
+    Blob: Unity.Entities.BlobAssetReference`1[ProjectM.Crowdedness+BlobData] Unity.Entities.BlobAssetReference`1[ProjectM.Crowdedness+BlobData]
+
+  ProjectM.Interactable
+    CurrentTargetSequenceGuid: SequenceGUID 0
+    IgnoreLineOfSight: False
+    IgnoreBlockInteract: False
+    UseInteractAbilityName: True
+    Disabled: False
+
+  ProjectM.InteractedUpon
+    Interacting: False
+    BlockBuildingMovement: False
+    BlockBuildingDisassemble: False
+
+  ProjectM.TravelToTargetRadius
+    Radius: 1
+
+  ProjectM.DynamicCollision
+    AgainstUnits: ProjectM.DynamicCollisionSettings ProjectM.DynamicCollisionSettings
+    AgainstPlayers: ProjectM.DynamicCollisionSettings ProjectM.DynamicCollisionSettings
+    NetworkMultiplier: 1
+    NetworkDirection: Unity.Mathematics.float2 float2(0f, 0f)
+    Immobile: False
+
+  ProjectM.Height
+    LastPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Value: 0
+    ServerHeightLevel: 0
+
+  ProjectM.JumpFromCliffs
+    LastTranslation: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    MaxDot: 0
+    JumpDownTravelBuffPrefabGuid: JumpFromCliffs_Travel PrefabGuid(691373616)
+    JumpUpBuffPrefabGuid: GUID Not Found
+    CheckAgainstMapFlags: ProjectM.Tiles.MapCollisionFlags CollideJumpFromCliff
+    AllowJump: False
+    BlockJump: False
+    IsInJump: False
+    CanJumpDown: False
+
+  ProjectM.WeaponCoatingChargeUpTimer
+    GlobalCooldown: 6
+    GlobalCooldownEnd: 0
+
+  ProjectM.CharacterVoiceActivity
+    TimeSinceUpdate: 0
+    LastTimeSpeaking: 0
+    IsSpeaking: False
+    VivoxUsername: 0
+
+  ProjectM.IsSpellControlled
+    MovementControlled: False
+    RotationControlled: False
+
+  ProjectM.Tiles.RestrictPlacementArea
+    Radius: 7.5
+    RestrictAllTypes: False
+    RestrictSpecificTypes: ProjectM.Tiles.PlacementTypeData [Floor, Wall, Object, Entrance, Door, WallDecoration, WallPillar, WallRubble, ResourceProp, FloorDecoration, ObjectGrounded, WorldBreakableNoCollision, WorldStatic, LightSource, Framework|]
+    RestrictOnlyPlayerBuilding: True
+    RestrictOnlyAgainstEnemies: True
+
+  ProjectM.LightningStorm.LightningAttractorGameplay
+    Data: ProjectM.LightningStorm.LightningAttractorData ProjectM.LightningStorm.LightningAttractorData
+
+  ProjectM.Network.NetworkInterpolated_Shared
+    LastClientCommandTime: 0
+    NextSimulationSyncTime: 0
+    NextSendTime: 0
+    ServerRotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 0f)
+    ServerPosition: Unity.Mathematics.float2 float2(0f, 0f)
+    ServerVelocity: Unity.Mathematics.float2 float2(0f, 0f)
+    Movement: Unity.Mathematics.float2 float2(0f, 0f)
+    ServerMoveVelocity: 0
+    Simulate: False
+    IsStopped: False
+    WasSpellControlled: False
+
+  ProjectM.AbilityBarInitializationState
+    AbilityGroupSlotsInitialized: False
+
+  ProjectM.Aggroable
+    DistanceFactor: 1
+    AggroFactor: 1
+    Value: True
+
+  ProjectM.FactionReference
+    FactionGuid: ModifiablePrefabGUID PrefabGuid(1106458752)
+
+  ProjectM.MinionMasterStats
+    MinionDamageModifier: 1
+
+  ProjectM.VBloodConsumeSource
+    Source: CHAR_VampireMale PrefabGuid(38526109)
+    JournalCategory: ProjectM.JournalCategoryType None
+    QuestFlavorTextOverride: 00000000-0000-0000-0000-000000000000 - <Localization not found!>
+    TooltipGUID: GUID Not Found
+    SpellSchool: GUID Not Found
+    Tier: ProjectM.SpellSchoolProgressionTier Tier1
+    SpellSchoolPoints: 0
+    PassivePoints: 0
+
+  ProjectM.PlacementDestroyData
+    DestroyReason: ProjectM.CastleBuilding.Placement.TileModelDestroyReason None
+
+  ProjectM.CustomizationFeatures
+    GenderIndex: 0
+    SkintoneIndex: 0
+    FaceIndex: 0
+    EyeColorIndex: 0
+    HairStyleIndex: 0
+    HairColorIndex: 0
+    FeaturesIndex: 0
+    AccessoriesIndex: 0
+
+  ProjectM.DeathReason
+    PrefabGuid: GUID Not Found
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Buffable
+    KnockbackResistanceIndex: 12
+    UniqueBuffCategories: ProjectM.BuffCategoryFlag Travel, Shapeshift
+
+  ProjectM.GlobalCooldown
+    Value: 0.25
+
+  ProjectM.Hideable
+    IsHidden: False
+    Visibility: 1
+    AdditionalHideRangeSq: 0
+    IgnoreLoS: False
+
+  ProjectM.Stealthable
+    IsStealthed: False
+    AlwaysShowVFX: False
+    StealthBushId: -1
+    ModelInvisible: True
+
+  ProjectM.Health
+    MaxHealth: 125
+    TimeOfDeath: 0
+    Value: 125
+    MaxRecoveryHealth: 1
+    IsDead: False
+
+  ProjectM.HealthConstants
+    LowHealthFactor: 0.4
+    DestroyOnDeath: False
+    DestroyAfterDuration: 0
+    DisableDamageSCT: False
+
+  ProjectM.Immortal
+    IsImmortal: True
+
+  ProjectM.InventoryOwner
+    LastUpdateVersion: 0
+    HasItems: False
+
+  ProjectM.LastTranslation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.Movement
+    ForcePositionData: ProjectM.ForcePositionData ProjectM.ForcePositionData
+    MoveStopAbilityData: ProjectM.MoveStopAbilityData ProjectM.MoveStopAbilityData
+    MoveInput: Unity.Mathematics.float2 float2(0f, 0f)
+    LastNonZeroMoveInput: Unity.Mathematics.float2 float2(1f, 0f)
+    Speed: 4
+    AbilityCastSpeedMultiplier: 1
+    HasMoveStopData: False
+
+  ProjectM.PavementBonus
+    MovementSpeed: 0
+    ModificationId: Unset
+
+  ProjectM.CollisionRadius
+    Radius: 0.6
+
+  ProjectM.MapCollision
+    Radius: 0.4
+    CollidesAgainstMapFlags: ProjectM.Tiles.MapCollisionFlags CollideNormalMovement, CollideAirMovement, CollideStandardSpells
+    Result: ProjectM.MapCollisionResult ProjectM.MapCollisionResult
+
+  ProjectM.Velocity
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.PlayerLastValidPosition
+    LastValidPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.TargetDirection
+    ForcedDirection: float3(0f, 0f, 0f)
+    Direction: Unity.Mathematics.float3 float3(0f, 0f, 1f)
+    AimDirection: Unity.Mathematics.float3 float3(0f, 0f, 1f)
+    DefaultRotationSpeed: 600
+    RotationSpeed: 600
+    RotateTowardsMouse: False
+    ForceRotateTowardsMovement: False
+    CurrentCanRotate: True
+    PlayerControlsRotation: True
+
+  ProjectM.Team
+    Value: 0
+    FactionIndex: 21
+
+  ProjectM.TileBounds
+    Value: ProjectM.BoundsMinMax [Min=int2(0, 0), Max=int2(0, 0)]
+
+  ProjectM.TileModelSpatialData
+    LastTilePosition: ProjectM.TilePosition Tile=int2(0, 0), TileRotation=None, Height=-50
+
+  ProjectM.TileData
+    Data: Unity.Entities.BlobAssetReference`1[ProjectM.TileBlob] Unity.Entities.BlobAssetReference`1[ProjectM.TileBlob]
+
+  ProjectM.VBloodAbilityOwnerData
+    VBloodAbilityBuff: Buff_VBlood_Ability_Replace PrefabGuid(1171608023)
+
+  ProjectM.BloodMoonBuff
+    Buff: Buff_BloodMoon PrefabGuid(-560523291)
+
+  ProjectM.BuffableFlagState
+    Value: ProjectM.ModifiableLong ProjectM.ModifiableLong
+
+  ProjectM.CanFly
+    FlyingHeight: 30
+    HeightAboveObstacle: 7
+    ProximitySpeedModifier: ProjectM.CurveReference ProjectM.CurveReference
+    LastValidPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    LastTargetHeight: 0
+    VerticalSpeed: 20
+    VerticalAcceleration: 0
+
+  ProjectM.EntityCategory
+    MainCategoryInt: 0
+    UnitCategoryInt: 6
+    StructureCategoryInt: 0
+    MaterialCategoryInt: 0
+    ResourceLevel: 0
+
+  ProjectM.LifeLeech
+    PrimaryLeechFactor: 0
+    PhysicalLifeLeechFactor: 0
+    SpellLifeLeechFactor: 0
+    AffectRecovery: False
+
+  ProjectM.Vision
+    Range: 40
+
+  ProjectM.EntityAimData
+    AimPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    AimPositionPlane: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    ProjectileAimPosition: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.MoveVelocity
+    MoveVelocityMagnitude: 0
+    ReferenceWalkingCurve: ProjectM.CurveReference ProjectM.CurveReference
+
+  ProjectM.ResistanceData
+    SunResistance_IncreasedSunPiercingDuration: 0.015
+    GarlicResistance_DamageReductionPerRating: 0.005
+    GarlicResistance_IncreasedExposureFactorPerRating: 0.04
+    GarlicResistance_ReduceMaxStacksPerRating: 0.75
+    FireResistance_DamageReductionPerRating: 0.005
+    FireResistance_RedcuedIgiteChancePerRating: 0.005
+    SilverResistance_DamageReductionPerRating: 0.005
+    SilverResistance_CarryValueAbsorbedPerRating: 0.8
+    HolyResistance_DamageReductionPerRating: 0.005
+    HolyResistance_DamageAbsorbPerRating: 0.2
+    PvPResilience_DamageReductionPerRating: 0
+
+  ProjectM.UnitStats
+    PhysicalPower: 10
+    SpellPower: 10
+    ResourcePower: 10
+    SiegePower: 10
+    PhysicalResistance: 0
+    SpellResistance: 0
+    FireResistance: 0
+    PassiveHealthRegen: 0.0025
+    CCReduction: 0
+    HealthRecovery: 0.25
+    DamageReduction: 0
+    HealingReceived: 0
+    ReducedBloodDrain: 0
+    BloodDrainMultiplier: 1
+    CorruptionDamageReduction: 0
+
+  ProjectM.DamageCategoryStats
+    DamageVsUndeads: 1
+    DamageVsHumans: 1
+    DamageVsDemons: 1
+    DamageVsMechanical: 1
+    DamageVsBeasts: 1
+    DamageVsCastleObjects: 1
+    DamageVsVampires: 1
+    DamageVsWood: 1
+    DamageVsMineral: 1
+    DamageVsVegetation: 1
+    DamageVsLightArmor: 1
+    DamageVsVBloods: 1
+    DamageVsMagic: 1
+
+  ProjectM.ResistCategoryStats
+    ResistVsUndeads: 0
+    ResistVsHumans: 0
+    ResistVsDemons: 0
+    ResistVsMechanical: 0
+    ResistVsBeasts: 0
+    ResistVsVampires: 0
+
+  ProjectM.Sequencer.ImpactMaterial
+    IntType: 4
+    Offset: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    PlayOnSelf: False
+
+  ProjectM.Network.Networked
+    CreateFrame: 0
+
+  ProjectM.Network.NetworkedTimeout
+    LastTimeSynced: 0
+    TimeoutAfter: 3
+    Enabled: True
+
+  ProjectM.Network.UpToDateUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+
+  ProjectM.Network.SyncToUserBitMask
+    Value: ProjectM.Network.UserBitMask128 00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+00000000000000000000000000000000
+
+  ProjectM.Network.Latency
+    Value: 0
+
+  ProjectM.Network.FrameChanged
+    Value: -1
+
+  ProjectM.Network.NetworkSnapshot
+    Type: ProjectM.Network.NetworkSnapshotType Snapshot_fjjjidkbf
+
+  ProjectM.Tiles.TileModel
+    DisabledTileTypesInt: 0
+
+  ProjectM.Hybrid.HybridModelSeed
+    Seed: 0
+    HasSetSeed: False
+
+  ProjectM.Hybrid.DeathRagdollForce
+    Force: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  ProjectM.Shared.VampireAttributeCaps
+    Caps: Unity.Entities.BlobAssetReference`1[ProjectM.Shared.VampireAttributes_Unboxed`1[ProjectM.Shared.AttributeCap]] Unity.Entities.BlobAssetReference`1[ProjectM.Shared.VampireAttributes_Unboxed`1[ProjectM.Shared.AttributeCap]]
+
+  ProjectM.Shared.FreeCastData
+    FreeCastAvailableSpellText: Stunlock.Core.AssetGuid d52e44ec832240b198411fcb22b76bee
+    FreeCastAvailableWeaponText: Stunlock.Core.AssetGuid cff1614d8f4b4e2f9a4aa2a1156f9d1b
+    FreeCastTriggerSpellText: Stunlock.Core.AssetGuid faeabdcc8868498db12682d3f433a121
+    FreeCastTriggerWeaponText: Stunlock.Core.AssetGuid faeabdcc8868498db12682d3f433a121
+    FreeCastTriggerSpellSequence: SequenceGUID -1910520424
+    FreeCastAvailableSpellSequence: SequenceGUID 317192720
+    FreeCastTriggerWeaponSequence: SequenceGUID -1447755753
+    FreeCastAvailableWeaponSequence: SequenceGUID 317192720
+    Spell_FreeCastBuff: Buff_FreeCast_Spell PrefabGuid(-650272969)
+    Weapon_FreeCastBuff: Buff_FreeCast_Weapon PrefabGuid(651199070)
+
+  ProjectM.Shared.VampireSpecificAttributes
+    SilverCoinResistance: 0
+    PvPResilience: 0
+    HolyResistance: 0
+    SilverResistance: 0
+    GarlicResistance: 0
+    SunResistance: 0
+    PhysicalCriticalStrikeChance: 0
+    PhysicalCriticalStrikeDamage: 0
+    SpellCriticalStrikeChance: 0
+    SpellCriticalStrikeDamage: 0
+    BonusPhysicalPower: 0
+    BonusSpellPower: 0
+    BonusMaxHealth: 0
+    BonusMovementSpeed: 0
+    BonusShapeshiftMovementSpeed: 0
+    ResourceYieldModifier: 0
+    ReducedResourceDurabilityLoss: 0
+    IncreasedShieldEfficiency: 0
+    UltimateEfficiency: 1
+    WeaponSkillPower: 1
+    SpellFreeCast: 0
+    WeaponFreeCast: 0
+    BloodMendHealEfficiency: 0
+    DemountProtection: 0
+    AdditionalInventorySlots: 0
+    BonusPhysicalPowerModId: Unset
+    BonusSpellPowerModId: Unset
+    BonusMaxHealthModId: Unset
+    BonusMovementSpeedModId: Unset
+    BonusShapeshiftMovementSpeedModId: Unset
+    PvPProtected: False
+    PassiveSlots: 0
+
+  ProjectM.Shared.FallToHeight
+    Speed: 0
+    Gravity: 20
+    IsGrounded: False
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Physics.PhysicsCollider
+    Value: Unity.Entities.BlobAssetReference`1[Unity.Physics.Collider] Unity.Entities.BlobAssetReference`1[Unity.Physics.Collider]
+
+  Unity.Physics.Systems.StaticPhysicsWorldBodyIndex
+    WorldBodyIndex: -1
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  ProjectM.TeamReference
+    Value: ModifiableEntity(0:0)
+
+  ProjectM.TilePosition
+    Tile: Unity.Mathematics.int2 int2(0, 0)
+    TileRotation: ProjectM.Tiles.TileRotation None
+    CompressedHeight: 0
+
+  ProjectM.Network.NetworkId
+    Normal_Index: 0
+    Normal_Generation: 0
+    MegaStatic_StaticTransformIndex: 0
+    MegaStatic_TerrainChunkX: 0
+    MegaStatic_TerrainChunkY: 0
+    MegaStatic_PrefabGUID: 0
+    Type: ProjectM.Network.NetworkIdType None
+
+  Stunlock.Core.PrefabGUID
+    _Value: 38526109
+
+  ProjectM.EquipmentSetBuff
+  ProjectM.BloodQualityBuff
+  ProjectM.InverseAggroBufferElement
+  ProjectM.FollowerBuffer
+  ProjectM.AbilityGroupSlotBuffer
+   [0]
+    BaseAbilityGroupOnSlot: AB_Vampire_Unarmed_Primary_MeleeAttack_AbilityGroup PrefabGuid(-1772111618)
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [1]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [2]
+    BaseAbilityGroupOnSlot: AB_Vampire_VeilOfShadow_Group PrefabGuid(-433204738)
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [3]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [4]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [5]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [6]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [7]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+   [8]
+    BaseAbilityGroupOnSlot: GUID Not Found
+    ShowOnBar: True
+    GroupSlotEntity: NetworkedEntity(0:0)
+
+  ProjectM.BuffBuffer
+  ProjectM.InventoryInstanceElement
+   [0]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Main
+    Slots: 35
+    MaxSlots: 53
+    ExternalInventoryEntityPrefabGuid: External_Inventory PrefabGuid(1183666186)
+    ExternalInventoryEntity: NetworkedEntity(0:0)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+   [1]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Bag
+    Slots: 0
+    MaxSlots: 0
+    ExternalInventoryEntityPrefabGuid: GUID Not Found
+    ExternalInventoryEntity: NetworkedEntity(0:0)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+   [2]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Bag
+    Slots: 0
+    MaxSlots: 0
+    ExternalInventoryEntityPrefabGuid: GUID Not Found
+    ExternalInventoryEntity: NetworkedEntity(0:0)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+   [3]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Bag
+    Slots: 0
+    MaxSlots: 0
+    ExternalInventoryEntityPrefabGuid: GUID Not Found
+    ExternalInventoryEntity: NetworkedEntity(0:0)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+   [4]
+    Category: ProjectM.InventoryInstanceElement+InstanceCategory Bag
+    Slots: 0
+    MaxSlots: 0
+    ExternalInventoryEntityPrefabGuid: GUID Not Found
+    ExternalInventoryEntity: NetworkedEntity(0:0)
+    RestrictedType: GUID Not Found
+    RestrictedCategory: 0
+    StartItems: Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems] Unity.Entities.BlobAssetReference`1[ProjectM.ExternalInventoryStartItems]
+
+  ProjectM.ActivePassivesBuffer
+   [0]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [1]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [2]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [3]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [4]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [5]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [6]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+   [7]
+    Entity: Entity(0:0)
+    PrefabGuid: GUID Not Found
+
+  ProjectM.VBloodAbilityBuffEntry
+  ProjectM.EntitiesInView_Server
+  ProjectM.Network.SyncToUserBuffer
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Player  - Entity(7631:5)
+
+   [1]
+    Value: Entity(7500:5)
+
+   [2]
+    Value: Entity(7452:5)
+
+  ProjectM.CrowdednessPlayerBufferElement
+  ProjectM.BuffByItemCategoryCount
+   [0]
+    ItemCategory: ProjectM.ItemCategory Silver
+    BuffGuid: Buff_General_Silver_Sickness_Burn_Debuff PrefabGuid(853298599)
+
+  ProjectM.BuffOnConnectionStatusElement
+   [0]
+    BuffPrefabGuid: Buff_General_Disconnected PrefabGuid(1769215014)
+    OnConnect: False
+
+  ProjectM.InteractAbilityBuffer
+   [0]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab H���            
+      Component                      
+     ConditionalElements
+    Ability: AB_FeedFriendly_01_Initiate_AbilityGroup PrefabGuid(1501158829)
+    Importance: 3
+    HideInteractHUDWhileCasting: False
+
+   [1]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab                 
+      Component                      
+     ConditionalElements
+    Ability: AB_Interact_VampirePull_AbilityGroup PrefabGuid(4267150)
+    Importance: 3
+    HideInteractHUDWhileCasting: False
+
+   [2]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab �՝�  p�K��  
+      Component !�p�  (L��  @�9��
+     ConditionalElements
+    Ability: AB_FeedRevive_01_Initiate_AbilityGroup PrefabGuid(1754040702)
+    Importance: 1
+    HideInteractHUDWhileCasting: False
+
+   [3]
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab         p�y�  
+      Component �\           @�՝�
+     ConditionalElements
+    Ability: AB_FeedEnemyVampire_01_Initiate_AbilityGroup PrefabGuid(391943159)
+    Importance: 1
+    HideInteractHUDWhileCasting: False
+
+  ProjectM.CreateGameplayEventsOnAbilityTrigger
+   [0]
+    EventId: Local - -1182650535
+    Type: ProjectM.AbilityTriggerEventType Use
+    Target: ProjectM.GameplayEventTarget BuffTarget
+    Condition: None
+    AbilityTypes: ProjectM.AbilityTypeFlag AbilityKit
+    AbilityButton: ProjectM.AbilityButtonInputAction None
+    AbilityTypeEnum: ProjectM.AbilityTypeEnum None
+    NumOfPrefabTargets: 0
+    PrefabTargetStartIndex: 0
+
+  ProjectM.CreateGameplayEventOnDamageTaken
+   [0]
+    EventId: Local - -2015634130
+    Condition: None
+    Source: ProjectM.DamageTakenTarget Self
+    IncludeDoTs: False
+    IgnoreWhenInContest: False
+
+   [1]
+    EventId: Local - 171675861
+    Condition: ConditionBlob
+     ConditionInfo
+      Prefab                 
+      Component                                          
+     ConditionalElements
+    Source: ProjectM.DamageTakenTarget Self
+    IncludeDoTs: False
+    IgnoreWhenInContest: True
+
+  ProjectM.CreateGameplayEventsOnSpawn
+   [0]
+    EventId: Local - 1093251345
+    Target: ProjectM.GameplayEventTarget Self
+
+  ProjectM.ApplyBuffOnGameplayEvent
+   [0]
+    BuffTarget: ProjectM.ApplyBuffTarget Self
+    SpellTarget: ProjectM.SetSpellTarget Default
+    EntityOwner: ProjectM.SetEntityOwner Default
+    OverrideDuration: Il2CppSystem.Nullable_Unboxed`1[System.Single] 
+    Stacks: 1
+    Buff0: Buff_CombatStance PrefabGuid(-952067173)
+    Buff1: GUID Not Found
+    Buff2: GUID Not Found
+    Buff3: GUID Not Found
+    EventOnConsume: Local - 0
+    ConsumeIfAlreadyExists: False
+    ConsumeConditional: None
+    CustomAbilitySpellModsSource: GUID Not Found
+
+   [1]
+    BuffTarget: ProjectM.ApplyBuffTarget EventTarget
+    SpellTarget: ProjectM.SetSpellTarget Default
+    EntityOwner: ProjectM.SetEntityOwner Default
+    OverrideDuration: Il2CppSystem.Nullable_Unboxed`1[System.Single] 
+    Stacks: 1
+    Buff0: Buff_OutOfCombat PrefabGuid(897325455)
+    Buff1: GUID Not Found
+    Buff2: GUID Not Found
+    Buff3: GUID Not Found
+    EventOnConsume: Local - 0
+    ConsumeIfAlreadyExists: False
+    ConsumeConditional: None
+    CustomAbilitySpellModsSource: GUID Not Found
+
+  ProjectM.GameplayEventIdMapping
+   [0]
+    NextTriggerTime: 0
+    TriggerCooldown: 0
+    GameplayEventId: Local - -1182650535
+    MaxTriggers: 0
+    CurrentTriggers: 0
+    TriggerMultipleTimes: True
+
+   [1]
+    NextTriggerTime: 0
+    TriggerCooldown: 0
+    GameplayEventId: Local - 1093251345
+    MaxTriggers: 0
+    CurrentTriggers: 0
+    TriggerMultipleTimes: False
+
+  ProjectM.Network.Snapshot_ActivePassivesBuffer
+   [0]
+    Value: 8
+
+   [1]
+    Value: 0
+
+   [2]
+    Value: 0
+
+   [3]
+    Value: 0
+
+   [4]
+    Value: 0
+
+   [5]
+    Value: 0
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 0
+
+   [11]
+    Value: 0
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 0
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 0
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 0
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 0
+
+   [49]
+    Value: 0
+
+   [50]
+    Value: 0
+
+   [51]
+    Value: 0
+
+   [52]
+    Value: 0
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   [56]
+    Value: 0
+
+   [57]
+    Value: 0
+
+   [58]
+    Value: 0
+
+   [59]
+    Value: 0
+
+   [60]
+    Value: 0
+
+   [61]
+    Value: 0
+
+   [62]
+    Value: 0
+
+   [63]
+    Value: 0
+
+   [64]
+    Value: 0
+
+   [65]
+    Value: 0
+
+   [66]
+    Value: 0
+
+   [67]
+    Value: 0
+
+   [68]
+    Value: 0
+
+   [69]
+    Value: 0
+
+   [70]
+    Value: 0
+
+   [71]
+    Value: 0
+
+   72 total elements but only showing the first 36
+  ProjectM.Network.Snapshot_FollowerBuffer
+  ProjectM.Network.Snapshot_InventoryInstanceElement
+   [0]
+    Value: 5
+
+   [1]
+    Value: 0
+
+   [2]
+    Value: 0
+
+   [3]
+    Value: 0
+
+   [4]
+    Value: 0
+
+   [5]
+    Value: 0
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 0
+
+   [11]
+    Value: 0
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 0
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 0
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 53
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 0
+
+   [49]
+    Value: 0
+
+   [50]
+    Value: 0
+
+   [51]
+    Value: 0
+
+   [52]
+    Value: 0
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   [56]
+    Value: 0
+
+   [57]
+    Value: 0
+
+   [58]
+    Value: 0
+
+   [59]
+    Value: 0
+
+   [60]
+    Value: 35
+
+   [61]
+    Value: 0
+
+   [62]
+    Value: 0
+
+   [63]
+    Value: 0
+
+   [64]
+    Value: 0
+
+   [65]
+    Value: 0
+
+   [66]
+    Value: 0
+
+   [67]
+    Value: 0
+
+   [68]
+    Value: 1
+
+   [69]
+    Value: 0
+
+   [70]
+    Value: 0
+
+   [71]
+    Value: 0
+
+   [72]
+    Value: 0
+
+   [73]
+    Value: 0
+
+   [74]
+    Value: 0
+
+   [75]
+    Value: 0
+
+   [76]
+    Value: 0
+
+   [77]
+    Value: 0
+
+   [78]
+    Value: 0
+
+   [79]
+    Value: 0
+
+   [80]
+    Value: 0
+
+   [81]
+    Value: 0
+
+   [82]
+    Value: 0
+
+   [83]
+    Value: 0
+
+   [84]
+    Value: 0
+
+   [85]
+    Value: 0
+
+   [86]
+    Value: 0
+
+   [87]
+    Value: 0
+
+   [88]
+    Value: 0
+
+   [89]
+    Value: 0
+
+   [90]
+    Value: 0
+
+   [91]
+    Value: 0
+
+   [92]
+    Value: 0
+
+   [93]
+    Value: 0
+
+   [94]
+    Value: 0
+
+   [95]
+    Value: 0
+
+   [96]
+    Value: 0
+
+   [97]
+    Value: 0
+
+   [98]
+    Value: 0
+
+   [99]
+    Value: 0
+
+   [100]
+    Value: 0
+
+   [101]
+    Value: 0
+
+   [102]
+    Value: 0
+
+   [103]
+    Value: 0
+
+   [104]
+    Value: 0
+
+   [105]
+    Value: 0
+
+   [106]
+    Value: 0
+
+   [107]
+    Value: 0
+
+   [108]
+    Value: 1
+
+   [109]
+    Value: 0
+
+   [110]
+    Value: 0
+
+   [111]
+    Value: 0
+
+   [112]
+    Value: 0
+
+   [113]
+    Value: 0
+
+   [114]
+    Value: 0
+
+   [115]
+    Value: 0
+
+   [116]
+    Value: 0
+
+   [117]
+    Value: 0
+
+   [118]
+    Value: 0
+
+   [119]
+    Value: 0
+
+   [120]
+    Value: 0
+
+   [121]
+    Value: 0
+
+   [122]
+    Value: 0
+
+   [123]
+    Value: 0
+
+   [124]
+    Value: 0
+
+   [125]
+    Value: 0
+
+   [126]
+    Value: 0
+
+   [127]
+    Value: 0
+
+   [128]
+    Value: 0
+
+   [129]
+    Value: 0
+
+   [130]
+    Value: 0
+
+   [131]
+    Value: 0
+
+   [132]
+    Value: 0
+
+   [133]
+    Value: 0
+
+   [134]
+    Value: 0
+
+   [135]
+    Value: 0
+
+   [136]
+    Value: 0
+
+   [137]
+    Value: 0
+
+   [138]
+    Value: 0
+
+   [139]
+    Value: 0
+
+   [140]
+    Value: 0
+
+   [141]
+    Value: 0
+
+   [142]
+    Value: 0
+
+   [143]
+    Value: 0
+
+   [144]
+    Value: 0
+
+   [145]
+    Value: 0
+
+   [146]
+    Value: 0
+
+   [147]
+    Value: 0
+
+   [148]
+    Value: 1
+
+   [149]
+    Value: 0
+
+   [150]
+    Value: 0
+
+   [151]
+    Value: 0
+
+   [152]
+    Value: 0
+
+   [153]
+    Value: 0
+
+   [154]
+    Value: 0
+
+   [155]
+    Value: 0
+
+   [156]
+    Value: 0
+
+   [157]
+    Value: 0
+
+   [158]
+    Value: 0
+
+   [159]
+    Value: 0
+
+   [160]
+    Value: 0
+
+   [161]
+    Value: 0
+
+   [162]
+    Value: 0
+
+   [163]
+    Value: 0
+
+   [164]
+    Value: 0
+
+   [165]
+    Value: 0
+
+   [166]
+    Value: 0
+
+   [167]
+    Value: 0
+
+   [168]
+    Value: 0
+
+   [169]
+    Value: 0
+
+   [170]
+    Value: 0
+
+   [171]
+    Value: 0
+
+   [172]
+    Value: 0
+
+   [173]
+    Value: 0
+
+   [174]
+    Value: 0
+
+   [175]
+    Value: 0
+
+   [176]
+    Value: 0
+
+   [177]
+    Value: 0
+
+   [178]
+    Value: 0
+
+   [179]
+    Value: 0
+
+   [180]
+    Value: 0
+
+   [181]
+    Value: 0
+
+   [182]
+    Value: 0
+
+   [183]
+    Value: 0
+
+   [184]
+    Value: 0
+
+   [185]
+    Value: 0
+
+   [186]
+    Value: 0
+
+   [187]
+    Value: 0
+
+   [188]
+    Value: 1
+
+   [189]
+    Value: 0
+
+   [190]
+    Value: 0
+
+   [191]
+    Value: 0
+
+   [192]
+    Value: 0
+
+   [193]
+    Value: 0
+
+   [194]
+    Value: 0
+
+   [195]
+    Value: 0
+
+   [196]
+    Value: 0
+
+   [197]
+    Value: 0
+
+   [198]
+    Value: 0
+
+   [199]
+    Value: 0
+
+   [200]
+    Value: 0
+
+   [201]
+    Value: 0
+
+   [202]
+    Value: 0
+
+   [203]
+    Value: 0
+
+   [204]
+    Value: 0
+
+   [205]
+    Value: 0
+
+   [206]
+    Value: 0
+
+   [207]
+    Value: 0
+
+   [208]
+    Value: 0
+
+   [209]
+    Value: 0
+
+   [210]
+    Value: 0
+
+   [211]
+    Value: 0
+
+   [212]
+    Value: 0
+
+   [213]
+    Value: 0
+
+   [214]
+    Value: 0
+
+   [215]
+    Value: 0
+
+   [216]
+    Value: 0
+
+   [217]
+    Value: 0
+
+   [218]
+    Value: 0
+
+   [219]
+    Value: 0
+
+   [220]
+    Value: 0
+
+   [221]
+    Value: 0
+
+   [222]
+    Value: 0
+
+   [223]
+    Value: 0
+
+   [224]
+    Value: 0
+
+   [225]
+    Value: 0
+
+   [226]
+    Value: 0
+
+   [227]
+    Value: 0
+
+   228 total elements but only showing the first 36
+  ProjectM.AttachMapIconsToEntity
+   [0]
+    Prefab: MapIcon_Player PrefabGuid(-892362184)
+
+  ProjectM.UnlockedPassivesBuffer
+  ProjectM.GameplayEventListeners
+   [0]
+    EventIdIndex: 0
+    EventIndexOfType: 0
+    ConditionBlob: None
+    GameplayEventType: ProjectM.GameplayEventTypeEnum ApplyBuff
+    GameplayEventId: Local - -1182650535
+
+   [1]
+    EventIdIndex: 1
+    EventIndexOfType: 1
+    ConditionBlob: None
+    GameplayEventType: ProjectM.GameplayEventTypeEnum ApplyBuff
+    GameplayEventId: Local - 1093251345
+
+  ProjectM.Network.NetSnapshot
+   [0]
+    Value: 157
+
+   [1]
+    Value: 220
+
+   [2]
+    Value: 75
+
+   [3]
+    Value: 2
+
+   [4]
+    Value: 90
+
+   [5]
+    Value: 1
+
+   [6]
+    Value: 0
+
+   [7]
+    Value: 0
+
+   [8]
+    Value: 0
+
+   [9]
+    Value: 0
+
+   [10]
+    Value: 128
+
+   [11]
+    Value: 63
+
+   [12]
+    Value: 0
+
+   [13]
+    Value: 0
+
+   [14]
+    Value: 0
+
+   [15]
+    Value: 0
+
+   [16]
+    Value: 0
+
+   [17]
+    Value: 0
+
+   [18]
+    Value: 0
+
+   [19]
+    Value: 0
+
+   [20]
+    Value: 0
+
+   [21]
+    Value: 0
+
+   [22]
+    Value: 0
+
+   [23]
+    Value: 0
+
+   [24]
+    Value: 0
+
+   [25]
+    Value: 0
+
+   [26]
+    Value: 0
+
+   [27]
+    Value: 0
+
+   [28]
+    Value: 0
+
+   [29]
+    Value: 0
+
+   [30]
+    Value: 0
+
+   [31]
+    Value: 0
+
+   [32]
+    Value: 0
+
+   [33]
+    Value: 0
+
+   [34]
+    Value: 0
+
+   [35]
+    Value: 0
+
+   [36]
+    Value: 0
+
+   [37]
+    Value: 0
+
+   [38]
+    Value: 0
+
+   [39]
+    Value: 0
+
+   [40]
+    Value: 0
+
+   [41]
+    Value: 0
+
+   [42]
+    Value: 0
+
+   [43]
+    Value: 0
+
+   [44]
+    Value: 0
+
+   [45]
+    Value: 0
+
+   [46]
+    Value: 0
+
+   [47]
+    Value: 0
+
+   [48]
+    Value: 0
+
+   [49]
+    Value: 0
+
+   [50]
+    Value: 0
+
+   [51]
+    Value: 0
+
+   [52]
+    Value: 0
+
+   [53]
+    Value: 0
+
+   [54]
+    Value: 0
+
+   [55]
+    Value: 0
+
+   [56]
+    Value: 0
+
+   [57]
+    Value: 0
+
+   [58]
+    Value: 0
+
+   [59]
+    Value: 0
+
+   [60]
+    Value: 0
+
+   [61]
+    Value: 0
+
+   [62]
+    Value: 0
+
+   [63]
+    Value: 0
+
+   [64]
+    Value: 0
+
+   [65]
+    Value: 0
+
+   [66]
+    Value: 0
+
+   [67]
+    Value: 0
+
+   [68]
+    Value: 0
+
+   [69]
+    Value: 0
+
+   [70]
+    Value: 0
+
+   [71]
+    Value: 0
+
+   [72]
+    Value: 0
+
+   [73]
+    Value: 0
+
+   [74]
+    Value: 0
+
+   [75]
+    Value: 0
+
+   [76]
+    Value: 0
+
+   [77]
+    Value: 0
+
+   [78]
+    Value: 0
+
+   [79]
+    Value: 0
+
+   [80]
+    Value: 0
+
+   [81]
+    Value: 0
+
+   [82]
+    Value: 128
+
+   [83]
+    Value: 63
+
+   [84]
+    Value: 0
+
+   [85]
+    Value: 0
+
+   [86]
+    Value: 0
+
+   [87]
+    Value: 0
+
+   [88]
+    Value: 0
+
+   [89]
+    Value: 0
+
+   [90]
+    Value: 0
+
+   [91]
+    Value: 0
+
+   [92]
+    Value: 0
+
+   [93]
+    Value: 0
+
+   [94]
+    Value: 0
+
+   [95]
+    Value: 0
+
+   [96]
+    Value: 0
+
+   [97]
+    Value: 0
+
+   [98]
+    Value: 0
+
+   [99]
+    Value: 0
+
+   [100]
+    Value: 0
+
+   [101]
+    Value: 0
+
+   [102]
+    Value: 0
+
+   [103]
+    Value: 0
+
+   [104]
+    Value: 0
+
+   [105]
+    Value: 0
+
+   [106]
+    Value: 0
+
+   [107]
+    Value: 0
+
+   [108]
+    Value: 0
+
+   [109]
+    Value: 0
+
+   [110]
+    Value: 0
+
+   [111]
+    Value: 0
+
+   [112]
+    Value: 0
+
+   [113]
+    Value: 0
+
+   [114]
+    Value: 0
+
+   [115]
+    Value: 0
+
+   [116]
+    Value: 0
+
+   [117]
+    Value: 0
+
+   [118]
+    Value: 0
+
+   [119]
+    Value: 0
+
+   [120]
+    Value: 0
+
+   [121]
+    Value: 0
+
+   [122]
+    Value: 0
+
+   [123]
+    Value: 0
+
+   [124]
+    Value: 0
+
+   [125]
+    Value: 1
+
+   [126]
+    Value: 0
+
+   [127]
+    Value: 0
+
+   [128]
+    Value: 0
+
+   [129]
+    Value: 0
+
+   [130]
+    Value: 0
+
+   [131]
+    Value: 0
+
+   [132]
+    Value: 0
+
+   [133]
+    Value: 0
+
+   [134]
+    Value: 0
+
+   [135]
+    Value: 0
+
+   [136]
+    Value: 0
+
+   [137]
+    Value: 0
+
+   [138]
+    Value: 0
+
+   [139]
+    Value: 0
+
+   [140]
+    Value: 0
+
+   [141]
+    Value: 2
+
+   [142]
+    Value: 0
+
+   [143]
+    Value: 0
+
+   [144]
+    Value: 0
+
+   [145]
+    Value: 0
+
+   [146]
+    Value: 0
+
+   [147]
+    Value: 0
+
+   [148]
+    Value: 0
+
+   [149]
+    Value: 0
+
+   [150]
+    Value: 0
+
+   [151]
+    Value: 0
+
+   [152]
+    Value: 0
+
+   [153]
+    Value: 0
+
+   [154]
+    Value: 0
+
+   [155]
+    Value: 0
+
+   [156]
+    Value: 0
+
+   [157]
+    Value: 3
+
+   [158]
+    Value: 0
+
+   [159]
+    Value: 0
+
+   [160]
+    Value: 0
+
+   [161]
+    Value: 0
+
+   [162]
+    Value: 0
+
+   [163]
+    Value: 0
+
+   [164]
+    Value: 0
+
+   [165]
+    Value: 0
+
+   [166]
+    Value: 0
+
+   [167]
+    Value: 0
+
+   [168]
+    Value: 0
+
+   [169]
+    Value: 0
+
+   [170]
+    Value: 0
+
+   [171]
+    Value: 0
+
+   [172]
+    Value: 0
+
+   [173]
+    Value: 4
+
+   [174]
+    Value: 0
+
+   [175]
+    Value: 0
+
+   [176]
+    Value: 0
+
+   [177]
+    Value: 4
+
+   [178]
+    Value: 0
+
+   [179]
+    Value: 0
+
+   [180]
+    Value: 0
+
+   [181]
+    Value: 0
+
+   [182]
+    Value: 0
+
+   [183]
+    Value: 0
+
+   [184]
+    Value: 0
+
+   [185]
+    Value: 0
+
+   [186]
+    Value: 0
+
+   [187]
+    Value: 0
+
+   [188]
+    Value: 0
+
+   [189]
+    Value: 37
+
+   [190]
+    Value: 177
+
+   [191]
+    Value: 178
+
+   [192]
+    Value: 26
+
+   [193]
+    Value: 0
+
+   [194]
+    Value: 0
+
+   [195]
+    Value: 0
+
+   [196]
+    Value: 0
+
+   [197]
+    Value: 0
+
+   [198]
+    Value: 0
+
+   [199]
+    Value: 200
+
+   [200]
+    Value: 66
+
+   [201]
+    Value: 0
+
+   [202]
+    Value: 0
+
+   [203]
+    Value: 0
+
+   [204]
+    Value: 0
+
+   [205]
+    Value: 0
+
+   [206]
+    Value: 0
+
+   [207]
+    Value: 0
+
+   [208]
+    Value: 0
+
+   [209]
+    Value: 0
+
+   [210]
+    Value: 0
+
+   [211]
+    Value: 0
+
+   [212]
+    Value: 0
+
+   [213]
+    Value: 0
+
+   [214]
+    Value: 0
+
+   [215]
+    Value: 0
+
+   [216]
+    Value: 0
+
+   [217]
+    Value: 0
+
+   [218]
+    Value: 0
+
+   [219]
+    Value: 0
+
+   [220]
+    Value: 0
+
+   [221]
+    Value: 150
+
+   [222]
+    Value: 66
+
+   [223]
+    Value: 0
+
+   [224]
+    Value: 0
+
+   [225]
+    Value: 0
+
+   [226]
+    Value: 0
+
+   [227]
+    Value: 0
+
+   [228]
+    Value: 0
+
+   [229]
+    Value: 0
+
+   [230]
+    Value: 0
+
+   [231]
+    Value: 0
+
+   [232]
+    Value: 0
+
+   [233]
+    Value: 240
+
+   [234]
+    Value: 65
+
+   [235]
+    Value: 0
+
+   [236]
+    Value: 0
+
+   [237]
+    Value: 224
+
+   [238]
+    Value: 64
+
+   [239]
+    Value: 0
+
+   [240]
+    Value: 0
+
+   [241]
+    Value: 0
+
+   [242]
+    Value: 0
+
+   [243]
+    Value: 0
+
+   [244]
+    Value: 0
+
+   [245]
+    Value: 0
+
+   [246]
+    Value: 0
+
+   [247]
+    Value: 0
+
+   [248]
+    Value: 0
+
+   [249]
+    Value: 0
+
+   [250]
+    Value: 0
+
+   [251]
+    Value: 0
+
+   [252]
+    Value: 0
+
+   [253]
+    Value: 0
+
+   [254]
+    Value: 0
+
+   [255]
+    Value: 0
+
+   [256]
+    Value: 0
+
+   [257]
+    Value: 0
+
+   [258]
+    Value: 0
+
+   [259]
+    Value: 0
+
+   [260]
+    Value: 0
+
+   [261]
+    Value: 0
+
+   [262]
+    Value: 0
+
+   [263]
+    Value: 0
+
+   [264]
+    Value: 0
+
+   [265]
+    Value: 0
+
+   [266]
+    Value: 0
+
+   [267]
+    Value: 0
+
+   [268]
+    Value: 0
+
+   [269]
+    Value: 0
+
+   [270]
+    Value: 0
+
+   [271]
+    Value: 0
+
+   [272]
+    Value: 0
+
+   [273]
+    Value: 0
+
+   [274]
+    Value: 0
+
+   [275]
+    Value: 128
+
+   [276]
+    Value: 62
+
+   [277]
+    Value: 0
+
+   [278]
+    Value: 0
+
+   [279]
+    Value: 32
+
+   [280]
+    Value: 64
+
+   [281]
+    Value: 0
+
+   [282]
+    Value: 0
+
+   [283]
+    Value: 128
+
+   [284]
+    Value: 63
+
+   [285]
+    Value: 0
+
+   [286]
+    Value: 0
+
+   [287]
+    Value: 128
+
+   [288]
+    Value: 62
+
+   [289]
+    Value: 0
+
+   [290]
+    Value: 0
+
+   [291]
+    Value: 0
+
+   [292]
+    Value: 63
+
+   [293]
+    Value: 205
+
+   [294]
+    Value: 204
+
+   [295]
+    Value: 76
+
+   [296]
+    Value: 62
+
+   [297]
+    Value: 0
+
+   [298]
+    Value: 0
+
+   [299]
+    Value: 0
+
+   1112 total elements but only showing the first 36
+  ProjectM.Network.SnapshotFrameChangedBuffer
+   [0]
+    Value: -1
+
+   [1]
+    Value: -1
+
+   [2]
+    Value: -1
+
+   [3]
+    Value: -1
+
+   [4]
+    Value: -1
+
+   [5]
+    Value: -1
+
+   [6]
+    Value: -1
+
+   [7]
+    Value: -1
+
+   [8]
+    Value: -1
+
+   [9]
+    Value: -1
+
+   [10]
+    Value: -1
+
+   [11]
+    Value: -1
+
+   [12]
+    Value: -1
+
+   [13]
+    Value: -1
+
+   [14]
+    Value: -1
+
+   [15]
+    Value: -1
+
+   [16]
+    Value: -1
+
+   [17]
+    Value: -1
+
+   [18]
+    Value: -1
+
+   [19]
+    Value: -1
+
+   [20]
+    Value: -1
+
+   [21]
+    Value: -1
+
+   [22]
+    Value: -1
+
+   [23]
+    Value: -1
+
+   [24]
+    Value: -1
+
+   [25]
+    Value: -1
+
+   [26]
+    Value: -1
+
+   [27]
+    Value: -1
+
+   [28]
+    Value: -1
+
+   [29]
+    Value: -1
+
+   [30]
+    Value: -1
+
+   [31]
+    Value: -1
+
+   [32]
+    Value: -1
+
+   [33]
+    Value: -1
+
+   [34]
+    Value: -1
+
+   [35]
+    Value: -1
+
+   [36]
+    Value: -1
+
+   [37]
+    Value: -1
+
+   [38]
+    Value: -1
+
+   [39]
+    Value: -1
+
+   [40]
+    Value: -1
+
+   [41]
+    Value: -1
+
+   [42]
+    Value: -1
+
+   [43]
+    Value: -1
+
+   [44]
+    Value: -1
+
+   [45]
+    Value: -1
+
+   [46]
+    Value: -1
+
+   [47]
+    Value: -1
+
+   [48]
+    Value: -1
+
+   [49]
+    Value: -1
+
+   [50]
+    Value: -1
+
+   [51]
+    Value: -1
+
+   [52]
+    Value: -1
+
+   [53]
+    Value: -1
+
+   [54]
+    Value: -1
+
+   [55]
+    Value: -1
+
+   [56]
+    Value: -1
+
+   [57]
+    Value: -1
+
+   [58]
+    Value: -1
+
+   [59]
+    Value: -1
+
+   [60]
+    Value: -1
+
+   [61]
+    Value: -1
+
+   [62]
+    Value: -1
+
+   [63]
+    Value: -1
+
+   [64]
+    Value: -1
+
+   [65]
+    Value: -1
+
+   [66]
+    Value: -1
+
+   [67]
+    Value: -1
+
+   [68]
+    Value: -1
+
+   [69]
+    Value: -1
+
+   [70]
+    Value: -1
+
+   [71]
+    Value: -1
+
+   [72]
+    Value: -1
+
+   [73]
+    Value: -1
+
+   [74]
+    Value: -1
+
+   [75]
+    Value: -1
+
+   [76]
+    Value: -1
+
+   [77]
+    Value: -1
+
+   [78]
+    Value: -1
+
+   [79]
+    Value: -1
+
+   [80]
+    Value: -1
+
+   [81]
+    Value: -1
+
+   [82]
+    Value: -1
+
+   [83]
+    Value: -1
+
+   [84]
+    Value: -1
+
+   [85]
+    Value: -1
+
+   [86]
+    Value: -1
+
+   [87]
+    Value: -1
+
+   [88]
+    Value: -1
+
+   [89]
+    Value: -1
+
+   [90]
+    Value: -1
+
+   [91]
+    Value: -1
+
+   [92]
+    Value: -1
+
+   [93]
+    Value: -1
+
+   [94]
+    Value: -1
+
+   [95]
+    Value: -1
+
+   [96]
+    Value: -1
+
+   [97]
+    Value: -1
+
+   [98]
+    Value: -1
+
+   [99]
+    Value: -1
+
+   [100]
+    Value: -1
+
+   [101]
+    Value: -1
+
+   [102]
+    Value: -1
+
+   [103]
+    Value: -1
+
+   [104]
+    Value: -1
+
+   [105]
+    Value: -1
+
+   [106]
+    Value: -1
+
+   [107]
+    Value: -1
+
+   [108]
+    Value: -1
+
+   [109]
+    Value: -1
+
+   [110]
+    Value: -1
+
+   [111]
+    Value: -1
+
+   [112]
+    Value: -1
+
+   [113]
+    Value: -1
+
+   [114]
+    Value: -1
+
+   [115]
+    Value: -1
+
+   [116]
+    Value: -1
+
+   [117]
+    Value: -1
+
+   [118]
+    Value: -1
+
+   [119]
+    Value: -1
+
+   [120]
+    Value: -1
+
+   [121]
+    Value: -1
+
+   [122]
+    Value: -1
+
+   [123]
+    Value: -1
+
+   [124]
+    Value: -1
+
+   [125]
+    Value: -1
+
+   [126]
+    Value: -1
+
+   [127]
+    Value: -1
+
+   [128]
+    Value: -1
+
+   [129]
+    Value: -1
+
+   [130]
+    Value: -1
+
+   [131]
+    Value: -1
+
+   [132]
+    Value: -1
+
+   [133]
+    Value: -1
+
+   [134]
+    Value: -1
+
+   [135]
+    Value: -1
+
+   [136]
+    Value: -1
+
+   [137]
+    Value: -1
+
+   [138]
+    Value: -1
+
+   [139]
+    Value: -1
+
+   [140]
+    Value: -1
+
+   [141]
+    Value: -1
+
+   [142]
+    Value: -1
+
+   [143]
+    Value: -1
+
+   [144]
+    Value: -1
+
+   [145]
+    Value: -1
+
+   [146]
+    Value: -1
+
+   [147]
+    Value: -1
+
+   [148]
+    Value: -1
+
+   [149]
+    Value: -1
+
+   [150]
+    Value: -1
+
+   [151]
+    Value: -1
+
+   [152]
+    Value: -1
+
+   [153]
+    Value: -1
+
+   [154]
+    Value: -1
+
+   [155]
+    Value: -1
+
+   [156]
+    Value: -1
+
+   [157]
+    Value: -1
+
+   [158]
+    Value: -1
+
+   [159]
+    Value: -1
+
+   [160]
+    Value: -1
+
+   [161]
+    Value: -1
+
+   [162]
+    Value: -1
+
+   [163]
+    Value: -1
+
+   [164]
+    Value: -1
+
+   [165]
+    Value: -1
+
+   [166]
+    Value: -1
+
+   [167]
+    Value: -1
+
+   [168]
+    Value: -1
+
+   [169]
+    Value: -1
+
+   [170]
+    Value: -1
+
+   [171]
+    Value: -1
+
+   [172]
+    Value: -1
+
+   [173]
+    Value: -1
+
+   [174]
+    Value: -1
+
+   [175]
+    Value: -1
+
+   [176]
+    Value: -1
+
+   [177]
+    Value: -1
+
+   [178]
+    Value: -1
+
+   [179]
+    Value: -1
+
+   [180]
+    Value: -1
+
+   [181]
+    Value: -1
+
+   [182]
+    Value: -1
+
+   [183]
+    Value: -1
+
+   [184]
+    Value: -1
+
+   [185]
+    Value: -1
+
+   [186]
+    Value: -1
+
+   [187]
+    Value: -1
+
+   [188]
+    Value: -1
+
+   [189]
+    Value: -1
+
+   [190]
+    Value: -1
+
+   [191]
+    Value: -1
+
+   [192]
+    Value: -1
+
+   [193]
+    Value: -1
+
+   [194]
+    Value: -1
+
+   [195]
+    Value: -1
+
+   [196]
+    Value: -1
+
+   [197]
+    Value: -1
+
+   [198]
+    Value: -1
+
+   [199]
+    Value: -1
+
+   [200]
+    Value: -1
+
+   [201]
+    Value: -1
+
+   [202]
+    Value: -1
+
+   [203]
+    Value: -1
+
+   [204]
+    Value: -1
+
+   [205]
+    Value: -1
+
+   [206]
+    Value: -1
+
+   [207]
+    Value: -1
+
+   [208]
+    Value: -1
+
+   [209]
+    Value: -1
+
+   [210]
+    Value: -1
+
+   [211]
+    Value: -1
+
+   [212]
+    Value: -1
+
+   [213]
+    Value: -1
+
+   [214]
+    Value: -1
+
+   [215]
+    Value: -1
+
+   [216]
+    Value: -1
+
+   [217]
+    Value: -1
+
+   [218]
+    Value: -1
+
+   [219]
+    Value: -1
+
+   [220]
+    Value: -1
+
+   [221]
+    Value: -1
+
+   [222]
+    Value: -1
+
+   [223]
+    Value: -1
+
+   [224]
+    Value: -1
+
+   [225]
+    Value: -1
+
+   [226]
+    Value: -1
+
+   [227]
+    Value: -1
+
+   [228]
+    Value: -1
+
+   [229]
+    Value: -1
+
+   [230]
+    Value: -1
+
+   [231]
+    Value: -1
+
+   [232]
+    Value: -1
+
+   [233]
+    Value: -1
+
+   [234]
+    Value: -1
+
+   [235]
+    Value: -1
+
+   [236]
+    Value: -1
+
+   [237]
+    Value: -1
+
+   [238]
+    Value: -1
+
+   [239]
+    Value: -1
+
+   [240]
+    Value: -1
+
+   [241]
+    Value: -1
+
+   [242]
+    Value: -1
+
+   [243]
+    Value: -1
+
+   [244]
+    Value: -1
+
+   [245]
+    Value: -1
+
+   [246]
+    Value: -1
+
+   [247]
+    Value: -1
+
+   [248]
+    Value: -1
+
+   [249]
+    Value: -1
+
+   [250]
+    Value: -1
+
+   [251]
+    Value: -1
+
+   [252]
+    Value: -1
+
+   [253]
+    Value: -1
+
+   [254]
+    Value: -1
+
+   [255]
+    Value: -1
+
+   [256]
+    Value: -1
+
+   [257]
+    Value: -1
+
+   [258]
+    Value: -1
+
+   [259]
+    Value: -1
+
+   [260]
+    Value: -1
+
+   [261]
+    Value: -1
+
+   [262]
+    Value: -1
+
+   [263]
+    Value: -1
+
+   [264]
+    Value: -1
+
+   [265]
+    Value: -1
+
+   [266]
+    Value: -1
+
+   [267]
+    Value: -1
+
+   [268]
+    Value: -1
+
+   [269]
+    Value: -1
+
+   [270]
+    Value: -1
+
+   [271]
+    Value: -1
+
+   [272]
+    Value: -1
+
+   [273]
+    Value: -1
+
+   [274]
+    Value: -1
+
+   [275]
+    Value: -1
+
+   [276]
+    Value: -1
+
+   [277]
+    Value: -1
+
+   [278]
+    Value: -1
+
+   [279]
+    Value: -1
+
+   [280]
+    Value: -1
+
+   [281]
+    Value: -1
+
+   [282]
+    Value: -1
+
+   283 total elements but only showing the first 36
+  ProjectM.MoveStopTrigger
+  ProjectM.HideOutsideVision
+  ProjectM.VampireTag
+  ProjectM.CastleBuilding.CanBuildTileModels
+  ProjectM.Contest.ContestTerminatorTag
+  ProjectM.TilePlacementTag
+  ProjectM.TileRestrictionAreaTag
+  ProjectM.RadialDamageTarget
+  ProjectM.DisableWhenNoPlayersInRange
+  ProjectM.Scripting.ScriptSpawn
+  ProjectM.Network.OnlySyncToUsersTag
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate
+  Unity.Entities.BlobAssetOwner
+  ProjectM.TileModelRegistrationState
+  ProjectM.Network.NetworkSnapshotType
+  ProjectM.Tiles.TileModelLayer
+  Unity.Physics.PhysicsWorldIndex

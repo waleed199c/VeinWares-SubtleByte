@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T06_Rogue PrefabGuid(-1106762164)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1106762164
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

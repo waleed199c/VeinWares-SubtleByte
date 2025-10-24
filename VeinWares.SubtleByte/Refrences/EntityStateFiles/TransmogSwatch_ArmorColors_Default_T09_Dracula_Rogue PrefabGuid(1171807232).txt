@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Default_T09_Dracula_Rogue PrefabGuid(1171807232)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1171807232
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

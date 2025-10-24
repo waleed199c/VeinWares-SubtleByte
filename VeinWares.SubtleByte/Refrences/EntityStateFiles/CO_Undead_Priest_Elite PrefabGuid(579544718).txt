@@ -1,0 +1,54 @@
+Prefab CO_Undead_Priest_Elite PrefabGuid(579544718)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 12
+
+  Stunlock.Core.PrefabGUID
+    _Value: 579544718
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_Priest_Elite PrefabGuid(579544718) - Entity(62576:1)
+
+   [1]
+    Value: Entity(37981:4)
+
+   [2]
+    Value: Entity(30188:6)
+
+   [3]
+    Value: Entity(30189:6)
+
+   [4]
+    Value: Entity(30190:6)
+
+   [5]
+    Value: Entity(30191:6)
+
+   [6]
+    Value: Entity(30192:6)
+
+   [7]
+    Value: Entity(37982:4)
+
+   [8]
+    Value: Entity(30193:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37981:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37982:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,38 @@
+Prefab CO_Militia_HoundMaster_VBlood PrefabGuid(825142113)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: 825142113
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Militia_HoundMaster_VBlood PrefabGuid(825142113) - Entity(62764:1)
+
+   [1]
+    Value: Entity(37959:4)
+
+   [2]
+    Value: Entity(2585:5)
+
+   [3]
+    Value: Entity(2586:5)
+
+   [4]
+    Value: Entity(2587:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37959:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

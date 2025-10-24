@@ -1,0 +1,14 @@
+Prefab BuffResistance_OnlyKnockbackAllowed PrefabGuid(-1043688002)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1043688002
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 8185
+    ModifyDuration: False
+    DurationModifier: 0
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

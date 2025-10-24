@@ -1,0 +1,108 @@
+Prefab Dynamic_Gloomrot_Farm_Tank01 PrefabGuid(1572136202)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1572136202
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Gloomrot_Farm_Tank01 PrefabGuid(1572136202) - Entity(16587:2)
+
+   [1]
+    Value: Entity(4010:2)
+
+   [2]
+    Value: Entity(4009:2)
+
+   [3]
+    Value: Entity(4008:2)
+
+   [4]
+    Value: Entity(4007:2)
+
+   [5]
+    Value: Entity(4006:2)
+
+   [6]
+    Value: Entity(4005:2)
+
+   [7]
+    Value: Entity(4004:2)
+
+   [8]
+    Value: Entity(4003:2)
+
+   [9]
+    Value: Entity(4002:2)
+
+   [10]
+    Value: Entity(4001:2)
+
+   [11]
+    Value: Entity(4000:2)
+
+   [12]
+    Value: Entity(3999:2)
+
+   [13]
+    Value: Entity(27032:2)
+
+   [14]
+    Value: Entity(27031:2)
+
+   [15]
+    Value: Entity(27030:2)
+
+   [16]
+    Value: Entity(27029:2)
+
+   [17]
+    Value: Entity(27028:2)
+
+   [18]
+    Value: Entity(27027:2)
+
+   [19]
+    Value: Entity(27026:2)
+
+   [20]
+    Value: Entity(27025:2)
+
+   [21]
+    Value: Entity(27024:2)
+
+   [22]
+    Value: Entity(27023:2)
+
+   [23]
+    Value: Entity(5104:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

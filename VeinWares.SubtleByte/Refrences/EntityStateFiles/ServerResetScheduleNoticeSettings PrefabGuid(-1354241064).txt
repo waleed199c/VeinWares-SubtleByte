@@ -1,0 +1,12 @@
+Prefab ServerResetScheduleNoticeSettings PrefabGuid(-1354241064)
+Components
+  ProjectM.SingletonPrefab
+    AutomaticInstantiation: True
+    OverrideExisting: False
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1354241064
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

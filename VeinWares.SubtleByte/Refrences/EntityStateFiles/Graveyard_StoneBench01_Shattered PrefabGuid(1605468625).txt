@@ -1,0 +1,75 @@
+Prefab Graveyard_StoneBench01_Shattered PrefabGuid(1605468625)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1605468625
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Graveyard_StoneBench01_Shattered PrefabGuid(1605468625) - Entity(17095:2)
+
+   [1]
+    Value: Entity(28939:2)
+
+   [2]
+    Value: Entity(28938:2)
+
+   [3]
+    Value: Entity(28937:2)
+
+   [4]
+    Value: Entity(28302:2)
+
+   [5]
+    Value: Entity(28936:2)
+
+   [6]
+    Value: Entity(28935:2)
+
+   [7]
+    Value: Entity(28798:2)
+
+   [8]
+    Value: Entity(28797:2)
+
+   [9]
+    Value: Entity(28796:2)
+
+   [10]
+    Value: Entity(28795:2)
+
+   [11]
+    Value: Entity(28794:2)
+
+   [12]
+    Value: Entity(28793:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

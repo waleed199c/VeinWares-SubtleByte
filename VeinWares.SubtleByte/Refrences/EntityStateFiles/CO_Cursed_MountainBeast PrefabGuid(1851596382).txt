@@ -1,0 +1,38 @@
+Prefab CO_Cursed_MountainBeast PrefabGuid(1851596382)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: 1851596382
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Cursed_MountainBeast PrefabGuid(1851596382) - Entity(62587:1)
+
+   [1]
+    Value: Entity(38060:4)
+
+   [2]
+    Value: Entity(12052:5)
+
+   [3]
+    Value: Entity(12053:5)
+
+   [4]
+    Value: Entity(12054:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38060:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

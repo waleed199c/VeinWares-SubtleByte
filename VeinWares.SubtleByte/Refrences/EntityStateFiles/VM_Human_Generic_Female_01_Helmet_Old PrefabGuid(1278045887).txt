@@ -1,0 +1,8 @@
+Prefab VM_Human_Generic_Female_01_Helmet_Old PrefabGuid(1278045887)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1278045887
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

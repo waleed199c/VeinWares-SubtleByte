@@ -1,0 +1,48 @@
+Prefab CO_EmeryElemental PrefabGuid(-1685893679)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 99
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1685893679
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_EmeryElemental PrefabGuid(-1685893679) - Entity(62566:1)
+
+   [1]
+    Value: Entity(37993:4)
+
+   [2]
+    Value: Entity(30223:6)
+
+   [3]
+    Value: Entity(30224:6)
+
+   [4]
+    Value: Entity(37994:4)
+
+   [5]
+    Value: Entity(30225:6)
+
+   [6]
+    Value: Entity(30226:6)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(37993:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(37994:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

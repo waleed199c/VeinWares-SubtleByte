@@ -1,0 +1,8 @@
+Prefab TransmogSwatch_ArmorColors_Shared_SpellSchools PrefabGuid(-2030670411)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2030670411
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

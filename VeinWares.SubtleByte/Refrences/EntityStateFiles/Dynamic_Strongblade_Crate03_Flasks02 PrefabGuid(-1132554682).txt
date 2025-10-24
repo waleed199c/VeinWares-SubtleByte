@@ -1,0 +1,90 @@
+Prefab Dynamic_Strongblade_Crate03_Flasks02 PrefabGuid(-1132554682)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1132554682
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab Dynamic_Strongblade_Crate03_Flasks02 PrefabGuid(-1132554682) - Entity(16895:2)
+
+   [1]
+    Value: Entity(18761:3)
+
+   [2]
+    Value: Entity(18762:3)
+
+   [3]
+    Value: Entity(34762:1)
+
+   [4]
+    Value: Entity(34763:1)
+
+   [5]
+    Value: Entity(18763:3)
+
+   [6]
+    Value: Entity(34764:1)
+
+   [7]
+    Value: Entity(30256:3)
+
+   [8]
+    Value: Entity(30255:3)
+
+   [9]
+    Value: Entity(30254:3)
+
+   [10]
+    Value: Entity(30253:3)
+
+   [11]
+    Value: Entity(30088:3)
+
+   [12]
+    Value: Entity(30092:3)
+
+   [13]
+    Value: Entity(30094:3)
+
+   [14]
+    Value: Entity(29229:3)
+
+   [15]
+    Value: Entity(29228:3)
+
+   [16]
+    Value: Entity(29227:3)
+
+   [17]
+    Value: Entity(6594:2)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

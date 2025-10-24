@@ -1,0 +1,14 @@
+Prefab BuffResistance_EliteMob PrefabGuid(1973136122)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1973136122
+
+  ProjectM.BuffResistanceElement
+   [0]
+    BuffCategory: 497
+    ModifyDuration: True
+    DurationModifier: 0.8
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

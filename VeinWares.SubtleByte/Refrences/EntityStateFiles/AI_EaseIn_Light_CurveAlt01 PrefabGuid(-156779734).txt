@@ -1,0 +1,8 @@
+Prefab AI_EaseIn_Light_CurveAlt01 PrefabGuid(-156779734)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -156779734
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

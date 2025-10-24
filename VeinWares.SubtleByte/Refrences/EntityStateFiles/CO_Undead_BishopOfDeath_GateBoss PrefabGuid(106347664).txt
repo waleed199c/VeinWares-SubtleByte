@@ -1,0 +1,38 @@
+Prefab CO_Undead_BishopOfDeath_GateBoss PrefabGuid(106347664)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 20
+
+  Stunlock.Core.PrefabGUID
+    _Value: 106347664
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Undead_BishopOfDeath_GateBoss PrefabGuid(106347664) - Entity(62515:1)
+
+   [1]
+    Value: Entity(37855:4)
+
+   [2]
+    Value: Entity(36932:4)
+
+   [3]
+    Value: Entity(36933:4)
+
+   [4]
+    Value: Entity(36934:4)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(37855:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

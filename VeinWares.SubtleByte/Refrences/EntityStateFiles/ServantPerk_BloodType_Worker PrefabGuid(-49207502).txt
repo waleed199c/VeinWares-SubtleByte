@@ -1,0 +1,13 @@
+Prefab ServantPerk_BloodType_Worker PrefabGuid(-49207502)
+Components
+  ProjectM.PerkData
+    LootValue: 0
+    PrefabGUID: ServantPerk_BloodType_Worker PrefabGuid(-49207502)
+    PowerValue: 100
+
+  Stunlock.Core.PrefabGUID
+    _Value: -49207502
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

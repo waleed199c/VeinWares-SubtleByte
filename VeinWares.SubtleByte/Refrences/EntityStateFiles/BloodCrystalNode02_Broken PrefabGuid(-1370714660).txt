@@ -1,0 +1,78 @@
+Prefab BloodCrystalNode02_Broken PrefabGuid(-1370714660)
+Components
+  ProjectM.Physics.PhysicsRubble
+    Age: 0
+    Duration: 8
+    DissolveDuration: 2.95
+    Sequence: SequenceGUID -1602175123
+    SpawnedSequence: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Unity.Transforms.Rotation
+    Value: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Unity.Transforms.Translation
+    Value: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+
+  Unity.Transforms.LocalToWorld
+    Value: Unity.Mathematics.float4x4 float4x4(1f, 0f, 0f, 0f,  0f, 1f, 0f, 0f,  0f, 0f, 1f, 0f,  0f, 0f, 0f, 1f)
+
+  Unity.Transforms.LocalTransform
+    Position: Unity.Mathematics.float3 float3(0f, 0f, 0f)
+    Scale: 1
+    Rotation: Unity.Mathematics.quaternion quaternion(0f, 0f, 0f, 1f)
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1370714660
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab BloodCrystalNode02_Broken PrefabGuid(-1370714660) - Entity(17291:2)
+
+   [1]
+    Value: Entity(5377:2)
+
+   [2]
+    Value: Entity(5376:2)
+
+   [3]
+    Value: Entity(5375:2)
+
+   [4]
+    Value: Entity(31561:3)
+
+   [5]
+    Value: Entity(31615:3)
+
+   [6]
+    Value: Entity(31614:3)
+
+   [7]
+    Value: Entity(31613:3)
+
+   [8]
+    Value: Entity(31612:3)
+
+   [9]
+    Value: Entity(31611:3)
+
+   [10]
+    Value: Entity(31610:3)
+
+   [11]
+    Value: Entity(31609:3)
+
+   [12]
+    Value: Entity(31608:3)
+
+   [13]
+    Value: Entity(31607:3)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

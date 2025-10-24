@@ -1,0 +1,8 @@
+Prefab XPDefaultCurve PrefabGuid(2091460851)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 2091460851
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

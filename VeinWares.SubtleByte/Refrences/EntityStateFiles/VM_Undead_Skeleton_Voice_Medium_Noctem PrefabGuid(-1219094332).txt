@@ -1,0 +1,8 @@
+Prefab VM_Undead_Skeleton_Voice_Medium_Noctem PrefabGuid(-1219094332)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1219094332
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

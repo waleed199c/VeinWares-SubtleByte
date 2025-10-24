@@ -1,0 +1,48 @@
+Prefab CO_Mutant_Bear PrefabGuid(-777812975)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 40
+
+  Stunlock.Core.PrefabGUID
+    _Value: -777812975
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_Mutant_Bear PrefabGuid(-777812975) - Entity(62697:1)
+
+   [1]
+    Value: Entity(38149:4)
+
+   [2]
+    Value: Entity(2649:5)
+
+   [3]
+    Value: Entity(2650:5)
+
+   [4]
+    Value: Entity(2651:5)
+
+   [5]
+    Value: Entity(38150:4)
+
+   [6]
+    Value: Entity(2652:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat
+    Entity: Entity(38149:4)
+
+   [1]
+    State: ProjectM.GenericEnemyState Idle
+    Entity: Entity(38150:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

@@ -1,0 +1,22 @@
+Prefab CastleTeam PrefabGuid(-1924985899)
+Components
+  ProjectM.CastleTeamData
+    CastleHeart: Entity(0:0)
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.TeamData
+    TeamValue: -1
+
+  Stunlock.Core.PrefabGUID
+    _Value: -1924985899
+
+  ProjectM.TeamAllies
+  ProjectM.CastleTeam
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

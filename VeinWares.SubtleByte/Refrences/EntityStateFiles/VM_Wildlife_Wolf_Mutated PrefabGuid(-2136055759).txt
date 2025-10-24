@@ -1,0 +1,8 @@
+Prefab VM_Wildlife_Wolf_Mutated PrefabGuid(-2136055759)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -2136055759
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

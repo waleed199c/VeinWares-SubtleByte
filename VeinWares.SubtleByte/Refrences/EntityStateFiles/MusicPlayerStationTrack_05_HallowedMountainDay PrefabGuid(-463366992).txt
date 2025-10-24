@@ -1,0 +1,19 @@
+Prefab MusicPlayerStationTrack_05_HallowedMountainDay PrefabGuid(-463366992)
+Components
+  ProjectM.MusicPlayerStationTrack_Shared
+    Name: 4dd0eb47-70ed-4591-a0d9-12a729c21b3d - Hallowed Mountains
+    RequiresRegionExplored: ProjectM.Terrain.WorldRegionType HallowedMountains
+    RequiresTechUnlock: False
+
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  Stunlock.Core.PrefabGUID
+    _Value: -463366992
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

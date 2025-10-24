@@ -1,0 +1,8 @@
+Prefab VM_Human_Villager_Male_01 OLD DONT USE PrefabGuid(1663867561)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 1663867561
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

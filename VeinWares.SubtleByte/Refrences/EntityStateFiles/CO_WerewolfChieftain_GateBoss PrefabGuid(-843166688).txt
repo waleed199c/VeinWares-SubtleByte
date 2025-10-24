@@ -1,0 +1,35 @@
+Prefab CO_WerewolfChieftain_GateBoss PrefabGuid(-843166688)
+Components
+  ProjectM.DestroyData
+    DestroyReason: ProjectM.DestroyReason Default
+
+  ProjectM.DestroyState
+    Value: ProjectM.DestroyStateEnum NotDestroyed
+
+  ProjectM.Behaviours.CastOptionRoot
+    MaxRange: 15
+
+  Stunlock.Core.PrefabGUID
+    _Value: -843166688
+
+  Unity.Entities.LinkedEntityGroup
+   [0]
+    Value: Prefab CO_WerewolfChieftain_GateBoss PrefabGuid(-843166688) - Entity(62670:1)
+
+   [1]
+    Value: Entity(38091:4)
+
+   [2]
+    Value: Entity(11846:5)
+
+   [3]
+    Value: Entity(11847:5)
+
+  ProjectM.Behaviours.CastOptionStateBuffer
+   [0]
+    State: ProjectM.GenericEnemyState Combat, Relocate_Unstuck
+    Entity: Entity(38091:4)
+
+  Unity.Entities.SpawnTag
+  Unity.Entities.Prefab
+  Unity.Entities.Simulate

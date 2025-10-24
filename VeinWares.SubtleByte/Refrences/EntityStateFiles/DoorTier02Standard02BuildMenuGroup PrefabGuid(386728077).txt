@@ -1,0 +1,9 @@
+Prefab DoorTier02Standard02BuildMenuGroup PrefabGuid(386728077)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: 386728077
+
+  ProjectM.UI.BuildMenuGroup
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate

@@ -1,0 +1,8 @@
+Prefab Weapon_Unarmed_Secondary_Curve PrefabGuid(-1274009910)
+Components
+  Stunlock.Core.PrefabGUID
+    _Value: -1274009910
+
+  Unity.Entities.Prefab
+  Stunlock.Core.Authoring.ConvertedScriptableObject
+  Unity.Entities.Simulate
