@@ -116,7 +116,7 @@ internal static class FactionInfamyConfig
             _minimumAmbushHate = Bind(Section.Core, "Minimum Ambush Hate", 50.0f,
                 "Players must reach this hate level (after multipliers) before ambush squads are considered.", LegacySection);
 
-            _maximumHate = Bind(Section.Core, "Maximum Hate", 300,
+            _maximumHate = Bind(Section.Core, "Maximum Hate", 100,
                 "Upper bound for hate per faction. Any calculated hate beyond this value will be clamped.", LegacySection);
 
             _ambushCooldownMinutes = Bind(Section.Ambush, "Ambush Cooldown Minutes", 15.0f,

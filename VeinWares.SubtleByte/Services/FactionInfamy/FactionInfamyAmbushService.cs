@@ -364,6 +364,7 @@ internal static class FactionInfamyAmbushService
                 unit.Prefab,
                 steamId,
                 factionId,
+                difficulty.Tier,
                 targetLevel,
                 count,
                 reliefPerUnit,
@@ -761,7 +762,8 @@ internal static class FactionInfamyAmbushService
                 entity,
                 suppressFeed,
                 suppressCharm,
-                $"ambush faction '{pending.FactionId}'");
+                $"ambush faction '{pending.FactionId}'",
+                pending.DifficultyTier);
         }
 
         ActiveAmbushes[entity] = new ActiveAmbush(pending.TargetSteamId, pending.FactionId, pending.HateReliefPerUnit);
@@ -1160,6 +1162,7 @@ internal static class FactionInfamyAmbushService
             PrefabGUID prefab,
             ulong targetSteamId,
             string factionId,
+            int difficultyTier,
             int unitLevel,
             int remaining,
             float hateReliefPerUnit,
@@ -1173,6 +1176,7 @@ internal static class FactionInfamyAmbushService
             Prefab = prefab;
             TargetSteamId = targetSteamId;
             FactionId = factionId;
+            DifficultyTier = difficultyTier;
             UnitLevel = unitLevel;
             Remaining = remaining;
             HateReliefPerUnit = hateReliefPerUnit;
@@ -1189,6 +1193,8 @@ internal static class FactionInfamyAmbushService
         public ulong TargetSteamId { get; }
 
         public string FactionId { get; }
+
+        public int DifficultyTier { get; }
 
         public int UnitLevel { get; }
 
@@ -1296,6 +1302,7 @@ internal static class FactionInfamyAmbushService
                     unit.Prefab,
                     _steamId,
                     _factionId,
+                    _difficulty.Tier,
                     targetLevel,
                     count,
                     _hateReliefPerUnit,

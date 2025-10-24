@@ -697,7 +697,7 @@ internal static class FactionInfamyAmbushData
       ""baseHateOverrides"": [
         {
           ""factionGuid"": 30052367,
-          ""hate"": 300
+          ""hate"": 100
         }
       ]
     },
