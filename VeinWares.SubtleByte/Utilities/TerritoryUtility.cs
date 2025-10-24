@@ -112,7 +112,7 @@ internal static class TerritoryUtility
         var x = position.x;
         var z = position.z;
 
-        return x >= min.x && x <= max.x && z >= min.y && z <= max.y;
+        return x >= min.x && x <= max.x && z >= min.z && z <= max.z;
     }
 
     private static bool TryExists(EntityManager entityManager, Entity entity)
