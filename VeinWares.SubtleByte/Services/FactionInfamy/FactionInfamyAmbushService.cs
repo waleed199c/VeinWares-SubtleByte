@@ -26,6 +26,8 @@ internal static class FactionInfamyAmbushService
     private const float HateReliefFraction = 0.25f;
     private const float MinimumReliefPerSquad = 10f;
     private const int MaxPositiveLevelOffset = 10;
+    private const float PrestigeScalarEpsilon = 0.0001f;
+    private const float PrestigeScalarClamp = 5f;
 
     private static readonly ConcurrentDictionary<int, PendingAmbushSpawn> PendingSpawns = new();
     private static readonly ConcurrentDictionary<Entity, ActiveAmbush> ActiveAmbushes = new();
@@ -221,6 +223,34 @@ internal static class FactionInfamyAmbushService
         return null;
     }
 
+    private static float ResolvePrestigeScalar(int prestigeLevel, int difficultyTier, bool useEliteMultipliers)
+    {
+        if (prestigeLevel <= 0 || FactionInfamySystem.PrestigeLevelBonusPerTier <= 0f)
+        {
+            return 1f;
+        }
+
+        var tier = Math.Max(1, difficultyTier);
+        var bonus = Math.Max(0, prestigeLevel) * FactionInfamySystem.PrestigeLevelBonusPerTier * tier;
+
+        if (useEliteMultipliers)
+        {
+            bonus *= Math.Max(0f, FactionInfamySystem.PrestigeEliteMultiplier);
+        }
+
+        var scalar = 1f + bonus;
+        return Math.Clamp(scalar, 1f, PrestigeScalarClamp);
+    }
+
+    private static AmbushStatMultipliers ResolveAmbushMultipliers(bool useEliteMultipliers, bool isRepresentative, float prestigeScalar)
+    {
+        var multipliers = useEliteMultipliers
+            ? AmbushStatMultipliers.Create(isRepresentative)
+            : AmbushStatMultipliers.Identity;
+
+        return multipliers.Scale(prestigeScalar);
+    }
+
     private static ManualLogSource? _log;
     private static readonly System.Random Random = new();
     private static bool _initialized;
@@ -288,6 +318,13 @@ internal static class FactionInfamyAmbushService
             return;
         }
 
+        if (FactionInfamySystem.AmbushTerritoryProtectionEnabled
+            && TerritoryUtility.IsInsidePlayerTerritory(entityManager, playerEntity, position, out var territoryIndex))
+        {
+            _log?.LogDebug($"[Infamy] Blocked ambush for {steamId} inside owned territory (territory index {territoryIndex}).");
+            return;
+        }
+
         var previousAmbushTimestamp = target.Value.LastAmbush;
 
         if (!FactionInfamySystem.TryConsumeAmbush(steamId, target.Key))
@@ -297,7 +334,10 @@ internal static class FactionInfamyAmbushService
 
         var playerLevel = ResolvePlayerLevel(entityManager, playerEntity, steamId);
         var difficulty = EvaluateDifficulty(target.Value.Hate);
-        if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate, difficulty))
+        var prestigeLevel = 0;
+        BloodcraftPrestigeReader.TryGetExperiencePrestige(steamId, out prestigeLevel);
+
+        if (!TrySpawnSquad(steamId, target.Key, playerLevel, position, target.Value.Hate, difficulty, prestigeLevel))
         {
             _log?.LogWarning($"[Infamy] Failed to spawn ambush squad for faction '{target.Key}'.");
             FactionInfamySystem.RollbackAmbushCooldown(steamId, target.Key, previousAmbushTimestamp);
@@ -382,7 +422,7 @@ internal static class FactionInfamyAmbushService
         }
     }
 
-    private static bool TrySpawnSquad(ulong steamId, string factionId, int playerLevel, float3 position, float hateValue, AmbushDifficulty difficulty)
+    private static bool TrySpawnSquad(ulong steamId, string factionId, int playerLevel, float3 position, float hateValue, AmbushDifficulty difficulty, int prestigeLevel)
     {
         if (!SquadDefinitions.TryGetValue(factionId, out var squad))
         {
@@ -409,6 +449,12 @@ internal static class FactionInfamyAmbushService
         var totalRelief = Math.Max(MinimumReliefPerSquad, hateValue * HateReliefFraction);
         var reliefPerUnit = totalRelief / totalUnits;
         var useEliteMultipliers = FactionInfamySystem.EliteAmbushEnabled && difficulty.Tier == 5;
+        var prestigeScalar = ResolvePrestigeScalar(prestigeLevel, difficulty.Tier, useEliteMultipliers);
+
+        if (prestigeScalar > 1f + PrestigeScalarEpsilon)
+        {
+            _log?.LogDebug($"[Infamy] Applying prestige scaling {prestigeScalar:F2}x (prestige {prestigeLevel}, tier {difficulty.Tier}, elite={useEliteMultipliers}) for ambush targeting {steamId}.");
+        }
 
         AmbushSquadTracker? followUpTracker = spawnPlan.FollowUpRequests.Count == 0
             ? null
@@ -420,6 +466,7 @@ internal static class FactionInfamyAmbushService
                 difficulty,
                 reliefPerUnit,
                 useEliteMultipliers,
+                prestigeScalar,
                 spawnPlan.FollowUpRequests,
                 spawnRequests.Count);
 
@@ -433,9 +480,7 @@ internal static class FactionInfamyAmbushService
             var cappedTarget = Math.Min(playerLevel + levelOffset, playerLevel + MaxPositiveLevelOffset);
             var targetLevel = Math.Clamp(cappedTarget, 1, 999);
             var lifetimeSeconds = GetNextLifetimeSeconds();
-            var multipliers = useEliteMultipliers
-                ? AmbushStatMultipliers.Create(request.IsRepresentative)
-                : AmbushStatMultipliers.Identity;
+            var multipliers = ResolveAmbushMultipliers(useEliteMultipliers, request.IsRepresentative, prestigeScalar);
             var pending = new PendingAmbushSpawn(
                 unit.Prefab,
                 steamId,
@@ -1255,6 +1300,7 @@ internal static class FactionInfamyAmbushService
         private readonly float3 _position;
         private readonly float _hateReliefPerUnit;
         private readonly bool _useEliteMultipliers;
+        private readonly float _prestigeScalar;
         private readonly List<AmbushSpawnRequest> _followUpRequests;
         private int _remainingCoreRequests;
         private int _followUpQueued;
@@ -1267,6 +1313,7 @@ internal static class FactionInfamyAmbushService
             AmbushDifficulty difficulty,
             float hateReliefPerUnit,
             bool useEliteMultipliers,
+            float prestigeScalar,
             IReadOnlyList<AmbushSpawnRequest> followUpRequests,
             int remainingCoreRequests)
         {
@@ -1277,6 +1324,7 @@ internal static class FactionInfamyAmbushService
             _difficulty = difficulty;
             _hateReliefPerUnit = hateReliefPerUnit;
             _useEliteMultipliers = useEliteMultipliers;
+            _prestigeScalar = prestigeScalar;
             _followUpRequests = followUpRequests?.Count > 0
                 ? new List<AmbushSpawnRequest>(followUpRequests)
                 : new List<AmbushSpawnRequest>();
@@ -1325,9 +1373,7 @@ internal static class FactionInfamyAmbushService
                 var cappedTarget = Math.Min(_playerLevel + levelOffset, _playerLevel + MaxPositiveLevelOffset);
                 var targetLevel = Math.Clamp(cappedTarget, 1, 999);
                 var lifetimeSeconds = GetNextLifetimeSeconds();
-                var multipliers = _useEliteMultipliers
-                    ? AmbushStatMultipliers.Create(request.IsRepresentative)
-                    : AmbushStatMultipliers.Identity;
+                var multipliers = ResolveAmbushMultipliers(_useEliteMultipliers, request.IsRepresentative, _prestigeScalar);
                 var pending = new PendingAmbushSpawn(
                     unit.Prefab,
                     _steamId,
@@ -1465,6 +1511,37 @@ internal static class FactionInfamyAmbushService
         private static bool IsApproximatelyOne(float value)
         {
             return Math.Abs(value - 1f) <= Epsilon;
+        }
+
+        public AmbushStatMultipliers Scale(float scalar)
+        {
+            var clamped = Math.Max(0f, scalar);
+            if (IsApproximatelyOne(clamped))
+            {
+                return this;
+            }
+
+            var health = Math.Max(0f, HealthMultiplier * clamped);
+            var damageReduction = Math.Max(0f, DamageReductionMultiplier * clamped);
+            var resistance = Math.Max(0f, ResistanceMultiplier * clamped);
+            var power = Math.Max(0f, PowerMultiplier * clamped);
+            var attackSpeed = Math.Max(0f, AttackSpeedMultiplier * clamped);
+            var spellSpeed = Math.Max(0f, SpellSpeedMultiplier * clamped);
+            var moveSpeed = Math.Max(0f, MoveSpeedMultiplier * clamped);
+            var knockback = ApplyKnockbackResistance
+                ? Math.Max(0f, KnockbackResistanceMultiplier * clamped)
+                : KnockbackResistanceMultiplier;
+
+            return new AmbushStatMultipliers(
+                health,
+                damageReduction,
+                resistance,
+                power,
+                attackSpeed,
+                spellSpeed,
+                moveSpeed,
+                knockback,
+                ApplyKnockbackResistance);
         }
 
         public static AmbushStatMultipliers Create(bool isRepresentative)
