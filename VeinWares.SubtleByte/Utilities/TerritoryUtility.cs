@@ -1,6 +1,7 @@
 using System;
 using ProjectM;
 using ProjectM.CastleBuilding;
+using ProjectM.Network;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
@@ -21,8 +22,18 @@ internal static class TerritoryUtility
         var teamEntity = ResolveTeamEntity(entityManager, playerEntity);
         if (teamEntity == Entity.Null || !TryExists(entityManager, teamEntity))
         {
-            return false;
+            teamEntity = Entity.Null;
         }
+
+        var userEntity = ResolveUserEntity(entityManager, playerEntity);
+        NetworkedEntity clanEntity = NetworkedEntity.Empty;
+        if (userEntity != Entity.Null && TryExists(entityManager, userEntity)
+            && entityManager.TryGetComponentData(userEntity, out User playerUser))
+        {
+            clanEntity = playerUser.ClanEntity;
+        }
+
+        var hasClan = !clanEntity.Equals(NetworkedEntity.Empty);
 
         var query = entityManager.CreateEntityQuery(ComponentType.ReadOnly<CastleTerritory>());
         NativeArray<Entity> territories = default;
@@ -64,7 +75,36 @@ internal static class TerritoryUtility
                     continue;
                 }
 
-                if (ownerTeam == teamEntity)
+                var sameTeam = teamEntity != Entity.Null && ownerTeam == teamEntity;
+                if (!sameTeam && teamEntity != Entity.Null && ownerTeam != Entity.Null
+                    && TryResolveTeamIndex(entityManager, ownerTeam, out var territoryTeamIndex)
+                    && TryResolveTeamIndex(entityManager, teamEntity, out var playerTeamIndex)
+                    && territoryTeamIndex == playerTeamIndex)
+                {
+                    sameTeam = true;
+                }
+
+                if (!sameTeam && userEntity != Entity.Null
+                    && entityManager.TryGetComponentData(heartEntity, out UserOwner userOwner))
+                {
+                    var ownerUserEntity = userOwner.Owner.GetEntityOnServer();
+                    if (ownerUserEntity != Entity.Null && TryExists(entityManager, ownerUserEntity))
+                    {
+                        if (ownerUserEntity == userEntity)
+                        {
+                            sameTeam = true;
+                        }
+                        else if (hasClan
+                            && entityManager.TryGetComponentData(ownerUserEntity, out User ownerUser)
+                            && !ownerUser.ClanEntity.Equals(NetworkedEntity.Empty)
+                            && ownerUser.ClanEntity.Equals(clanEntity))
+                        {
+                            sameTeam = true;
+                        }
+                    }
+                }
+
+                if (sameTeam)
                 {
                     territoryIndex = territory.CastleTerritoryIndex;
                     return true;
@@ -103,6 +143,39 @@ internal static class TerritoryUtility
         }
 
         return Entity.Null;
+    }
+
+    private static Entity ResolveUserEntity(EntityManager entityManager, Entity entity)
+    {
+        if (entityManager.TryGetComponentData(entity, out PlayerCharacter character) && character.UserEntity != Entity.Null)
+        {
+            return character.UserEntity;
+        }
+
+        if (entityManager.HasComponent<User>(entity))
+        {
+            return entity;
+        }
+
+        return Entity.Null;
+    }
+
+    private static bool TryResolveTeamIndex(EntityManager entityManager, Entity teamEntity, out int teamIndex)
+    {
+        teamIndex = -1;
+
+        if (teamEntity == Entity.Null || !TryExists(entityManager, teamEntity))
+        {
+            return false;
+        }
+
+        if (!entityManager.TryGetComponentData(teamEntity, out Team team))
+        {
+            return false;
+        }
+
+        teamIndex = team.Value;
+        return teamIndex >= 0;
     }
 
     private static bool Contains(BoundsMinMax bounds, float3 position)
