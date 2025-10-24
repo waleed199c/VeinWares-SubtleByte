@@ -319,7 +319,7 @@ internal static class FactionInfamyAmbushService
         }
 
         if (FactionInfamySystem.AmbushTerritoryProtectionEnabled
-            && TerritoryUtility.IsInsidePlayerTerritory(entityManager, playerEntity, position, out var territoryIndex))
+            && TerritoryUtility.IsInsidePlayerTerritory(entityManager, playerEntity, steamId, position, out var territoryIndex))
         {
             _log?.LogDebug($"[Infamy] Blocked ambush for {steamId} inside owned territory (territory index {territoryIndex}).");
             return;
