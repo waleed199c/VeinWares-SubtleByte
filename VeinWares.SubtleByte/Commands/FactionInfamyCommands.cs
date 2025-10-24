@@ -10,7 +10,7 @@ namespace VeinWares.SubtleByte.Commands;
 
 public static class FactionInfamyCommands
 {
-    [Command("infamy show", description: "Display your current faction hate values or inspect another player by Steam ID.")]
+    [Command("infamy me", description: "Display your current faction hate values or inspect another player by Steam ID.")]
     public static void ShowInfamy(ChatCommandContext ctx, string targetSteamId = "")
     {
         if (!EnsureEnabled(ctx))
