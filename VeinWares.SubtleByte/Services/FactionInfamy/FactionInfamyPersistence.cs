@@ -17,12 +17,16 @@ internal static class FactionInfamyPersistence
     };
 
     private static string ConfigDirectory => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "Infamy");
+    private static string LegacyDirectory => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte");
     private static string SavePath => Path.Combine(ConfigDirectory, "playerInfamyLevel.json");
+    private static string LegacySavePath => Path.Combine(LegacyDirectory, "playerInfamyLevel.json");
 
     public static Dictionary<ulong, PlayerHateData> Load()
     {
         try
         {
+            EnsureLegacySaveMigrated();
+
             if (!File.Exists(SavePath))
             {
                 return new Dictionary<ulong, PlayerHateData>();
@@ -132,6 +136,48 @@ internal static class FactionInfamyPersistence
         catch (Exception ex)
         {
             ModLogger.Warn($"[InfamyPersistence] Failed to rotate backups: {ex.Message}");
+        }
+    }
+
+    private static void EnsureLegacySaveMigrated()
+    {
+        try
+        {
+            if (File.Exists(SavePath) || !File.Exists(LegacySavePath))
+            {
+                return;
+            }
+
+            Directory.CreateDirectory(ConfigDirectory);
+
+            File.Move(LegacySavePath, SavePath);
+            ModLogger.Info("[InfamyPersistence] Migrated legacy hate data to Infamy directory.");
+
+            var legacyBackups = Directory
+                .EnumerateFiles(LegacyDirectory, "playerInfamyLevel.json.bak*")
+                .ToList();
+
+            foreach (var backup in legacyBackups)
+            {
+                var fileName = Path.GetFileName(backup);
+                if (string.IsNullOrEmpty(fileName))
+                {
+                    continue;
+                }
+
+                var destination = Path.Combine(ConfigDirectory, fileName);
+
+                if (File.Exists(destination))
+                {
+                    continue;
+                }
+
+                File.Move(backup, destination);
+            }
+        }
+        catch (Exception ex)
+        {
+            ModLogger.Warn($"[InfamyPersistence] Failed to migrate legacy hate data: {ex.Message}");
         }
     }
 
