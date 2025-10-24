@@ -107,12 +107,13 @@ internal static class TerritoryUtility
 
     private static bool Contains(BoundsMinMax bounds, float3 position)
     {
-        var min = bounds.Min;
-        var max = bounds.Max;
-        var x = position.x;
-        var z = position.z;
+        // BoundsMinMax encodes the planar X/Z extents in an int2 where the Y component
+        // corresponds to the world Z axis. Convert both ranges to float2 so the intent is explicit.
+        var min = (float2)bounds.Min;
+        var max = (float2)bounds.Max;
+        var positionXZ = new float2(position.x, position.z);
 
-        return x >= min.x && x <= max.x && z >= min.y && z <= max.y;
+        return math.all(positionXZ >= min) && math.all(positionXZ <= max);
     }
 
     private static bool TryExists(EntityManager entityManager, Entity entity)
