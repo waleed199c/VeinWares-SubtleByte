@@ -23,7 +23,16 @@ internal static class SpawnSuppressionService
         "ProjectM.Feedable",
     };
 
-    private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes = ResolveAdditionalFeedComponentTypes();
+    private static readonly IReadOnlyList<ComponentRemovalTarget> AdditionalFeedComponentTypes =
+        ResolveComponentTypes(AdditionalFeedComponentTypeNames);
+
+    private static readonly string[] CharmComponentTypeNames =
+    {
+        "ProjectM.CharmSource",
+    };
+
+    private static readonly IReadOnlyList<ComponentRemovalTarget> CharmComponentTypes =
+        ResolveComponentTypes(CharmComponentTypeNames);
 
     public static bool SuppressSpawnComponents(
         EntityManager entityManager,
@@ -61,16 +70,20 @@ internal static class SpawnSuppressionService
 
     private static void SuppressFeedComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
     {
+        var removedAny = false;
+
         if (entity.Has<BloodConsumeSource>())
         {
             entity.Remove<BloodConsumeSource>();
             removedComponents.Add(nameof(BloodConsumeSource));
+            removedAny = true;
         }
 
         if (entity.Has<FeedableInventory>())
         {
             entity.Remove<FeedableInventory>();
             removedComponents.Add(nameof(FeedableInventory));
+            removedAny = true;
         }
 
         foreach (var component in AdditionalFeedComponentTypes)
@@ -82,11 +95,22 @@ internal static class SpawnSuppressionService
 
             entityManager.RemoveComponent(entity, component.ComponentType);
             removedComponents.Add(component.DisplayName);
+            removedAny = true;
+        }
+
+        if (removedAny && NormalizeBloodQuality(entityManager, entity))
+        {
+            removedComponents.Add($"{nameof(UnitSpawnData)}.{nameof(UnitSpawnData.BloodQuality)}=0");
         }
     }
 
     private static void SuppressCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
     {
+        if (RemoveKnownCharmComponents(entityManager, entity, removedComponents))
+        {
+            return;
+        }
+
         var componentTypes = entityManager.GetComponentTypes(entity);
         if (!componentTypes.IsCreated || componentTypes.Length == 0)
         {
@@ -130,6 +154,25 @@ internal static class SpawnSuppressionService
         }
     }
 
+    private static bool RemoveKnownCharmComponents(EntityManager entityManager, Entity entity, List<string> removedComponents)
+    {
+        var removedAny = false;
+
+        foreach (var component in CharmComponentTypes)
+        {
+            if (!entityManager.HasComponent(entity, component.ComponentType))
+            {
+                continue;
+            }
+
+            entityManager.RemoveComponent(entity, component.ComponentType);
+            removedComponents.Add(component.DisplayName);
+            removedAny = true;
+        }
+
+        return removedAny;
+    }
+
     private static bool IsCharmRelated(string managedTypeName)
     {
         if (string.IsNullOrEmpty(managedTypeName))
@@ -145,9 +188,26 @@ internal static class SpawnSuppressionService
         return managedTypeName.Contains("ProjectM.", StringComparison.Ordinal);
     }
 
-    private static IReadOnlyList<ComponentRemovalTarget> ResolveAdditionalFeedComponentTypes()
+    private static bool NormalizeBloodQuality(EntityManager entityManager, Entity entity)
     {
-        return AdditionalFeedComponentTypeNames
+        if (!entityManager.TryGetComponentData(entity, out UnitSpawnData spawnData))
+        {
+            return false;
+        }
+
+        if (spawnData.BloodQuality >= 0f)
+        {
+            return false;
+        }
+
+        spawnData.BloodQuality = 0f;
+        entityManager.SetComponentData(entity, spawnData);
+        return true;
+    }
+
+    private static IReadOnlyList<ComponentRemovalTarget> ResolveComponentTypes(IEnumerable<string> typeNames)
+    {
+        return typeNames
             .Select(FindComponentType)
             .Where(component => component.HasValue)
             .Select(component => component!.Value)
