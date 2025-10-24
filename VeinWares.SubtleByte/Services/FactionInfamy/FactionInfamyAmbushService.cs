@@ -32,163 +32,19 @@ internal static class FactionInfamyAmbushService
     private static readonly ConcurrentDictionary<int, PendingAmbushSpawn> PendingSpawns = new();
     private static readonly ConcurrentDictionary<Entity, ActiveAmbush> ActiveAmbushes = new();
     private static readonly ConcurrentDictionary<string, FactionTeamData> FactionTeamCache = new(StringComparer.OrdinalIgnoreCase);
-    private static readonly Dictionary<string, AmbushSquadDefinition> SquadDefinitions = new(StringComparer.OrdinalIgnoreCase)
-    {
-        ["Bandits"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-1030822544), 2, -1, 1.5f, 8f), // Deadeye
-                new AmbushUnitDefinition(new PrefabGUID(-301730941), 2, -2, 1f, 6f) // Thug
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-1128238456), 1, 2, 1.5f, 7f) // Bomber
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Blackfangs"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1864177126), 2, 0, 1.5f, 7f), // Venomblade
-                new AmbushUnitDefinition(new PrefabGUID(326501064), 1, 1, 2f, 9f) // Alchemist
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1531777139), 1, 2, 2f, 9f) // Sentinel
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Militia"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1148936156), 3, -1, 2f, 10f), // Rifleman
-                new AmbushUnitDefinition(new PrefabGUID(794228023), 1, 1, 1.5f, 6f) // Knight Shield
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(2005508157), 1, 2, 2f, 8f) // Heavy
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Gloomrot"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-322293503), 2, 0, 3f, 10f), // Pyro
-                new AmbushUnitDefinition(new PrefabGUID(1732477970), 1, 2, 4f, 12f) // Railgunner
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1401026468), 1, 2, 3f, 10f) // Sentry Officer
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Legion"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1980594081), 2, 1, 2f, 9f), // Shadowkin
-                new AmbushUnitDefinition(new PrefabGUID(-1009917656), 1, 3, 3f, 11f) // Nightmare
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(1912966420), 1, 2, 3f, 10f) // Blood Prophet
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Undead"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-1287507270), 3, -1, 1.5f, 7f), // Skeleton Mage
-                new AmbushUnitDefinition(new PrefabGUID(-1365627158), 1, 1, 2f, 8f) // Assassin
-            },
-            tier5Representatives: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-1967480038), 1, 2, 2f, 8f) // Guardian
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            }),
-        ["Werewolf"] = new AmbushSquadDefinition(
-            baseUnits: new[]
-            {
-                new AmbushUnitDefinition(new PrefabGUID(-951976780), 3, 0, 1.5f, 8f) // Hostile villager werewolf
-            },
-            seasonalUnits: new[]
-            {
-                AmbushSeasonalDefinition.HalloweenScarecrow,
-                AmbushSeasonalDefinition.HalloweenGhostBanshee,
-                AmbushSeasonalDefinition.HalloweenGhostGuardian,
-                AmbushSeasonalDefinition.HalloweenGhostAssassin
-            })
-    };
-
     private static readonly PrefabGUID BlackfangSentinelPrefab = new(1531777139);
     private static readonly PrefabGUID LevelAuraSelfBuff = new(-2104035188);
-    private static readonly PrefabGUID ManticoreVisual = new(1670636401);
-    private static readonly PrefabGUID DraculaVisual = new(1199823151);
-    private static readonly PrefabGUID MonsterVisual = new(-2067402784);
-    private static readonly PrefabGUID SolarusVisual = new(178225731);
-    private static readonly PrefabGUID MegaraVisual = new(-2104035188);
-
-    private static readonly IReadOnlyList<PrefabGUID> DefaultVisualBuffPool = new[]
-    {
-        ManticoreVisual,
-        DraculaVisual,
-        MonsterVisual,
-        SolarusVisual,
-        MegaraVisual
-    };
-
-    private static readonly Dictionary<string, IReadOnlyList<PrefabGUID>> FactionVisualBuffPools =
-        new(StringComparer.OrdinalIgnoreCase)
-        {
-            ["Bandits"] = new[] { ManticoreVisual, DraculaVisual, MonsterVisual },
-            ["Blackfangs"] = new[] { DraculaVisual, MonsterVisual, SolarusVisual },
-            ["Militia"] = new[] { SolarusVisual, DraculaVisual, MegaraVisual },
-            ["Gloomrot"] = new[] { MegaraVisual, MonsterVisual, SolarusVisual },
-            ["Legion"] = new[] { MonsterVisual, DraculaVisual, MegaraVisual },
-            ["Undead"] = new[] { MonsterVisual, DraculaVisual, MegaraVisual },
-            ["Werewolf"] = new[] { ManticoreVisual, MonsterVisual }
-        };
 
     private static bool TryRollVisualBuff(string factionId, out PrefabGUID visualBuff)
     {
         if (!string.IsNullOrWhiteSpace(factionId)
-            && FactionVisualBuffPools.TryGetValue(factionId, out var factionPool)
+            && FactionInfamyAmbushData.TryGetVisualPool(factionId, out var factionPool)
             && TryPickVisualBuff(factionPool, out visualBuff))
         {
             return true;
         }
 
-        return TryPickVisualBuff(DefaultVisualBuffPool, out visualBuff);
+        return TryPickVisualBuff(FactionInfamyAmbushData.GetDefaultVisualPool(), out visualBuff);
     }
 
     private static bool TryPickVisualBuff(IReadOnlyList<PrefabGUID> pool, out PrefabGUID visualBuff)
@@ -264,11 +120,20 @@ internal static class FactionInfamyAmbushService
     public static void Initialize(ManualLogSource log)
     {
         _log = log ?? throw new ArgumentNullException(nameof(log));
+
+        FactionInfamyAmbushData.Initialize(log);
+        FactionInfamyAmbushData.SquadDefinitionsChanged += OnSquadDefinitionsChanged;
+        FactionInfamyAmbushData.LootDefinitionsChanged += OnLootDefinitionsChanged;
+
         _initialized = true;
     }
 
     public static void Shutdown()
     {
+        FactionInfamyAmbushData.SquadDefinitionsChanged -= OnSquadDefinitionsChanged;
+        FactionInfamyAmbushData.LootDefinitionsChanged -= OnLootDefinitionsChanged;
+        FactionInfamyAmbushData.ClearLootPrefabCache();
+
         _initialized = false;
         _log = null;
         foreach (var pair in PendingSpawns.ToArray())
@@ -278,6 +143,17 @@ internal static class FactionInfamyAmbushService
         PendingSpawns.Clear();
         ActiveAmbushes.Clear();
         FactionTeamCache.Clear();
+    }
+
+    private static void OnSquadDefinitionsChanged()
+    {
+        FactionTeamCache.Clear();
+        _log?.LogInfo("[Infamy] Reloaded ambush squad configuration.");
+    }
+
+    private static void OnLootDefinitionsChanged()
+    {
+        _log?.LogInfo("[Infamy] Reloaded ambush loot configuration.");
     }
 
     public static void TryTriggerAmbush(EntityManager entityManager, Entity playerEntity, ulong steamId)
@@ -427,7 +303,7 @@ internal static class FactionInfamyAmbushService
 
     private static bool TrySpawnSquad(ulong steamId, string factionId, int playerLevel, float3 position, float hateValue, AmbushDifficulty difficulty, int prestigeLevel)
     {
-        if (!SquadDefinitions.TryGetValue(factionId, out var squad))
+        if (!FactionInfamyAmbushData.TryGetSquadDefinition(factionId, out var squad))
         {
             return false;
         }
@@ -873,6 +749,7 @@ internal static class FactionInfamyAmbushService
         if (!FactionInfamySystem.NativeDropTablesEnabled)
         {
             ClearNativeDropTables(entityManager, entity, pending.FactionId);
+            ApplyCustomDropTables(entityManager, entity, pending.FactionId);
         }
 
         var suppressFeed = FactionInfamySystem.SuppressBloodConsumeOnSpawn;
@@ -987,6 +864,39 @@ internal static class FactionInfamyAmbushService
 
         var context = string.IsNullOrWhiteSpace(factionId) ? "unknown" : factionId;
         _log?.LogInfo($"[Spawn] Cleared existing DropTableBuffer for ambush faction '{context}' (entity {entity.Index}).");
+    }
+
+    private static void ApplyCustomDropTables(EntityManager entityManager, Entity entity, string factionId)
+    {
+        if (!FactionInfamyAmbushData.TryGetLootDefinition(factionId, out var definition)
+            || definition.Entries.Count == 0)
+        {
+            return;
+        }
+
+        if (!entityManager.HasComponent<DropTableBuffer>(entity))
+        {
+            entityManager.AddBuffer<DropTableBuffer>(entity);
+        }
+
+        var buffer = entityManager.GetBuffer<DropTableBuffer>(entity);
+        buffer.Clear();
+
+        if (!FactionInfamyAmbushData.TryEnsureLootPrefab(entityManager, factionId, definition, out var prefabEntity)
+            || prefabEntity == Entity.Null)
+        {
+            _log?.LogWarning($"[Spawn] Failed to resolve custom drop table for ambush faction '{factionId}'.");
+            return;
+        }
+
+        buffer.Add(new DropTableBuffer
+        {
+            DropTableGuid = definition.DropTableGuid,
+            DropTrigger = DropTriggerType.OnDeath,
+            RelicType = RelicType.None
+        });
+
+        _log?.LogDebug($"[Spawn] Applied custom DropTableBuffer for ambush faction '{factionId}' (entity {entity.Index}).");
     }
 
     private static void UpdateFactionReference(EntityManager entityManager, Entity entity, PrefabGUID factionGuid)
@@ -1647,105 +1557,6 @@ internal static class FactionInfamyAmbushService
 
             return Math.Max(0f, resolved);
         }
-    }
-
-    private readonly struct AmbushUnitDefinition
-    {
-        public AmbushUnitDefinition(PrefabGUID prefab, int count, int levelOffset, float minRange, float maxRange)
-        {
-            Prefab = prefab;
-            Count = count;
-            LevelOffset = levelOffset;
-            MinRange = minRange;
-            MaxRange = maxRange;
-        }
-
-        public PrefabGUID Prefab { get; }
-
-        public int Count { get; }
-
-        public int LevelOffset { get; }
-
-        public float MinRange { get; }
-
-        public float MaxRange { get; }
-    }
-
-    private sealed class AmbushSquadDefinition
-    {
-        private static readonly IReadOnlyList<AmbushUnitDefinition> EmptyUnits = Array.Empty<AmbushUnitDefinition>();
-
-        private readonly Dictionary<SeasonalAmbushType, IReadOnlyList<AmbushSeasonalDefinition>> _seasonalUnits;
-
-        public AmbushSquadDefinition(
-            IReadOnlyList<AmbushUnitDefinition> baseUnits,
-            IReadOnlyList<AmbushUnitDefinition>? tier5Representatives = null,
-            IReadOnlyList<AmbushSeasonalDefinition>? seasonalUnits = null)
-        {
-            BaseUnits = baseUnits ?? EmptyUnits;
-            Tier5Representatives = tier5Representatives ?? EmptyUnits;
-
-            var seasonal = seasonalUnits ?? Array.Empty<AmbushSeasonalDefinition>();
-            _seasonalUnits = seasonal.Count == 0
-                ? new Dictionary<SeasonalAmbushType, IReadOnlyList<AmbushSeasonalDefinition>>()
-                : seasonal
-                    .GroupBy(definition => definition.Type)
-                    .ToDictionary(
-                        group => group.Key,
-                        group => (IReadOnlyList<AmbushSeasonalDefinition>)group.ToArray());
-        }
-
-        public IReadOnlyList<AmbushUnitDefinition> BaseUnits { get; }
-
-        public IReadOnlyList<AmbushUnitDefinition> Tier5Representatives { get; }
-
-        public IReadOnlyList<AmbushSeasonalDefinition> GetSeasonalUnits(SeasonalAmbushType type)
-        {
-            return _seasonalUnits.TryGetValue(type, out var units)
-                ? units
-                : Array.Empty<AmbushSeasonalDefinition>();
-        }
-    }
-
-    private sealed class AmbushSeasonalDefinition
-    {
-        public AmbushSeasonalDefinition(SeasonalAmbushType type, AmbushUnitDefinition unit, bool useSharedRollCount)
-        {
-            Type = type;
-            Unit = unit;
-            UseSharedRollCount = useSharedRollCount;
-        }
-
-        public SeasonalAmbushType Type { get; }
-
-        public AmbushUnitDefinition Unit { get; }
-
-        public bool UseSharedRollCount { get; }
-
-        public static AmbushSeasonalDefinition HalloweenScarecrow { get; } = new(
-            SeasonalAmbushType.Halloween,
-            new AmbushUnitDefinition(new PrefabGUID(-1750347680), 1, 0, 2.5f, 8f),
-            useSharedRollCount: true);
-
-        public static AmbushSeasonalDefinition HalloweenGhostBanshee { get; } = new(
-            SeasonalAmbushType.Halloween,
-            new AmbushUnitDefinition(new PrefabGUID(-1146194149), 1, 2, 2.5f, 10f),
-            useSharedRollCount: false);
-
-        public static AmbushSeasonalDefinition HalloweenGhostGuardian { get; } = new(
-            SeasonalAmbushType.Halloween,
-            new AmbushUnitDefinition(new PrefabGUID(-458883491), 1, 3, 2f, 9f),
-            useSharedRollCount: false);
-
-        public static AmbushSeasonalDefinition HalloweenGhostAssassin { get; } = new(
-            SeasonalAmbushType.Halloween,
-            new AmbushUnitDefinition(new PrefabGUID(849891426), 2, 1, 2.5f, 10f),
-            useSharedRollCount: false);
-    }
-
-    private enum SeasonalAmbushType
-    {
-        Halloween
     }
 
     private readonly struct AmbushSpawnPlan

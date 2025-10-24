@@ -1,0 +1,112 @@
+{
+  "factions": [
+    {
+      "id": "Bandits",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 5,
+          "dropChance": 0.35
+        },
+        {
+          "prefabGuid": 1252507075,
+          "stackSize": 2,
+          "dropChance": 0.2
+        }
+      ]
+    },
+    {
+      "id": "Blackfangs",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 6,
+          "dropChance": 0.4
+        },
+        {
+          "prefabGuid": 301051123,
+          "stackSize": 1,
+          "dropChance": 0.15
+        }
+      ]
+    },
+    {
+      "id": "Militia",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 8,
+          "dropChance": 0.45
+        },
+        {
+          "prefabGuid": -223452038,
+          "stackSize": 1,
+          "dropChance": 0.12
+        }
+      ]
+    },
+    {
+      "id": "Gloomrot",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 10,
+          "dropChance": 0.35
+        },
+        {
+          "prefabGuid": -1328826274,
+          "stackSize": 1,
+          "dropChance": 0.2,
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "id": "Legion",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 7,
+          "dropChance": 0.4
+        },
+        {
+          "prefabGuid": 624475009,
+          "stackSize": 1,
+          "dropChance": 0.1,
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "id": "Undead",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 4,
+          "dropChance": 0.3
+        },
+        {
+          "prefabGuid": 147048543,
+          "stackSize": 1,
+          "dropChance": 0.2,
+          "type": "Group"
+        }
+      ]
+    },
+    {
+      "id": "Werewolf",
+      "loot": [
+        {
+          "prefabGuid": -949672483,
+          "stackSize": 5,
+          "dropChance": 0.5
+        },
+        {
+          "prefabGuid": 931859854,
+          "stackSize": 6,
+          "dropChance": 0.25
+        }
+      ]
+    }
+  ]
+}

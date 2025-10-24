@@ -125,6 +125,24 @@ public static class FactionInfamyCommands
         ctx.Reply("[Infamy] Tracked factions: " + string.Join(", ", factions.OrderBy(static f => f, StringComparer.OrdinalIgnoreCase)));
     }
 
+    [Command("infamy reload", adminOnly: true, description: "Reload ambush squad and loot configurations from disk.")]
+    public static void ReloadAmbushDefinitions(ChatCommandContext ctx)
+    {
+        if (!EnsureEnabled(ctx))
+        {
+            return;
+        }
+
+        if (FactionInfamyAmbushData.TryReloadFromCommand(out var message))
+        {
+            ctx.Reply($"[Infamy] {message}");
+        }
+        else
+        {
+            ctx.Reply($"[Infamy] {message}");
+        }
+    }
+
     private static bool EnsureEnabled(ChatCommandContext ctx)
     {
         if (FactionInfamySystem.Enabled)
