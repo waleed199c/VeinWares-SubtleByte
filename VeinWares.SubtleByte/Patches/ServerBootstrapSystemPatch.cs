@@ -44,7 +44,6 @@ namespace VeinWares.SubtleByte.Patches
                 yield return null;
                 character = user.LocalCharacter.GetEntityOnServer();
             }
-            OneTimeCleanupService.RunOnce(user.PlatformId, character);
             // 1) Register the player with the live file watcher so future changes apply instantly
             PrestigeLiveSync.OnPlayerConnected(steamId, character);
 
