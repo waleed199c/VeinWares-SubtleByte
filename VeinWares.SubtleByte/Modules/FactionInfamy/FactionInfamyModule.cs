@@ -35,7 +35,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         FactionInfamyAmbushService.Initialize(context.Log);
 
         _autosaveHandle = context.Scheduler.Schedule(
-            snapshot.AutosaveInterval,
+            snapshot.Persistence.AutosaveInterval,
             FactionInfamySystem.FlushPersistence,
             runImmediately: false);
         _autosaveRegistered = true;

@@ -17,6 +17,9 @@ internal static class FactionInfamyChatConfig
     private const string DefaultColor = "#FFFFFF";
     private const int MaxTier = 5;
 
+    private static readonly string ConfigDirectory = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "Infamy");
+    private static readonly string ConfigFilePath = Path.Combine(ConfigDirectory, FileName);
+
     private static readonly JsonSerializerOptions JsonOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
@@ -41,7 +44,7 @@ internal static class FactionInfamyChatConfig
         lock (Sync)
         {
             _log = log;
-            _configPath = Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", FileName);
+            _configPath = ConfigFilePath;
             EnsureConfigLoaded();
         }
     }
@@ -144,11 +147,7 @@ internal static class FactionInfamyChatConfig
 
         try
         {
-            var directory = Path.GetDirectoryName(_configPath);
-            if (!string.IsNullOrWhiteSpace(directory) && !Directory.Exists(directory))
-            {
-                Directory.CreateDirectory(directory);
-            }
+            Directory.CreateDirectory(ConfigDirectory);
 
             if (!File.Exists(_configPath))
             {
@@ -190,6 +189,12 @@ internal static class FactionInfamyChatConfig
         {
             DefaultColor = DefaultColor,
             DefaultTierMessages = CreateDefaultTierMessages(),
+            Metadata = new()
+            {
+                ["placeholders"] = "Available tokens: {Faction}, {Tier}, {Hate}, {LevelOffset}.",
+                ["colors"] = "Colours accept #RRGGBB or #RRGGBBAA formats.",
+                ["fallback"] = "Factions without overrides use the default messages."
+            },
             Factions = new Dictionary<string, AmbushChatEntry>(StringComparer.OrdinalIgnoreCase)
             {
                 ["Bandits"] = new()
@@ -360,12 +365,19 @@ internal static class FactionInfamyChatConfig
 
         public Dictionary<int, string> DefaultTierMessages { get; set; } = new();
 
+        public Dictionary<string, string> Metadata { get; set; } = new(StringComparer.OrdinalIgnoreCase);
+
         public Dictionary<string, AmbushChatEntry> Factions { get; set; } = new(StringComparer.OrdinalIgnoreCase);
 
         public void Normalise()
         {
             DefaultColor = NormaliseColor(DefaultColor, DefaultColorValue);
             DefaultTierMessages = NormaliseTierMessages(DefaultTierMessages, CreateDefaultTierMessages());
+
+            if (Metadata == null)
+            {
+                Metadata = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            }
 
             if (Factions == null)
             {

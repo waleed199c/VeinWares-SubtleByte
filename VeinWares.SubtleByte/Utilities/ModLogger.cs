@@ -4,30 +4,32 @@ namespace VeinWares.SubtleByte.Utilities
 {
     internal static class ModLogger
     {
-        private static bool Enabled => SubtleBytePluginConfig.DebugLogsEnabled;
+        private static bool VerboseEnabled => SubtleBytePluginConfig.VerboseLogsEnabled;
 
         public static void Debug(string message)
         {
-            if (Enabled)
+            if (VerboseEnabled)
+            {
                 Core.Log?.LogDebug(message);
+            }
         }
 
-        public static void Info(string message)
+        public static void Info(string message, bool verboseOnly = true)
         {
-            if (Enabled)
+            if (!verboseOnly || VerboseEnabled)
+            {
                 Core.Log?.LogInfo(message);
+            }
         }
 
         public static void Warn(string message)
         {
-            if (Enabled)
-                Core.Log?.LogWarning(message);
+            Core.Log?.LogWarning(message);
         }
 
         public static void Error(string message)
         {
-            if (Enabled)
-                Core.Log?.LogError(message);
+            Core.Log?.LogError(message);
         }
     }
 }
