@@ -585,6 +585,44 @@ internal static class FactionInfamySystem
         }
     }
 
+    public static int ClearAllPlayerHate()
+    {
+        if (!_initialized || PlayerHate.IsEmpty)
+        {
+            return 0;
+        }
+
+        var keys = PlayerHate.Keys.ToArray();
+        if (keys.Length == 0)
+        {
+            return 0;
+        }
+
+        var clearedIds = new List<ulong>(keys.Length);
+        for (var i = 0; i < keys.Length; i++)
+        {
+            var key = keys[i];
+            if (PlayerHate.TryRemove(key, out _))
+            {
+                clearedIds.Add(key);
+            }
+        }
+
+        if (clearedIds.Count == 0)
+        {
+            return 0;
+        }
+
+        _dirty = true;
+
+        for (var i = 0; i < clearedIds.Count; i++)
+        {
+            FactionInfamyRuntime.NotifyPlayerHateCleared(clearedIds[i]);
+        }
+
+        return clearedIds.Count;
+    }
+
     public static IReadOnlyList<FactionInfamyPlayerSnapshot> GetAllPlayerHate()
     {
         if (!_initialized)

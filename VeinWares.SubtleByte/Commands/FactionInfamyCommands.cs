@@ -62,6 +62,24 @@ public static class FactionInfamyCommands
         ctx.Reply($"[Infamy] Cleared hate for {displayName}.");
     }
 
+    [Command("infamy clear-all", adminOnly: true, description: "Clear all tracked hate data from the infamy system.")]
+    public static void ClearInfamyForAll(ChatCommandContext ctx)
+    {
+        if (!EnsureEnabled(ctx))
+        {
+            return;
+        }
+
+        var clearedCount = FactionInfamySystem.ClearAllPlayerHate();
+        if (clearedCount == 0)
+        {
+            ctx.Reply("[Infamy] No players currently tracked by the infamy system.");
+            return;
+        }
+
+        ctx.Reply($"[Infamy] Cleared hate for {clearedCount} tracked player{(clearedCount == 1 ? string.Empty : "s")}.");
+    }
+
     [Command("infamy add", adminOnly: true, description: "Grant hate to a player or all tracked players. Accepts Steam ID or 'all'.")]
     public static void AddInfamy(ChatCommandContext ctx, string target, string factionId, float amount)
     {
