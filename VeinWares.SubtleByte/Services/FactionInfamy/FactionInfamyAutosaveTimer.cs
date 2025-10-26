@@ -12,9 +12,10 @@ internal static class FactionInfamyAutosaveTimer
 {
     private static ManualLogSource? _log;
     private static Coroutine? _routine;
-    private static WaitForSeconds? _delay;
+    private static WaitForSecondsRealtime? _delay;
     private static Action? _flushAction;
     private static bool _active;
+    private static float _intervalSeconds;
 
     public static void Initialize(TimeSpan interval, ManualLogSource log, Action flushAction)
     {
@@ -40,10 +41,11 @@ internal static class FactionInfamyAutosaveTimer
         }
 
         var seconds = Math.Max(1f, (float)interval.TotalSeconds);
-        _delay = new WaitForSeconds(seconds);
-        _routine = Core.StartCoroutine(RunTimer());
+        _delay = new WaitForSecondsRealtime(seconds);
+        _intervalSeconds = seconds;
         _active = true;
         _log.LogInfo($"[Infamy] Autosave timer started ({seconds:0.#}s interval).");
+        _routine = Core.StartCoroutine(RunTimer());
     }
 
     public static void Shutdown()
@@ -64,6 +66,7 @@ internal static class FactionInfamyAutosaveTimer
 
         _flushAction = null;
         _log = null;
+        _intervalSeconds = 0f;
     }
 
     private static IEnumerator RunTimer()
@@ -75,7 +78,17 @@ internal static class FactionInfamyAutosaveTimer
                 yield break;
             }
 
+            var intervalSeconds = _intervalSeconds;
+
+            if (intervalSeconds > 0f)
+            {
+                var eta = DateTimeOffset.Now.AddSeconds(intervalSeconds);
+                _log?.LogInfo($"[Infamy] Autosave timer cycle started; next flush in {intervalSeconds:0.#}s (ETA {eta:HH:mm:ss}).");
+            }
+
             yield return _delay;
+
+            _log?.LogInfo("[Infamy] Autosave timer interval elapsed; invoking flush.");
 
             try
             {
@@ -84,6 +97,12 @@ internal static class FactionInfamyAutosaveTimer
             catch (Exception ex)
             {
                 _log?.LogError($"[Infamy] Autosave flush failed: {ex.Message}");
+            }
+
+            if (intervalSeconds > 0f)
+            {
+                var nextTarget = DateTimeOffset.Now.AddSeconds(intervalSeconds);
+                _log?.LogInfo($"[Infamy] Autosave timer cycle complete; next flush scheduled for {nextTarget:HH:mm:ss}.");
             }
         }
     }
