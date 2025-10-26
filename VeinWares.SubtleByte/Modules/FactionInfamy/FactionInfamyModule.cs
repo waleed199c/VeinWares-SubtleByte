@@ -9,8 +9,6 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
 {
     private bool _enabled;
     private bool _disposed;
-    private Runtime.Scheduling.IntervalScheduler.ScheduledHandle _autosaveHandle;
-    private bool _autosaveRegistered;
 
     public void Initialize(ModuleContext context)
     {
@@ -34,12 +32,6 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         FactionInfamySystem.Initialize(snapshot, context.Log);
         FactionInfamyAmbushService.Initialize(context.Log);
 
-        _autosaveHandle = context.Scheduler.Schedule(
-            snapshot.Persistence.AutosaveInterval,
-            FactionInfamySystem.FlushPersistence,
-            runImmediately: false);
-        _autosaveRegistered = true;
-
         context.Log.LogInfo("[Infamy] Faction Infamy module initialised.");
     }
 
@@ -62,11 +54,6 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
         if (_disposed)
         {
             return;
-        }
-
-        if (_autosaveRegistered)
-        {
-            _autosaveHandle.Dispose();
         }
 
         if (_enabled)
