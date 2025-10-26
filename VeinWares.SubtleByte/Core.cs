@@ -44,10 +44,14 @@ namespace VeinWares.SubtleByte
         private static CoroutineRunner _runner;
         public static bool _hasInitialized = false;
         private static bool _initializationWarningLogged;
+        private static bool _retryScheduled;
 
         public static void Initialize()
         {
             if (_hasInitialized) return;
+
+            var scheduleRetry = false;
+            var initialized = false;
 
             lock (_worldSync)
             {
@@ -65,22 +69,60 @@ namespace VeinWares.SubtleByte
                         _initializationWarningLogged = true;
                     }
 
-                    return;
+                    if (!_retryScheduled)
+                    {
+                        _retryScheduled = true;
+                        scheduleRetry = true;
+                    }
                 }
-
-                _initializationWarningLogged = false;
-
-                ModLogger.Info("[Core] Initialization started...");
-
-                PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
-                if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+                else
                 {
-                    ItemStackService.ApplyPatches();
-                }
-                //RecipeService.ApplyPatches();
+                    _initializationWarningLogged = false;
+                    _retryScheduled = false;
 
-                _hasInitialized = true;
-                ModLogger.Info("[Core] Initialization complete.");
+                    ModLogger.Info("[Core] Initialization started...");
+
+                    PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
+                    if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+                    {
+                        ItemStackService.ApplyPatches();
+                    }
+                    //RecipeService.ApplyPatches();
+
+                    _hasInitialized = true;
+                    initialized = true;
+                    ModLogger.Info("[Core] Initialization complete.");
+                }
+            }
+
+            if (initialized)
+            {
+                return;
+            }
+
+            if (scheduleRetry)
+            {
+                try
+                {
+                    RunDelayed(1f, () =>
+                    {
+                        lock (_worldSync)
+                        {
+                            _retryScheduled = false;
+                        }
+
+                        Initialize();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    lock (_worldSync)
+                    {
+                        _retryScheduled = false;
+                    }
+
+                    ModLogger.Error($"[Core] Failed to schedule initialization retry: {ex.Message}");
+                }
             }
         }
         static World? TryResolveServerWorld()
