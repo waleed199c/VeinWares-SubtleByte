@@ -5,6 +5,7 @@ using System.Linq;
 using BepInEx.Logging;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Models.FactionInfamy;
+using VeinWares.SubtleByte.Runtime.Scheduling;
 using VeinWares.SubtleByte.Utilities;
 
 #nullable enable
@@ -175,6 +176,11 @@ internal static class FactionInfamySystem
             throw new ArgumentNullException(nameof(log));
         }
 
+        if (scheduler is null)
+        {
+            throw new ArgumentNullException(nameof(scheduler));
+        }
+
         _log = log;
         _config = config;
 
@@ -255,7 +261,7 @@ internal static class FactionInfamySystem
             FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
         }
 
-        _dirty = false;
+        FactionInfamyPersistenceScheduler.Initialize(config.Persistence, log, scheduler, CreateSerializableSnapshot);
         _initialized = true;
         _log.LogInfo("[Infamy] Faction Infamy system initialised.");
     }
@@ -331,7 +337,7 @@ internal static class FactionInfamySystem
             return;
         }
 
-        FlushPersistence();
+        FactionInfamyPersistenceScheduler.Shutdown();
         PlayerHate.Clear();
         _initialized = false;
         _log?.LogInfo("[Infamy] Faction Infamy system shut down.");
@@ -791,7 +797,7 @@ internal static class FactionInfamySystem
 
     public static void FlushPersistence()
     {
-        if (!_initialized || !_dirty)
+        if (!_initialized)
         {
             return;
         }
