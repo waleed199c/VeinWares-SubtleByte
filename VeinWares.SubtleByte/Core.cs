@@ -43,27 +43,45 @@ namespace VeinWares.SubtleByte
 
         private static CoroutineRunner _runner;
         public static bool _hasInitialized = false;
+        private static bool _initializationWarningLogged;
 
         public static void Initialize()
         {
             if (_hasInitialized) return;
-            _hasInitialized = true;
 
-            ModLogger.Info("[Core] Initialization started...");
-            var serverWorld = TryResolveServerWorld();
-            if (serverWorld == null)
+            lock (_worldSync)
             {
-                throw new InvalidOperationException("[Core] Initialization attempted before the server world was created.");
-            }
+                if (_hasInitialized)
+                {
+                    return;
+                }
 
-            PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
-            if (SubtleBytePluginConfig.ItemStackServiceEnabled)
-            {
-                ItemStackService.ApplyPatches();
-            }
-            //RecipeService.ApplyPatches();
+                var serverWorld = TryResolveServerWorld();
+                if (serverWorld == null)
+                {
+                    if (!_initializationWarningLogged)
+                    {
+                        ModLogger.Warn("[Core] Initialization deferred; waiting for the Server world to be created.");
+                        _initializationWarningLogged = true;
+                    }
 
-            ModLogger.Info("[Core] Initialization complete.");
+                    return;
+                }
+
+                _initializationWarningLogged = false;
+
+                ModLogger.Info("[Core] Initialization started...");
+
+                PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
+                if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+                {
+                    ItemStackService.ApplyPatches();
+                }
+                //RecipeService.ApplyPatches();
+
+                _hasInitialized = true;
+                ModLogger.Info("[Core] Initialization complete.");
+            }
         }
         static World? TryResolveServerWorld()
         {
