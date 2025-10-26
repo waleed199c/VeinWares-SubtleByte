@@ -91,6 +91,8 @@ internal static class FactionInfamyAutosaveTimer
 
             _log?.LogInfo("[Infamy] Autosave timer interval elapsed; invoking flush.");
 
+            _log?.LogInfo("[Infamy] Autosave timer interval elapsed; invoking flush.");
+
             try
             {
                 _flushAction?.Invoke();
