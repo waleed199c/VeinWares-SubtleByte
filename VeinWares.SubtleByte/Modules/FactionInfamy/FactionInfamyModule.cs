@@ -29,7 +29,7 @@ internal sealed class FactionInfamyModule : IModule, IUpdateModule
 
         var snapshot = FactionInfamyConfig.CreateSnapshot();
         FactionInfamyAmbushData.Initialize(context.Log);
-        FactionInfamySystem.Initialize(snapshot, context.Log, context.Scheduler);
+        FactionInfamySystem.Initialize(snapshot, context.Log);
         FactionInfamyAmbushService.Initialize(context.Log);
 
         context.Log.LogInfo("[Infamy] Faction Infamy module initialised.");

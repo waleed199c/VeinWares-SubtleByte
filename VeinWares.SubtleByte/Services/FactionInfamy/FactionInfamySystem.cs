@@ -5,7 +5,6 @@ using System.Linq;
 using BepInEx.Logging;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Models.FactionInfamy;
-using VeinWares.SubtleByte.Runtime.Scheduling;
 using VeinWares.SubtleByte.Utilities;
 
 #nullable enable
@@ -19,8 +18,6 @@ internal static class FactionInfamySystem
     private static FactionInfamyConfigSnapshot _config = null!;
     private static bool _initialized;
     private static bool _dirty;
-    private static TimeSpan _autosaveAccumulator;
-    private static TimeSpan _autosaveInterval;
     private static int _autosaveBackupCount;
     private static TimeSpan _combatCooldown;
     private static TimeSpan _ambushCooldown;
@@ -176,11 +173,6 @@ internal static class FactionInfamySystem
             throw new ArgumentNullException(nameof(log));
         }
 
-        if (scheduler is null)
-        {
-            throw new ArgumentNullException(nameof(scheduler));
-        }
-
         _log = log;
         _config = config;
 
@@ -244,8 +236,6 @@ internal static class FactionInfamySystem
         LogConfigurationSummary(core, ambush, seasonal, elite, config.Persistence);
 
         _autosaveBackupCount = config.Persistence.AutosaveBackupCount;
-        _autosaveInterval = config.Persistence.AutosaveInterval;
-        _autosaveAccumulator = TimeSpan.Zero;
 
         PlayerHate.Clear();
         var loaded = FactionInfamyPersistence.Load();
@@ -261,7 +251,10 @@ internal static class FactionInfamySystem
             FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
         }
 
-        FactionInfamyPersistenceScheduler.Initialize(config.Persistence, log, scheduler, CreateSerializableSnapshot);
+        FactionInfamyAutosaveTimer.Initialize(
+            config.Persistence.AutosaveInterval,
+            log,
+            () => FlushPersistence("autosave"));
         _initialized = true;
         _log.LogInfo("[Infamy] Faction Infamy system initialised.");
     }
@@ -337,7 +330,8 @@ internal static class FactionInfamySystem
             return;
         }
 
-        FactionInfamyPersistenceScheduler.Shutdown();
+        FactionInfamyAutosaveTimer.Shutdown();
+        FlushPersistence("shutdown");
         PlayerHate.Clear();
         _initialized = false;
         _log?.LogInfo("[Infamy] Faction Infamy system shut down.");
@@ -410,14 +404,6 @@ internal static class FactionInfamySystem
             }
         }
 
-        if (_dirty && _autosaveInterval > TimeSpan.Zero)
-        {
-            _autosaveAccumulator += TimeSpan.FromSeconds(deltaTime);
-            if (_autosaveAccumulator >= _autosaveInterval)
-            {
-                FlushPersistence();
-            }
-        }
     }
 
     public static void RegisterHateGain(ulong steamId, string factionId, float baseHate)
@@ -795,10 +781,17 @@ internal static class FactionInfamySystem
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
-    public static void FlushPersistence()
+    public static void FlushPersistence(string reason = "manual")
     {
         if (!_initialized)
         {
+            _log?.LogDebug($"[Infamy] Skipped persistence flush ({reason}); system not initialised.");
+            return;
+        }
+
+        if (!_dirty)
+        {
+            _log?.LogDebug($"[Infamy] Skipped persistence flush ({reason}); no pending changes.");
             return;
         }
 
@@ -807,11 +800,11 @@ internal static class FactionInfamySystem
             var snapshot = CreateSerializableSnapshot();
             FactionInfamyPersistence.Save(snapshot, _autosaveBackupCount);
             _dirty = false;
-            _autosaveAccumulator = TimeSpan.Zero;
+            _log?.LogInfo($"[Infamy] Persisted hate data ({reason}).");
         }
         catch (Exception ex)
         {
-            _log?.LogError($"[Infamy] Failed to flush infamy persistence: {ex.Message}");
+            _log?.LogError($"[Infamy] Failed to persist hate data ({reason}): {ex.Message}");
         }
     }
 
@@ -834,7 +827,6 @@ internal static class FactionInfamySystem
     private static void MarkDirty()
     {
         _dirty = true;
-        _autosaveAccumulator = TimeSpan.Zero;
     }
 
     private static Dictionary<string, PlayerHateRecord> CreateSerializableSnapshot()
