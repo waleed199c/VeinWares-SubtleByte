@@ -16,36 +16,98 @@ namespace VeinWares.SubtleByte
 {
     internal static class Core
     {
-        public static World Server { get; } = GetServerWorld() ?? throw new Exception("There is no Server world!");
+        private static readonly object _worldSync = new();
+        private static World? _server;
+        private static SystemService? _systemService;
+
+        public static World Server => TryResolveServerWorld() ?? throw new InvalidOperationException("Server world is not available.");
         public static EntityManager EntityManager => Server.EntityManager;
         public static ManualLogSource Log => Plugin.LogInstance;
 
         public static PrefabCollectionSystem PrefabCollectionSystem { get; set; }
         public static ServerScriptMapper ServerScriptMapper { get; set; }
         public static ServerGameManager ServerGameManager => SystemService.ServerScriptMapper.GetServerGameManager();
-        public static SystemService SystemService { get; } = new(Server);
+        public static SystemService SystemService
+        {
+            get
+            {
+                var world = TryResolveServerWorld();
+                if (world == null)
+                {
+                    throw new InvalidOperationException("Server world is not available.");
+                }
+
+                return _systemService ??= new SystemService(world);
+            }
+        }
 
         private static CoroutineRunner _runner;
         public static bool _hasInitialized = false;
+        private static bool _initializationWarningLogged;
 
         public static void Initialize()
         {
             if (_hasInitialized) return;
-            _hasInitialized = true;
 
-            ModLogger.Info("[Core] Initialization started...");
-            PrefabCollectionSystem = Server.GetExistingSystemManaged<PrefabCollectionSystem>();
-            if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+            lock (_worldSync)
             {
-                ItemStackService.ApplyPatches();
-            }
-            //RecipeService.ApplyPatches();
+                if (_hasInitialized)
+                {
+                    return;
+                }
 
-            ModLogger.Info("[Core] Initialization complete.");
+                var serverWorld = TryResolveServerWorld();
+                if (serverWorld == null)
+                {
+                    if (!_initializationWarningLogged)
+                    {
+                        ModLogger.Warn("[Core] Initialization deferred; waiting for the Server world to be created.");
+                        _initializationWarningLogged = true;
+                    }
+
+                    return;
+                }
+
+                _initializationWarningLogged = false;
+
+                ModLogger.Info("[Core] Initialization started...");
+
+                PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
+                if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+                {
+                    ItemStackService.ApplyPatches();
+                }
+                //RecipeService.ApplyPatches();
+
+                _hasInitialized = true;
+                ModLogger.Info("[Core] Initialization complete.");
+            }
         }
-        static World GetServerWorld()
+        static World? TryResolveServerWorld()
         {
-            return World.s_AllWorlds.ToArray().FirstOrDefault(world => world.Name == "Server");
+            lock (_worldSync)
+            {
+                if (_server != null && _server.IsCreated)
+                {
+                    return _server;
+                }
+
+                var world = World.s_AllWorlds.ToArray().FirstOrDefault(world => world.Name == "Server");
+                if (world == null || !world.IsCreated)
+                {
+                    _server = null;
+                    _systemService = null;
+                    return null;
+                }
+
+                if (!ReferenceEquals(_server, world))
+                {
+                    _systemService = null;
+                }
+
+                _server = world;
+                return _server;
+            }
         }
 
         private static void EnsureCoroutineRunner()
