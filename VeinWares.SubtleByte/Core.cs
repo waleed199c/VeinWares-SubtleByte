@@ -16,36 +16,140 @@ namespace VeinWares.SubtleByte
 {
     internal static class Core
     {
-        public static World Server { get; } = GetServerWorld() ?? throw new Exception("There is no Server world!");
+        private static readonly object _worldSync = new();
+        private static World? _server;
+        private static SystemService? _systemService;
+
+        public static World Server => TryResolveServerWorld() ?? throw new InvalidOperationException("Server world is not available.");
         public static EntityManager EntityManager => Server.EntityManager;
         public static ManualLogSource Log => Plugin.LogInstance;
 
         public static PrefabCollectionSystem PrefabCollectionSystem { get; set; }
         public static ServerScriptMapper ServerScriptMapper { get; set; }
         public static ServerGameManager ServerGameManager => SystemService.ServerScriptMapper.GetServerGameManager();
-        public static SystemService SystemService { get; } = new(Server);
+        public static SystemService SystemService
+        {
+            get
+            {
+                var world = TryResolveServerWorld();
+                if (world == null)
+                {
+                    throw new InvalidOperationException("Server world is not available.");
+                }
+
+                return _systemService ??= new SystemService(world);
+            }
+        }
 
         private static CoroutineRunner _runner;
         public static bool _hasInitialized = false;
+        private static bool _initializationWarningLogged;
+        private static bool _retryScheduled;
 
         public static void Initialize()
         {
             if (_hasInitialized) return;
-            _hasInitialized = true;
 
-            ModLogger.Info("[Core] Initialization started...");
-            PrefabCollectionSystem = Server.GetExistingSystemManaged<PrefabCollectionSystem>();
-            if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+            var scheduleRetry = false;
+            var initialized = false;
+
+            lock (_worldSync)
             {
-                ItemStackService.ApplyPatches();
-            }
-            //RecipeService.ApplyPatches();
+                if (_hasInitialized)
+                {
+                    return;
+                }
 
-            ModLogger.Info("[Core] Initialization complete.");
+                var serverWorld = TryResolveServerWorld();
+                if (serverWorld == null)
+                {
+                    if (!_initializationWarningLogged)
+                    {
+                        ModLogger.Warn("[Core] Initialization deferred; waiting for the Server world to be created.");
+                        _initializationWarningLogged = true;
+                    }
+
+                    if (!_retryScheduled)
+                    {
+                        _retryScheduled = true;
+                        scheduleRetry = true;
+                    }
+                }
+                else
+                {
+                    _initializationWarningLogged = false;
+                    _retryScheduled = false;
+
+                    ModLogger.Info("[Core] Initialization started...");
+
+                    PrefabCollectionSystem = serverWorld.GetExistingSystemManaged<PrefabCollectionSystem>();
+                    if (SubtleBytePluginConfig.ItemStackServiceEnabled)
+                    {
+                        ItemStackService.ApplyPatches();
+                    }
+                    //RecipeService.ApplyPatches();
+
+                    _hasInitialized = true;
+                    initialized = true;
+                    ModLogger.Info("[Core] Initialization complete.");
+                }
+            }
+
+            if (initialized)
+            {
+                return;
+            }
+
+            if (scheduleRetry)
+            {
+                try
+                {
+                    RunDelayed(1f, () =>
+                    {
+                        lock (_worldSync)
+                        {
+                            _retryScheduled = false;
+                        }
+
+                        Initialize();
+                    });
+                }
+                catch (Exception ex)
+                {
+                    lock (_worldSync)
+                    {
+                        _retryScheduled = false;
+                    }
+
+                    ModLogger.Error($"[Core] Failed to schedule initialization retry: {ex.Message}");
+                }
+            }
         }
-        static World GetServerWorld()
+        static World? TryResolveServerWorld()
         {
-            return World.s_AllWorlds.ToArray().FirstOrDefault(world => world.Name == "Server");
+            lock (_worldSync)
+            {
+                if (_server != null && _server.IsCreated)
+                {
+                    return _server;
+                }
+
+                var world = World.s_AllWorlds.ToArray().FirstOrDefault(world => world.Name == "Server");
+                if (world == null || !world.IsCreated)
+                {
+                    _server = null;
+                    _systemService = null;
+                    return null;
+                }
+
+                if (!ReferenceEquals(_server, world))
+                {
+                    _systemService = null;
+                }
+
+                _server = world;
+                return _server;
+            }
         }
 
         private static void EnsureCoroutineRunner()
