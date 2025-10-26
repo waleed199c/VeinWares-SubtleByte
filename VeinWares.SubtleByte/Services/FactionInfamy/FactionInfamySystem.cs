@@ -5,6 +5,7 @@ using System.Linq;
 using BepInEx.Logging;
 using VeinWares.SubtleByte.Config;
 using VeinWares.SubtleByte.Models.FactionInfamy;
+using VeinWares.SubtleByte.Runtime.Scheduling;
 using VeinWares.SubtleByte.Utilities;
 
 #nullable enable
@@ -17,7 +18,6 @@ internal static class FactionInfamySystem
     private static ManualLogSource? _log;
     private static FactionInfamyConfigSnapshot _config = null!;
     private static bool _initialized;
-    private static bool _dirty;
     private static TimeSpan _combatCooldown;
     private static TimeSpan _ambushCooldown;
     private static TimeSpan _ambushLifetime;
@@ -165,19 +165,20 @@ internal static class FactionInfamySystem
 
     internal static float EliteRepresentativeKnockbackResistanceAdditive => _eliteRepresentativeKnockbackResistanceAdditive;
 
-    public static int AutosaveBackupCount { get; private set; }
-
-    public static void Initialize(FactionInfamyConfigSnapshot config, ManualLogSource log)
+    public static void Initialize(FactionInfamyConfigSnapshot config, ManualLogSource log, IntervalScheduler scheduler)
     {
         if (log is null)
         {
             throw new ArgumentNullException(nameof(log));
         }
 
+        if (scheduler is null)
+        {
+            throw new ArgumentNullException(nameof(scheduler));
+        }
+
         _log = log;
         _config = config;
-
-        AutosaveBackupCount = config.Persistence.AutosaveBackupCount;
 
         var core = config.Core;
         var ambush = config.Ambush;
@@ -244,14 +245,14 @@ internal static class FactionInfamySystem
             var data = pair.Value ?? new PlayerHateData();
             if (SanitizeLoadedHate(data))
             {
-                _dirty = true;
+                FactionInfamyPersistenceScheduler.MarkDirty();
             }
 
             PlayerHate[pair.Key] = data;
             FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
         }
 
-        _dirty = false;
+        FactionInfamyPersistenceScheduler.Initialize(config.Persistence, log, scheduler, CreateSerializableSnapshot);
         _initialized = true;
         _log.LogInfo("[Infamy] Faction Infamy system initialised.");
     }
@@ -327,7 +328,7 @@ internal static class FactionInfamySystem
             return;
         }
 
-        FlushPersistence();
+        FactionInfamyPersistenceScheduler.Shutdown();
         PlayerHate.Clear();
         _initialized = false;
         _log?.LogInfo("[Infamy] Faction Infamy system shut down.");
@@ -370,7 +371,7 @@ internal static class FactionInfamySystem
             {
                 if (stateChanged)
                 {
-                    _dirty = true;
+                    FactionInfamyPersistenceScheduler.MarkDirty();
                     FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(pair.Key, data));
                 }
 
@@ -379,7 +380,7 @@ internal static class FactionInfamySystem
 
             if (data.RunCooldown(_config.Core.HateDecayPerSecond, deltaTime, removalThreshold, _maximumHate))
             {
-                _dirty = true;
+                FactionInfamyPersistenceScheduler.MarkDirty();
                 if (data.FactionHate.Count == 0)
                 {
                     playersToClear.Add(pair.Key);
@@ -427,7 +428,7 @@ internal static class FactionInfamySystem
 
         entry.LastAnnouncedTier = newTier;
         data.SetHate(factionId, entry);
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
@@ -473,7 +474,7 @@ internal static class FactionInfamySystem
             {
                 if (PlayerHate.TryRemove(steamId, out _))
                 {
-                    _dirty = true;
+                    FactionInfamyPersistenceScheduler.MarkDirty();
                     FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
                     return;
                 }
@@ -484,7 +485,7 @@ internal static class FactionInfamySystem
             data.SetHate(factionId, entry);
         }
 
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
@@ -497,7 +498,7 @@ internal static class FactionInfamySystem
 
         if (PlayerHate.TryRemove(steamId, out _))
         {
-            _dirty = true;
+            FactionInfamyPersistenceScheduler.MarkDirty();
             FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
         }
     }
@@ -521,7 +522,7 @@ internal static class FactionInfamySystem
         data.InCombat = true;
         data.LastCombatStart = now;
         data.LastCombatEnd = DateTime.MinValue;
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
@@ -544,7 +545,7 @@ internal static class FactionInfamySystem
 
         data.InCombat = false;
         data.LastCombatEnd = DateTime.UtcNow;
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
@@ -580,7 +581,7 @@ internal static class FactionInfamySystem
 
         if (PlayerHate.TryRemove(steamId, out _))
         {
-            _dirty = true;
+            FactionInfamyPersistenceScheduler.MarkDirty();
             FactionInfamyRuntime.NotifyPlayerHateCleared(steamId);
         }
     }
@@ -613,7 +614,7 @@ internal static class FactionInfamySystem
             return 0;
         }
 
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
 
         for (var i = 0; i < clearedIds.Count; i++)
         {
@@ -743,7 +744,7 @@ internal static class FactionInfamySystem
 
         entry.LastAmbush = now;
         data.SetHate(factionId, entry);
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
         return true;
     }
@@ -772,27 +773,18 @@ internal static class FactionInfamySystem
 
         entry.LastAmbush = previousTimestamp;
         data.SetHate(factionId, entry);
-        _dirty = true;
+        FactionInfamyPersistenceScheduler.MarkDirty();
         FactionInfamyRuntime.NotifyPlayerHateChanged(CreateSnapshot(steamId, data));
     }
 
     public static void FlushPersistence()
     {
-        if (!_initialized || !_dirty)
+        if (!_initialized)
         {
             return;
         }
 
-        try
-        {
-            var snapshot = CreateSerializableSnapshot();
-            FactionInfamyPersistence.Save(snapshot, AutosaveBackupCount);
-            _dirty = false;
-        }
-        catch (Exception ex)
-        {
-            _log?.LogError($"[Infamy] Failed to flush infamy persistence: {ex.Message}");
-        }
+        FactionInfamyPersistenceScheduler.FlushNow();
     }
 
     private static bool IsEligibleForCooldown(PlayerHateData data, DateTime now)
