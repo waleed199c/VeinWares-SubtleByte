@@ -79,12 +79,11 @@ internal static class FactionInfamyAutosaveTimer
             }
 
             var intervalSeconds = _intervalSeconds;
-            DateTimeOffset? scheduledAt = null;
 
             if (intervalSeconds > 0f)
             {
-                scheduledAt = DateTimeOffset.Now.AddSeconds(intervalSeconds);
-                _log?.LogInfo($"[Infamy] Autosave timer cycle started; next flush in {intervalSeconds:0.#}s (ETA {scheduledAt:HH:mm:ss}).");
+                var eta = DateTimeOffset.Now.AddSeconds(intervalSeconds);
+                _log?.LogInfo($"[Infamy] Autosave timer cycle started; next flush in {intervalSeconds:0.#}s (ETA {eta:HH:mm:ss}).");
             }
 
             yield return _delay;
