@@ -15,6 +15,7 @@ internal static class FactionInfamyAutosaveTimer
     private static WaitForSeconds? _delay;
     private static Action? _flushAction;
     private static bool _active;
+    private static float _intervalSeconds;
 
     public static void Initialize(TimeSpan interval, ManualLogSource log, Action flushAction)
     {
@@ -41,6 +42,7 @@ internal static class FactionInfamyAutosaveTimer
 
         var seconds = Math.Max(1f, (float)interval.TotalSeconds);
         _delay = new WaitForSeconds(seconds);
+        _intervalSeconds = seconds;
         _routine = Core.StartCoroutine(RunTimer());
         _active = true;
         _log.LogInfo($"[Infamy] Autosave timer started ({seconds:0.#}s interval).");
@@ -64,6 +66,7 @@ internal static class FactionInfamyAutosaveTimer
 
         _flushAction = null;
         _log = null;
+        _intervalSeconds = 0f;
     }
 
     private static IEnumerator RunTimer()
@@ -75,7 +78,14 @@ internal static class FactionInfamyAutosaveTimer
                 yield break;
             }
 
+            if (_intervalSeconds > 0f)
+            {
+                _log?.LogInfo($"[Infamy] Autosave timer cycle started; next flush in {_intervalSeconds:0.#}s.");
+            }
+
             yield return _delay;
+
+            _log?.LogInfo("[Infamy] Autosave timer interval elapsed; invoking flush.");
 
             try
             {
@@ -84,6 +94,11 @@ internal static class FactionInfamyAutosaveTimer
             catch (Exception ex)
             {
                 _log?.LogError($"[Infamy] Autosave flush failed: {ex.Message}");
+            }
+
+            if (_intervalSeconds > 0f)
+            {
+                _log?.LogInfo("[Infamy] Autosave timer cycle complete; restarting interval.");
             }
         }
     }
