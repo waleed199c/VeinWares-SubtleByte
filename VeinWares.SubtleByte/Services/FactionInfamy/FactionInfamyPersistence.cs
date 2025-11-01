@@ -18,9 +18,13 @@ internal static class FactionInfamyPersistence
         WriteIndented = true
     };
 
-    private static string ConfigDirectory => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "Infamy");
+    private static string BaseConfigPath => string.IsNullOrWhiteSpace(Paths.ConfigPath)
+        ? Path.Combine("BepInEx", "config")
+        : Paths.ConfigPath;
+
+    private static string ConfigDirectory => Path.Combine(BaseConfigPath, "VeinWares SubtleByte", "Infamy");
     private static string SavePath => Path.Combine(ConfigDirectory, "playerInfamyLevel.json");
-    private static string LegacySavePath => Path.Combine(Paths.ConfigPath, "VeinWares SubtleByte", "playerInfamyLevel.json");
+    private static string LegacySavePath => Path.Combine(BaseConfigPath, "VeinWares SubtleByte", "playerInfamyLevel.json");
 
     public static Dictionary<ulong, PlayerHateData> Load()
     {
