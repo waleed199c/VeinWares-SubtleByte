@@ -18,13 +18,73 @@ internal static class FactionInfamyPersistence
         WriteIndented = true
     };
 
-    private static string BaseConfigPath => string.IsNullOrWhiteSpace(Paths.ConfigPath)
-        ? Path.Combine("BepInEx", "config")
-        : Paths.ConfigPath;
+    private static readonly object PathResolutionLock = new();
+    private static string? _baseConfigPath;
+
+    private static string BaseConfigPath
+    {
+        get
+        {
+            if (_baseConfigPath is not null)
+            {
+                return _baseConfigPath;
+            }
+
+            lock (PathResolutionLock)
+            {
+                if (_baseConfigPath is null)
+                {
+                    _baseConfigPath = ResolveBaseConfigPath();
+                }
+
+                return _baseConfigPath;
+            }
+        }
+    }
 
     private static string ConfigDirectory => Path.Combine(BaseConfigPath, "VeinWares SubtleByte", "Infamy");
     private static string SavePath => Path.Combine(ConfigDirectory, "playerInfamyLevel.json");
     private static string LegacySavePath => Path.Combine(BaseConfigPath, "VeinWares SubtleByte", "playerInfamyLevel.json");
+
+    private static string ResolveBaseConfigPath()
+    {
+        if (!string.IsNullOrWhiteSpace(Paths.ConfigPath))
+        {
+            return NormalizePath(Paths.ConfigPath);
+        }
+
+        if (!string.IsNullOrWhiteSpace(Paths.BepInExRootPath))
+        {
+            var candidate = Path.Combine(Paths.BepInExRootPath, "config");
+            ModLogger.Warn($"[InfamyPersistence] Paths.ConfigPath was empty; using BepInEx root fallback: {candidate}");
+            return NormalizePath(candidate);
+        }
+
+        var baseDirectory = AppContext.BaseDirectory;
+        if (!string.IsNullOrWhiteSpace(baseDirectory))
+        {
+            var candidate = Path.Combine(baseDirectory, "BepInEx", "config");
+            ModLogger.Warn($"[InfamyPersistence] Paths.ConfigPath was empty; using application base directory fallback: {candidate}");
+            return NormalizePath(candidate);
+        }
+
+        var processDirectory = Environment.CurrentDirectory;
+        var fallback = Path.Combine(processDirectory, "BepInEx", "config");
+        ModLogger.Warn($"[InfamyPersistence] Falling back to process directory for config path: {fallback}");
+        return NormalizePath(fallback);
+    }
+
+    private static string NormalizePath(string path)
+    {
+        try
+        {
+            return Path.GetFullPath(path);
+        }
+        catch
+        {
+            return path;
+        }
+    }
 
     public static Dictionary<ulong, PlayerHateData> Load()
     {
