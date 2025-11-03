@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using ProjectM;
 using Stunlock.Core;
 using Unity.Collections;
@@ -27,7 +28,11 @@ internal static class DuelSummonService
         Entity playerCharacter,
         PrefabGUID challengerPrefab,
         float3 centerPosition,
-        float3 challengerPosition)
+        float3 challengerPosition,
+        int maxParticipantsPerDuel = int.MaxValue,
+        int supplementalDuelAllowance = 0,
+        IReadOnlyList<Entity>? explicitParticipants = null,
+        float3? forwardHint = null)
     {
         if (!playerCharacter.Exists())
         {
@@ -38,7 +43,26 @@ internal static class DuelSummonService
             $"[DuelSummon] Scheduling duel for player {playerCharacter.Index}:{playerCharacter.Version} → challenger {challengerPrefab.GuidHash} | center={centerPosition} challenger={challengerPosition}.",
             verboseOnly: false);
 
-        var pending = new PendingDuelSummon(playerCharacter, centerPosition, challengerPosition);
+        maxParticipantsPerDuel = math.max(1, maxParticipantsPerDuel);
+        supplementalDuelAllowance = math.max(0, supplementalDuelAllowance);
+
+        var forward = forwardHint ?? math.normalizesafe(challengerPosition - centerPosition, new float3(0f, 0f, 1f));
+        if (math.lengthsq(forward) < 0.0001f)
+        {
+            forward = new float3(0f, 0f, 1f);
+        }
+        forward.y = 0f;
+        forward = math.normalizesafe(forward, new float3(0f, 0f, 1f));
+
+        var pending = new PendingDuelSummon(
+            playerCharacter,
+            centerPosition,
+            challengerPosition,
+            challengerPrefab,
+            maxParticipantsPerDuel,
+            supplementalDuelAllowance,
+            explicitParticipants,
+            forward);
 
         try
         {
@@ -147,16 +171,42 @@ internal static class DuelSummonService
         private readonly Entity _player;
         private readonly float3 _centerPosition;
         private readonly float3 _challengerPosition;
+        private readonly PrefabGUID _challengerPrefab;
+        private readonly int _maxParticipantsPerDuel;
+        private readonly int _supplementalDuelsAllowed;
+        private readonly IReadOnlyList<Entity>? _explicitParticipants;
+        private readonly float3 _forward;
+        private readonly float3 _challengerOffset;
 
         private Entity _centerEntity;
         private Entity _challengerEntity;
         private bool _completed;
 
-        public PendingDuelSummon(Entity player, float3 centerPosition, float3 challengerPosition)
+        public PendingDuelSummon(
+            Entity player,
+            float3 centerPosition,
+            float3 challengerPosition,
+            PrefabGUID challengerPrefab,
+            int maxParticipantsPerDuel,
+            int supplementalDuelsAllowed,
+            IReadOnlyList<Entity>? explicitParticipants,
+            float3 forward)
         {
             _player = player;
             _centerPosition = centerPosition;
             _challengerPosition = challengerPosition;
+            _challengerPrefab = challengerPrefab;
+            _maxParticipantsPerDuel = math.max(1, maxParticipantsPerDuel);
+            _supplementalDuelsAllowed = math.max(0, supplementalDuelsAllowed);
+            _explicitParticipants = explicitParticipants;
+            _forward = math.normalizesafe(forward, new float3(0f, 0f, 1f));
+            if (math.lengthsq(_forward) < 0.0001f)
+            {
+                _forward = new float3(0f, 0f, 1f);
+            }
+            _forward.y = 0f;
+            _forward = math.normalizesafe(_forward, new float3(0f, 0f, 1f));
+            _challengerOffset = _challengerPosition - _centerPosition;
         }
 
         public int CenterMarker { get; private set; }
@@ -202,7 +252,8 @@ internal static class DuelSummonService
             ConfigureDuelArea(manager);
             TraceDuelEntities(manager);
             TryRegisterPlayer(manager);
-            InviteNearbyPlayers(manager);
+            var overflow = InviteNearbyPlayers(manager);
+            ScheduleSupplementalDuels(manager, overflow);
             return true;
         }
 
@@ -337,27 +388,92 @@ internal static class DuelSummonService
             LinkBuffOwner(manager, buffEntity, _player);
         }
 
-        private void InviteNearbyPlayers(EntityManager manager)
+        private List<PlayerCandidate> InviteNearbyPlayers(EntityManager manager)
         {
             if (!_centerEntity.Exists())
             {
                 ModLogger.Warn("[DuelSummon] Cannot invite nearby players without a center entity.");
-                return;
+                return new List<PlayerCandidate>();
             }
 
             if (!manager.HasComponent<DuelArea>(_centerEntity))
             {
                 ModLogger.Warn("[DuelSummon] Center missing DuelArea component; skipping nearby invitations.");
-                return;
+                return new List<PlayerCandidate>();
             }
 
             var duelArea = manager.GetComponentData<DuelArea>(_centerEntity);
             var radius = math.max(duelArea.Radius, duelArea.OriginalRadius);
             var radiusSq = radius * radius;
 
+            var candidates = BuildCandidateList(manager, radiusSq);
+            if (candidates.Count == 0)
+            {
+                ModLogger.Info("[DuelSummon] No nearby players eligible for duel invitation.", verboseOnly: false);
+                return new List<PlayerCandidate>();
+            }
+
+            candidates.Sort((a, b) => a.DistanceSquared.CompareTo(b.DistanceSquared));
+
+            var additionalSlots = math.max(0, _maxParticipantsPerDuel - 1);
+            var invited = 0;
+            var accepted = 0;
+            var overflow = new List<PlayerCandidate>();
+
+            foreach (var candidate in candidates)
+            {
+                if (accepted < additionalSlots)
+                {
+                    if (!TryApplyConnectionBuff(manager, candidate.Entity, out var buffEntity, "Invited nearby player"))
+                    {
+                        continue;
+                    }
+
+                    LinkBuffOwner(manager, buffEntity, candidate.Entity);
+                    invited++;
+                    accepted++;
+                    continue;
+                }
+
+                overflow.Add(candidate);
+            }
+
+            ModLogger.Info(
+                $"[DuelSummon] Invited {invited} nearby players to the duel (limit {_maxParticipantsPerDuel}).",
+                verboseOnly: false);
+
+            return overflow;
+        }
+
+        private List<PlayerCandidate> BuildCandidateList(EntityManager manager, float radiusSq)
+        {
+            var candidates = new List<PlayerCandidate>();
+
+            if (_explicitParticipants != null)
+            {
+                foreach (var candidate in _explicitParticipants)
+                {
+                    if (!candidate.Exists() || candidate == _player)
+                    {
+                        continue;
+                    }
+
+                    if (!TryResolvePosition(manager, candidate, out var position))
+                    {
+                        ModLogger.Debug(
+                            $"[DuelSummon] Skipping explicit candidate {candidate.Index}:{candidate.Version}; unable to resolve position.");
+                        continue;
+                    }
+
+                    var distanceSq = math.lengthsq(position - _centerPosition);
+                    candidates.Add(new PlayerCandidate(candidate, position, distanceSq));
+                }
+
+                return candidates;
+            }
+
             var query = manager.CreateEntityQuery(ComponentType.ReadOnly<PlayerCharacter>());
             NativeArray<Entity> players = default;
-            var invited = 0;
 
             try
             {
@@ -372,22 +488,18 @@ internal static class DuelSummonService
 
                     if (!TryResolvePosition(manager, candidate, out var position))
                     {
-                        ModLogger.Debug($"[DuelSummon] Skipping candidate {candidate.Index}:{candidate.Version}; unable to resolve position.");
+                        ModLogger.Debug(
+                            $"[DuelSummon] Skipping candidate {candidate.Index}:{candidate.Version}; unable to resolve position.");
                         continue;
                     }
 
-                    if (math.lengthsq(position - _centerPosition) > radiusSq)
+                    var distanceSq = math.lengthsq(position - _centerPosition);
+                    if (distanceSq > radiusSq)
                     {
                         continue;
                     }
 
-                    if (!TryApplyConnectionBuff(manager, candidate, out var buffEntity, "Invited nearby player"))
-                    {
-                        continue;
-                    }
-
-                    LinkBuffOwner(manager, buffEntity, candidate);
-                    invited++;
+                    candidates.Add(new PlayerCandidate(candidate, position, distanceSq));
                 }
             }
             finally
@@ -400,7 +512,124 @@ internal static class DuelSummonService
                 query.Dispose();
             }
 
-            ModLogger.Info($"[DuelSummon] Invited {invited} nearby players to the duel.", verboseOnly: false);
+            return candidates;
+        }
+
+        private void ScheduleSupplementalDuels(EntityManager manager, List<PlayerCandidate> overflow)
+        {
+            if (overflow.Count == 0)
+            {
+                if (_supplementalDuelsAllowed > 0)
+                {
+                    ModLogger.Info(
+                        "[DuelSummon] Supplemental duels requested but no overflow players detected; skipping extra summons.",
+                        verboseOnly: false);
+                }
+
+                return;
+            }
+
+            if (_supplementalDuelsAllowed <= 0)
+            {
+                ModLogger.Info(
+                    $"[DuelSummon] {overflow.Count} players exceeded duel capacity but no supplemental duels are permitted.",
+                    verboseOnly: false);
+                return;
+            }
+
+            var groups = ChunkOverflow(overflow, _maxParticipantsPerDuel);
+            var scheduled = 0;
+            var assignedPlayers = 0;
+
+            foreach (var group in groups)
+            {
+                if (scheduled >= _supplementalDuelsAllowed)
+                {
+                    break;
+                }
+
+                if (group.Count == 0)
+                {
+                    continue;
+                }
+
+                var anchor = group[0];
+                if (!anchor.Entity.Exists())
+                {
+                    continue;
+                }
+
+                if (!TryResolvePosition(manager, anchor.Entity, out var anchorPosition))
+                {
+                    ModLogger.Warn(
+                        $"[DuelSummon] Unable to resolve anchor position for supplemental duel targeting {anchor.Entity.Index}:{anchor.Entity.Version}. Skipping group.");
+                    continue;
+                }
+
+                var center = anchorPosition + _forward * 2.5f;
+                center.y = _centerPosition.y;
+                var challenger = center + _challengerOffset;
+
+                var participants = new List<Entity>();
+                for (var i = 1; i < group.Count; i++)
+                {
+                    participants.Add(group[i].Entity);
+                }
+
+                ModLogger.Info(
+                    $"[DuelSummon] Scheduling supplemental duel {scheduled + 1} for {group.Count} players anchored to {anchor.Entity.Index}:{anchor.Entity.Version}.",
+                    verboseOnly: false);
+
+                var supplementalScheduled = DuelSummonService.TrySummonForPlayer(
+                    anchor.Entity,
+                    _challengerPrefab,
+                    center,
+                    challenger,
+                    _maxParticipantsPerDuel,
+                    _supplementalDuelsAllowed - scheduled - 1,
+                    participants,
+                    _forward);
+
+                if (!supplementalScheduled)
+                {
+                    ModLogger.Warn(
+                        $"[DuelSummon] Failed to schedule supplemental duel for anchor {anchor.Entity.Index}:{anchor.Entity.Version}.");
+                    continue;
+                }
+
+                scheduled++;
+                assignedPlayers += group.Count;
+            }
+
+            var remaining = overflow.Count - assignedPlayers;
+            if (remaining > 0)
+            {
+                ModLogger.Warn(
+                    $"[DuelSummon] {remaining} overflow players remain without a duel assignment.");
+            }
+        }
+
+        private static List<List<PlayerCandidate>> ChunkOverflow(List<PlayerCandidate> overflow, int maxParticipantsPerDuel)
+        {
+            var groups = new List<List<PlayerCandidate>>();
+            if (overflow.Count == 0 || maxParticipantsPerDuel <= 0)
+            {
+                return groups;
+            }
+
+            var index = 0;
+            while (index < overflow.Count)
+            {
+                var group = new List<PlayerCandidate>(math.min(maxParticipantsPerDuel, overflow.Count - index));
+                for (var i = 0; i < maxParticipantsPerDuel && index < overflow.Count; i++, index++)
+                {
+                    group.Add(overflow[index]);
+                }
+
+                groups.Add(group);
+            }
+
+            return groups;
         }
 
         private bool TryResolvePosition(EntityManager manager, Entity entity, out float3 position)
@@ -419,6 +648,20 @@ internal static class DuelSummonService
 
             position = default;
             return false;
+        }
+
+        private readonly struct PlayerCandidate
+        {
+            public PlayerCandidate(Entity entity, float3 position, float distanceSquared)
+            {
+                Entity = entity;
+                Position = position;
+                DistanceSquared = distanceSquared;
+            }
+
+            public Entity Entity { get; }
+            public float3 Position { get; }
+            public float DistanceSquared { get; }
         }
 
         private bool TryApplyConnectionBuff(EntityManager manager, Entity target, out Entity buffEntity, string context)
