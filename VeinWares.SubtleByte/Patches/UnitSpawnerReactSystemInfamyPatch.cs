@@ -24,12 +24,16 @@ internal static class UnitSpawnerReactSystemInfamyPatch
 
     private static void Prefix(UnitSpawnerReactSystem __instance)
     {
-        if (!FactionInfamySystem.Enabled || _queryUnavailable)
+        if (_queryUnavailable)
         {
             return;
         }
 
-        if (!FactionInfamyAmbushService.HasPendingSpawns && !FactionInfamySpawnUtility.HasPendingCallbacks)
+        var infamyEnabled = FactionInfamySystem.Enabled;
+        var hasCallbacks = FactionInfamySpawnUtility.HasPendingCallbacks;
+        var hasAmbushSpawns = infamyEnabled && FactionInfamyAmbushService.HasPendingSpawns;
+
+        if (!hasCallbacks && !hasAmbushSpawns)
         {
             return;
         }
@@ -52,7 +56,7 @@ internal static class UnitSpawnerReactSystemInfamyPatch
                 return;
             }
 
-            ProcessPendingSpawns(__instance.EntityManager, query);
+            ProcessPendingSpawns(__instance.EntityManager, query, infamyEnabled);
         }
         finally
         {
@@ -60,7 +64,7 @@ internal static class UnitSpawnerReactSystemInfamyPatch
         }
     }
 
-    private static void ProcessPendingSpawns(EntityManager entityManager, EntityQuery query)
+    private static void ProcessPendingSpawns(EntityManager entityManager, EntityQuery query, bool infamyEnabled)
     {
         var entities = query.ToEntityArray(Allocator.Temp);
         try
@@ -74,7 +78,12 @@ internal static class UnitSpawnerReactSystemInfamyPatch
                 }
 
                 var handled = FactionInfamySpawnUtility.TryExecuteSpawnCallback(entityManager, entity, lifetime.Duration);
-                if (!handled)
+                if (handled || !infamyEnabled)
+                {
+                    continue;
+                }
+
+                if (FactionInfamyAmbushService.HasPendingSpawns)
                 {
                     FactionInfamyAmbushService.TryHandleSpawnedEntity(entityManager, entity, lifetime.Duration);
                 }
