@@ -193,8 +193,53 @@ internal static class DuelSummonService
 
             _completed = true;
 
+            TraceDuelEntities(manager);
             TryRegisterPlayer(manager);
             return true;
+        }
+
+        private void TraceDuelEntities(EntityManager manager)
+        {
+            ModLogger.Info(
+                $"[DuelSummon] Finalizing duel center={_centerEntity.Index}:{_centerEntity.Version} challenger={_challengerEntity.Index}:{_challengerEntity.Version}.",
+                verboseOnly: false);
+
+            if (manager.HasComponent<VBloodDuelInstance>(_centerEntity))
+            {
+                var duelInstance = manager.GetComponentData<VBloodDuelInstance>(_centerEntity);
+                ModLogger.Info(
+                    $"[DuelSummon] Center duel instance id={duelInstance.VBloodDuelId}.",
+                    verboseOnly: false);
+            }
+            else
+            {
+                ModLogger.Warn("[DuelSummon] Center entity missing VBloodDuelInstance component.");
+            }
+
+            if (manager.HasComponent<ProjectM.Contest.ContestOwner_Server>(_centerEntity))
+            {
+                var contest = manager.GetComponentData<ProjectM.Contest.ContestOwner_Server>(_centerEntity);
+                var contestEntity = contest.ContestInstance;
+                ModLogger.Info(
+                    $"[DuelSummon] Center contest instance={contestEntity.Index}:{contestEntity.Version}.",
+                    verboseOnly: false);
+            }
+            else
+            {
+                ModLogger.Warn("[DuelSummon] Center entity missing ContestOwner_Server component.");
+            }
+
+            if (manager.HasComponent<VBloodDuelChallenger>(_challengerEntity))
+            {
+                var challengerData = manager.GetComponentData<VBloodDuelChallenger>(_challengerEntity);
+                ModLogger.Info(
+                    $"[DuelSummon] Challenger duel id={challengerData.VBloodDuelId}.",
+                    verboseOnly: false);
+            }
+            else
+            {
+                ModLogger.Warn("[DuelSummon] Challenger missing VBloodDuelChallenger component.");
+            }
         }
 
         private void TryRegisterPlayer(EntityManager manager)
@@ -218,6 +263,10 @@ internal static class DuelSummonService
                     ModLogger.Info(
                         $"[DuelSummon] Linked challenger {_challengerEntity.Index}:{_challengerEntity.Version} as buff owner.",
                         verboseOnly: false);
+                }
+                else
+                {
+                    ModLogger.Warn("[DuelSummon] Duel connection buff missing EntityOwner component.");
                 }
             }
             else
