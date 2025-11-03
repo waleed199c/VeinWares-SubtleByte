@@ -80,6 +80,18 @@ public static class FactionInfamyCommands
         ctx.Reply($"[Infamy] Cleared hate for {clearedCount} tracked player{(clearedCount == 1 ? string.Empty : "s")}.");
     }
 
+    [Command("infamy save", adminOnly: true, description: "Force a save of infamy data to disk.")]
+    public static void SaveInfamyNow(ChatCommandContext ctx)
+    {
+        if (!EnsureEnabled(ctx))
+        {
+            return;
+        }
+
+        FactionInfamySystem.ForceFlushPersistence("command");
+        ctx.Reply("[Infamy] Save requested.");
+    }
+
     [Command("infamy add", adminOnly: true, description: "Grant hate to a player or all tracked players. Accepts Steam ID or 'all'.")]
     public static void AddInfamy(ChatCommandContext ctx, string target, string factionId, float amount)
     {

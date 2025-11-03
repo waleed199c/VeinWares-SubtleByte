@@ -832,7 +832,11 @@ internal static class FactionInfamySystem
     private static Dictionary<string, PlayerHateRecord> CreateSerializableSnapshot()
     {
         return PlayerHate
-            .Where(static pair => pair.Value.FactionHate.Count > 0)
+            .Where(static pair =>
+                pair.Value.FactionHate.Count > 0 ||
+                pair.Value.InCombat ||
+                pair.Value.LastCombatStart != DateTime.MinValue ||
+                pair.Value.LastCombatEnd != DateTime.MinValue)
             .ToDictionary(
                 static pair => pair.Key.ToString(),
                 static pair => new PlayerHateRecord
@@ -850,6 +854,27 @@ internal static class FactionInfamySystem
                                 LastAnnouncedTier = faction.Value.LastAnnouncedTier
                             })
                 });
+    }
+
+    public static void ForceFlushPersistence(string reason = "manual-force")
+    {
+        if (!_initialized)
+        {
+            _log?.LogDebug($"[Infamy] Skipped forced persistence flush ({reason}); system not initialised.");
+            return;
+        }
+
+        try
+        {
+            var snapshot = CreateSerializableSnapshot();
+            FactionInfamyPersistence.Save(snapshot, _autosaveBackupCount);
+            _dirty = false;
+            _log?.LogInfo($"[Infamy] Persisted hate data (forced: {reason}).");
+        }
+        catch (Exception ex)
+        {
+            _log?.LogError($"[Infamy] Failed to persist hate data (forced: {reason}): {ex.Message}");
+        }
     }
 
     private static FactionInfamyPlayerSnapshot CreateSnapshot(ulong steamId, PlayerHateData data)
