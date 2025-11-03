@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using ProjectM;
 using Stunlock.Core;
+using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -15,6 +16,10 @@ internal static class DuelSummonService
 {
     private static readonly PrefabGUID DuelAreaPrefab = new(-288427482);
     private static readonly PrefabGUID DuelConnectionBuffPrefab = new(1120504274);
+
+    private const float ExpandedDuelRadius = 30f;
+    private const float SuddenDeathDelaySeconds = 45f;
+    private const float SuddenDeathDurationSeconds = 180f;
 
     private static readonly ConcurrentDictionary<int, PendingDuelSummon> PendingMarkers = new();
 
@@ -194,8 +199,10 @@ internal static class DuelSummonService
             _completed = true;
 
             EnsureChallengerDuelComponent(manager);
+            ConfigureDuelArea(manager);
             TraceDuelEntities(manager);
             TryRegisterPlayer(manager);
+            InviteNearbyPlayers(manager);
             return true;
         }
 
@@ -241,6 +248,32 @@ internal static class DuelSummonService
 
             ModLogger.Info(
                 $"[DuelSummon] Added VBloodDuelChallenger with duel id {expectedId} to challenger {_challengerEntity.Index}:{_challengerEntity.Version}.",
+                verboseOnly: false);
+        }
+
+        private void ConfigureDuelArea(EntityManager manager)
+        {
+            if (!_centerEntity.Exists())
+            {
+                ModLogger.Warn("[DuelSummon] Cannot configure duel area before center exists.");
+                return;
+            }
+
+            if (!manager.HasComponent<DuelArea>(_centerEntity))
+            {
+                ModLogger.Warn("[DuelSummon] Center missing DuelArea component; cannot adjust radius.");
+                return;
+            }
+
+            var duelArea = manager.GetComponentData<DuelArea>(_centerEntity);
+            duelArea.Radius = ExpandedDuelRadius;
+            duelArea.OriginalRadius = ExpandedDuelRadius;
+            duelArea.SuddenDeathStartTime = SuddenDeathDelaySeconds;
+            duelArea.SuddenDeathDuration = SuddenDeathDurationSeconds;
+            manager.SetComponentData(_centerEntity, duelArea);
+
+            ModLogger.Info(
+                $"[DuelSummon] Configured duel area radius={duelArea.Radius} suddenDeathStart={duelArea.SuddenDeathStartTime} suddenDeathDuration={duelArea.SuddenDeathDuration}.",
                 verboseOnly: false);
         }
 
@@ -296,28 +329,142 @@ internal static class DuelSummonService
                 return;
             }
 
-            if (_player.TryApplyAndGetBuff(DuelConnectionBuffPrefab, out var buffEntity) && buffEntity.Exists())
+            if (!TryApplyConnectionBuff(manager, _player, out var buffEntity, "Applied duel connection buff"))
+            {
+                return;
+            }
+
+            LinkBuffOwner(manager, buffEntity, _player);
+        }
+
+        private void InviteNearbyPlayers(EntityManager manager)
+        {
+            if (!_centerEntity.Exists())
+            {
+                ModLogger.Warn("[DuelSummon] Cannot invite nearby players without a center entity.");
+                return;
+            }
+
+            if (!manager.HasComponent<DuelArea>(_centerEntity))
+            {
+                ModLogger.Warn("[DuelSummon] Center missing DuelArea component; skipping nearby invitations.");
+                return;
+            }
+
+            var duelArea = manager.GetComponentData<DuelArea>(_centerEntity);
+            var radius = math.max(duelArea.Radius, duelArea.OriginalRadius);
+            var radiusSq = radius * radius;
+
+            var query = manager.CreateEntityQuery(ComponentType.ReadOnly<PlayerCharacter>());
+            NativeArray<Entity> players = default;
+            var invited = 0;
+
+            try
+            {
+                players = query.ToEntityArray(Allocator.Temp);
+
+                foreach (var candidate in players)
+                {
+                    if (!candidate.Exists() || candidate == _player)
+                    {
+                        continue;
+                    }
+
+                    if (!TryResolvePosition(manager, candidate, out var position))
+                    {
+                        ModLogger.Debug($"[DuelSummon] Skipping candidate {candidate.Index}:{candidate.Version}; unable to resolve position.");
+                        continue;
+                    }
+
+                    if (math.lengthsq(position - _centerPosition) > radiusSq)
+                    {
+                        continue;
+                    }
+
+                    if (!TryApplyConnectionBuff(manager, candidate, out var buffEntity, "Invited nearby player"))
+                    {
+                        continue;
+                    }
+
+                    LinkBuffOwner(manager, buffEntity, candidate);
+                    invited++;
+                }
+            }
+            finally
+            {
+                if (players.IsCreated)
+                {
+                    players.Dispose();
+                }
+
+                query.Dispose();
+            }
+
+            ModLogger.Info($"[DuelSummon] Invited {invited} nearby players to the duel.", verboseOnly: false);
+        }
+
+        private bool TryResolvePosition(EntityManager manager, Entity entity, out float3 position)
+        {
+            if (manager.HasComponent<LocalTransform>(entity))
+            {
+                position = manager.GetComponentData<LocalTransform>(entity).Position;
+                return true;
+            }
+
+            if (manager.HasComponent<Translation>(entity))
+            {
+                position = manager.GetComponentData<Translation>(entity).Value;
+                return true;
+            }
+
+            position = default;
+            return false;
+        }
+
+        private bool TryApplyConnectionBuff(EntityManager manager, Entity target, out Entity buffEntity, string context)
+        {
+            buffEntity = Entity.Null;
+
+            if (target.TryApplyAndGetBuff(DuelConnectionBuffPrefab, out buffEntity) && buffEntity.Exists())
             {
                 ModLogger.Info(
-                    $"[DuelSummon] Applied duel connection buff {_player.Index}:{_player.Version} → buff {buffEntity.Index}:{buffEntity.Version}.",
+                    $"[DuelSummon] {context} {target.Index}:{target.Version} → buff {buffEntity.Index}:{buffEntity.Version}.",
                     verboseOnly: false);
-                if (manager.HasComponent<EntityOwner>(buffEntity))
-                {
-                    var owner = manager.GetComponentData<EntityOwner>(buffEntity);
-                    owner.Owner = _challengerEntity;
-                    manager.SetComponentData(buffEntity, owner);
-                    ModLogger.Info(
-                        $"[DuelSummon] Linked challenger {_challengerEntity.Index}:{_challengerEntity.Version} as buff owner.",
-                        verboseOnly: false);
-                }
-                else
-                {
-                    ModLogger.Warn("[DuelSummon] Duel connection buff missing EntityOwner component.");
-                }
+                return true;
+            }
+
+            if (target.TryGetBuff(DuelConnectionBuffPrefab, out buffEntity) && buffEntity.Exists())
+            {
+                ModLogger.Info(
+                    $"[DuelSummon] {context} reused existing buff {buffEntity.Index}:{buffEntity.Version} on {target.Index}:{target.Version}.",
+                    verboseOnly: false);
+                return true;
+            }
+
+            ModLogger.Warn($"[DuelSummon] {context} failed for {target.Index}:{target.Version}; duel connection buff unavailable.");
+            return false;
+        }
+
+        private void LinkBuffOwner(EntityManager manager, Entity buffEntity, Entity target)
+        {
+            if (!buffEntity.Exists())
+            {
+                ModLogger.Warn($"[DuelSummon] Cannot link duel buff owner for {target.Index}:{target.Version}; buff entity destroyed.");
+                return;
+            }
+
+            if (manager.HasComponent<EntityOwner>(buffEntity))
+            {
+                var owner = manager.GetComponentData<EntityOwner>(buffEntity);
+                owner.Owner = _challengerEntity;
+                manager.SetComponentData(buffEntity, owner);
+                ModLogger.Info(
+                    $"[DuelSummon] Linked challenger {_challengerEntity.Index}:{_challengerEntity.Version} as buff owner for {target.Index}:{target.Version}.",
+                    verboseOnly: false);
             }
             else
             {
-                ModLogger.Warn("[DuelSummon] Failed to apply duel connection buff to player.");
+                ModLogger.Warn("[DuelSummon] Duel connection buff missing EntityOwner component.");
             }
         }
 
