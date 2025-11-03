@@ -29,6 +29,10 @@ internal static class DuelSummonService
             return false;
         }
 
+        ModLogger.Info(
+            $"[DuelSummon] Scheduling duel for player {playerCharacter.Index}:{playerCharacter.Version} → challenger {challengerPrefab.GuidHash} | center={centerPosition} challenger={challengerPosition}.",
+            verboseOnly: false);
+
         var pending = new PendingDuelSummon(playerCharacter, centerPosition, challengerPosition);
 
         try
@@ -38,6 +42,10 @@ internal static class DuelSummonService
 
             var challengerMarker = ScheduleSpawn(pending, challengerPrefab, challengerPosition, isCenter: false);
             pending.RegisterChallengerMarker(challengerMarker);
+
+            ModLogger.Info(
+                $"[DuelSummon] Pending duel markers registered center={centerMarker} challenger={challengerMarker}.",
+                verboseOnly: false);
             return true;
         }
         catch (Exception ex)
@@ -54,6 +62,10 @@ internal static class DuelSummonService
         float3 position,
         bool isCenter)
     {
+        ModLogger.Info(
+            $"[DuelSummon] Scheduling {(isCenter ? "duel center" : "challenger")} prefab {prefab.GuidHash} at {position}.",
+            verboseOnly: false);
+
         var marker = FactionInfamySpawnUtility.SpawnUnit(
             prefab,
             position,
@@ -79,11 +91,17 @@ internal static class DuelSummonService
 
                 if (state.TryFinalize(manager))
                 {
+                    ModLogger.Info("[DuelSummon] Duel summon finalized successfully.", verboseOnly: false);
                     RemovePending(state);
+                }
+                else
+                {
+                    ModLogger.Info("[DuelSummon] Duel summon waiting for remaining entities.", verboseOnly: false);
                 }
             });
 
         PendingMarkers[marker] = pending;
+        ModLogger.Info($"[DuelSummon] Registered pending marker {marker} for {(isCenter ? "center" : "challenger")}.", verboseOnly: false);
         return marker;
     }
 
@@ -93,12 +111,14 @@ internal static class DuelSummonService
         {
             PendingMarkers.TryRemove(state.CenterMarker, out _);
             FactionInfamySpawnUtility.CancelSpawnCallback(state.CenterMarker);
+            ModLogger.Warn($"[DuelSummon] Cancelled pending center marker {state.CenterMarker}.");
         }
 
         if (state.ChallengerMarker != 0)
         {
             PendingMarkers.TryRemove(state.ChallengerMarker, out _);
             FactionInfamySpawnUtility.CancelSpawnCallback(state.ChallengerMarker);
+            ModLogger.Warn($"[DuelSummon] Cancelled pending challenger marker {state.ChallengerMarker}.");
         }
     }
 
@@ -107,11 +127,13 @@ internal static class DuelSummonService
         if (state.CenterMarker != 0)
         {
             PendingMarkers.TryRemove(state.CenterMarker, out _);
+            ModLogger.Info($"[DuelSummon] Cleared pending center marker {state.CenterMarker}.", verboseOnly: false);
         }
 
         if (state.ChallengerMarker != 0)
         {
             PendingMarkers.TryRemove(state.ChallengerMarker, out _);
+            ModLogger.Info($"[DuelSummon] Cleared pending challenger marker {state.ChallengerMarker}.", verboseOnly: false);
         }
     }
 
@@ -143,6 +165,7 @@ internal static class DuelSummonService
             _centerEntity = entity;
             EnsureTransform(manager, entity, _centerPosition);
             EnsurePersistentLifetime(manager, entity);
+            ModLogger.Info($"[DuelSummon] Center entity spawned {_centerEntity.Index}:{_centerEntity.Version} at {_centerPosition}.", verboseOnly: false);
         }
 
         public void OnChallengerSpawned(EntityManager manager, Entity entity)
@@ -150,17 +173,21 @@ internal static class DuelSummonService
             _challengerEntity = entity;
             EnsureTransform(manager, entity, _challengerPosition);
             EnsurePersistentLifetime(manager, entity);
+            ModLogger.Info($"[DuelSummon] Challenger entity spawned {_challengerEntity.Index}:{_challengerEntity.Version} at {_challengerPosition}.", verboseOnly: false);
         }
 
         public bool TryFinalize(EntityManager manager)
         {
             if (_completed)
             {
+                ModLogger.Debug("[DuelSummon] Finalize requested but already completed.");
                 return false;
             }
 
             if (!_centerEntity.Exists() || !_challengerEntity.Exists())
             {
+                ModLogger.Debug(
+                    $"[DuelSummon] Finalize blocked waiting for center={_centerEntity.Exists()} challenger={_challengerEntity.Exists()}.");
                 return false;
             }
 
@@ -174,17 +201,28 @@ internal static class DuelSummonService
         {
             if (!_player.Exists())
             {
+                ModLogger.Warn("[DuelSummon] Player entity destroyed before duel registration.");
                 return;
             }
 
             if (_player.TryApplyAndGetBuff(DuelConnectionBuffPrefab, out var buffEntity) && buffEntity.Exists())
             {
+                ModLogger.Info(
+                    $"[DuelSummon] Applied duel connection buff {_player.Index}:{_player.Version} → buff {buffEntity.Index}:{buffEntity.Version}.",
+                    verboseOnly: false);
                 if (manager.HasComponent<EntityOwner>(buffEntity))
                 {
                     var owner = manager.GetComponentData<EntityOwner>(buffEntity);
                     owner.Owner = _challengerEntity;
                     manager.SetComponentData(buffEntity, owner);
+                    ModLogger.Info(
+                        $"[DuelSummon] Linked challenger {_challengerEntity.Index}:{_challengerEntity.Version} as buff owner.",
+                        verboseOnly: false);
                 }
+            }
+            else
+            {
+                ModLogger.Warn("[DuelSummon] Failed to apply duel connection buff to player.");
             }
         }
 
@@ -192,6 +230,7 @@ internal static class DuelSummonService
         {
             if (!manager.HasComponent<LifeTime>(entity))
             {
+                ModLogger.Debug($"[DuelSummon] Entity {entity.Index}:{entity.Version} has no lifetime component.");
                 return;
             }
 
@@ -199,6 +238,7 @@ internal static class DuelSummonService
             lifetime.Duration = -1f;
             lifetime.EndAction = LifeTimeEndAction.None;
             manager.SetComponentData(entity, lifetime);
+            ModLogger.Debug($"[DuelSummon] Extended lifetime for {entity.Index}:{entity.Version}.");
         }
 
         private static void EnsureTransform(EntityManager manager, Entity entity, float3 position)
@@ -208,6 +248,7 @@ internal static class DuelSummonService
                 var transform = manager.GetComponentData<LocalTransform>(entity);
                 transform.Position = position;
                 manager.SetComponentData(entity, transform);
+                ModLogger.Debug($"[DuelSummon] Updated LocalTransform for {entity.Index}:{entity.Version} to {position}.");
                 return;
             }
 
@@ -216,6 +257,7 @@ internal static class DuelSummonService
                 var translation = manager.GetComponentData<Translation>(entity);
                 translation.Value = position;
                 manager.SetComponentData(entity, translation);
+                ModLogger.Debug($"[DuelSummon] Updated Translation for {entity.Index}:{entity.Version} to {position}.");
             }
         }
     }
