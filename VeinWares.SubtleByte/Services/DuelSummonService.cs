@@ -193,9 +193,55 @@ internal static class DuelSummonService
 
             _completed = true;
 
+            EnsureChallengerDuelComponent(manager);
             TraceDuelEntities(manager);
             TryRegisterPlayer(manager);
             return true;
+        }
+
+        private void EnsureChallengerDuelComponent(EntityManager manager)
+        {
+            if (!_centerEntity.Exists() || !_challengerEntity.Exists())
+            {
+                ModLogger.Warn("[DuelSummon] Cannot ensure challenger duel component before entities exist.");
+                return;
+            }
+
+            if (!manager.HasComponent<VBloodDuelInstance>(_centerEntity))
+            {
+                ModLogger.Warn("[DuelSummon] Center missing VBloodDuelInstance; cannot propagate duel id to challenger.");
+                return;
+            }
+
+            var duelInstance = manager.GetComponentData<VBloodDuelInstance>(_centerEntity);
+            var expectedId = duelInstance.VBloodDuelId;
+
+            if (manager.HasComponent<VBloodDuelChallenger>(_challengerEntity))
+            {
+                var challengerData = manager.GetComponentData<VBloodDuelChallenger>(_challengerEntity);
+                if (challengerData.VBloodDuelId == expectedId && expectedId != 0)
+                {
+                    ModLogger.Debug(
+                        $"[DuelSummon] Challenger already has matching duel id {expectedId}.");
+                    return;
+                }
+
+                challengerData.VBloodDuelId = expectedId;
+                manager.SetComponentData(_challengerEntity, challengerData);
+                ModLogger.Info(
+                    $"[DuelSummon] Updated challenger duel id to {expectedId}.",
+                    verboseOnly: false);
+                return;
+            }
+
+            manager.AddComponentData(_challengerEntity, new VBloodDuelChallenger
+            {
+                VBloodDuelId = expectedId,
+            });
+
+            ModLogger.Info(
+                $"[DuelSummon] Added VBloodDuelChallenger with duel id {expectedId} to challenger {_challengerEntity.Index}:{_challengerEntity.Version}.",
+                verboseOnly: false);
         }
 
         private void TraceDuelEntities(EntityManager manager)
