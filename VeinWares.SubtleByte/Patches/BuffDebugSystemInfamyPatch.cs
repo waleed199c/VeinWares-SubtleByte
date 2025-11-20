@@ -7,6 +7,7 @@ using Stunlock.Core;
 using Unity.Collections;
 using Unity.Entities;
 using VeinWares.SubtleByte.Services.FactionInfamy;
+using VeinWares.SubtleByte.Services;
 
 #nullable enable
 
@@ -58,34 +59,42 @@ internal static class BuffDebugSystemInfamyPatch
                 foreach (var buffEntity in buffEntities)
                 {
                     if (!__instance.EntityManager.TryGetComponentData(buffEntity, out PrefabGUID prefab))
-                    {
-                        continue;
-                    }
+                {
+                    continue;
+                }
 
-                    var guidHash = prefab.GuidHash;
-                    var combatStart = guidHash == BuffInCombatHash;
-                    var combatEnd = guidHash == BuffOutOfCombatHash;
+                var guidHash = prefab.GuidHash;
+                var combatStart = guidHash == BuffInCombatHash;
+                var combatEnd = guidHash == BuffOutOfCombatHash;
 
-                    if (!combatStart && !combatEnd)
-                    {
-                        continue;
-                    }
+                if (!combatStart && !combatEnd)
+                {
+                    continue;
+                }
 
-                    if (!__instance.EntityManager.TryGetComponentData(buffEntity, out EntityOwner entityOwner))
-                    {
-                        continue;
-                    }
+                var combatState = combatStart && !combatEnd;
 
-                    var owner = entityOwner.Owner;
-                    if (owner == Entity.Null)
-                    {
-                        continue;
-                    }
+                if (!__instance.EntityManager.TryGetComponentData(buffEntity, out EntityOwner entityOwner))
+                {
+                    continue;
+                }
 
-                    if (!__instance.EntityManager.TryGetComponentData(owner, out PlayerCharacter playerCharacter))
-                    {
-                        continue;
-                    }
+                var owner = entityOwner.Owner;
+                if (owner == Entity.Null)
+                {
+                    continue;
+                }
+
+                if (__instance.EntityManager.HasComponent<VBloodDuelChallenger>(owner) ||
+                    __instance.EntityManager.HasComponent<VBloodDuelInstance>(owner))
+                {
+                    DuelSummonService.UpdateCombatState(__instance.EntityManager, owner, combatState);
+                }
+
+                if (!__instance.EntityManager.TryGetComponentData(owner, out PlayerCharacter playerCharacter))
+                {
+                    continue;
+                }
 
                     if (!__instance.EntityManager.TryGetComponentData(playerCharacter.UserEntity, out User user))
                     {
@@ -112,6 +121,8 @@ internal static class BuffDebugSystemInfamyPatch
                         FactionInfamySystem.RegisterCombatEnd(steamId);
                         PlayersInCombat.Remove(steamId);
                     }
+
+                    DuelSummonService.UpdateCombatState(__instance.EntityManager, owner, combatState);
                 }
             }
             finally
