@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Linq;
 using ProjectM;
 using Stunlock.Core;
 using Unity.Collections;
@@ -18,11 +19,34 @@ internal static class DuelSummonService
     private static readonly PrefabGUID DuelAreaPrefab = new(-288427482);
     private static readonly PrefabGUID DuelConnectionBuffPrefab = new(1120504274);
 
-    private const float ExpandedDuelRadius = 30f;
-    private const float SuddenDeathDelaySeconds = 45f;
-    private const float SuddenDeathDurationSeconds = 180f;
-
     private static readonly ConcurrentDictionary<int, PendingDuelSummon> PendingMarkers = new();
+    private static readonly ConcurrentDictionary<int, ActiveDuel> ActiveDuels = new();
+    private static readonly ConcurrentDictionary<Entity, int> ParticipantLookup = new();
+
+    public static void UpdateCombatState(EntityManager manager, Entity participant, bool inCombat)
+    {
+        if (!participant.Exists())
+        {
+            return;
+        }
+
+        if (!ParticipantLookup.TryGetValue(participant, out var duelId))
+        {
+            return;
+        }
+
+        if (!ActiveDuels.TryGetValue(duelId, out var duel))
+        {
+            ParticipantLookup.TryRemove(participant, out _);
+            return;
+        }
+
+        duel.SetCombatState(participant, inCombat);
+        if (!inCombat && duel.ShouldEnd())
+        {
+            EndActiveDuel(manager, duel);
+        }
+    }
 
     public static bool TrySummonForPlayer(
         Entity playerCharacter,
@@ -36,6 +60,23 @@ internal static class DuelSummonService
     {
         if (!playerCharacter.Exists())
         {
+            return false;
+        }
+
+        var manager = Core.EntityManager;
+        if (!manager.HasComponent<PlayerCharacter>(playerCharacter))
+        {
+            ModLogger.Warn(
+                $"[DuelSummon] Ignoring duel summon for non-player entity {playerCharacter.Index}:{playerCharacter.Version}.");
+            return false;
+        }
+
+        if (!manager.TryGetComponentData(playerCharacter, out PlayerCharacter playerCharacterData) ||
+            playerCharacterData.UserEntity == Entity.Null ||
+            !manager.HasComponent<User>(playerCharacterData.UserEntity))
+        {
+            ModLogger.Warn(
+                $"[DuelSummon] Ignoring duel summon for player {playerCharacter.Index}:{playerCharacter.Version}; missing user component.");
             return false;
         }
 
@@ -254,6 +295,7 @@ internal static class DuelSummonService
             TryRegisterPlayer(manager);
             var overflow = InviteNearbyPlayers(manager);
             ScheduleSupplementalDuels(manager, overflow);
+            RegisterActiveDuel(manager);
             return true;
         }
 
@@ -317,14 +359,8 @@ internal static class DuelSummonService
             }
 
             var duelArea = manager.GetComponentData<DuelArea>(_centerEntity);
-            duelArea.Radius = ExpandedDuelRadius;
-            duelArea.OriginalRadius = ExpandedDuelRadius;
-            duelArea.SuddenDeathStartTime = SuddenDeathDelaySeconds;
-            duelArea.SuddenDeathDuration = SuddenDeathDurationSeconds;
-            manager.SetComponentData(_centerEntity, duelArea);
-
             ModLogger.Info(
-                $"[DuelSummon] Configured duel area radius={duelArea.Radius} suddenDeathStart={duelArea.SuddenDeathStartTime} suddenDeathDuration={duelArea.SuddenDeathDuration}.",
+                $"[DuelSummon] Using duel area defaults radius={duelArea.Radius} originalRadius={duelArea.OriginalRadius} suddenDeathStart={duelArea.SuddenDeathStartTime} suddenDeathDuration={duelArea.SuddenDeathDuration}.",
                 verboseOnly: false);
         }
 
@@ -386,6 +422,105 @@ internal static class DuelSummonService
             }
 
             LinkBuffOwner(manager, buffEntity, _player);
+        }
+
+        private void RegisterActiveDuel(EntityManager manager)
+        {
+            if (!_centerEntity.Exists() || !manager.HasComponent<VBloodDuelInstance>(_centerEntity))
+            {
+                ModLogger.Warn("[DuelSummon] Unable to register active duel; missing center duel instance.");
+                return;
+            }
+
+            var duelInstance = manager.GetComponentData<VBloodDuelInstance>(_centerEntity);
+            if (duelInstance.VBloodDuelId == 0)
+            {
+                ModLogger.Warn("[DuelSummon] Unable to register active duel; duel id is zero.");
+                return;
+            }
+
+            var duel = ActiveDuels.GetOrAdd(
+                duelInstance.VBloodDuelId,
+                _ => new ActiveDuel(duelInstance.VBloodDuelId, _centerEntity));
+
+            duel.AddPlayer(_player);
+            duel.AddChallenger(_challengerEntity);
+            ParticipantLookup[_player] = duelInstance.VBloodDuelId;
+            ParticipantLookup[_challengerEntity] = duelInstance.VBloodDuelId;
+
+            TryRegisterNearbyChallengers(manager, duel, duelInstance.VBloodDuelId);
+        }
+
+        private void TryRegisterNearbyChallengers(EntityManager manager, ActiveDuel duel, int duelId)
+        {
+            if (!_centerEntity.Exists())
+            {
+                return;
+            }
+
+            var radiusSq = float.MaxValue;
+            if (manager.HasComponent<DuelArea>(_centerEntity))
+            {
+                var duelArea = manager.GetComponentData<DuelArea>(_centerEntity);
+                var radius = math.max(duelArea.Radius, duelArea.OriginalRadius);
+                radiusSq = radius * radius;
+            }
+
+            var query = manager.CreateEntityQuery(ComponentType.ReadOnly<VBloodDuelChallenger>());
+            NativeArray<Entity> challengers = default;
+
+            try
+            {
+                challengers = query.ToEntityArray(Allocator.Temp);
+
+                foreach (var challenger in challengers)
+                {
+                    if (!challenger.Exists() || challenger == _challengerEntity)
+                    {
+                        continue;
+                    }
+
+                    if (!manager.TryGetComponentData(challenger, out VBloodDuelChallenger challengerData))
+                    {
+                        continue;
+                    }
+
+                    if (challengerData.VBloodDuelId != 0 && challengerData.VBloodDuelId != duelId)
+                    {
+                        continue;
+                    }
+
+                    if (!TryResolvePosition(manager, challenger, out var position))
+                    {
+                        continue;
+                    }
+
+                    var distanceSq = math.lengthsq(position - _centerPosition);
+                    if (distanceSq > radiusSq)
+                    {
+                        continue;
+                    }
+
+                    challengerData.VBloodDuelId = duelId;
+                    manager.SetComponentData(challenger, challengerData);
+
+                    duel.AddChallenger(challenger);
+                    ParticipantLookup[challenger] = duelId;
+
+                    ModLogger.Info(
+                        $"[DuelSummon] Added nearby challenger {challenger.Index}:{challenger.Version} to duel {duelId}.",
+                        verboseOnly: false);
+                }
+            }
+            finally
+            {
+                if (challengers.IsCreated)
+                {
+                    challengers.Dispose();
+                }
+
+                query.Dispose();
+            }
         }
 
         private List<PlayerCandidate> InviteNearbyPlayers(EntityManager manager)
@@ -743,6 +878,115 @@ internal static class DuelSummonService
                 translation.Value = position;
                 manager.SetComponentData(entity, translation);
                 ModLogger.Debug($"[DuelSummon] Updated Translation for {entity.Index}:{entity.Version} to {position}.");
+            }
+        }
+    }
+
+    private static void EndActiveDuel(EntityManager manager, ActiveDuel duel)
+    {
+        ModLogger.Info($"[DuelSummon] Ending duel {duel.DuelId}; all participants left combat.", verboseOnly: false);
+
+        foreach (var participant in duel.Participants)
+        {
+            ParticipantLookup.TryRemove(participant, out _);
+        }
+
+        ActiveDuels.TryRemove(duel.DuelId, out _);
+
+        foreach (var challenger in duel.Challengers)
+        {
+            if (!challenger.Exists() || !manager.HasComponent<VBloodDuelChallenger>(challenger))
+            {
+                continue;
+            }
+
+            var challengerData = manager.GetComponentData<VBloodDuelChallenger>(challenger);
+            challengerData.VBloodDuelId = 0;
+            manager.SetComponentData(challenger, challengerData);
+        }
+
+        if (duel.Center.Exists() && manager.Exists(duel.Center))
+        {
+            manager.DestroyEntity(duel.Center);
+        }
+    }
+
+    private sealed class ActiveDuel
+    {
+        private readonly HashSet<Entity> _players = new();
+        private readonly HashSet<Entity> _challengers = new();
+        private readonly Dictionary<Entity, bool> _combatStates = new();
+        private readonly object _sync = new();
+
+        public ActiveDuel(int duelId, Entity center)
+        {
+            DuelId = duelId;
+            Center = center;
+        }
+
+        public int DuelId { get; }
+        public Entity Center { get; }
+        public IReadOnlyCollection<Entity> Challengers
+        {
+            get
+            {
+                lock (_sync)
+                {
+                    return _challengers.ToList();
+                }
+            }
+        }
+
+        public IReadOnlyCollection<Entity> Participants
+        {
+            get
+            {
+                lock (_sync)
+                {
+                    return _combatStates.Keys.ToList();
+                }
+            }
+        }
+
+        public void AddPlayer(Entity player)
+        {
+            lock (_sync)
+            {
+                _players.Add(player);
+                _combatStates[player] = true;
+            }
+        }
+
+        public void AddChallenger(Entity challenger)
+        {
+            lock (_sync)
+            {
+                _challengers.Add(challenger);
+                _combatStates[challenger] = true;
+            }
+        }
+
+        public void SetCombatState(Entity participant, bool inCombat)
+        {
+            lock (_sync)
+            {
+                _combatStates[participant] = inCombat;
+            }
+        }
+
+        public bool ShouldEnd()
+        {
+            lock (_sync)
+            {
+                foreach (var pair in _combatStates.ToList())
+                {
+                    if (!pair.Key.Exists())
+                    {
+                        _combatStates[pair.Key] = false;
+                    }
+                }
+
+                return _combatStates.Count > 0 && _combatStates.Values.All(state => !state);
             }
         }
     }
